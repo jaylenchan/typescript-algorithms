@@ -75,6 +75,16 @@ class DArray<E> {
     return this.data[index];
   }
 
+  // 查
+  getFirst(): E {
+    return this.get(0);
+  }
+
+  // 查
+  getLast(): E {
+    return this.get(this.size - 1);
+  }
+
   // 改
   set(index: number, e: E): void {
     if (index < 0 || index >= this.size) {
