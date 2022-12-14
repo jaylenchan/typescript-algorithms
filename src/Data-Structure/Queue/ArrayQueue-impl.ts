@@ -12,6 +12,10 @@ class ArrayQueue<E> implements Queue<E> {
     return this.array.getSize();
   }
 
+  isFull(): boolean {
+    return this.getSize() == this.getCapacity();
+  }
+
   isEmpty(): boolean {
     return this.array.isEmpty();
   }
