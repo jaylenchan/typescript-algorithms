@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import ArrayStack from './ArrayStack-impl';
+import LinkedListStack from './LinkedListStack-impl';
 
 describe('ArrayStack', () => {
   it('getSize', () => {
@@ -37,5 +38,17 @@ describe('ArrayStack', () => {
     stack.peek();
 
     assert.equal(stack.getSize(), 1);
+  });
+});
+
+describe('LinkedListStack', () => {
+  it('list stack', () => {
+    const stack = new LinkedListStack<number>();
+    for (let i = 0; i < 5; i++) {
+      stack.push(i);
+      console.log(stack.toString());
+    }
+    stack.pop();
+    console.log(stack.toString());
   });
 });
