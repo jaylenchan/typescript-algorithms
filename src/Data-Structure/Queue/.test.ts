@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import ArrayQueue from './ArrayQueue-impl';
+import LinkedListQueue from './LinkedListQueue-impl';
 
 describe('ArrayQueue', () => {
   it('getSize', () => {
@@ -37,5 +38,20 @@ describe('ArrayQueue', () => {
     queue.getFront();
 
     assert.equal(queue.getSize(), 1);
+  });
+});
+
+describe('LinkedListQueue', () => {
+  it('', () => {
+    const queue = new LinkedListQueue<number>();
+    for (let i = 0; i < 10; i++) {
+      queue.enqueue(i);
+      console.log(queue.toString());
+
+      if (i % 3 == 2) {
+        queue.dequeue();
+        console.log(queue.toString());
+      }
+    }
   });
 });
