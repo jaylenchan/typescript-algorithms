@@ -88,7 +88,7 @@ class DArray<E> {
   // 改
   set(index: number, e: E): void {
     if (index < 0 || index >= this.size) {
-      throw new Error('Get failed. Index is illegal.');
+      throw new Error('Set failed. Index is illegal.');
     }
     this.data[index] = e;
   }

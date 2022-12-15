@@ -5,7 +5,7 @@ describe('Array', () => {
   it('arr.get(0) is 1', () => {
     const arr = new Array<number>(10);
     arr.add(0, 1);
-
+    console.log('' + arr);
     assert.equal(arr.get(0), 1);
   });
 
