@@ -1,4 +1,5 @@
-class DArray<E> {
+import MArray from './interface';
+class DArray<E> implements MArray<E> {
   private data: E[];
   private size: number;
 
@@ -20,7 +21,7 @@ class DArray<E> {
   }
 
   // 增
-  add(index: number, e: E) {
+  add(index: number, e: E): void {
     if (index < 0 || index > this.size) {
       throw new Error('Add failed. Require index >= 0 and index <= size. ');
     }
