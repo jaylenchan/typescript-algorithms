@@ -129,6 +129,21 @@ class LinkedList<E> {
     return this.remove(this.size - 1);
   }
 
+  removeElement(e: E): void {
+    let prev = this.dummyHead;
+    while (prev.next != null) {
+      if (prev.next.value == e) {
+        break;
+      }
+      prev = prev.next;
+    }
+    if (prev.next != null) {
+      let delNode = prev.next;
+      prev.next = delNode.next;
+      delNode.next = null;
+    }
+  }
+
   toString() {
     let res = '';
     let cur = this.dummyHead.next;
