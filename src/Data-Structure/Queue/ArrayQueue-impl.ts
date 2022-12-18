@@ -1,7 +1,7 @@
-import Queue from './interface';
+import IQueue from './interface';
 import Array from '../Array/impl';
 
-class ArrayQueue<E> implements Queue<E> {
+class ArrayQueue<E> implements IQueue<E> {
   private array: Array<E>;
 
   constructor(capacity?: number) {

@@ -1,7 +1,7 @@
-import Stack from './interface';
+import IStack from './interface';
 import LinkedList from '../LinkedList/impl';
 
-class LinkedListStack<E> implements Stack<E> {
+class LinkedListStack<E> implements IStack<E> {
   private list: LinkedList<E>;
 
   constructor() {

@@ -1,7 +1,7 @@
-import Set from './interface';
+import ISet from './interface';
 import LinkedList from '../LinkedList/impl';
 
-class LinkedListSet<E> implements Set<E> {
+class LinkedListSet<E> implements ISet<E> {
   private list: LinkedList<E>;
 
   constructor() {

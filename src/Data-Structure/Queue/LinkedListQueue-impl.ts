@@ -1,4 +1,4 @@
-import Queue from './interface';
+import IQueue from './interface';
 
 class LNode<E> {
   value: E;
@@ -10,7 +10,7 @@ class LNode<E> {
   }
 }
 
-class LinkedListQueue<E> implements Queue<E> {
+class LinkedListQueue<E> implements IQueue<E> {
   private size: number;
   private head: LNode<E> | null; // 指向头结点
   private tail: LNode<E> | null; // 指向尾结点

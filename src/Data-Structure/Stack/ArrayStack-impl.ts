@@ -1,7 +1,7 @@
-import Stack from './interface';
+import IStack from './interface';
 import Array from '../Array/impl';
 
-class ArrayStack<T> implements Stack<T> {
+class ArrayStack<T> implements IStack<T> {
   private array: Array<T>;
   constructor(capacity?: number) {
     this.array = new Array(capacity);

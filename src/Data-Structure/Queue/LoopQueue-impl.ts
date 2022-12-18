@@ -1,6 +1,6 @@
-import Queue from './interface';
+import IQueue from './interface';
 
-class LoopQueue<E> implements Queue<E> {
+class LoopQueue<E> implements IQueue<E> {
   private data: E[];
   private size: number;
   private front: number;

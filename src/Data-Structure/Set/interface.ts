@@ -1,4 +1,4 @@
-export default interface Set<E> {
+export default interface ISet<E> {
   add(e: E): void;
   remove(e: E): void;
   contains(e: E): boolean;

@@ -1,5 +1,5 @@
-import MArray from './interface';
-class DArray<E> implements MArray<E> {
+import IArray from './interface';
+class DArray<E> implements IArray<E> {
   private data: E[];
   private size: number;
 

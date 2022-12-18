@@ -1,4 +1,4 @@
-import BinarySearchTree from './interface';
+import IBinarySearchTree from './interface';
 
 class TNode<E> {
   e: E;
@@ -12,7 +12,7 @@ class TNode<E> {
   }
 }
 
-class BST<E> implements BinarySearchTree<E> {
+class BinarySearchTree<E> implements IBinarySearchTree<E> {
   private root: TNode<E> | null;
   private size: number;
 
@@ -115,4 +115,4 @@ class BST<E> implements BinarySearchTree<E> {
   }
 }
 
-export default BST;
+export default BinarySearchTree;

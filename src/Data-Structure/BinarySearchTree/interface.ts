@@ -1,4 +1,4 @@
-export default interface BinarySearchTree<E> {
+export default interface IBinarySearchTree<E> {
   getSize(): number;
   isEmpty(): boolean;
   add(e: E): void;

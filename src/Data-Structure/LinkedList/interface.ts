@@ -1,11 +1,9 @@
-export default interface IArray<E> {
+export default interface ILinkedList<E> {
   getSize(): number;
-  getCapacity(): number;
   isEmpty(): boolean;
   add(index: number, e: E): void;
-  contains(e: E): boolean;
-  find(e: E): number;
   get(index: number): E;
+  contains(e: E): boolean;
   set(index: number, e: E): void;
   remove(index: number): E;
   removeElement(e: E): void;

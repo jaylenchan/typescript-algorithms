@@ -1,7 +1,7 @@
-import Set from './interface';
+import ISet from './interface';
 import BinarySearchTree from '../BinarySearchTree/impl';
 
-class BinarySearchTreeSet<E> implements Set<E> {
+class BinarySearchTreeSet<E> implements ISet<E> {
   private bst: BinarySearchTree<E>;
 
   constructor() {
