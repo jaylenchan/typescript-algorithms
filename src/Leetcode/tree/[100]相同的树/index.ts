@@ -6,7 +6,7 @@
 
 // @lc code=start
 
-import TreeNode from './TreeNode';
+import TreeNode from '../TreeNode';
 export default isSameTree;
 
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {

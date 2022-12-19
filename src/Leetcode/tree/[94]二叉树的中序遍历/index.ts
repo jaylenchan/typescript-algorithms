@@ -6,7 +6,7 @@
 
 // @lc code=start
 
-import TreeNode from './TreeNode';
+import TreeNode from '../TreeNode';
 export default inorderTraversal;
 
 function inorderTraversal(root: TreeNode | null): number[] {

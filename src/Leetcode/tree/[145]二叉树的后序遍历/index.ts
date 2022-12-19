@@ -18,7 +18,7 @@
  *     }
  * }
  */
-import TreeNode from './TreeNode';
+import TreeNode from '../TreeNode';
 export default postorderTraversal;
 
 function postorderTraversal(root: TreeNode | null): number[] {
