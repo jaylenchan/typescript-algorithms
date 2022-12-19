@@ -8,12 +8,12 @@
 function permute(nums: number[]): number[][] {
   const result: number[][] = [];
   const path: number[] = [];
-  backtrack(nums, path, result);
+  backtracking(nums, path, result);
 
   return result;
 }
 
-function backtrack(nums: number[], path: number[], result: number[][]) {
+function backtracking(nums: number[], path: number[], result: number[][]) {
   if (path.length == nums.length) {
     result.push([...path]);
   } else {
@@ -21,7 +21,7 @@ function backtrack(nums: number[], path: number[], result: number[][]) {
       const num = nums[i];
       if (path.includes(num)) continue;
       path.push(num);
-      backtrack(nums, path, result);
+      backtracking(nums, path, result);
       path.pop();
     }
   }
