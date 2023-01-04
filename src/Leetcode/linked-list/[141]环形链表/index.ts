@@ -22,7 +22,7 @@ function hasCycle(head: ListNode | null): boolean {
   let slow = head;
   let fast = head.next;
 
-  while (slow.next != null && fast && fast.next && fast.next.next != null) {
+  while (slow.next && fast.next && fast.next.next) {
     slow = slow.next;
     fast = fast.next.next;
 
