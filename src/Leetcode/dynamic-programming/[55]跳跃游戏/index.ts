@@ -18,6 +18,7 @@ function canJump(nums: number[]): boolean {
     for (let i = 0; i < j; i++) {
       if (dp[i] && i + nums[i] >= j) {
         dp[j] = true;
+        break;
       }
     }
   }
