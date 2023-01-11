@@ -1,32 +1,107 @@
-import LinkedList from '../LinkedList/impl';
 import IMap from './interface';
 
-class LinkedListMap<K, V> implements IMap<K, V> {
-  private list: LinkedList<K>;
-  constructor() {
-    this.list = new LinkedList<K>();
+class LNode<K, V> {
+  public key: K | null;
+  public value: V | null;
+  public next: LNode<K, V> | null;
+
+  constructor(
+    key: K | null = null,
+    value: V | null = null,
+    next: LNode<K, V> | null = null
+  ) {
+    this.key = key;
+    this.value = value;
+    this.next = next;
   }
 
-  add(k: K, v: V): void {
-    throw new Error('Method not implemented.');
+  toString(): string {
+    return this.key!.toString() + ' : ' + this.value!.toString();
   }
-  remove(k: K): V {
-    throw new Error('Method not implemented.');
+}
+
+class LinkedListMap<K, V> implements IMap<K, V> {
+  private dummyNode: LNode<K, V>;
+  private size: number;
+
+  constructor() {
+    this.dummyNode = new LNode<K, V>();
+    this.size = 0;
   }
-  contains(k: K): boolean {
-    throw new Error('Method not implemented.');
+
+  private _getNode(key: K): LNode<K, V> | null {
+    let cur = this.dummyNode.next;
+
+    while (cur != null) {
+      if (cur.key == key) {
+        return cur;
+      }
+
+      cur = cur.next;
+    }
+
+    return null;
   }
-  get(k: K): V {
-    throw new Error('Method not implemented.');
+
+  // 增
+  add(key: K, value: V): void {
+    const node = this._getNode(key);
+
+    if (node == null) {
+      this.dummyNode.next = new LNode(key, value, this.dummyNode.next);
+      this.size += 1;
+    } else {
+      node.value = value;
+    }
   }
-  set(k: K, v: V): void {
-    throw new Error('Method not implemented.');
+
+  remove(key: K): V | null {
+    let prev = this.dummyNode;
+
+    while (prev.next != null) {
+      if (prev.next.key == key) {
+        break;
+      }
+      prev = prev.next;
+    }
+
+    if (prev.next != null) {
+      const removeNode = prev.next;
+      prev.next = removeNode.next;
+      removeNode.next = null;
+
+      return removeNode.value;
+    }
+
+    return null;
   }
+
+  contains(key: K): boolean {
+    return this._getNode(key) != null;
+  }
+
+  get(key: K): V | null {
+    const node = this._getNode(key);
+
+    return node == null ? null : node.value;
+  }
+
+  set(key: K, newValue: V): void {
+    const node = this._getNode(key);
+
+    if (node == null) {
+      throw new Error(`${key} doesn't exist!`);
+    } else {
+      node.value = newValue;
+    }
+  }
+
   getSize(): number {
-    throw new Error('Method not implemented.');
+    return this.size;
   }
+
   isEmpty(): boolean {
-    throw new Error('Method not implemented.');
+    return this.size == 0;
   }
 }
 
