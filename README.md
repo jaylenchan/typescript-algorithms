@@ -1,1 +1,3 @@
-# Alg4
+# Typescript-Algorithmns
+
+基于Typescript实现常见算法、数据结构以及leetcode题目
