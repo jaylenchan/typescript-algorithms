@@ -9,4 +9,5 @@ export default interface IArray<E> {
   set(index: number, e: E): void;
   remove(index: number): E;
   removeElement(e: E): void;
+  swap(i: number, j: number): void;
 }

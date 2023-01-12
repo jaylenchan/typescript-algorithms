@@ -8,6 +8,15 @@ class DArray<E> implements IArray<E> {
     this.size = 0;
   }
 
+  swap(i: number, j: number): void {
+    if (i < 0 || j < 0 || i >= this.size || j > this.size) {
+      throw new Error('Index is illegal.');
+    }
+    const temp = this.data[i];
+    this.data[i] = this.data[j];
+    this.data[j] = temp;
+  }
+
   getSize(): number {
     return this.size;
   }
