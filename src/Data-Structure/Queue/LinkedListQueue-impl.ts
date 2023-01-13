@@ -21,15 +21,16 @@ class LinkedListQueue<E> implements IQueue<E> {
     this.tail = null;
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
-  isEmpty(): boolean {
+
+  public isEmpty(): boolean {
     return this.size == 0;
   }
 
   // 入队：从链表的尾部入队
-  enqueue(e: E): void {
+  public enqueue(e: E): void {
     if (this.tail == null) {
       // 空链表
       this.tail = new LNode(e);
@@ -44,7 +45,7 @@ class LinkedListQueue<E> implements IQueue<E> {
     this.size += 1;
   }
 
-  dequeue(): E {
+  public dequeue(): E {
     if (this.isEmpty()) {
       throw new Error('Cannot dequeue from an empty queue.');
     }
@@ -59,7 +60,7 @@ class LinkedListQueue<E> implements IQueue<E> {
     return target.value;
   }
 
-  getFront(): E {
+  public getFront(): E {
     if (this.isEmpty()) {
       throw new Error('Cannot getFront from an empty queue.');
     }
@@ -67,7 +68,7 @@ class LinkedListQueue<E> implements IQueue<E> {
     return this.head!.value;
   }
 
-  toString() {
+  public toString() {
     let res = 'Queue: front  ';
     let cur = this.head;
 

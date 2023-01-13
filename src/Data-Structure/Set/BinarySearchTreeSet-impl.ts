@@ -8,23 +8,23 @@ class BinarySearchTreeSet<E> implements ISet<E> {
     this.bst = new BinarySearchTree<E>();
   }
 
-  add(e: E): void {
+  public add(e: E): void {
     this.bst.add(e);
   }
 
-  remove(e: E): void {
+  public remove(e: E): void {
     this.bst.remove(e);
   }
 
-  contains(e: E): boolean {
+  public contains(e: E): boolean {
     return this.bst.contains(e);
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.bst.getSize();
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.bst.isEmpty();
   }
 }

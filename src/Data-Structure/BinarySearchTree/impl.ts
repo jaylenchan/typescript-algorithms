@@ -21,15 +21,15 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
     this.size = 0;
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.size == 0;
   }
 
-  add(e: E): void {
+  public add(e: E): void {
     this.root = this._add(this.root, e);
   }
 
@@ -52,7 +52,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
   }
 
   // 寻找二分搜索树当中的最小元素
-  minimum(): E {
+  public minimum(): E {
     if (this.size == 0) {
       throw new Error('BinarySearchTree is empty!');
     }
@@ -67,7 +67,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
   }
 
   // 寻找二分搜索树当中的最大元素
-  maxmum(): E {
+  public maxmum(): E {
     if (this.size == 0) {
       throw new Error('BinarySearchTree is empty!');
     }
@@ -83,7 +83,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
 
   // 从二分搜索树当中删除最小的节点，并返回最小值
   // 删除掉以root为根的二分搜索树当中的最小节点
-  removeMin(): E {
+  public removeMin(): E {
     if (this.root == null) throw new Error('BinarySearchTree is empty!');
 
     const result = this.minimum();
@@ -107,7 +107,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
     }
   }
 
-  removeMax(): E {
+  public removeMax(): E {
     if (this.root == null) throw new Error('BinarySearchTree is empty!');
 
     const result = this.maxmum();
@@ -128,7 +128,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
     }
   }
 
-  remove(e: E) {
+  public remove(e: E) {
     this.root = this._remove(this.root, e);
   }
 
@@ -175,7 +175,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
   }
 
   // 二分搜索树中是否包含e
-  contains(e: E): boolean {
+  public contains(e: E): boolean {
     return this._contains(this.root, e);
   }
 
@@ -192,7 +192,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
     }
   }
 
-  preOrder(): void {
+  public preOrder(): void {
     this._preOrder(this.root);
   }
 
@@ -208,7 +208,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
     this._preOrder(root.right);
   }
 
-  inOrder(): void {
+  public inOrder(): void {
     this._inOrder(this.root);
   }
 
@@ -222,7 +222,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
     this._inOrder(root.right);
   }
 
-  postOrder(): void {
+  public postOrder(): void {
     this._postOrder(this.root);
   }
 

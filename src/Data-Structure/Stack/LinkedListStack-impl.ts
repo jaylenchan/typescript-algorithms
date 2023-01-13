@@ -8,23 +8,27 @@ class LinkedListStack<E> implements IStack<E> {
     this.list = new LinkedList<E>();
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.list.getSize();
   }
-  isEmpty(): boolean {
+
+  public isEmpty(): boolean {
     return this.list.isEmpty();
   }
-  push(e: E): void {
+
+  public push(e: E): void {
     this.list.addFrist(e);
   }
-  pop(): E {
+
+  public pop(): E {
     return this.list.removeFirst();
   }
-  peek(): E {
+
+  public peek(): E {
     return this.list.getFirst();
   }
 
-  toString() {
+  public toString() {
     let res = '';
 
     res += 'Stack: top ';

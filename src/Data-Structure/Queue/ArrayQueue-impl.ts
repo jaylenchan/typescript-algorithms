@@ -8,31 +8,31 @@ class ArrayQueue<E> implements IQueue<E> {
     this.array = new Array<E>(capacity);
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.array.getSize();
   }
 
-  isFull(): boolean {
+  public isFull(): boolean {
     return this.getSize() == this.getCapacity();
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.array.isEmpty();
   }
 
-  enqueue(e: E): void {
+  public enqueue(e: E): void {
     this.array.addLast(e);
   }
 
-  dequeue(): E {
+  public dequeue(): E {
     return this.array.removeFirst();
   }
 
-  getFront(): E {
+  public getFront(): E {
     return this.array.getFirst();
   }
 
-  getCapacity(): number {
+  public getCapacity(): number {
     return this.array.getCapacity();
   }
 }

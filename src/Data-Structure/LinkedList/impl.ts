@@ -19,18 +19,18 @@ class LinkedList<E> implements ILinkedList<E> {
     this.size = 0;
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.size == 0;
   }
 
   // 在链表中间添加节点
   // 要在index处放置e，就要遍历到index-1处的元素，在index-1处的元素后边放置新元素
   // 设置prev指针，要遍历到index-1,只需要遍历index-2次，因为每次操作是prev = prev.next;从当前prev往下跑一个地方
-  add(index: number, e: E): void {
+  public add(index: number, e: E): void {
     if (index < 0 || index > this.size) {
       throw new Error('Add failed. Illegal index.');
     }
@@ -43,16 +43,16 @@ class LinkedList<E> implements ILinkedList<E> {
     this.size += 1;
   }
 
-  addFrist(e: E): void {
+  public addFrist(e: E): void {
     this.add(0, e);
   }
 
-  addLast(e: E): void {
+  public addLast(e: E): void {
     this.add(this.size, e);
   }
 
   // 查
-  get(index: number): E {
+  public get(index: number): E {
     if (this.isEmpty()) {
       throw new Error('Add failed. list is empty.');
     }
@@ -69,16 +69,16 @@ class LinkedList<E> implements ILinkedList<E> {
     return cur.value;
   }
 
-  getFirst(): E {
+  public getFirst(): E {
     return this.get(0);
   }
 
-  getLast(): E {
+  public getLast(): E {
     return this.get(this.size - 1);
   }
 
   // 查找链表当中是否有元素e
-  contains(e: E): boolean {
+  public contains(e: E): boolean {
     let cur = this.dummyHead.next;
 
     while (cur != null) {
@@ -90,7 +90,7 @@ class LinkedList<E> implements ILinkedList<E> {
   }
 
   // 改
-  set(index: number, e: E): void {
+  public set(index: number, e: E): void {
     if (index < 0 || index >= this.size) {
       throw new Error('Set failed. Index is illegal.');
     }
@@ -103,7 +103,7 @@ class LinkedList<E> implements ILinkedList<E> {
     cur.value = e;
   }
 
-  remove(index: number): E {
+  public remove(index: number): E {
     if (index < 0 || index >= this.size) {
       throw new Error('Get failed. Index is illegal.');
     }
@@ -123,15 +123,15 @@ class LinkedList<E> implements ILinkedList<E> {
     return target.value;
   }
 
-  removeFirst(): E {
+  public removeFirst(): E {
     return this.remove(0);
   }
 
-  removeLast(): E {
+  public removeLast(): E {
     return this.remove(this.size - 1);
   }
 
-  removeElement(e: E): void {
+  public removeElement(e: E): void {
     let prev = this.dummyHead;
     while (prev.next != null) {
       if (prev.next.value == e) {
@@ -146,7 +146,7 @@ class LinkedList<E> implements ILinkedList<E> {
     }
   }
 
-  toString(): string {
+  public toString(): string {
     let res = '';
     let cur = this.dummyHead.next;
 

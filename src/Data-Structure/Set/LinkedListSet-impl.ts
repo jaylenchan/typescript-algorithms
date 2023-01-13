@@ -8,25 +8,25 @@ class LinkedListSet<E> implements ISet<E> {
     this.list = new LinkedList<E>();
   }
 
-  add(e: E): void {
+  public add(e: E): void {
     if (!this.list.contains(e)) {
       this.list.addFrist(e);
     }
   }
 
-  remove(e: E): void {
+  public remove(e: E): void {
     this.list.removeElement(e);
   }
 
-  contains(e: E): boolean {
+  public contains(e: E): boolean {
     return this.list.contains(e);
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.list.getSize();
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.list.isEmpty();
   }
 }

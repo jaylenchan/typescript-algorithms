@@ -24,7 +24,7 @@ class BinarySearchTreeMap<K, V> implements IMap<K, V> {
   }
 
   // 向二分搜索树当中添加新的key，value
-  add(key: K, value: V): void {
+  public add(key: K, value: V): void {
     this.root = this._add(this.root, key, value);
   }
 
@@ -123,7 +123,7 @@ class BinarySearchTreeMap<K, V> implements IMap<K, V> {
     }
   }
 
-  remove(key: K): V | null {
+  public remove(key: K): V | null {
     const node = this._getNode(this.root, key);
 
     if (node != null) {
@@ -134,19 +134,19 @@ class BinarySearchTreeMap<K, V> implements IMap<K, V> {
     return null;
   }
 
-  contains(key: K): boolean {
+  public contains(key: K): boolean {
     const node = this._getNode(this.root, key);
 
     return node != null;
   }
 
-  get(key: K): V | null {
+  public get(key: K): V | null {
     const node = this._getNode(this.root, key);
 
     return node == null ? null : node.value;
   }
 
-  set(key: K, newValue: V): void {
+  public set(key: K, newValue: V): void {
     const node = this._getNode(this.root, key);
 
     if (node == null) {
@@ -156,11 +156,11 @@ class BinarySearchTreeMap<K, V> implements IMap<K, V> {
     }
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.size == 0;
   }
 }

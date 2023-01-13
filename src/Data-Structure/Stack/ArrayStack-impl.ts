@@ -7,23 +7,23 @@ class ArrayStack<T> implements IStack<T> {
     this.array = new Array(capacity);
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.array.getSize();
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.array.isEmpty();
   }
 
-  push(e: T): void {
+  public push(e: T): void {
     this.array.addLast(e);
   }
 
-  pop(): T {
+  public pop(): T {
     return this.array.removeLast();
   }
 
-  peek(): T {
+  public peek(): T {
     return this.array.getLast();
   }
 }

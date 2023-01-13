@@ -13,20 +13,20 @@ class LoopQueue<E> implements IQueue<E> {
     this.tail = 0;
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
 
-  isFull(): boolean {
+  public isFull(): boolean {
     return (this.tail + 1) % this.data.length == this.front;
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.front == (this.tail + 1) % this.data.length;
   }
 
   // 入队
-  enqueue(e: E): void {
+  public enqueue(e: E): void {
     if (this.isFull()) {
       this.resize(this.getCapacity() * 2);
     }
@@ -37,7 +37,7 @@ class LoopQueue<E> implements IQueue<E> {
   }
 
   // 出队
-  dequeue(): E {
+  public dequeue(): E {
     if (this.isEmpty()) {
       throw new Error('Cannot dequeue from an empty queue');
     }
@@ -52,14 +52,14 @@ class LoopQueue<E> implements IQueue<E> {
     return result;
   }
 
-  getFront(): E {
+  public getFront(): E {
     if (this.isEmpty()) {
       throw new Error('Queue is empty.');
     }
     return this.data[this.front];
   }
 
-  getCapacity(): number {
+  public getCapacity(): number {
     return this.data.length - 1;
   }
 

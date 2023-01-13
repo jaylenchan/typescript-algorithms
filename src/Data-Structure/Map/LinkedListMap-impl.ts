@@ -15,7 +15,7 @@ class LNode<K, V> {
     this.next = next;
   }
 
-  toString(): string {
+  public toString(): string {
     return this.key!.toString() + ' : ' + this.value!.toString();
   }
 }
@@ -44,7 +44,7 @@ class LinkedListMap<K, V> implements IMap<K, V> {
   }
 
   // 增
-  add(key: K, value: V): void {
+  public add(key: K, value: V): void {
     const node = this._getNode(key);
 
     if (node == null) {
@@ -55,7 +55,7 @@ class LinkedListMap<K, V> implements IMap<K, V> {
     }
   }
 
-  remove(key: K): V | null {
+  public remove(key: K): V | null {
     let prev = this.dummyNode;
 
     while (prev.next != null) {
@@ -76,17 +76,17 @@ class LinkedListMap<K, V> implements IMap<K, V> {
     return null;
   }
 
-  contains(key: K): boolean {
+  public contains(key: K): boolean {
     return this._getNode(key) != null;
   }
 
-  get(key: K): V | null {
+  public get(key: K): V | null {
     const node = this._getNode(key);
 
     return node == null ? null : node.value;
   }
 
-  set(key: K, newValue: V): void {
+  public set(key: K, newValue: V): void {
     const node = this._getNode(key);
 
     if (node == null) {
@@ -96,11 +96,11 @@ class LinkedListMap<K, V> implements IMap<K, V> {
     }
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.size == 0;
   }
 }

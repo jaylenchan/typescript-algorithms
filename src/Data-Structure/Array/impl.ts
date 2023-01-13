@@ -8,7 +8,7 @@ class DArray<E> implements IArray<E> {
     this.size = 0;
   }
 
-  swap(i: number, j: number): void {
+  public swap(i: number, j: number): void {
     if (i < 0 || j < 0 || i >= this.size || j > this.size) {
       throw new Error('Index is illegal.');
     }
@@ -17,20 +17,20 @@ class DArray<E> implements IArray<E> {
     this.data[j] = temp;
   }
 
-  getSize(): number {
+  public getSize(): number {
     return this.size;
   }
 
-  getCapacity(): number {
+  public getCapacity(): number {
     return this.data.length;
   }
 
-  isEmpty(): boolean {
+  public isEmpty(): boolean {
     return this.size === 0;
   }
 
   // 增
-  add(index: number, e: E): void {
+  public add(index: number, e: E): void {
     if (index < 0 || index > this.size) {
       throw new Error('Add failed. Require index >= 0 and index <= size. ');
     }
@@ -48,17 +48,17 @@ class DArray<E> implements IArray<E> {
   }
 
   // 增
-  addLast(e: E): void {
+  public addLast(e: E): void {
     this.add(this.size, e);
   }
 
   // 增
-  addFirst(e: E): void {
+  public addFirst(e: E): void {
     this.add(0, e);
   }
 
   // 查
-  contains(e: E): boolean {
+  public contains(e: E): boolean {
     for (let i = 0; i < this.size; i++) {
       if (this.data[i] == e) {
         return true;
@@ -68,7 +68,7 @@ class DArray<E> implements IArray<E> {
   }
 
   // 查
-  find(e: E): number {
+  public find(e: E): number {
     for (let i = 0; i < this.size; i++) {
       if (this.data[i] == e) {
         return i;
@@ -78,7 +78,7 @@ class DArray<E> implements IArray<E> {
   }
 
   // 查
-  get(index: number): E {
+  public get(index: number): E {
     if (index < 0 || index >= this.size) {
       throw new Error('Get failed. Index is illegal.');
     }
@@ -86,17 +86,17 @@ class DArray<E> implements IArray<E> {
   }
 
   // 查
-  getFirst(): E {
+  public getFirst(): E {
     return this.get(0);
   }
 
   // 查
-  getLast(): E {
+  public getLast(): E {
     return this.get(this.size - 1);
   }
 
   // 改
-  set(index: number, e: E): void {
+  public set(index: number, e: E): void {
     if (index < 0 || index >= this.size) {
       throw new Error('Set failed. Index is illegal.');
     }
@@ -104,7 +104,7 @@ class DArray<E> implements IArray<E> {
   }
 
   // 删
-  remove(index: number): E {
+  public remove(index: number): E {
     if (index < 0 || index >= this.size) {
       throw new Error('Get failed. Index is illegal.');
     }
@@ -125,17 +125,17 @@ class DArray<E> implements IArray<E> {
   }
 
   // 删
-  removeFirst(): E {
+  public removeFirst(): E {
     return this.remove(0);
   }
 
   // 删
-  removeLast(): E {
+  public removeLast(): E {
     return this.remove(this.size - 1);
   }
 
   // 删
-  removeElement(e: E): void {
+  public removeElement(e: E): void {
     const index = this.find(e);
     if (index != -1) {
       this.remove(index);
