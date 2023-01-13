@@ -48,7 +48,8 @@ class MaxHeap<E> implements IHeap<E> {
       // 索引0无父亲节点
       throw new Error("index-0 doesn't have parent.");
     }
-    return (index - 1) / 2;
+    // ts当中这里一定要注意取整，ts当中的除法不会自动取整
+    return Math.floor((index - 1) / 2);
   }
 
   /** 返回完全二叉树的数组表示当中，一个索引所表示的元素的左孩子节点的索引（使用堆的计算方式1，从0开始放节点） */
