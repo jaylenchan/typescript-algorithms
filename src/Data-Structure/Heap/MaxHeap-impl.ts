@@ -42,6 +42,26 @@ class MaxHeap<E> implements IHeap<E> {
     return result;
   }
 
+  public replace(e: E): E {
+    const result = this.findMax();
+    this.data.set(0, e);
+    this._siftDown(0);
+
+    return result;
+  }
+
+  public heapify(arr: E[]) {
+    const data = new DArray<E>(arr.length);
+    for (let i = 0; i < arr.length; i++) {
+      data.add(i, arr[i]);
+    }
+    this.data = data;
+
+    for (let i = this._parent(arr.length - 1); i >= 0; i--) {
+      this._siftDown(i);
+    }
+  }
+
   /** 返回完全二叉树的数组表示当中，一个索引所表示的元素的父亲节点的索引（使用堆的计算方式1，从0开始放节点） */
   private _parent(index: number) {
     if (index == 0) {
