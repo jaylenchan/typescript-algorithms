@@ -1,4 +1,3 @@
-// import { assert } from 'chai';
 import { assert } from 'chai';
 import MaxHeap from '../MaxHeap-impl';
 
