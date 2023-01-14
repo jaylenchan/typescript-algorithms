@@ -1,15 +1,8 @@
-import SortTest from '../../Sort/test/SortTest';
-import Selection from '../impl';
-
-class Test extends SortTest {
-  public test(arr: number[]) {
-    Selection.sort(arr);
-  }
-}
+import SelectionSortTest from './SelectionSortTest';
 
 describe('Selection Sort', () => {
   it('Selection Sort Test', () => {
-    const test = new Test();
+    const test = new SelectionSortTest();
 
     test.runTest();
   });
