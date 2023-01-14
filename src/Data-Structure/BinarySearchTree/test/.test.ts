@@ -1,4 +1,4 @@
-import BinarySearchTree from './impl';
+import BinarySearchTree from '../impl';
 
 describe('BinarySearchTree', () => {
   it('', () => {

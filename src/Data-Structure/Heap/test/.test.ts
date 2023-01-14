@@ -1,6 +1,6 @@
 // import { assert } from 'chai';
 import { assert } from 'chai';
-import MaxHeap from './MaxHeap-impl';
+import MaxHeap from '../MaxHeap-impl';
 
 describe('MaxHeap', () => {
   it('arr[i] < arr[i-1] is true', () => {

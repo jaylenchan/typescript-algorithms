@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import ArrayQueue from './ArrayQueue-impl';
-import LinkedListQueue from './LinkedListQueue-impl';
+import ArrayQueue from '../ArrayQueue-impl';
+import LinkedListQueue from '../LinkedListQueue-impl';
 
 describe('ArrayQueue', () => {
   it('getSize', () => {

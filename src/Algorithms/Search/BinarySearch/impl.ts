@@ -1,5 +1,6 @@
 class BinarySearch {
   static searchR(data: number[], target: number): number {
+    if (data.length == 0) return -1;
     return BinarySearch._searchR(data, 0, data.length - 1, target);
   }
 
@@ -12,7 +13,6 @@ class BinarySearch {
     if (l > r) return -1;
 
     let mid = Math.floor(l + (r - l) / 2);
-
     if (data[mid] == target) {
       return mid;
     } else if (data[mid] > target) {
@@ -23,6 +23,7 @@ class BinarySearch {
   }
 
   static search(data: number[], target: number): number {
+    if (data.length == 0) return -1;
     return BinarySearch._search(data, 0, data.length - 1, target);
   }
 

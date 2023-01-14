@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import ArrayStack from './ArrayStack-impl';
-import LinkedListStack from './LinkedListStack-impl';
+import ArrayStack from '../ArrayStack-impl';
+import LinkedListStack from '../LinkedListStack-impl';
 
 describe('ArrayStack', () => {
   it('getSize', () => {

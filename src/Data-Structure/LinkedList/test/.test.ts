@@ -1,4 +1,4 @@
-import LinkedList from './impl';
+import LinkedList from '../impl';
 
 describe('LinkedList', () => {
   it('a', () => {

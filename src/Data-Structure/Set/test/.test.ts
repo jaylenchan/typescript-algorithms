@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import BinarySearchTreeSet from './BinarySearchTreeSet-impl';
-import LinkedListSet from './LinkedListSet-impl';
+import BinarySearchTreeSet from '../BinarySearchTreeSet-impl';
+import LinkedListSet from '../LinkedListSet-impl';
 
 describe('BinarySearchTreeSet', () => {
   it('diffrence num size is 5', () => {

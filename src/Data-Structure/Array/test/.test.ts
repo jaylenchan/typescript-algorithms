@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import Array from './impl';
+import Array from '../impl';
 
 describe('Array', () => {
   it('arr.get(0) is 1', () => {
