@@ -4,7 +4,7 @@ import BinarySearch from '../impl';
 
 export default class SearchTest extends ArrayComparator {
   public test(arr: number[], target: number): number {
-    return BinarySearch.searchR(arr, target);
+    return BinarySearch.search(arr, target);
   }
 
   public comparator(arr: number[], target: number): number {
