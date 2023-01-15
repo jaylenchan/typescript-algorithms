@@ -10,10 +10,10 @@ export default class MergeSort {
     let mid = left + Math.floor((right - left) / 2);
     MergeSort._mergeSort(arr, left, mid);
     MergeSort._mergeSort(arr, mid + 1, right);
-    MergeSort.merge(arr, left, mid, right);
+    MergeSort._merge(arr, left, mid, right);
   }
 
-  private static merge(
+  private static _merge(
     arr: number[],
     left: number,
     mid: number,
