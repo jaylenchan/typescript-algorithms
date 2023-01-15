@@ -16,6 +16,7 @@
     "test:insertion-sort": "mocha -r ts-node/register src/**/InsertionSort/test/.test.ts --timeout 300000 > stdout.log",
     "test:selection-sort": "mocha -r ts-node/register src/**/SelectionSort/test/.test.ts --timeout 300000 > stdout.log",
     "test:merge-sort": "mocha -r ts-node/register src/**/MergeSort/test/.test.ts --timeout 300000 > stdout.log",
+    "test:quick-sort": "mocha -r ts-node/register src/**/QuickSort/test/.test.ts --timeout 300000 > stdout.log",
     "test:array": "mocha -r ts-node/register src/**/Array/test/.test.ts --timeout 300000 > stdout.log",
     "test:linkedlist": "mocha -r ts-node/register src/**/LinkedList/test/.test.ts --timeout 300000 > stdout.log",
     "test:binary-search-tree": "mocha -r ts-node/register src/**/BinarySearchTree/test/.test.ts --timeout 300000 > stdout.log",

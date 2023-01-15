@@ -1,7 +1,12 @@
-import ArrayComparator from '../../../../Helper/ArrayComparator-impl';
 import { assert } from 'chai';
+import QuickSort from '../v1-impl';
+import ArrayComparator from '../../../../Helper/ArrayComparator-impl';
 
-export default class SortTest extends ArrayComparator {
+export default class QuickSortTest extends ArrayComparator {
+  public test(arr: number[]): void {
+    QuickSort.sort(arr);
+  }
+
   public comparator(arr: number[]): void {
     arr.sort((a, b) => a - b);
   }

@@ -1,15 +1,15 @@
 export default class MergeSort {
   public static sort(arr: number[]): void {
-    if (arr.length == 0) return;
-    MergeSort._mergeSort(arr, 0, arr.length - 1);
+    MergeSort._sort(arr, 0, arr.length - 1);
   }
 
-  private static _mergeSort(arr: number[], left: number, right: number): void {
-    if (left == right) return;
+  private static _sort(arr: number[], left: number, right: number): void {
+    // 这里有一种特殊情况：就是arr为空数组，结果就是left = 0, right = -1,这样子利用这个判断条件可以防止arr为空非法排序的情况
+    if (left >= right) return;
 
     let mid = left + Math.floor((right - left) / 2);
-    MergeSort._mergeSort(arr, left, mid);
-    MergeSort._mergeSort(arr, mid + 1, right);
+    MergeSort._sort(arr, left, mid);
+    MergeSort._sort(arr, mid + 1, right);
     MergeSort._merge(arr, left, mid, right);
   }
 
