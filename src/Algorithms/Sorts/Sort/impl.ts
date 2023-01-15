@@ -1,4 +1,4 @@
-class Sort {
+export default class Sort {
   public static less(v: number, w: number): boolean {
     return v < w;
   }
@@ -23,5 +23,3 @@ class Sort {
     return true;
   }
 }
-
-export default Sort;

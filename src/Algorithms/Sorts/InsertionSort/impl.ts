@@ -1,6 +1,6 @@
 import Sort from '../Sort/impl';
 
-class Insertion {
+export default class InsertionSort {
   public static sort(arr: number[]): void {
     for (let i = 1; i < arr.length; i++) {
       for (let j = i; j > 0 && Sort.less(arr[j], arr[j - 1]); j--) {
@@ -9,5 +9,3 @@ class Insertion {
     }
   }
 }
-
-export default Insertion;

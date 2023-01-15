@@ -1,8 +1,8 @@
 import SortTest from '../../Sort/test/SortTest';
-import Selection from '../impl';
+import SelectionSort from '../impl';
 
 export default class SelectionSortTest extends SortTest {
   public test(arr: number[]) {
-    Selection.sort(arr);
+    SelectionSort.sort(arr);
   }
 }

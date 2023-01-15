@@ -1,6 +1,6 @@
 import Sort from '../Sort/impl';
 
-class Selection {
+export default class SelectionSort {
   public static sort(arr: number[]): void {
     for (let i = 0; i < arr.length; i++) {
       let min = i;
@@ -13,5 +13,3 @@ class Selection {
     }
   }
 }
-
-export default Selection;
