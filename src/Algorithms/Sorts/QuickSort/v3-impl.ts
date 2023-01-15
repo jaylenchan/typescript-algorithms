@@ -11,7 +11,6 @@ export default class QuickSortV3 {
     QuickSortV3._quickSort(arr, pivot + 1, right);
   }
 
-  //
   public static _partition(arr: number[], left: number, right: number): number {
     let randomIndex = left + Math.floor(Math.random() * (right - left + 1)); // [left, right] 的随机索引
     QuickSortV3._swap(arr, randomIndex, left); // 将randomIndex 和 left 位置的元素做交换

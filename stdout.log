@@ -1,10 +1,11 @@
 
 
   Quick Sort
-    ✔ Quick Sort V1 Test (2665ms)
-    ✔ Quick Sort V2 Test (2761ms)
-    ✔ Quick Sort V3 Test (2815ms)
+    ✔ Quick Sort V1 Test [基础快排] (2597ms)
+    ✔ Quick Sort V2 Test [随机快排] (2471ms)
+    ✔ Quick Sort V3 Test [二路快排] (2492ms)
+    ✔ Quick Sort V4 Test [三路快排] (2502ms)
 
 
-  3 passing (8s)
+  4 passing (10s)
 
