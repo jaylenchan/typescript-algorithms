@@ -11,20 +11,20 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register src/**/test/.test.ts --timeout 300000 > stdout.log",
-    "test:binary-search": "mocha -r ts-node/register src/**/BinarySearch/test/.test.ts --timeout 300000 > stdout.log",
-    "test:insertion-sort": "mocha -r ts-node/register src/**/InsertionSort/test/.test.ts --timeout 300000 > stdout.log",
-    "test:selection-sort": "mocha -r ts-node/register src/**/SelectionSort/test/.test.ts --timeout 300000 > stdout.log",
-    "test:merge-sort": "mocha -r ts-node/register src/**/MergeSort/test/.test.ts --timeout 300000 > stdout.log",
-    "test:quick-sort": "mocha -r ts-node/register src/**/QuickSort/test/.test.ts --timeout 300000 > stdout.log",
-    "test:array": "mocha -r ts-node/register src/**/Array/test/.test.ts --timeout 300000 > stdout.log",
-    "test:linkedlist": "mocha -r ts-node/register src/**/LinkedList/test/.test.ts --timeout 300000 > stdout.log",
-    "test:binary-search-tree": "mocha -r ts-node/register src/**/BinarySearchTree/test/.test.ts --timeout 300000 > stdout.log",
-    "test:stack": "mocha -r ts-node/register src/**/Stack/test/.test.ts --timeout 300000 > stdout.log",
-    "test:queue": "mocha -r ts-node/register src/**/Queue/test/.test.ts --timeout 300000 > stdout.log",
-    "test:map": "mocha -r ts-node/register src/**/Map/test/.test.ts --timeout 300000 > stdout.log",
-    "test:set": "mocha -r ts-node/register src/**/Set/test/.test.ts --timeout 300000 > stdout.log",
-    "test:heap": "mocha -r ts-node/register src/**/Heap/test/.test.ts --timeout 300000 > stdout.log",
-    "test:trie": "mocha -r ts-node/register src/**/Trie/test/.test.ts --timeout 300000 > stdout.log"
+    "test": "mocha -r ts-node/register src/**/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:binary-search": "mocha -r ts-node/register src/**/BinarySearch/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:insertion-sort": "mocha -r ts-node/register src/**/InsertionSort/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:selection-sort": "mocha -r ts-node/register src/**/SelectionSort/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:merge-sort": "mocha -r ts-node/register src/**/MergeSort/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:quick-sort": "mocha -r ts-node/register src/**/QuickSort/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:array": "mocha -r ts-node/register src/**/Array/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:linkedlist": "mocha -r ts-node/register src/**/LinkedList/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:binary-search-tree": "mocha -r ts-node/register src/**/BinarySearchTree/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:stack": "mocha -r ts-node/register src/**/Stack/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:queue": "mocha -r ts-node/register src/**/Queue/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:map": "mocha -r ts-node/register src/**/Map/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:set": "mocha -r ts-node/register src/**/Set/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:heap": "mocha -r ts-node/register src/**/Heap/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:trie": "mocha -r ts-node/register src/**/Trie/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log"
   }
 }

@@ -1,9 +1,10 @@
 
 
   Quick Sort
-    ✔ Quick Sort V1 Test (2427ms)
-    ✔ Quick Sort V2 Test (2390ms)
+    ✔ Quick Sort V1 Test (2665ms)
+    ✔ Quick Sort V2 Test (2761ms)
+    ✔ Quick Sort V3 Test (2815ms)
 
 
-  2 passing (5s)
+  3 passing (8s)
 
