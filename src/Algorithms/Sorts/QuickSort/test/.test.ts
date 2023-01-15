@@ -1,7 +1,7 @@
 import QuickSortV1Test from './QuickSortV1Test';
 import QuickSortV2Test from './QuickSortV2Test';
 import QuickSortV3Test from './QuickSortV3Test';
-import QuickSortV4Test from './QuickSortV3Test';
+import QuickSortV4Test from './QuickSortV4Test';
 
 describe('Quick Sort', () => {
   it('Quick Sort V1 Test [基础快排]', () => {
