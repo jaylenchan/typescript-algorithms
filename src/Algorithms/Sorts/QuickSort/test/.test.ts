@@ -1,6 +1,7 @@
 import QuickSortV1Test from './QuickSortV1Test';
 import QuickSortV2Test from './QuickSortV2Test';
 import QuickSortV3Test from './QuickSortV3Test';
+import QuickSortV4Test from './QuickSortV3Test';
 
 describe('Quick Sort', () => {
   it('Quick Sort V1 Test [基础快排]', () => {
@@ -22,7 +23,7 @@ describe('Quick Sort', () => {
   });
 
   it('Quick Sort V4 Test [三路快排]', () => {
-    const test = new QuickSortV3Test();
+    const test = new QuickSortV4Test();
 
     test.runTest();
   });

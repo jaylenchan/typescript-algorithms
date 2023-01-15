@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import ArrayComparator from '../../../../Helper/ArrayComparator-impl';
 import QuickSortV2 from '../v2-impl';
 
-export default class QuickSortV1Test extends ArrayComparator {
+export default class QuickSortV2Test extends ArrayComparator {
   public test(arr: number[]): void {
     QuickSortV2.sort(arr);
   }
