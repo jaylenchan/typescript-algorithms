@@ -25,6 +25,7 @@
     "test:map": "mocha -r ts-node/register src/**/Map/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
     "test:set": "mocha -r ts-node/register src/**/Set/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
     "test:heap": "mocha -r ts-node/register src/**/Heap/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:trie": "mocha -r ts-node/register src/**/Trie/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log"
+    "test:trie": "mocha -r ts-node/register src/**/Trie/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "test:segment-tree": "mocha -r ts-node/register src/**/SegmentTree/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log"
   }
 }

@@ -1,11 +1,9 @@
 
 
-  Quick Sort
-    ✔ Quick Sort V1 Test [基础快排] (2912ms)
-    ✔ Quick Sort V2 Test [随机快排] (2432ms)
-    ✔ Quick Sort V3 Test [二路快排] (2294ms)
-    ✔ Quick Sort V4 Test [三路快排] (2350ms)
+  SegmentTree
+    ✔ SegmentTree Build Test
+    ✔ SegmentTree Query Test
 
 
-  4 passing (10s)
+  2 passing (5ms)
 
