@@ -22,26 +22,20 @@ function _search(
   if (nums[mid] == target) {
     return mid;
   }
-  if (nums[left] == target) {
-    return left;
-  }
-  if (nums[right] == target) {
-    return right;
-  }
 
-  if (nums[left] < nums[mid]) {
+  if (nums[left] <= nums[mid]) {
     // 说明左半部分是有序的
-    if (nums[left] < target && target < nums[mid]) {
-      return _search(nums, left + 1, mid - 1, target);
+    if (nums[left] <= target && target < nums[mid]) {
+      return _search(nums, left, mid - 1, target);
     } else {
-      return _search(nums, mid + 1, right - 1, target);
+      return _search(nums, mid + 1, right, target);
     }
   } else {
     // 说明右边半部分是有序的
-    if (nums[mid] < target && target < nums[right]) {
-      return _search(nums, mid + 1, right - 1, target);
+    if (nums[mid] < target && target <= nums[right]) {
+      return _search(nums, mid + 1, right, target);
     } else {
-      return _search(nums, left + 1, mid - 1, target);
+      return _search(nums, left, mid - 1, target);
     }
   }
 }
