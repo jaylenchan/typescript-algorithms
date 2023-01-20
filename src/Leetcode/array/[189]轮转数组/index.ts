@@ -9,11 +9,8 @@
  Do not return anything, modify nums in-place instead.
  */
 function rotate(nums: number[], k: number): void {
-  const help: number[] = [];
-
   for (let i = 0; i < k; i++) {
-    help[i] = nums.pop()!;
-    nums.unshift(help[i]);
+    nums.unshift(nums.pop()!);
   }
 }
 // @lc code=end
