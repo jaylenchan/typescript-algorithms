@@ -47,7 +47,7 @@ export default class UnionFind implements IUnionFind<number> {
     return this.sizeMap.size;
   }
 
-  public inSameSet(p: number, q: number): boolean {
+  public isConnected(p: number, q: number): boolean {
     if (!this.nodes.has(p) || !this.nodes.has(q)) {
       throw new Error('p or q is not in nodes map.');
     }
@@ -106,7 +106,7 @@ export default class UnionFind implements IUnionFind<number> {
  * 问题：如何找a所对应的集合呢？
  * 答案：首先通过map找到a所对应的节点a，然后让a节点不断往上找，找到不能再往上的时候，此时的节点就是a所在的集合的代表点，用这个点代表该集合
  *
- * 问题：如何判断a所对应的集合和c所对应的集合是一个集合？(inSameSet的逻辑)
+ * 问题：如何判断a所对应的集合和c所对应的集合是一个集合？(isConnected的逻辑)
  * 答案：利用map找到a的节点a，c的节点c，然后让两个节点不断往上找，如果最后找到的代表节点一样，则两个节点处于同一个集合，否则不属于一个集合
  *
  * 问题：如何合并两个a，e两个节点所在的集合？（union(a,e)）

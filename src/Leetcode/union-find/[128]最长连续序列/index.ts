@@ -52,7 +52,7 @@ class UnionFInd {
     return this.nodes.size;
   }
 
-  public inSameSet(p: number, q: number): boolean {
+  public isConnected(p: number, q: number): boolean {
     if (!this.nodes.has(p) || !this.nodes.has(q)) {
       throw new Error('p or q is not in nodes map.');
     }

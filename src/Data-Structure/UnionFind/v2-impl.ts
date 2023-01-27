@@ -16,12 +16,12 @@ export default class UnionFind implements IUnionFind<number> {
     return this.parent.length;
   }
 
-  public inSameSet(p: number, q: number): boolean {
+  public isConnected(p: number, q: number): boolean {
     return this.find(p) == this.find(q);
   }
 
   public union(p: number, q: number): void {
-    if (this.inSameSet(p, q)) return;
+    if (this.isConnected(p, q)) return;
 
     const rootP = this.find(p);
     const rootQ = this.find(q);

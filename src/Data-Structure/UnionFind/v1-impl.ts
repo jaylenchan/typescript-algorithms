@@ -2,43 +2,43 @@ import IUnionFind from './Interface';
 
 // Quick Find
 export default class UnionFind implements IUnionFind<number> {
-  private id: number[];
+  private setIds: number[]; // 数组的每个元素代表这些元素所属于的集合的id
 
   constructor(size: number) {
-    this.id = new Array(size);
+    this.setIds = new Array(size);
 
-    for (let i = 0; i < this.id.length; i++) {
-      this.id[i] = i;
+    for (let i = 0; i < this.setIds.length; i++) {
+      this.setIds[i] = i;
     }
   }
 
   public getSize(): number {
-    return this.id.length;
+    return this.setIds.length;
   }
 
-  public inSameSet(p: number, q: number): boolean {
+  public isConnected(p: number, q: number): boolean {
     return this.find(p) == this.find(q);
   }
 
   public union(p: number, q: number): void {
-    if (this.inSameSet(p, q)) return;
+    if (this.isConnected(p, q)) return;
 
     const pID = this.find(p);
     const qID = this.find(q);
 
-    for (let i = 0; i < this.id.length; i++) {
-      if (this.id[i] == pID) {
-        this.id[i] = qID;
+    for (let i = 0; i < this.setIds.length; i++) {
+      if (this.setIds[i] == pID) {
+        this.setIds[i] = qID;
       }
     }
   }
 
   /** 查看元素p所对应的集合的编号 */
   public find(p: number): number {
-    if (p < 0 || p > this.id.length) {
+    if (p < 0 || p > this.setIds.length) {
       throw new Error('p is out of bound.');
     }
 
-    return this.id[p];
+    return this.setIds[p];
   }
 }
