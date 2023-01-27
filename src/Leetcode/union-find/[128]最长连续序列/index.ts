@@ -116,15 +116,12 @@ class DisjointSet {
 
 function longestConsecutive(nums: number[]): number {
   const disjointSet = new DisjointSet(nums);
-  const numMap = new Map<number, number>();
+  const numSet = new Set<number>(nums);
 
-  for (let i = 0; i < nums.length; i++) {
-    if (numMap.has(nums[i])) continue; // 去重操作 - 不需要重复对每个数进行查找连续序列的操作
-    numMap.set(nums[i], i);
-
-    const nextNumNode = disjointSet.nodes.get(nums[i] + 1)!;
+  for (const num of numSet) {
+    const nextNumNode = disjointSet.nodes.get(num + 1)!;
     if (disjointSet.find(nextNumNode) != null) {
-      disjointSet.union(nums[i], nums[i] + 1);
+      disjointSet.union(num, num + 1);
     }
   }
 
