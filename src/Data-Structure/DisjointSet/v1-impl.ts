@@ -16,12 +16,12 @@ export default class DisjointSet implements IDisjointSet<number> {
     return this.id.length;
   }
 
-  public isConnected(p: number, q: number): boolean {
+  public inSameSet(p: number, q: number): boolean {
     return this._find(p) == this._find(q);
   }
 
   public union(p: number, q: number): void {
-    if (this.isConnected(p, q)) return;
+    if (this.inSameSet(p, q)) return;
 
     const pID = this._find(p);
     const qID = this._find(q);
