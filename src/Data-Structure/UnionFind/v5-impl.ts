@@ -6,7 +6,7 @@ export default class UnionFind
   extends UnionFindV4
   implements IUnionFind<number>
 {
-  /** 路径压缩优化 _find过程 */
+  /** 路径压缩普通优化 find过程 */
   public find(p: number): number {
     if (p < 0 || p > this.parent.length) {
       throw new Error('p is out of bound.');

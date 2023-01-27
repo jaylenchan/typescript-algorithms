@@ -6,18 +6,23 @@ export default class UnionFind
   extends UnionFindV5
   implements IUnionFind<number>
 {
-  /** 路径压缩优化 _find过程 */
+  /** 路径压缩终极优化 find过程 */
   public find(p: number): number {
     if (p < 0 || p > this.parent.length) {
       throw new Error('p is out of bound.');
     }
+    const path: number[] = []
 
-    if (p != this.parent[p]) {
+    while (p != this.parent[p]) {
       // 增加这个过程
-      this.parent[p] = this.find(this.parent[p]);
+      path.push(p);
       p = this.parent[p];
     }
 
-    return this.parent[p];
+    while (path.length > 0) {
+      this.parent[path.pop()!] = p;
+    }
+
+    return p;
   }
 }

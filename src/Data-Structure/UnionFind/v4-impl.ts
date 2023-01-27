@@ -1,26 +1,20 @@
 import IUnionFind from './Interface';
+import UnionFindV2 from './v2-impl';
 
-// Quick Union optimize by rank 基于rank的优化
-export default class UnionFind implements IUnionFind<number> {
-  protected parent: number[];
-  protected rank: number[]; // rank[i]表示以i为根的集合中元素的个数
+/** 基于v2-impl的并查集优化：通过rank的优化 */
+export default class UnionFind
+  extends UnionFindV2
+  implements IUnionFind<number>
+{
+  public rank: number[]; // rank[i]表示根节点为i的树的高度
 
   constructor(rank: number) {
-    this.parent = new Array(rank);
+    super(rank);
     this.rank = new Array(rank);
 
-    for (let i = 0; i < this.parent.length; i++) {
-      this.parent[i] = i;
+    for (let i = 0; i < this.rank.length; i++) {
       this.rank[i] = 1;
     }
-  }
-
-  public getSize(): number {
-    return this.parent.length;
-  }
-
-  public isConnected(p: number, q: number): boolean {
-    return this.find(p) == this.find(q);
   }
 
   public union(p: number, q: number): void {
@@ -38,18 +32,5 @@ export default class UnionFind implements IUnionFind<number> {
       this.parent[rootQ] = this.parent[rootP];
       this.rank[rootP] += 1;
     }
-  }
-
-  /** 查看元素p所对应的集合的编号 */
-  public find(p: number): number {
-    if (p < 0 || p > this.parent.length) {
-      throw new Error('p is out of bound.');
-    }
-
-    while (p != this.parent[p]) {
-      p = this.parent[p];
-    }
-
-    return p;
   }
 }
