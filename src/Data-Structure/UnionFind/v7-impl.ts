@@ -44,7 +44,7 @@ export default class UnionFind implements IUnionFind<number> {
   }
 
   public getSize(): number {
-    return this.nodes.size;
+    return this.sizeMap.size;
   }
 
   public inSameSet(p: number, q: number): boolean {
