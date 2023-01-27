@@ -1,6 +1,11 @@
-import IDisjointSet from './Interface';
-
-export class Node<V> {
+/*
+ * @lc app=leetcode.cn id=128 lang=typescript
+ *
+ * [128] 最长连续序列
+ */
+export default longestConsecutive;
+// @lc code=start
+class Node<V> {
   public value: V;
 
   constructor(value: V) {
@@ -8,7 +13,7 @@ export class Node<V> {
   }
 }
 
-export default class DisjointSet implements IDisjointSet<number> {
+class DisjointSet {
   /**
    * 样本跟样本包装的节点之间的映射：一一对应的
    * 作用：通过样本找样本节点
@@ -52,10 +57,7 @@ export default class DisjointSet implements IDisjointSet<number> {
       throw new Error('p or q is not in nodes map.');
     }
 
-    return (
-      this._findFather(this.nodes.get(p)!) ==
-      this._findFather(this.nodes.get(q)!)
-    );
+    return this.find(this.nodes.get(p)!) == this.find(this.nodes.get(q)!);
   }
 
   // 将p所在的集合跟q所在的集合合并到一块
@@ -65,8 +67,8 @@ export default class DisjointSet implements IDisjointSet<number> {
       return;
     }
 
-    const pRoot = this._findFather(this.nodes.get(p)!);
-    const qRoot = this._findFather(this.nodes.get(q)!);
+    const pRoot = this.find(this.nodes.get(p)!);
+    const qRoot = this.find(this.nodes.get(q)!);
 
     // 如果pRoot就是qRoot啥事不做，因为在一个集合，只有不是一个才说明不是一个集合需要合并
     if (pRoot != qRoot) {
@@ -85,7 +87,7 @@ export default class DisjointSet implements IDisjointSet<number> {
     }
   }
 
-  private _findFather(cur: Node<number>): Node<number> {
+  public find(cur: Node<number>): Node<number> {
     const path: Node<number>[] = [];
 
     // 让cur不断往上找，找到自己所在集合中的代表点
@@ -102,20 +104,30 @@ export default class DisjointSet implements IDisjointSet<number> {
 
     return cur;
   }
+
+  public getMaxConnectSize(): number {
+    let maxSize = 0;
+    for (const [_node, size] of this.sizeMap) {
+      maxSize = Math.max(maxSize, size);
+    }
+    return maxSize;
+  }
 }
 
-/**
- * 首先有一张表map，a所对应的节点，b对应的节点，于是通过map可以知道样本所对应的点都是什么
- * 问题：如何找a所对应的集合呢？
- * 答案：首先通过map找到a所对应的节点a，然后让a节点不断往上找，找到不能再往上的时候，此时的节点就是a所在的集合的代表点，用这个点代表该集合
- *
- * 问题：如何判断a所对应的集合和c所对应的集合是一个集合？(inSameSet的逻辑)
- * 答案：利用map找到a的节点a，c的节点c，然后让两个节点不断往上找，如果最后找到的代表节点一样，则两个节点处于同一个集合，否则不属于一个集合
- *
- * 问题：如何合并两个a，e两个节点所在的集合？（union(a,e)）
- * 答案：1.利用a节点找到a所在集合的代表点X，利用e节点找到e所在的集合的代表点Y。
- *      2.查看代表点X所在的集合有几个节点；再查看代表点Y所在的集合有几个节点。
- *      3.将节点数量少的集合挂到节点数量多的集合下面。方法是：小集合的代表点挂到大集合的代表点上
- *      4.完成union(a,e)
- *      注意：如果二者找到的代表点是一个，不进行union操作。
- */
+function longestConsecutive(nums: number[]): number {
+  const disjointSet = new DisjointSet(nums);
+  const numMap = new Map<number, number>();
+
+  for (let i = 0; i < nums.length; i++) {
+    if (numMap.has(nums[i])) continue; // 去重操作 - 不需要重复对每个数进行查找连续序列的操作
+    numMap.set(nums[i], i);
+
+    const nextNumNode = disjointSet.nodes.get(nums[i] + 1)!;
+    if (disjointSet.find(nextNumNode) != null) {
+      disjointSet.union(nums[i], nums[i] + 1);
+    }
+  }
+
+  return disjointSet.getMaxConnectSize();
+}
+// @lc code=end
