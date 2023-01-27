@@ -13,7 +13,7 @@ class Node<V> {
   }
 }
 
-class DisjointSet {
+class UnionFInd {
   /**
    * 样本跟样本包装的节点之间的映射：一一对应的
    * 作用：通过样本找样本节点
@@ -67,17 +67,17 @@ class DisjointSet {
       return;
     }
 
-    const pRoot = this.find(this.nodes.get(p)!);
-    const qRoot = this.find(this.nodes.get(q)!);
+    const rootP = this.find(this.nodes.get(p)!);
+    const rootQ = this.find(this.nodes.get(q)!);
 
     // 如果pRoot就是qRoot啥事不做，因为在一个集合，只有不是一个才说明不是一个集合需要合并
-    if (pRoot != qRoot) {
+    if (rootP != rootQ) {
       // 2.查看代表点X所在的集合有几个节点；再查看代表点Y所在的集合有几个节点。
-      const pSetSize = this.sizeMap.get(pRoot)!;
-      const qSetSize = this.sizeMap.get(qRoot)!;
+      const pSetSize = this.sizeMap.get(rootP)!;
+      const qSetSize = this.sizeMap.get(rootQ)!;
 
-      const bigger = pSetSize >= qSetSize ? pRoot : qRoot;
-      const smaller = pSetSize < qSetSize ? pRoot : qRoot;
+      const bigger = pSetSize >= qSetSize ? rootP : rootQ;
+      const smaller = pSetSize < qSetSize ? rootP : rootQ;
 
       // 3.将节点数量少的集合挂到节点数量多的集合下面。方法是：小集合的代表点挂到大集合的代表点上
       // 同时：1.更新大集合的节点数； 2.小集合的代表点从sizeMap删除
@@ -115,16 +115,16 @@ class DisjointSet {
 }
 
 function longestConsecutive(nums: number[]): number {
-  const disjointSet = new DisjointSet(nums);
+  const uf = new UnionFInd(nums);
   const numSet = new Set<number>(nums);
 
   for (const num of numSet) {
-    const nextNumNode = disjointSet.nodes.get(num + 1)!;
-    if (disjointSet.find(nextNumNode) != null) {
-      disjointSet.union(num, num + 1);
+    const nextNumNode = uf.nodes.get(num + 1)!;
+    if (uf.find(nextNumNode) != null) {
+      uf.union(num, num + 1);
     }
   }
 
-  return disjointSet.getMaxConnectSize();
+  return uf.getMaxConnectSize();
 }
 // @lc code=end

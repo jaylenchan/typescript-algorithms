@@ -1,7 +1,7 @@
-import IDisjointSet from './Interface';
+import IUnionFind from './Interface';
 
 // Quick Union
-export default class DisjointSet implements IDisjointSet<number> {
+export default class UnionFind implements IUnionFind<number> {
   private parent: number[];
 
   constructor(size: number) {
@@ -23,10 +23,10 @@ export default class DisjointSet implements IDisjointSet<number> {
   public union(p: number, q: number): void {
     if (this.inSameSet(p, q)) return;
 
-    const pRoot = this._find(p);
-    const qRoot = this._find(q);
+    const rootP = this._find(p);
+    const rootQ = this._find(q);
 
-    this.parent[pRoot] = qRoot;
+    this.parent[rootP] = rootQ;
   }
 
   /** 查看元素p所对应的集合的编号 */

@@ -1,7 +1,7 @@
-import IDisjointSet from './Interface';
+import IUnionFind from './Interface';
 
 // Quick Find
-export default class DisjointSet implements IDisjointSet<number> {
+export default class UnionFind implements IUnionFind<number> {
   private id: number[];
 
   constructor(size: number) {

@@ -1,7 +1,7 @@
-import IDisjointSet from './Interface';
+import IUnionFind from './Interface';
 
 // Quick Union optimize by rank 基于rank的优化
-export default class DisjointSet implements IDisjointSet<number> {
+export default class UnionFind implements IUnionFind<number> {
   protected parent: number[];
   protected rank: number[]; // rank[i]表示以i为根的集合中元素的个数
 
@@ -26,17 +26,17 @@ export default class DisjointSet implements IDisjointSet<number> {
   public union(p: number, q: number): void {
     if (this.inSameSet(p, q)) return;
 
-    const pRoot = this._find(p);
-    const qRoot = this._find(q);
+    const rootP = this._find(p);
+    const rootQ = this._find(q);
 
     // 将rank低的集合合并到rank高的集合
-    if (this.rank[pRoot] < this.rank[qRoot]) {
-      this.parent[pRoot] = qRoot;
-    } else if (this.rank[pRoot] > this.rank[qRoot]) {
-      this.parent[qRoot] = this.parent[pRoot];
+    if (this.rank[rootP] < this.rank[rootQ]) {
+      this.parent[rootP] = rootQ;
+    } else if (this.rank[rootP] > this.rank[rootQ]) {
+      this.parent[rootQ] = this.parent[rootP];
     } else {
-      this.parent[qRoot] = this.parent[pRoot];
-      this.rank[pRoot] += 1;
+      this.parent[rootQ] = this.parent[rootP];
+      this.rank[rootP] += 1;
     }
   }
 
