@@ -1,4 +1,4 @@
-export default interface IUnionSet<V> {
+export default interface IDisjointSet<V> {
   getSize(): number;
   /** 查看元素p和元素q是否所属同一个集合 */
   isConnected(p: V, q: V): boolean;

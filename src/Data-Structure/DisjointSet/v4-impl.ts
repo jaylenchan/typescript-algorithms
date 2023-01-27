@@ -1,7 +1,7 @@
-import IUnionSet from './Interface';
+import IDisjointSet from './Interface';
 
 // Quick Union optimize by rank 基于rank的优化
-export default class UnionSet implements IUnionSet<number> {
+export default class DisjointSet implements IDisjointSet<number> {
   protected parent: number[];
   protected rank: number[]; // rank[i]表示以i为根的集合中元素的个数
 

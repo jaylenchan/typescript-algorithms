@@ -1,4 +1,4 @@
-import IUnionSet from './Interface';
+import IDisjointSet from './Interface';
 
 class Node<V> {
   public value: V;
@@ -8,7 +8,7 @@ class Node<V> {
   }
 }
 
-export default class UnionSet implements IUnionSet<number> {
+export default class DisjointSet implements IDisjointSet<number> {
   /**
    * 样本跟样本包装的节点之间的映射：一一对应的
    * 作用：通过样本找样本节点

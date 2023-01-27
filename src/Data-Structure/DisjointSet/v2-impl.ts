@@ -1,7 +1,7 @@
-import IUnionSet from './Interface';
+import IDisjointSet from './Interface';
 
 // Quick Union
-export default class UnionSet implements IUnionSet<number> {
+export default class DisjointSet implements IDisjointSet<number> {
   private parent: number[];
 
   constructor(size: number) {
