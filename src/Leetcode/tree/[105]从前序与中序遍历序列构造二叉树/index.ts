@@ -35,7 +35,21 @@ function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
   const inLeft = 0;
   const inRight = inorder.length - 1;
 
-  return _buildTree(preorder, preLeft, preRight, inorder, inLeft, inRight);
+  const inorderMap = new Map<number, number>();
+
+  for (let i = 0; i <= inRight; i++) {
+    inorderMap.set(inorder[i], i);
+  }
+
+  return _buildTree(
+    preorder,
+    preLeft,
+    preRight,
+    inorder,
+    inLeft,
+    inRight,
+    inorderMap
+  );
 }
 
 function _buildTree(
@@ -44,7 +58,8 @@ function _buildTree(
   preRight: number,
   inorder: number[],
   inLeft: number,
-  inRight: number
+  inRight: number,
+  inorderMap: Map<number, number>
 ): TreeNode | null {
   if (inLeft > inRight) return null;
 
@@ -53,7 +68,7 @@ function _buildTree(
   const root = new TreeNode(rootVal);
 
   // 2. 到中序遍历数组中寻找rootVal所在的位置rootInOrderIndex
-  const rootInOrderIndex = inorder.indexOf(rootVal);
+  const rootInOrderIndex = inorderMap.get(rootVal)!;
   // 3. 因此以位置rootInOrderIndex为中心，
   //    往左就是rootVal的左子树，往右就是rootVal的右子树。
   //    我们更新左右子树应该拿到的inorder数组的范围
@@ -82,7 +97,8 @@ function _buildTree(
     leftChildPreRight,
     inorder,
     leftChildInLeft,
-    leftChildInRight
+    leftChildInRight,
+    inorderMap
   );
 
   root.right = _buildTree(
@@ -91,7 +107,8 @@ function _buildTree(
     rightChildPreRight,
     inorder,
     rightChildInLeft,
-    rightChildInRight
+    rightChildInRight,
+    inorderMap
   );
 
   return root;
