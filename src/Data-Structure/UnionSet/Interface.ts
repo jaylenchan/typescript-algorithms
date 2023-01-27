@@ -1,7 +1,7 @@
-export default interface IUnionFind {
+export default interface IUnionSet<V> {
   getSize(): number;
   /** 查看元素p和元素q是否所属同一个集合 */
-  isConnected(p: number, q: number): boolean;
+  isConnected(p: V, q: V): boolean;
   /** 合并元素p和元素q到一个集合中 */
-  union(p: number, q: number): void;
+  union(p: V, q: V): void;
 }

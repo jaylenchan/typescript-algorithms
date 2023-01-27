@@ -1,8 +1,8 @@
-import IUnionFind from './Interface';
-import UnionFindV5 from './v5-impl';
+import IUnionSet from './Interface';
+import UnionSetV5 from './v5-impl';
 
 // Quick Union optimize  基于路径压缩的优化
-export default class UnionFind extends UnionFindV5 implements IUnionFind {
+export default class UnionSet extends UnionSetV5 implements IUnionSet<number> {
   /** 路径压缩优化 _find过程 */
   protected override _find(p: number): number {
     if (p < 0 || p > this.parent.length) {

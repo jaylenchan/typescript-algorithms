@@ -1,7 +1,7 @@
-import IUnionFind from './Interface';
+import IUnionSet from './Interface';
 
 // Quick Find
-export default class UnionFind implements IUnionFind {
+export default class UnionSet implements IUnionSet<number> {
   private id: number[];
 
   constructor(size: number) {

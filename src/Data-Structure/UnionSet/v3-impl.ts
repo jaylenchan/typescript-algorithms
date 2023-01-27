@@ -1,6 +1,6 @@
-import IUnionFind from './Interface';
+import IUnionSet from './Interface';
 // Quick Union optimize by size 基于size的优化
-export default class UnionFind implements IUnionFind {
+export default class UnionSet implements IUnionSet<number> {
   private parent: number[];
   private size: number[]; // size[i]表示以i为根的集合中元素的个数
 

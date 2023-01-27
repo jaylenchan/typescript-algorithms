@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-describe('UnionFind', () => {
+describe('UnionSet', () => {
   it('Quick Find Test', () => {
     assert.ok(1);
   });
