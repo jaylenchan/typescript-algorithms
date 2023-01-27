@@ -4,6 +4,8 @@
  * [110] 平衡二叉树
  */
 
+import TreeNode from '../TreeNode';
+export default isBalanced;
 // @lc code=start
 /**
  * Definition for a binary tree node.

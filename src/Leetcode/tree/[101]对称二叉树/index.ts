@@ -3,7 +3,8 @@
  *
  * [101] 对称二叉树
  */
-
+import TreeNode from '../TreeNode';
+export default isSymmetric;
 // @lc code=start
 /**
  * Definition for a binary tree node.

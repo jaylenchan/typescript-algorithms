@@ -4,6 +4,8 @@
  * [129] 求根节点到叶节点数字之和
  */
 
+import TreeNode from '../TreeNode';
+export default sumNumbers;
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -34,10 +36,11 @@ function sumNumbers(root: TreeNode | null): number {
 
 function traverse(root: TreeNode | null, path: string, pathList: number[]) {
   if (root == null) {
-    return 0;
+    return;
   } else {
     if (root.left == null && root.right == null) {
-      return pathList.push(Number(path + root.val));
+      pathList.push(Number(path + root.val));
+      return;
     }
 
     traverse(root.left, path + root.val, pathList);

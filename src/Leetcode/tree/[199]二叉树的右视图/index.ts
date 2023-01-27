@@ -4,6 +4,8 @@
  * [199] 二叉树的右视图
  */
 
+import TreeNode from '../TreeNode';
+export default rightSideView;
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -30,7 +32,7 @@ function rightSideView(root: TreeNode | null): number[] {
   while (queue.length > 0) {
     const size = queue.length;
     for (let i = 0; i < size; i++) {
-      const node = queue.shift();
+      const node = queue.shift()!;
       if (i == size - 1) {
         result.push(node.val);
       }

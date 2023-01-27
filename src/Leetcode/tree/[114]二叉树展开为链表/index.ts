@@ -4,7 +4,8 @@
  * [114] 二叉树展开为链表
  */
 
-// @lc code=start
+import TreeNode from '../TreeNode';
+export default // @lc code=start
 /**
  * Definition for a binary tree node.
  * class TreeNode {
@@ -40,7 +41,7 @@ function _flatten(root: TreeNode | null): void {
   _flatten(rightChild);
 
   if (root.right) {
-    let cur = leftChild;
+    let cur = leftChild!;
     while (cur.right != null) {
       cur = cur.right;
     }

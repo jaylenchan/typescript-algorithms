@@ -4,6 +4,8 @@
  * [103] 二叉树的锯齿形层序遍历
  */
 
+import TreeNode from '../TreeNode';
+export default zigzagLevelOrder;
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -34,7 +36,7 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
     index += 1;
 
     for (let i = 0; i < size; i++) {
-      const node = queue.shift();
+      const node = queue.shift()!;
       if (index % 2 == 0) {
         level.unshift(node.val);
       } else {

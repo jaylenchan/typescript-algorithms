@@ -4,6 +4,8 @@
  * [543] 二叉树的直径
  */
 
+import TreeNode from '../TreeNode';
+export default diameterOfBinaryTree;
 // @lc code=start
 /**
  * Definition for a binary tree node.

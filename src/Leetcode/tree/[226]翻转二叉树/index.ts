@@ -4,6 +4,8 @@
  * [226] 翻转二叉树
  */
 
+import TreeNode from '../TreeNode';
+export default invertTree;
 // @lc code=start
 /**
  * Definition for a binary tree node.

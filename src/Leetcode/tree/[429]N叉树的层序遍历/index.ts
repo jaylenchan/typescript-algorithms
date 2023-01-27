@@ -3,7 +3,8 @@
  *
  * [429] N 叉树的层序遍历
  */
-
+import Node from '../Node';
+export default levelOrder;
 // @lc code=start
 /**
  * Definition for node.
@@ -41,6 +42,6 @@ function levelOrder(root: Node | null): number[][] {
     result.push(curLevel);
   }
 
-  return result
+  return result;
 }
 // @lc code=end

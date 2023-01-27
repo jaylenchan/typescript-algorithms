@@ -5,7 +5,7 @@
  */
 
 import TreeNode from '../TreeNode';
-
+export default widthOfBinaryTree;
 // @lc code=start
 /**
  * Definition for a binary tree node.

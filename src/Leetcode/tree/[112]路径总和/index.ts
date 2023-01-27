@@ -4,6 +4,8 @@
  * [112] 路径总和
  */
 
+import TreeNode from '../TreeNode';
+export default hasPathSum;
 // @lc code=start
 /**
  * Definition for a binary tree node.

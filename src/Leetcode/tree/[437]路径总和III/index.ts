@@ -4,6 +4,8 @@
  * [437] 路径总和 III
  */
 
+import TreeNode from '../TreeNode';
+export default pathSum;
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -28,7 +30,7 @@ function pathSum(root: TreeNode | null, targetSum: number): number {
   queue.push(root);
 
   while (queue.length > 0) {
-    const node = queue.shift();
+    const node = queue.shift()!;
 
     findPathFrom(node, targetSum, 0);
 
