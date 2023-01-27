@@ -6,6 +6,7 @@
     "@types/chai": "^4.3.4",
     "@types/mocha": "^10.0.1",
     "chai": "^4.3.7",
+    "husky": "^8.0.0",
     "mocha": "^10.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
@@ -26,6 +27,12 @@
     "test:set": "mocha -r ts-node/register src/**/Set/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
     "test:heap": "mocha -r ts-node/register src/**/Heap/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
     "test:trie": "mocha -r ts-node/register src/**/Trie/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:segment-tree": "mocha -r ts-node/register src/**/SegmentTree/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log"
+    "test:segment-tree": "mocha -r ts-node/register src/**/SegmentTree/test/.test.ts --timeout 300000 > stdout.log 2> stderr.log",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
   }
 }
