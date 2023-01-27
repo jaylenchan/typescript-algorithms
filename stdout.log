@@ -1,9 +1,106 @@
 
 
+  BinarySearch
+    ✔ BinarySearch Recursive Test (697ms)
+    ✔ BinarySerach Test (687ms)
+
+  Insertion Sort
+    ✔ Insertion Sort Test (2352ms)
+
+  Merge Sort
+    ✔ Merge Sort Test (2734ms)
+
+  Quick Sort
+    ✔ Quick Sort V1 Test [基础快排] (2316ms)
+    ✔ Quick Sort V2 Test [随机快排] (3226ms)
+    ✔ Quick Sort V3 Test [二路快排] (3159ms)
+    ✔ Quick Sort V4 Test [三路快排] (2865ms)
+
+  Selection Sort
+    ✔ Selection Sort Test (2737ms)
+
+  Array
+[object Object]
+    ✔ arr.get(0) is 1
+    ✔ arr.set(1) is 2
+    ✔ arr.contains(1) is true
+    ✔ arr.removeLast() is 3
+
+  BinarySearchTree
+5
+3
+2
+4
+6
+8
+    ✔ 
+
+  MaxHeap
+    ✔ arr[i] < arr[i-1] is true
+
+  LinkedList
+2->NULL
+    ✔ a
+
+  BinarySearchTreeMap
+    ✔ 
+
+  LinkedListMap
+    ✔ 
+
+  ArrayQueue
+    ✔ getSize
+    ✔ isEmpty
+    ✔ enqueue
+    ✔ dequeue
+    ✔ getFront
+
+  LinkedListQueue
+Queue: front  0->NULL tail
+Queue: front  0->1->NULL tail
+Queue: front  0->1->2->NULL tail
+Queue: front  1->2->NULL tail
+Queue: front  1->2->3->NULL tail
+Queue: front  1->2->3->4->NULL tail
+Queue: front  1->2->3->4->5->NULL tail
+Queue: front  2->3->4->5->NULL tail
+Queue: front  2->3->4->5->6->NULL tail
+Queue: front  2->3->4->5->6->7->NULL tail
+Queue: front  2->3->4->5->6->7->8->NULL tail
+Queue: front  3->4->5->6->7->8->NULL tail
+Queue: front  3->4->5->6->7->8->9->NULL tail
+    ✔ 
+
   SegmentTree
     ✔ SegmentTree Build Test
     ✔ SegmentTree Query Test
 
+  BinarySearchTreeSet
+    ✔ diffrence num size is 5
 
-  2 passing (5ms)
+  LinkedListSet
+    ✔ diffrence num size is 4
+
+  ArrayStack
+    ✔ getSize
+    ✔ isEmpty
+    ✔ push
+    ✔ pop
+    ✔ peek
+
+  LinkedListStack
+Stack: top 0->NULL
+Stack: top 1->0->NULL
+Stack: top 2->1->0->NULL
+Stack: top 3->2->1->0->NULL
+Stack: top 4->3->2->1->0->NULL
+Stack: top 3->2->1->0->NULL
+    ✔ list stack
+
+  UnionFind
+    ✔ Quick Find Test
+    ✔ Quick Union Test
+
+
+  36 passing (21s)
 
