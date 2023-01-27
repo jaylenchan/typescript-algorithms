@@ -52,10 +52,7 @@ export default class UnionFind implements IUnionFind<number> {
       throw new Error('p or q is not in nodes map.');
     }
 
-    return (
-      this._findFather(this.nodes.get(p)!) ==
-      this._findFather(this.nodes.get(q)!)
-    );
+    return this.find(this.nodes.get(p)!) == this.find(this.nodes.get(q)!);
   }
 
   // 将p所在的集合跟q所在的集合合并到一块
@@ -65,8 +62,8 @@ export default class UnionFind implements IUnionFind<number> {
       return;
     }
 
-    const rootP = this._findFather(this.nodes.get(p)!);
-    const rootQ = this._findFather(this.nodes.get(q)!);
+    const rootP = this.find(this.nodes.get(p)!);
+    const rootQ = this.find(this.nodes.get(q)!);
 
     // 如果pRoot就是qRoot啥事不做，因为在一个集合，只有不是一个才说明不是一个集合需要合并
     if (rootP != rootQ) {
@@ -85,7 +82,7 @@ export default class UnionFind implements IUnionFind<number> {
     }
   }
 
-  private _findFather(cur: Node<number>): Node<number> {
+  public find(cur: Node<number>): Node<number> {
     const path: Node<number>[] = [];
 
     // 让cur不断往上找，找到自己所在集合中的代表点

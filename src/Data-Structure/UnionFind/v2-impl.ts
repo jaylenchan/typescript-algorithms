@@ -17,20 +17,20 @@ export default class UnionFind implements IUnionFind<number> {
   }
 
   public inSameSet(p: number, q: number): boolean {
-    return this._find(p) == this._find(q);
+    return this.find(p) == this.find(q);
   }
 
   public union(p: number, q: number): void {
     if (this.inSameSet(p, q)) return;
 
-    const rootP = this._find(p);
-    const rootQ = this._find(q);
+    const rootP = this.find(p);
+    const rootQ = this.find(q);
 
     this.parent[rootP] = rootQ;
   }
 
   /** 查看元素p所对应的集合的编号 */
-  private _find(p: number): number {
+  public find(p: number): number {
     if (p < 0 || p > this.parent.length) {
       throw new Error('p is out of bound.');
     }

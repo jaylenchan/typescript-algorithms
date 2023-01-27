@@ -17,14 +17,14 @@ export default class UnionFind implements IUnionFind<number> {
   }
 
   public inSameSet(p: number, q: number): boolean {
-    return this._find(p) == this._find(q);
+    return this.find(p) == this.find(q);
   }
 
   public union(p: number, q: number): void {
     if (this.inSameSet(p, q)) return;
 
-    const pID = this._find(p);
-    const qID = this._find(q);
+    const pID = this.find(p);
+    const qID = this.find(q);
 
     for (let i = 0; i < this.id.length; i++) {
       if (this.id[i] == pID) {
@@ -34,7 +34,7 @@ export default class UnionFind implements IUnionFind<number> {
   }
 
   /** 查看元素p所对应的集合的编号 */
-  private _find(p: number): number {
+  public find(p: number): number {
     if (p < 0 || p > this.id.length) {
       throw new Error('p is out of bound.');
     }

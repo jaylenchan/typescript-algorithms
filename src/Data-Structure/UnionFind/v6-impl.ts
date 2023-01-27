@@ -7,14 +7,14 @@ export default class UnionFind
   implements IUnionFind<number>
 {
   /** 路径压缩优化 _find过程 */
-  protected override _find(p: number): number {
+  public find(p: number): number {
     if (p < 0 || p > this.parent.length) {
       throw new Error('p is out of bound.');
     }
 
     if (p != this.parent[p]) {
       // 增加这个过程
-      this.parent[p] = this._find(this.parent[p]);
+      this.parent[p] = this.find(this.parent[p]);
       p = this.parent[p];
     }
 
