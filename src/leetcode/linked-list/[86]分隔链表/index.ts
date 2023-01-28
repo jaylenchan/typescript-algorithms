@@ -4,7 +4,7 @@
  * [86] 分隔链表
  */
 
-import ListNode from '../../../os/[快慢指针]寻找链表中点或者上中点的前一个节点 ';
+import ListNode from '../../../others/[快慢指针]寻找链表中点或者上中点的前一个节点 ';
 
 // @lc code=start
 /**
