@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import ArrayComparator from '../../../../Helper/ArrayComparator-impl';
+import ArrayComparator from '../../../../helper/ArrayComparator-impl';
 import SelectionSort from '../impl';
 
 export default class SelectionSortTest extends ArrayComparator {

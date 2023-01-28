@@ -1,4 +1,4 @@
-import ArrayComparator from '../../../../Helper/ArrayComparator-impl';
+import ArrayComparator from '../../../../helper/ArrayComparator-impl';
 import { assert } from 'chai';
 import BinarySearch from '../impl';
 

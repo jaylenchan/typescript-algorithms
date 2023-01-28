@@ -1,10 +1,10 @@
 import { assert } from 'chai';
-import ArrayComparator from '../../../../Helper/ArrayComparator-impl';
-import QuickSortV4 from '../v4-impl';
+import ArrayComparator from '../../../../helper/ArrayComparator-impl';
+import QuickSortV2 from '../v2-impl';
 
-export default class QuickSortV4Test extends ArrayComparator {
+export default class QuickSortV2Test extends ArrayComparator {
   public test(arr: number[]): void {
-    QuickSortV4.sort(arr);
+    QuickSortV2.sort(arr);
   }
 
   public comparator(arr: number[]): void {
