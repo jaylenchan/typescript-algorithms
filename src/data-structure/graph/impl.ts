@@ -46,7 +46,7 @@ export default class Graph {
     this.nodes = new Map<number, GNode>();
     this.edges = new Set<Edge>()
 
-    this.createGraph(_args);
+    this.createGraph(..._args);
   }
 
   /** 接收一个图的其他表示结构，转换成自己熟悉的这种图结构 */
