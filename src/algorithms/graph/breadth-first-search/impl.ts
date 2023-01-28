@@ -1,9 +1,9 @@
 import { GNode } from 'data-structure/graph/impl';
 
-export default function BreadthFirstSearch(node: GNode) {
+function breadthFirstSearch(node: GNode): number[] {
   let ans: number[] = []
 
-  if (node == null) return;
+  if (node == null) return ans;
 
   const queue: GNode[] = [];
   const visited = new Set<GNode>();
@@ -26,3 +26,5 @@ export default function BreadthFirstSearch(node: GNode) {
 
   return ans
 }
+
+export default breadthFirstSearch

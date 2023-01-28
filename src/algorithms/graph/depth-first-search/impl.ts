@@ -1,6 +1,6 @@
 import { GNode } from 'data-structure/graph/impl';
 
-export default function DepthFirstSearch(node: GNode) {
+function depthFirstSearch(node: GNode): number[] {
   let ans: number[] = []
   if (node == null) return ans;
 
@@ -31,3 +31,5 @@ export default function DepthFirstSearch(node: GNode) {
 
   return ans
 }
+
+export default depthFirstSearch
