@@ -20,5 +20,20 @@
     "allowUnreachableCode": false,
     /* Completeness */
     "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "baseUrl": ".",
+    "paths": {
+      "algorithms/*": [
+        "src/algorithms/*"
+      ],
+      "data-structure/*": [
+        "src/data-structure/*"
+      ],
+      "helper/*": [
+        "src/helper/*"
+      ],
+      "leetcode/*": [
+        "src/leetcode/*"
+      ]
+    }
   }
 }
