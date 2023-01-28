@@ -1,6 +1,6 @@
 import IUnionFind from './Interface';
 
-// 终极版本：v2  + v6 impl 
+// 终极版本：v2  + v6 impl
 export default class UnionFind implements IUnionFind<number> {
   // 连通分量个数
   private count: number;
