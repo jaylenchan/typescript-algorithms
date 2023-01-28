@@ -4,7 +4,7 @@ import IUnionFind from './Interface';
 export default class UnionFind implements IUnionFind<number> {
   // 连通分量个数
   private count: number;
-  public parent: number[]; // parent[i]表示第i位置的元素指向了哪个位置的元素
+  public parent: number[]; // parent[i]表示第i位置的元素指向了哪个位置的元素（parent数组实际上可以看做是一个map，它是一个元素到父亲的映射，数组索引就是key，数组的值就是value）
 
   constructor(size: number) {
     this.count = size;
