@@ -1,21 +1,21 @@
 import ITrie from './interface';
 
-class TNode {
+class TrieNode {
   public isWord: boolean;
-  public next: Map<string, TNode>;
+  public next: Map<string, TrieNode>;
 
   constructor(isWord?: boolean) {
     this.isWord = isWord ?? false;
-    this.next = new Map<string, TNode>();
+    this.next = new Map<string, TrieNode>();
   }
 }
 
 class Trie implements ITrie {
-  private root: TNode;
+  private root: TrieNode;
   private size: number;
 
   constructor() {
-    this.root = new TNode();
+    this.root = new TrieNode();
     this.size = 0;
   }
 
@@ -23,13 +23,13 @@ class Trie implements ITrie {
     return this.size;
   }
 
-  public add(word: string): void {
+  public insert(word: string): void {
     let cur = this.root;
 
     for (let i = 0; i < word.length; i++) {
       const char = word[i];
       if (!cur.next.get(char)) {
-        cur.next.set(char, new TNode());
+        cur.next.set(char, new TrieNode());
       }
       cur = cur.next.get(char)!;
     }
