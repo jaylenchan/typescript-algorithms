@@ -42,15 +42,14 @@ export default class Trie implements ITrie {
       // 用letter的ASCII码 - a的ASCII码获取到从a开始的相对偏移索引
       // 比如'a'.charCodeAt(0) - 'a'.charCodeAt(0) = 0  a本身相对自己就是0偏移
       // 用这个偏移量就可以对应上nexts数组中的索引
-      let curLetterNode = node.nexts[ASCIndex(letter)]
       // 如果从node出发到这个字符节点的路为空，就建立起这条路
-      if (curLetterNode == null) {
-        curLetterNode = new TrieNode()
+      if (node.nexts[ASCIndex(letter)] == null) {
+        node.nexts[ASCIndex(letter)] = new TrieNode()
       }
       // 于是到这个地方，说明肯定有到本字符节点的路，因此更新下相关信息
-      curLetterNode.pass += 1
+      node.nexts[ASCIndex(letter)].pass += 1
 
-      node = curLetterNode;
+      node = node.nexts[ASCIndex(letter)];
     }
 
     // 只有来到了最后一个字符节点，end才加1
@@ -64,16 +63,15 @@ export default class Trie implements ITrie {
     let node = this.root;
 
     for (const letter of word) {
-      let curLetterNode = node.nexts[ASCIndex(letter)]
       /**
        * 如果说遍历字符串节点的时候，发现在某个letterNode往下并没有节点了，或者说到下一节点的路了，
        * 这时候说明word压根就没加入过，直接返回0，不需要再费力往下遍历了
       */
-      if (curLetterNode == null) {
+      if (node.nexts[ASCIndex(letter)] == null) {
         return 0
       }
 
-      node = curLetterNode
+      node = node.nexts[ASCIndex(letter)]
     }
 
     return node.end;
@@ -88,12 +86,11 @@ export default class Trie implements ITrie {
     let node = this.root;
 
     for (const letter of prefix) {
-      const curLetterNode = node.nexts[ASCIndex(letter)];
-      if (curLetterNode == null) {
+      if (node.nexts[ASCIndex(letter)] == null) {
         return 0
       }
 
-      node = curLetterNode
+      node = node.nexts[ASCIndex(letter)]
     }
 
     return node.pass
@@ -105,9 +102,7 @@ export default class Trie implements ITrie {
     let node = this.root;
 
     for (const letter of word) {
-      const curLetterNode = node.nexts[ASCIndex(letter)];
-
-      if (curLetterNode == null) {
+      if (node.nexts[ASCIndex(letter)] == null) {
         return false;
       }
     }
@@ -126,20 +121,19 @@ export default class Trie implements ITrie {
       node.pass -= 1;
 
       for (const letter of word) {
-        let curLetterNode = node.nexts[ASCIndex(letter)];
-        curLetterNode.pass -= 1
+        node.nexts[ASCIndex(letter)].pass -= 1
 
         // 如果在某个特殊场景 ，pass在某个节点就已经减1后成为0了，此时也不需要再费劲查看接下来的节点了
         // 因为都没有到达curLetterNode的路了，curLetterNode之后搭建的路也没用了
         // 此时直接将curLeeterNode设置为null，释放掉curLetterNode以及其之后的节点
-        if (curLetterNode.pass == 0) {
+        if (node.nexts[ASCIndex(letter)].pass == 0) {
           // 其实能进入这个逻辑的情况就是比如word的所有字符节点在Trie就加入了一次，那么到w的时候，根本不需要ord的遍历，直接将w置空即可
-          let delNode: TrieNode | null = curLetterNode;
+          let delNode: TrieNode | null = node.nexts[ASCIndex(letter)];
           delNode = null
           return;
         }
 
-        node = curLetterNode
+        node = node.nexts[ASCIndex(letter)]
       }
 
       // end 能够-1的情况是字符节点可能有多个字符串是以这个字符作为结尾的
