@@ -13,12 +13,11 @@ class Edge {
   public to: GNode;
 
   constructor(weight: number, from: GNode, to: GNode) {
-    this.weight = weight
+    this.weight = weight;
     this.from = from;
     this.to = to;
   }
 }
-
 
 /** 图的节点 */
 class GNode {
@@ -37,8 +36,8 @@ class GNode {
     this.value = value;
     this.in = 0;
     this.out = 0;
-    this.nexts = []
-    this.edges = []
+    this.nexts = [];
+    this.edges = [];
   }
 }
 
@@ -51,7 +50,7 @@ class Graph {
 
   constructor(prerequisites: number[][]) {
     this.nodes = new Map<number, GNode>();
-    this.edges = new Set<Edge>()
+    this.edges = new Set<Edge>();
 
     this.createGraph(prerequisites);
   }
@@ -60,7 +59,7 @@ class Graph {
   public createGraph(prerequisites: number[][]) {
     for (const [to, from] of prerequisites) {
       if (!this.nodes.has(from)) {
-        this.nodes.set(from, new GNode(from))
+        this.nodes.set(from, new GNode(from));
       }
 
       if (!this.nodes.has(to)) {
@@ -73,17 +72,17 @@ class Graph {
       const newEdge = new Edge(0, fromNode, toNode);
 
       fromNode.nexts.push(toNode);
-      fromNode.edges.push(newEdge)
+      fromNode.edges.push(newEdge);
       fromNode.out += 1;
       toNode.in += 1;
-      this.edges.add(newEdge)
+      this.edges.add(newEdge);
     }
   }
 }
 
 function topologicalSort(graph: Graph): number[] {
   // 存放节点 -> 节点入度
-  const inMap = new Map<GNode, number>()
+  const inMap = new Map<GNode, number>();
   // 存放入度为0的GNode
   const zeroInQueue: GNode[] = [];
 
@@ -93,17 +92,17 @@ function topologicalSort(graph: Graph): number[] {
     inMap.set(gNode, gNode.in);
 
     if (gNode.in == 0) {
-      zeroInQueue.push(gNode)
+      zeroInQueue.push(gNode);
     }
   }
 
-  let ans: number[] = []
+  let ans: number[] = [];
 
   // 枚举所有入度为0的节点
   while (zeroInQueue.length > 0) {
     // 删除节点
     const node = zeroInQueue.shift()!;
-    ans.push(node.value)
+    ans.push(node.value);
     // 枚举节点的邻居
     for (const nextNode of node.nexts) {
       // 所有邻居入度减去1
@@ -111,13 +110,12 @@ function topologicalSort(graph: Graph): number[] {
       inMap.set(nextNode, inDegree);
 
       if (inDegree == 0) {
-        zeroInQueue.push(nextNode)
+        zeroInQueue.push(nextNode);
       }
-
     }
   }
 
-  return ans
+  return ans;
 }
 
 function canFinish(_numCourses: number, prerequisites: number[][]): boolean {
@@ -125,14 +123,13 @@ function canFinish(_numCourses: number, prerequisites: number[][]): boolean {
 
   const graph = new Graph(prerequisites);
 
-  const order = topologicalSort(graph)
+  const order = topologicalSort(graph);
 
   return order.length == graph.nodes.size;
-};
+}
 
 /**
  * 思路：图的拓扑排序，排序返回的数组如果跟图的节点（课程数）不一致，说明肯定是有环的
  * 无环入度是会消减成0的才对
  */
 // @lc code=end
-
