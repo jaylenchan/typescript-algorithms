@@ -15,7 +15,7 @@ function mySqrt(x: number): number {
 }
 
 function _mysqrt(x: number, left: number, right: number): number {
-  if (left > right) return left - 1;
+  if (left > right) return right;
 
   let mid = left + (Math.floor(right - left) >> 1);
 
