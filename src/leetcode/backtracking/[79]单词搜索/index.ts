@@ -93,31 +93,3 @@ function inArea(board: string[][], row: number, col: number): boolean {
   return row >= startRow && row <= lastRow && col >= startCol && col <= lastCol;
 }
 // @lc code=end
-
-// const ans = exist(
-//   [
-//     ['a', 'a', 'a'],
-//     ['A', 'A', 'A'],
-//     ['a', 'a', 'a']
-//   ],
-//   'aAaaaAaaA'
-// );
-
-// const ans = exist(
-//   [
-//     ['A', 'B', 'C', 'E'],
-//     ['S', 'F', 'C', 'S'],
-//     ['A', 'D', 'E', 'E']
-//   ],
-//   'ABCCED'
-// );
-
-// const ans = exist(
-//   [
-//     ['A', 'B', 'C', 'E'],
-//     ['S', 'F', 'C', 'S'],
-//     ['A', 'D', 'E', 'E']
-//   ],
-//   'SEE'
-// );
-// console.log(ans);
