@@ -16,6 +16,13 @@
     
     | [广度优先遍历](src/algorithms/graph/breadth-first-search) | [深度优先遍历](src/algorithms/graph/depth-first-search) | [拓扑排序](src/algorithms/graph/topological-sort) |
     | :-------------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------------: |
+    
+- 字符串
+    
+    | [Manacher算法](src/algorithms/string/manacher) |      |      |
+    | ---------------------------------------------- | ---- | ---- |
+    
+    
 
 ## 数据结构
 
