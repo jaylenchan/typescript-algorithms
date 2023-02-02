@@ -99,6 +99,7 @@
     | [[17]电话号码的字母组合](src/leetcode/backtracking/[17]电话号码的字母组合) | [[39]组合总和](src/leetcode/backtracking/[39]组合总和) | [[46]全排列](src/leetcode/backtracking/[46]全排列)           | [[77]组合](src/leetcode/backtracking/[77]组合)       |
     | ------------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
     | [[78]子集](src/leetcode/backtracking/[78]子集)               | [[79]单词搜索](src/leetcode/backtracking/[79]单词搜索) | [[131]分割回文串](src/leetcode/backtracking/[131]分割回文串) | [[494]目标和](src/leetcode/backtracking/[494]目标和) |
+    | [[93]复原Ip地址](src/leetcode/backtracking/[93]复原Ip地址)   |                                                        |                                                              |                                                      |
     
 - 动态规划
     
