@@ -26,11 +26,11 @@
 
 ## 数据结构
 
-|            [数组](src/data-structure/array)             | [栈](src/data-structure/stack) |    [队列](src/data-structure/queue)     |  [链表](src/data-structure/linked-list)   |
-| :-----------------------------------------------------: | :----------------------------: | :-------------------------------------: | :---------------------------------------: |
-|   [二分搜索树](src/data-structure/binary-search-tree)   | [集合](src/data-structure/set) |     [映射](src/data-structure/map)      |       [堆](src/data-structure/heap)       |
-|            [前缀树](src/data-structure/trie)            | [图](src/data-structure/graph) | [并查集](src/data-structure/union-find) | [线段树](src/data-structure/segment-tree) |
-| [窗口最大值更新结构](src/data-structure/sliding-window) |                                |                                         |                                           |
+|            [数组](src/data-structure/array)             |        [栈](src/data-structure/stack)         |    [队列](src/data-structure/queue)     |  [链表](src/data-structure/linked-list)   |
+| :-----------------------------------------------------: | :-------------------------------------------: | :-------------------------------------: | :---------------------------------------: |
+|   [二分搜索树](src/data-structure/binary-search-tree)   |        [集合](src/data-structure/set)         |     [映射](src/data-structure/map)      |       [堆](src/data-structure/heap)       |
+|            [前缀树](src/data-structure/trie)            |        [图](src/data-structure/graph)         | [并查集](src/data-structure/union-find) | [线段树](src/data-structure/segment-tree) |
+| [窗口最大值更新结构](src/data-structure/sliding-window) | [优先队列](src/data-structure/priority-queue) |                                         |                                           |
 
 ## Leetcode经典题
 
@@ -75,6 +75,11 @@
    | [[112]路径总和](src/leetcode/tree/[112]路径总和)             | [[114]二叉树展开为链表](src/leetcode/tree/[114]二叉树展开为链表) | [[129]求根节点到叶节点数字之和](src/leetcode/tree/[129]求根节点到叶节点数字之和) | [[144]二叉树的前序遍历](src/leetcode/tree/[144]二叉树的前序遍历) |
    | [[145]二叉树的后序遍历](src/leetcode/tree/[145]二叉树的后序遍历) | [[199]二叉树的右视图](src/leetcode/tree/[199]二叉树的右视图) | [[222]完全二叉树的节点个数](src/leetcode/tree/[222]完全二叉树的节点个数) | [[226]翻转二叉树](src/leetcode/tree/[226]翻转二叉树)         |
    | [[429]N叉树的层序遍历](src/leetcode/tree/[429]N叉树的层序遍历) | [[437]路径总和III](src/leetcode/tree/[437]路径总和III)       | [[543]二叉树的直径](src/leetcode/tree/[543]二叉树的直径)     | [[662]二叉树最大宽度](src/leetcode/tree/[662]二叉树最大宽度) |
+   
+- 堆
+   
+   | [[378]有序矩阵中第K小的元素](src/leetcode/heap/[378]有序矩阵中第K小的元素) |      |      |      |
+   | ------------------------------------------------------------ | ---- | ---- | ---- |
    
 - 图
    
