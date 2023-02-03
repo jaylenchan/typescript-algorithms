@@ -23,15 +23,16 @@ class PriorityQueue {
   delMax(): number {
     const max = this.data[0];
 
-    this.swap(0, this.size - 1)
+    this.swap(0, this.size - 1);
     this.data.pop();
-    this.size--
-    this.sink(0)
+    this.size--;
+    this.sink(0);
 
     return max;
   }
 
-  private getLeftIndex(index: number): number {
+  private getParentIndex(index: number): number {
+    if (index == 0) return 0;
     return Math.floor((index - 1) / 2);
   }
 
@@ -39,7 +40,7 @@ class PriorityQueue {
     return 2 * index + 1;
   }
 
-  private getParentIndex(index: number): number {
+  private getLeftIndex(index: number): number {
     return 2 * index + 2;
   }
 
@@ -55,7 +56,10 @@ class PriorityQueue {
       let maxChildIndex = this.getLeftIndex(index);
       const rightIndex = this.getRightIndex(index);
       if (rightIndex < this.size) {
-        maxChildIndex = this.data[maxChildIndex] > this.data[rightIndex] ? maxChildIndex : rightIndex;
+        maxChildIndex =
+          this.data[maxChildIndex] > this.data[rightIndex]
+            ? maxChildIndex
+            : rightIndex;
       }
 
       if (this.data[index] > this.data[maxChildIndex]) break;
@@ -63,11 +67,10 @@ class PriorityQueue {
       this.swap(maxChildIndex, index);
       index = maxChildIndex;
     }
-
   }
 
   private less(i: number, j: number): boolean {
-    return this.data[i] < this.data[j]
+    return this.data[i] < this.data[j];
   }
 
   private swap(i: number, j: number): void {
