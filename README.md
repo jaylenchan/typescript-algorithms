@@ -4,25 +4,17 @@
 
 ## 算法
 
-- 排序
-
-    | [插入排序](src/algorithms/sort/insertion-sort) | [选择排序](src/algorithms/sort/selection-sort) | [归并排序](src/algorithms/sort/merge-sort) |
-    | :--------------------------------------------: | :--------------------------------------------: | :----------------------------------------: |
-    |   [快速排序](src/algorithms/sort/quick-sort)   |                                                |                                            |
-
-- [二分搜索](src/algorithms/search/binary-search)
-
-- 图
-
-    | [广度优先遍历](src/algorithms/graph/breadth-first-search) | [深度优先遍历](src/algorithms/graph/depth-first-search) | [拓扑排序](src/algorithms/graph/topological-sort) |
-    | :-------------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------------------: |
-
-- 字符串
-
-    | [Manacher算法](src/algorithms/string/manacher) |      |      |
-    | ---------------------------------------------- | ---- | ---- |
-    
-    
+|                           算法                            | 相关结构 |
+| :-------------------------------------------------------: | :------: |
+|      [插入排序](src/algorithms/sort/insertion-sort)       |   数组   |
+|      [选择排序](src/algorithms/sort/selection-sort)       |   数组   |
+|        [归并排序](src/algorithms/sort/merge-sort)         |   数组   |
+|        [快速排序](src/algorithms/sort/quick-sort)         |   数组   |
+|      [二分搜索](src/algorithms/search/binary-search)      |   数组   |
+| [广度优先遍历](src/algorithms/graph/breadth-first-search) |    图    |
+|  [深度优先遍历](src/algorithms/graph/depth-first-search)  |    图    |
+|     [拓扑排序](src/algorithms/graph/topological-sort)     |    图    |
+|      [Manacher算法](src/algorithms/string/manacher)       |  字符串  |
 
 ## 数据结构
 
