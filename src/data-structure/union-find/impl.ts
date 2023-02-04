@@ -1,57 +1,88 @@
 import IUnionFind from './Interface';
 
-// 终极版本：v2  + v6 impl
-export default class UnionFind implements IUnionFind<number> {
-  // 连通分量个数
-  private count: number;
-  public parent: number[]; // parent[i]表示第i位置的元素指向了哪个位置的元素（parent数组实际上可以看做是一个map，它是一个元素到父亲的映射，数组索引就是key，数组的值就是value）
+class UnionFind implements IUnionFind<number> {
+  // parent[i]表示i的父亲
+  private parent: number[];
+  // 如果i是集合的代表元素，则size[i]表示i所在集合的元素个数，否则size[i]无实际意义
+  private size: number[];
+  // sets表示一共有多少个集合
+  public sets: number;
 
   constructor(size: number) {
-    this.count = size;
-    this.parent = new Array(size);
+    this.parent = [];
+    this.size = [];
+    this.sets = size;
 
-    for (let i = 0; i < this.parent.length; i++) {
+    // 结构初始化：因为一开始还没有任何连通操作，所有元素都是单独一个集合
+    for (let i = 0; i < size; i++) {
+      // i自己的父亲是i自己;
       this.parent[i] = i;
+      // i所在集合的大小是1
+      this.size[i] = 1;
     }
   }
 
-  public getCount(): number {
-    return this.count;
-  }
+  /**
+   * 算法理解：从元素i开始往上查找，往上到不能再往上找了，返回最顶的节点（代表节点）。算法主逻辑就是做这件简单的事情而已
+   * 算法优化：在查找过程当中做“路径压缩”(代码中被相关路径压缩优化注释包裹的内容就是路径压缩要做的事情)
+   */
+  find(i: number): number {
+    /*--------------路径压缩内容-----------*/
+    let hi = 0;
+    const help: number[] = [];
+    /*--------------路径压缩内容-----------*/
 
-  public isConnected(p: number, q: number): boolean {
-    return this.find(p) == this.find(q);
-  }
-
-  // 有了v6的路径压缩终极优化，v3的通过size的优化就没啥必要了
-  public union(p: number, q: number): void {
-    if (this.isConnected(p, q)) return;
-
-    const rootP = this.find(p); // p所在集合的代表元素rootP
-    const rootQ = this.find(q); // q所在集合的代表元素rootQ
-
-    this.parent[rootP] = rootQ; // 让p所在集合的代表元素rootP的父亲指向q所在集合的代表元素rootQ
-    // 两个连通分量合并成一个连通分量
-    this.count--;
-  }
-
-  /** 路径压缩终极优化 find过程: v6-impl */
-  public find(p: number): number {
-    if (p < 0 || p > this.parent.length) {
-      throw new Error('p is not in sets.');
-    }
-    const path: number[] = []
-
-    while (p != this.parent[p]) {
-      // 增加这个过程
-      path.push(p);
-      p = this.parent[p];
+    while (i != this.parent[i]) {
+      /*--------------路径压缩内容-----------*/
+      help[hi++] = i;
+      /*--------------路径压缩内容-----------*/
+      i = this.parent[i];
     }
 
-    while (path.length > 0) {
-      this.parent[path.pop()!] = p;
+    /*--------------路径压缩内容-----------*/
+    while (hi >= 0) {
+      this.parent[help[--hi]] = i;
     }
+    /*--------------路径压缩内容-----------*/
 
-    return p;
+    return i;
+  }
+
+  connected(i: number, j: number): boolean {
+    return this.find(i) == this.find(j);
+  }
+
+  union(i: number, j: number): void {
+    /**
+     * 找到元素i和元素j各自所在集合的代表元素
+     */
+    const rootI = this.find(i);
+    const rootJ = this.find(j);
+
+    // 如果代表元素rootI和代表元素rootJ是同一个节点，说明i，j连通，不需要做任何操作
+    if (rootI != rootJ) {
+      /**
+       * 获取集合I和集合J各自的元素大小
+       */
+      const ISetSize = this.size[rootI];
+      const JSetSize = this.size[rootJ];
+
+      /**
+       * 判断设置集合I和集合J谁是大集合，谁是小集合
+       */
+      const big = ISetSize > JSetSize ? rootI : rootJ;
+      const small = big == rootI ? rootJ : rootI;
+
+      /**
+       * 1.让大集合代表元素成为小集合代表元素的父亲
+       * 2.大集合的大小 = 小集合大小 + 原大集合大小
+       * 3.集合个数减1（因为小集合I已经被合并了）
+       */
+      this.parent[small] = big;
+      this.size[big] = ISetSize + JSetSize;
+      this.sets--;
+    }
   }
 }
+
+export default UnionFind;
