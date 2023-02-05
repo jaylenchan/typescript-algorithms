@@ -191,6 +191,7 @@
     | [647](https://leetcode.cn/problems/palindromic-substrings/)  |  [回文子串](src/leetcode/dynamic-programming/[647]回文子串)  |  🟠   |
     | [674](https://leetcode.cn/problems/longest-continuous-increasing-subsequence/) | [最长连续递增序列](src/leetcode/dynamic-programming/[674]最长连续递增序列) |  🟢   |
     | [1143](https://leetcode.cn/problems/longest-common-subsequence/) | [最长公共子序列](src/leetcode/dynamic-programming/[1143]最长公共子序列) |  🟠   |
+    | [96](https://leetcode.cn/problems/unique-binary-search-trees/) | [不同的二叉搜索树](src/leetcode/dynamic-programming/[96]不同的二叉搜索树) |  🟠   |
 
 - **数学**
 
