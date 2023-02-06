@@ -32,14 +32,15 @@
 
 - **数组**
 
-   |                         题号                          |                      题名                       | 难度 |
-   | :---------------------------------------------------: | :---------------------------------------------: | :--: |
-   | [31](https://leetcode.cn/problems/next-permutation/)  | [下一个排列](src/leetcode/array/[31]下一个排列) |  🟠   |
-   |   [48](https://leetcode.cn/problems/rotate-image/)    |   [旋转图像](src/leetcode/array/[48]旋转图像)   |  🟠   |
-   |   [54](https://leetcode.cn/problems/spiral-matrix/)   |   [螺旋矩阵](src/leetcode/array/[54]螺旋矩阵)   |  🟠   |
-   | [73](https://leetcode.cn/problems/set-matrix-zeroes/) |   [矩阵置零](src/leetcode/array/[73]矩阵置零)   |  🟠   |
-   |   [189](https://leetcode.cn/problems/rotate-array/)   |  [轮转数组](src/leetcode/array/[189]轮转数组)   |  🟠   |
-   |   [289](https://leetcode.cn/problems/game-of-life/)   |  [生命游戏](src/leetcode/array/[289]生命游戏)   |  🟠   |
+   |                         题号                          |                       题名                       | 难度 |
+   | :---------------------------------------------------: | :----------------------------------------------: | :--: |
+   | [31](https://leetcode.cn/problems/next-permutation/)  | [下一个排列](src/leetcode/array/[31]下一个排列)  |  🟠   |
+   |   [48](https://leetcode.cn/problems/rotate-image/)    |   [旋转图像](src/leetcode/array/[48]旋转图像)    |  🟠   |
+   |   [54](https://leetcode.cn/problems/spiral-matrix/)   |   [螺旋矩阵](src/leetcode/array/[54]螺旋矩阵)    |  🟠   |
+   | [73](https://leetcode.cn/problems/set-matrix-zeroes/) |   [矩阵置零](src/leetcode/array/[73]矩阵置零)    |  🟠   |
+   |   [189](https://leetcode.cn/problems/rotate-array/)   |   [轮转数组](src/leetcode/array/[189]轮转数组)   |  🟠   |
+   |   [289](https://leetcode.cn/problems/game-of-life/)   |   [生命游戏](src/leetcode/array/[289]生命游戏)   |  🟠   |
+   |  [221](https://leetcode.cn/problems/maximal-square/)  | [最大正方形](src/leetcode/array/[221]最大正方形) |  🟠   |
 
 - **链表**
 
