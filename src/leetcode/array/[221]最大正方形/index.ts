@@ -15,7 +15,7 @@ function maximalSquare(matrix: string[][]): number {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       if (matrix[i][j] == '1') {
-        max = Math.max(max, 1 + process(matrix, i, j, i + 1, j + 1));
+        max = Math.max(max, 1 + maxSideLen(matrix, i, j, i + 1, j + 1));
       }
     }
   }
@@ -24,7 +24,7 @@ function maximalSquare(matrix: string[][]): number {
 }
 
 // 返回从(row,col)出发到(row1,col1)能够形成的最大正方形的边
-function process(
+function maxSideLen(
   matrix: string[][],
   row: number,
   col: number,
@@ -43,7 +43,7 @@ function process(
     if (matrix[row1][j] != '1') return 0;
   }
 
-  return 1 + process(matrix, row, col, row1 + 1, col1 + 1);
+  return 1 + maxSideLen(matrix, row, col, row1 + 1, col1 + 1);
 }
 
 function inArea(matrix: string[][], row: number, col: number): boolean {
