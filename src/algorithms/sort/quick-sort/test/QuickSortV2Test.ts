@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import ArrayComparator from '../../../../helper/ArrayComparator-impl';
-import QuickSortV2 from '../v2-impl';
+import QuickSortV2 from '../versions/v2-impl';
 
 export default class QuickSortV2Test extends ArrayComparator {
   public test(arr: number[]): void {

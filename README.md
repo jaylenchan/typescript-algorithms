@@ -41,6 +41,7 @@
    |   [189](https://leetcode.cn/problems/rotate-array/)   |   [轮转数组](src/leetcode/array/[189]轮转数组)   |  🟠   |
    |   [289](https://leetcode.cn/problems/game-of-life/)   |   [生命游戏](src/leetcode/array/[289]生命游戏)   |  🟠   |
    |  [221](https://leetcode.cn/problems/maximal-square/)  | [最大正方形](src/leetcode/array/[221]最大正方形) |  🟠   |
+   |  [912](https://leetcode.cn/problems/sort-an-array/)   |   [排序数组](src/leetcode/array/[912]排序数组)   |  🟠   |
 
 - **链表**
 
