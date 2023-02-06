@@ -56,6 +56,7 @@
    |   [206](https://leetcode.cn/problems/reverse-linked-list/)   |      [反转链表](src/leetcode/linked-list/[206]反转链表)      |  🟢   |
    | [237](https://leetcode.cn/problems/delete-node-in-a-linked-list/) | [删除链表中的节点](src/leetcode/linked-list/[237]删除链表中的节点) |  🟠   |
    | [876](https://leetcode.cn/problems/middle-of-the-linked-list/) | [链表的中间结点](src/leetcode/linked-list/[876]链表的中间结点) |  🟢   |
+   | [138](https://leetcode.cn/problems/copy-list-with-random-pointer/) | [复制带随机指针的链表](src/leetcode/linked-list/[138]复制带随机指针的链表) |  🟠   |
 
 - **栈**
 
