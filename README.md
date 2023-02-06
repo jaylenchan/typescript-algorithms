@@ -92,6 +92,7 @@
    |      [38](https://leetcode.cn/problems/count-and-say/)       |      [外观数列](src/leetcode/string/[38]外观数列)       |  🟠   |
    | [171](https://leetcode.cn/problems/excel-sheet-column-number/) | [Excel表列序号](src/leetcode/string/[171]Excel表列序号) |  🟢   |
    |    [191](https://leetcode.cn/problems/number-of-1-bits/)     |     [位1的个数](src/leetcode/string/[191]位1的个数)     |  🟢   |
+   |     [179](https://leetcode.cn/problems/largest-number/)      |        [最大数](src/leetcode/string/[179]最大数)        |  🟠   |
 
 - **树**
 
