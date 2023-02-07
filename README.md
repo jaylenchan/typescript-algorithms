@@ -67,6 +67,7 @@
    |      [394](https://leetcode.cn/problems/decode-string/)      |       [字符串解码](src/leetcode/stack/[394]字符串解码)       |  🟠   |
    | [581](https://leetcode.cn/problems/shortest-unsorted-continuous-subarray/) | [最短无序连续子数组](src/leetcode/stack/[581]最短无序连续子数组) |  🟠   |
    |   [739](https://leetcode.cn/problems/daily-temperatures/)    |         [每日温度](src/leetcode/stack/[739]每日温度)         |  🟠   |
+   | [150](https://leetcode.cn/problems/evaluate-reverse-polish-notation/) | [逆波兰表达式求值](src/leetcode/stack/[150]逆波兰表达式求值) |  🟠   |
 
 - **哈希表**
 
