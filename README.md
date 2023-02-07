@@ -219,6 +219,7 @@
    | [304](https://leetcode.cn/problems/range-sum-query-2d-immutable/) | [二维区域和检索矩阵不可变](src/leetcode/prefix-sum/[304]二维区域和检索矩阵不可变) |  🟠   |
    |  [560](https://leetcode.cn/problems/subarray-sum-equals-k/)  | [和为K的子数组](src/leetcode/prefix-sum/[560]和为K的子数组)  |  🟠   |
    | [1588](https://leetcode.cn/problems/sum-of-all-odd-length-subarrays/) | [所有奇数长度子数组的和](src/leetcode/prefix-sum/[1588]所有奇数长度子数组的和) |  🟢   |
+   | [1480](https://leetcode.cn/problems/running-sum-of-1d-array/) | [一维数组的动态和](src/leetcode/prefix-sum/[1480]一维数组的动态和) |  🟢   |
 
 - **双指针**
 
