@@ -258,6 +258,7 @@
 | [208](https://leetcode.cn/problems/implement-trie-prefix-tree/) |  [实现Trie前缀树](src/leetcode/design/[208]实现Trie前缀树)   |  🟠   |
 |        [146](https://leetcode.cn/problems/lru-cache/)        |         [LRU缓存](src/leetcode/design/[146]LRU缓存)          |  🟠   |
 | [380](https://leetcode.cn/problems/insert-delete-getrandom-o1/) | [O1时间插入、删除和获取随机元素](src/leetcode/design/[380]O1时间插入、删除和获取随机元素) |  🟠   |
+|   [707](https://leetcode.cn/problems/design-linked-list/)    |        [设计链表](src/leetcode/design/[707]设计链表)         |  🟠   |
 
 ## 如何测试算法正确性？
 
