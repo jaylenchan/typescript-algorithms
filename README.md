@@ -74,7 +74,6 @@
 
    |                             题号                             |                             题名                             | 难度 |
    | :----------------------------------------------------------: | :----------------------------------------------------------: | :--: |
-   |          [1](https://leetcode.cn/problems/two-sum/)          |       [两数之和](src/leetcode/hash-table/[1]两数之和)        |  🟢   |
    |     [13](https://leetcode.cn/problems/roman-to-integer/)     | [罗马数字转整数](src/leetcode/hash-table/[13]罗马数字转整数) |  🟢   |
    |       [36](https://leetcode.cn/problems/valid-sudoku/)       |     [有效的数独](src/leetcode/hash-table/[36]有效的数独)     |  🟠   |
    |      [49](https://leetcode.cn/problems/group-anagrams/)      | [字母异位词分组](src/leetcode/hash-table/[49]字母异位词分组) |  🟠   |
@@ -225,13 +224,15 @@
 
    |                             题号                             |                             题名                             | 难度 |
    | :----------------------------------------------------------: | :----------------------------------------------------------: | :--: |
-   |           [15](https://leetcode.cn/problems/3sum/)           |      [三数之和](src/leetcode/two-pointers/[15]三数之和)      |  🟠   |
    |       [75](https://leetcode.cn/problems/sort-colors/)        |      [颜色分类](src/leetcode/two-pointers/[75]颜色分类)      |  🟠   |
    |    [88](https://leetcode.cn/problems/merge-sorted-array/)    | [合并两个有序数组](src/leetcode/two-pointers/[88]合并两个有序数组) |  🟢   |
    | [165](https://leetcode.cn/problems/compare-version-numbers/) |   [比较版本号](src/leetcode/two-pointers/[165]比较版本号)    |  🟠   |
    | [287](https://leetcode.cn/problems/find-the-duplicate-number/) |   [寻找重复数](src/leetcode/two-pointers/[287]寻找重复数)    |  🟠   |
    |       [415](https://leetcode.cn/problems/add-strings/)       |   [字符串相加](src/leetcode/two-pointers/[415]字符串相加)    |  🟢   |
    | [643](https://leetcode.cn/problems/maximum-average-subarray-i/) | [子数组最大平均数I](src/leetcode/two-pointers/[643]子数组最大平均数I) |  🟢   |
+   |          [1](https://leetcode.cn/problems/two-sum/)          |      [两数之和](src/leetcode/two-pointers/[1]两数之和)       |  🟢   |
+   |           [15](https://leetcode.cn/problems/3sum/)           |      [三数之和](src/leetcode/two-pointers/[15]三数之和)      |  🟠   |
+   |           [18](https://leetcode.cn/problems/4sum/)           |      [四数之和](src/leetcode/two-pointers/[18]四数之和)      |  🟠   |
 
 - **滑动窗口**
 
