@@ -3,6 +3,7 @@
  *
  * [15] 三数之和
  */
+export { threeSum };
 
 // @lc code=start
 function twoSum(
