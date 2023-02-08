@@ -119,6 +119,7 @@
    |      [437](https://leetcode.cn/problems/path-sum-iii/)       |      [路径总和III](src/leetcode/tree/[437]路径总和III)       |  🟠   |
    | [543](https://leetcode.cn/problems/diameter-of-binary-tree/) |     [二叉树的直径](src/leetcode/tree/[543]二叉树的直径)      |  🟢   |
    | [662](https://leetcode.cn/problems/maximum-width-of-binary-tree/) |   [二叉树最大宽度](src/leetcode/tree/[662]二叉树最大宽度)    |  🟠   |
+   | [230](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/) | [二叉搜索树中第k小的元素](src/leetcode/tree/[230]二叉搜索树中第k小的元素) |  🟠   |
 
 - **堆**
 
