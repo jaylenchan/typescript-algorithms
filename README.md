@@ -233,6 +233,7 @@
    |          [1](https://leetcode.cn/problems/two-sum/)          |      [两数之和](src/leetcode/two-pointers/[1]两数之和)       |  🟢   |
    |           [15](https://leetcode.cn/problems/3sum/)           |      [三数之和](src/leetcode/two-pointers/[15]三数之和)      |  🟠   |
    |           [18](https://leetcode.cn/problems/4sum/)           |      [四数之和](src/leetcode/two-pointers/[18]四数之和)      |  🟠   |
+   |       [16](https://leetcode.cn/problems/3sum-closest/)       | [最接近的三数之和](src/leetcode/two-pointers/[16]最接近的三数之和) |  🟠   |
 
 - **滑动窗口**
 
