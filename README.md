@@ -59,6 +59,7 @@
    | [138](https://leetcode.cn/problems/copy-list-with-random-pointer/) | [复制带随机指针的链表](src/leetcode/linked-list/[138]复制带随机指针的链表) |  🟠   |
    |  [92](https://leetcode.cn/problems/reverse-linked-list-ii/)  |    [反转链表II](src/leetcode/linked-list/[92]反转链表II)     |  🟠   |
    |      [143](https://leetcode.cn/problems/reorder-list/)       |      [重排链表](src/leetcode/linked-list/[143]重排链表)      |  🟠   |
+   |   [24](https://leetcode.cn/problems/swap-nodes-in-pairs/)    | [两两交换链表中的节点](src/leetcode/linked-list/[24]两两交换链表中的节点) |  🟠   |
 
 - **栈**
 
