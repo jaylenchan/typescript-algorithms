@@ -60,6 +60,7 @@
    |  [92](https://leetcode.cn/problems/reverse-linked-list-ii/)  |    [反转链表II](src/leetcode/linked-list/[92]反转链表II)     |  🟠   |
    |      [143](https://leetcode.cn/problems/reorder-list/)       |      [重排链表](src/leetcode/linked-list/[143]重排链表)      |  🟠   |
    |   [24](https://leetcode.cn/problems/swap-nodes-in-pairs/)    | [两两交换链表中的节点](src/leetcode/linked-list/[24]两两交换链表中的节点) |  🟠   |
+   | [82](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/) | [删除排序链表中的重复元素II](src/leetcode/linked-list/[82]删除排序链表中的重复元素II) |  🟠   |
 
 - **栈**
 
