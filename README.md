@@ -58,6 +58,7 @@
    | [876](https://leetcode.cn/problems/middle-of-the-linked-list/) | [链表的中间结点](src/leetcode/linked-list/[876]链表的中间结点) |  🟢   |
    | [138](https://leetcode.cn/problems/copy-list-with-random-pointer/) | [复制带随机指针的链表](src/leetcode/linked-list/[138]复制带随机指针的链表) |  🟠   |
    |  [92](https://leetcode.cn/problems/reverse-linked-list-ii/)  |    [反转链表II](src/leetcode/linked-list/[92]反转链表II)     |  🟠   |
+   |      [143](https://leetcode.cn/problems/reorder-list/)       |      [重排链表](src/leetcode/linked-list/[143]重排链表)      |  🟠   |
 
 - **栈**
 
