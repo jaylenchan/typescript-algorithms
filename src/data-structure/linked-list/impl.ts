@@ -149,7 +149,7 @@ class LinkedList<E> implements ILinkedList<E> {
   /**
    * 返回链表的中点或者上中点（奇数中点 | 偶数上中点）
    */
-  getMidOrUpMidNode(head: ListNode | null): ListNode | null {
+  getMidOrUpMidNode(head: LNode<E> | null): LNode<E> | null {
     /**
      * 处理0 | 1 | 2 个节点的情况
      * # head == null ： 链表不存在吗？
@@ -183,7 +183,7 @@ class LinkedList<E> implements ILinkedList<E> {
   /**
    * 返回链表的中点或者上中点的前一个点（奇数中点 | 偶数上中点）
    */
-  getfMidOrUpMidNodePrev(head: ListNode | null): ListNode | null {
+  getfMidOrUpMidNodePrev(head: LNode<E> | null): LNode<E> | null {
     /**
      * 处理0 | 1 | 2 个节点的情况
      * # head == null ： 链表不存在吗？
@@ -216,7 +216,7 @@ class LinkedList<E> implements ILinkedList<E> {
   /**
    * 返回链表的中点或者下中点（奇数中点 | 偶数下中点）
    */
-  getMidOrDownMidNode(head: ListNode | null): ListNode | null {
+  getMidOrDownMidNode(head: LNode<E> | null): LNode<E> | null {
     /**
      * 处理 0 | 1个节点的情况
      * # head == null 链表不存在吗？
@@ -248,7 +248,7 @@ class LinkedList<E> implements ILinkedList<E> {
   /**
    * 返回链表的中点或者下中点的上一个点（奇数中点 | 偶数下中点）
    */
-  getfMidOrDownMidNodePrev(head: ListNode | null): ListNode | null {
+  getfMidOrDownMidNodePrev(head: LNode<E> | null): LNode<E> | null {
     /**
      * 处理0 | 1 | 2 个节点的情况
      * # head == null ： 链表不存在吗？
