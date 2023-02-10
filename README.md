@@ -175,6 +175,7 @@
     |     [39](https://leetcode.cn/problems/combination-sum/)      | [组合总和](src/leetcode/backtracking/[39]组合总和/index.ts)  |  🟠   |
     |    [40](https://leetcode.cn/problems/combination-sum-ii/)    | [组合总和II](src/leetcode/backtracking/[40]组合总和II/index.ts) |  🟠   |
     |       [46](https://leetcode.cn/problems/permutations/)       |   [全排列](src/leetcode/backtracking/[46]全排列/index.ts)    |  🟠   |
+    |     [47](https://leetcode.cn/problems/permutations-ii/)      | [全排列II](src/leetcode/backtracking/[47]全排列II/index.ts)  |  🟠   |
     |       [77](https://leetcode.cn/problems/combinations/)       |     [组合](src/leetcode/backtracking/[77]组合/index.ts)      |  🟠   |
     |         [78](https://leetcode.cn/problems/subsets/)          |     [子集](src/leetcode/backtracking/[78]子集/index.ts)      |  🟠   |
     |       [79](https://leetcode.cn/problems/word-search/)        | [单词搜索](src/leetcode/backtracking/[79]单词搜索/index.ts)  |  🟠   |
