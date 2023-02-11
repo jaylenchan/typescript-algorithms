@@ -3,34 +3,38 @@
  *
  * [208] 实现 Trie (前缀树)
  */
-
+export { Trie };
 // @lc code=start
 function ASCIndex(letter: string): number {
-  if (letter.charCodeAt(0) - 'a'.charCodeAt(0) < 0 || letter.charCodeAt(0) - 'a'.charCodeAt(0) > 25) return 0
+  if (
+    letter.charCodeAt(0) - 'a'.charCodeAt(0) < 0 ||
+    letter.charCodeAt(0) - 'a'.charCodeAt(0) > 25
+  )
+    return 0;
 
-  return letter.charCodeAt(0) - 'a'.charCodeAt(0)
+  return letter.charCodeAt(0) - 'a'.charCodeAt(0);
 }
 
 class TrieNode {
   public pass: number;
   public end: number;
-  public nexts: TrieNode[]
+  public nexts: TrieNode[];
 
   constructor() {
     this.pass = 0;
     this.end = 0;
-    this.nexts = new Array(26).fill(null)
+    this.nexts = new Array(26).fill(null);
   }
 }
 class Trie {
   private root: TrieNode;
   constructor() {
-    this.root = new TrieNode()
+    this.root = new TrieNode();
   }
 
   insert(word: string): void {
     let node = this.root;
-    node.pass += 1
+    node.pass += 1;
 
     for (const letter of word) {
       const index = ASCIndex(letter);
@@ -44,7 +48,7 @@ class Trie {
       node = node.nexts[index];
     }
     // 最后一个字符节点代表这个字符串结尾，需要end++
-    node.end += 1
+    node.end += 1;
   }
 
   search(word: string): boolean {
@@ -69,10 +73,10 @@ class Trie {
 
       if (node.nexts[index] == null) return false;
 
-      node = node.nexts[index]
+      node = node.nexts[index];
     }
 
-    return node.pass > 0
+    return node.pass > 0;
   }
 }
 
@@ -84,4 +88,3 @@ class Trie {
  * var param_3 = obj.startsWith(prefix)
  */
 // @lc code=end
-

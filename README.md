@@ -274,6 +274,7 @@
 |   [707](https://leetcode.cn/problems/design-linked-list/)    |    [设计链表](src/leetcode/design/[707]设计链表/index.ts)    |  🟠   |
 |    [384](https://leetcode.cn/problems/shuffle-an-array/)     |    [打乱数组](src/leetcode/design/[384]打乱数组/index.ts)    |  🟠   |
 | [341](https://leetcode.cn/problems/flatten-nested-list-iterator/) | [扁平化嵌套列表迭代器](src/leetcode/design/[341]扁平化嵌套列表迭代器/index.ts) |  🟠   |
+| [211](https://leetcode.cn/problems/design-add-and-search-words-data-structure/) | [添加与搜索单词数据结构设计](src/leetcode/design/[211]添加与搜索单词数据结构设计/index.ts) |  🟠   |
 
 ## 如何测试算法正确性？
 
