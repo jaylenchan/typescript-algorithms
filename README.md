@@ -268,13 +268,15 @@
 
 |                             题号                             |                             题名                             | 难度 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :--: |
-| [208](https://leetcode.cn/problems/implement-trie-prefix-tree/) | [实现Trie前缀树](src/leetcode/design/[208]实现Trie前缀树/index.ts) |  🟠   |
 |        [146](https://leetcode.cn/problems/lru-cache/)        |     [LRU缓存](src/leetcode/design/[146]LRU缓存/index.ts)     |  🟠   |
-| [380](https://leetcode.cn/problems/insert-delete-getrandom-o1/) | [O1时间插入、删除和获取随机元素](src/leetcode/design/[380]O1时间插入、删除和获取随机元素/index.ts) |  🟠   |
-|   [707](https://leetcode.cn/problems/design-linked-list/)    |    [设计链表](src/leetcode/design/[707]设计链表/index.ts)    |  🟠   |
-|    [384](https://leetcode.cn/problems/shuffle-an-array/)     |    [打乱数组](src/leetcode/design/[384]打乱数组/index.ts)    |  🟠   |
-| [341](https://leetcode.cn/problems/flatten-nested-list-iterator/) | [扁平化嵌套列表迭代器](src/leetcode/design/[341]扁平化嵌套列表迭代器/index.ts) |  🟠   |
+| [173](https://leetcode.cn/problems/binary-search-tree-iterator/) | [二叉搜索树迭代器](src/leetcode/design/[173]二叉搜索树迭代器/index.ts) |  🟠   |
+| [208](https://leetcode.cn/problems/implement-trie-prefix-tree/) | [实现Trie前缀树](src/leetcode/design/[208]实现Trie前缀树/index.ts) |  🟠   |
 | [211](https://leetcode.cn/problems/design-add-and-search-words-data-structure/) | [添加与搜索单词数据结构设计](src/leetcode/design/[211]添加与搜索单词数据结构设计/index.ts) |  🟠   |
+| [341](https://leetcode.cn/problems/flatten-nested-list-iterator/) | [扁平化嵌套列表迭代器](src/leetcode/design/[341]扁平化嵌套列表迭代器/index.ts) |  🟠   |
+| [380](https://leetcode.cn/problems/insert-delete-getrandom-o1/) | [O1时间插入、删除和获取随机元素](src/leetcode/design/[380]O1时间插入、删除和获取随机元素/index.ts) |  🟠   |
+|    [384](https://leetcode.cn/problems/shuffle-an-array/)     |    [打乱数组](src/leetcode/design/[384]打乱数组/index.ts)    |  🟠   |
+|  [622](https://leetcode.cn/problems/design-circular-queue/)  | [设计循环队列](src/leetcode/design/[622]设计循环队列/index.ts) |  🟠   |
+|   [707](https://leetcode.cn/problems/design-linked-list/)    |    [设计链表](src/leetcode/design/[707]设计链表/index.ts)    |  🟠   |
 
 ## 如何测试算法正确性？
 
