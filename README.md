@@ -89,6 +89,7 @@
    |       [36](https://leetcode.cn/problems/valid-sudoku/)       | [有效的数独](src/leetcode/hash-table/[36]有效的数独/index.ts) |  🟠   |
    |      [49](https://leetcode.cn/problems/group-anagrams/)      | [字母异位词分组](src/leetcode/hash-table/[49]字母异位词分组/index.ts) |  🟠   |
    | [347](https://leetcode.cn/problems/top-k-frequent-elements/) | [前K个高频元素](src/leetcode/hash-table/[347]前K个高频元素/index.ts) |  🟠   |
+   |         [454](https://leetcode.cn/problems/4sum-ii/)         | [四数相加II](src/leetcode/hash-table/[454]四数相加II/index.ts) |  🟠   |
 
 - **字符串**
 
