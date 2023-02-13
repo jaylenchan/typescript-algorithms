@@ -100,6 +100,7 @@
    |    [191](https://leetcode.cn/problems/number-of-1-bits/)     |   [位1的个数](src/leetcode/string/[191]位1的个数/index.ts)   |  🟢   |
    |     [179](https://leetcode.cn/problems/largest-number/)      |      [最大数](src/leetcode/string/[179]最大数/index.ts)      |  🟠   |
    | [151](https://leetcode.cn/problems/reverse-words-in-a-string/) | [反转字符串中的单词](src/leetcode/string/[151]反转字符串中的单词/index.ts) |  🟠   |
+   |  [8](https://leetcode.cn/problems/string-to-integer-atoi/)   | [字符串转换整数Atoi](src/leetcode/string/[8]字符串转换整数Atoi/index.ts) |  🟠   |
 
 - **树**
 
