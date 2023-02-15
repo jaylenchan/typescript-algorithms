@@ -212,6 +212,12 @@
     | [1143](https://leetcode.cn/problems/longest-common-subsequence/) | [最长公共子序列](src/leetcode/dynamic-programming/[1143]最长公共子序列/index.ts) |  🟠   |
     | [96](https://leetcode.cn/problems/unique-binary-search-trees/) | [不同的二叉搜索树](src/leetcode/dynamic-programming/[96]不同的二叉搜索树/index.ts) |  🟠   |
 
+- 贪心
+
+    |                        题号                        |                        题名                        | 难度 |
+    | :------------------------------------------------: | :------------------------------------------------: | :--: |
+    | [252](https://leetcode.cn/problems/meeting-rooms/) | [会议室](src/leetcode/greedy/[252]会议室/index.ts) |  🟢   |
+    
 - **数学**
 
     |                             题号                             |                           题名                           | 难度 |
