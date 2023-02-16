@@ -62,6 +62,7 @@
    |   [24](https://leetcode.cn/problems/swap-nodes-in-pairs/)    | [两两交换链表中的节点](src/leetcode/linked-list/[24]两两交换链表中的节点/index.ts) |  🟠   |
    | [82](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/) | [删除排序链表中的重复元素II](src/leetcode/linked-list/[82]删除排序链表中的重复元素II/index.ts) |  🟠   |
    |  [328](https://leetcode.cn/problems/odd-even-linked-list/)   | [奇偶链表](src/leetcode/linked-list/[328]奇偶链表/index.ts)  |  🟠   |
+   |       [61](https://leetcode.cn/problems/rotate-list/)        |  [旋转链表](src/leetcode/linked-list/[61]旋转链表/index.ts)  |  🟠   |
    | [25](https://leetcode.cn/problems/reverse-nodes-in-k-group/) | [K个一组翻转链表](src/leetcode/linked-list/[25]K个一组翻转链表/index.ts) |  🔴   |
 
 - **栈**
