@@ -1,33 +1,33 @@
-import Array from '../array/impl'
+import Array from '../Array/impl'
 
 import type IStack from './interface'
 
 
 class ArrayStack<T> implements IStack<T> {
 
-  private array: Array<T>
+  private _array: Array<T>
   constructor(capacity?: number) {
-    this.array = new Array(capacity)
+    this._array = new Array(capacity)
   }
 
   public getSize(): number {
-    return this.array.getSize()
+    return this._array.getSize()
   }
 
   public isEmpty(): boolean {
-    return this.array.isEmpty()
+    return this._array.isEmpty()
   }
 
   public push(e: T): void {
-    this.array.addLast(e)
+    this._array.addLast(e)
   }
 
   public pop(): T {
-    return this.array.removeLast()
+    return this._array.removeLast()
   }
 
   public peek(): T {
-    return this.array.getLast()
+    return this._array.getLast()
   }
 
 }

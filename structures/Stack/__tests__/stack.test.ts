@@ -46,9 +46,7 @@ describe('LinkedListStack', () => {
     const stack = new LinkedListStack<number>()
     for (let i = 0; i < 5; i++) {
       stack.push(i)
-      console.log(stack.toString())
     }
     stack.pop()
-    console.log(stack.toString())
   })
 })

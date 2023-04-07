@@ -1,95 +1,95 @@
 export default class SlidingWindow {
 
-  private array: number[]
-  private left: number
-  private right: number
+  private _array: number[]
+  private _left: number
+  private _right: number
   // 存储array当中可能当最大值的元素的索引
-  private maxQueue: number[]
-  private window: number[]
+  private _maxQueue: number[]
+  private _window: number[]
 
-  constructor(array: number[]) {
-    this.array = array
-    this.left = 0
-    this.right = -1
-    this.maxQueue = []
-    this.window = []
+  constructor(_array: number[]) {
+    this._array = _array
+    this._left = 0
+    this._right = -1
+    this._maxQueue = []
+    this._window = []
   }
 
   /** 获取滑动窗口当前最大值 */
   public getCurMaximum(): number {
-    if (this.maxQueue.length == 0) {
-      throw new Error('can not found current maximum in sliding window.')
+    if (this._maxQueue.length == 0) {
+      throw new Error('can not found current maximum in sliding _window.')
     }
 
-    return this.array[this.maxQueue[0]]
+    return this._array[this._maxQueue[0]]
   }
 
   /** 移动滑动窗口右边界 */
   public moveRightPtr(): void {
-    if (this.right < this.array.length) {
-      this.right++
-      this._updateMaxDeque(this.right, true)
+    if (this._right < this._array.length) {
+      this._right++
+      this._updateMaxDeque(this._right, true)
       this._updateWindow()
     }
   }
 
   /** 移动滑动窗口左边界 */
   public moveLeftPtr(): void {
-    if (this.left < this.right) {
-      this._updateMaxDeque(this.left, false)
-      this.left++
+    if (this._left < this._right) {
+      this._updateMaxDeque(this._left, false)
+      this._left++
       this._updateWindow()
     }
   }
 
   /** 获取当前窗口大小 */
   public getCurWindowSize(): number {
-    if (this.left > this.right) return 0
+    if (this._left > this._right) return 0
 
-    return this.right - this.left + 1
+    return this._right - this._left + 1
   }
 
   /** 获取当前窗口 */
   public getWindow(): number[] {
-    return this.window
+    return this._window
   }
 
   /** 是否应该滑动窗口 */
   public stopSliding(): boolean {
-    return this.right == this.array.length
+    return this._right == this._array.length
   }
 
   /** 更新当前窗口 */
   private _updateWindow(): void {
-    this.window = []
+    this._window = []
 
-    for (let i = this.left; i <= this.right; i++) {
-      this.window.push(this.array[i])
+    for (let i = this._left; i <= this._right; i++) {
+      this._window.push(this._array[i])
     }
   }
 
   /** 更新双端队列 */
   private _updateMaxDeque(index: number, isRightPtrMove: boolean): void {
-    const maxQueue = this.maxQueue
+    const _maxQueue = this._maxQueue
 
     if (isRightPtrMove) {
-      if (maxQueue.length == 0) {
-        maxQueue.push(index)
+      if (_maxQueue.length == 0) {
+        _maxQueue.push(index)
         return
       }
 
       while (
-        maxQueue.length > 0 &&
-        this.array[maxQueue[maxQueue.length - 1]] < this.array[index]
+        _maxQueue.length > 0 &&
+        this._array[_maxQueue[_maxQueue.length - 1]] < this._array[index]
       ) {
-        maxQueue.pop()
+        _maxQueue.pop()
       }
 
-      maxQueue.push(index)
+      _maxQueue.push(index)
     } else {
       // 查看当前移动前的left是否是双端队列的头部元素，不是的话，直接跳过不操作双端队列
-      if (index == this.maxQueue[0]) {
-        this.maxQueue.shift()
+      if (index == this._maxQueue[0]) {
+        this._maxQueue.shift()
       }
     }
   }
