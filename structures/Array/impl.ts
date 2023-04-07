@@ -1,5 +1,6 @@
 import IArray from './interface';
-class DArray<E> implements IArray<E> {
+
+class JArray<E> implements IArray<E> {
   private data: E[];
   private size: number;
 
@@ -152,4 +153,4 @@ class DArray<E> implements IArray<E> {
   }
 }
 
-export default DArray;
+export default JArray;

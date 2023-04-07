@@ -77,3 +77,5 @@ class PriorityQueue {
     [this.data[j], this.data[i]] = [this.data[i], this.data[j]];
   }
 }
+
+export default PriorityQueue

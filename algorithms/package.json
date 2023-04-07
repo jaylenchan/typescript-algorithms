@@ -1,5 +1,8 @@
 {
   "name": "@ts-alg/algorithms",
   "version": "1.0.0",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "@ts-alg/structures": "workspace:^1.0.0"
+  }
 }

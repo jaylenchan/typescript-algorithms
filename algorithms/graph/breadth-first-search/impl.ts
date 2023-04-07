@@ -1,4 +1,4 @@
-import { GNode } from '@ts-alg/datastructures/graph/impl';
+import { GNode } from '@ts-alg/structures/Graph/impl';
 
 function breadthFirstSearch(node: GNode): number[] {
   let ans: number[] = []

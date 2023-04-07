@@ -191,3 +191,6 @@ export class LinkedList<V> {
     }))
   }
 }
+
+
+export default LinkedList

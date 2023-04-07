@@ -1,4 +1,4 @@
 packages:
   - 'algorithms'
-  - 'data-structure'
+  - 'structures'
   - 'leetcode'
