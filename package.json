@@ -28,10 +28,14 @@
     "format": "prettier \"./**/*.{html,vue,ts,tsx,json,md}\" --check",
     "format:fix": "pnpm run format --write",
     "lint": "eslint . --ext .ts,.json",
-    "lint:fix": "pnpm run lint --fix"
+    "lint:fix": "pnpm run lint --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:watch-coverage": "vitest --coverage"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged",
+    "pre-commit": "npx lint-staged",
     "commit-msg": "npx commitlint --edit"
   },
   "lint-staged": {
@@ -41,6 +45,7 @@
     "*.ts": [
       "prettier --write",
       "eslint --fix"
-    ]
+    ],
+    "*.test.ts": "pnpm test"
   }
 }
