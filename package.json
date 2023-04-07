@@ -3,34 +3,16 @@
   "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
-    "@types/chai": "^4.3.4",
-    "@types/mocha": "^10.0.1",
     "@types/node": "*",
-    "chai": "^4.3.7",
     "husky": "^8.0.0",
-    "mocha": "^10.1.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vite-tsconfig-paths": "^4.0.8",
+    "vitest": "^0.29.8"
   },
   "scripts": {
-    "prepare": "husky install",
-    "test": "mocha -r ts-node/register -r tsconfig-paths/register src/**/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:binary-search": "mocha -r ts-node/register -r tsconfig-paths/register src/**/binary-search/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:insertion-sort": "mocha -r ts-node/register -r tsconfig-paths/register src/**/insertion-sort/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:selection-sort": "mocha -r ts-node/register -r tsconfig-paths/register src/**/selection-sort/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:merge-sort": "mocha -r ts-node/register -r tsconfig-paths/register src/**/merge-sort/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:quick-sort": "mocha -r ts-node/register -r tsconfig-paths/register src/**/quick-sort/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:array": "mocha -r ts-node/register -r tsconfig-paths/register src/**/array/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:linkedlist": "mocha -r ts-node/register -r tsconfig-paths/register src/**/linked-list/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:binary-search-tree": "mocha -r ts-node/register -r tsconfig-paths/register src/**/binary-search-tree/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:stack": "mocha -r ts-node/register -r tsconfig-paths/register src/**/stack/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:queue": "mocha -r ts-node/register -r tsconfig-paths/register src/**/queue/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:map": "mocha -r ts-node/register -r tsconfig-paths/register src/**/map/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:set": "mocha -r ts-node/register -r tsconfig-paths/register src/**/set/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:heap": "mocha -r ts-node/register -r tsconfig-paths/register src/**/heap/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:trie": "mocha -r ts-node/register -r tsconfig-paths/register src/**/trie/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log",
-    "test:segment-tree": "mocha -r ts-node/register -r tsconfig-paths/register src/**/segment-tree/test/*.test.ts --timeout 300000 > stdout.log 2> stderr.log"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "**/*.{js,jsx,tsx,ts,less,md,json}": [
