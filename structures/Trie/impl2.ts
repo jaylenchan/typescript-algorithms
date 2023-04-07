@@ -1,4 +1,4 @@
-import { ASCIndex } from 'helper/util'
+import { ASCIndex } from '../../helper/util'
 
 import type ITrie from './interface'
 
@@ -28,18 +28,18 @@ class TrieNode {
 
 export default class Trie implements ITrie {
 
-  private root: TrieNode
+  private _root: TrieNode
 
   constructor() {
-    this.root = new TrieNode()
+    this._root = new TrieNode()
   }
 
-  getSize(): number {
-    return this.root.pass
+  public getSize(): number {
+    return this._root.pass
   }
 
-  insert(word: string): void {
-    let node = this.root
+  public insert(word: string): void {
+    let node = this._root
     // 可以假想，一开始加入的是一个空串。
     node.pass += 1 // 从根节点出发，pass + 1
 
@@ -63,10 +63,10 @@ export default class Trie implements ITrie {
   }
 
   // 查询一个word之前加入过几次Trie
-  search(word: string): number {
+  public search(word: string): number {
     if (word == null) return 0
 
-    let node = this.root
+    let node = this._root
 
     for (const letter of word) {
       /**
@@ -84,12 +84,12 @@ export default class Trie implements ITrie {
   }
 
   // 所有加入的字符串中，有多少个字符串是以prefix作为前缀的
-  prefixNumber(prefix: string): number {
+  public prefixNumber(prefix: string): number {
     if (prefix == null) {
       return 0
     }
 
-    let node = this.root
+    let node = this._root
 
     for (const letter of prefix) {
       if (node.nexts[ASCIndex(letter)] == null) {
@@ -102,10 +102,10 @@ export default class Trie implements ITrie {
     return node.pass
   }
 
-  contains(word: string): boolean {
+  public contains(word: string): boolean {
     if (word == null) return false
 
-    const node = this.root
+    const node = this._root
 
     for (const letter of word) {
       if (node.nexts[ASCIndex(letter)] == null) {
@@ -116,14 +116,14 @@ export default class Trie implements ITrie {
     return node.end > 0
   }
 
-  isPrefix(prefix: string): boolean {
+  public isPrefix(prefix: string): boolean {
     return this.prefixNumber(prefix) > 0
   }
 
-  delete(word: string): void {
+  public delete(word: string): void {
     // 确认一个字符串加入过Trie删除操作才有意义
     if (this.contains(word)) {
-      let node = this.root
+      let node = this._root
       node.pass -= 1
 
       for (const letter of word) {
@@ -135,6 +135,7 @@ export default class Trie implements ITrie {
         if (node.nexts[ASCIndex(letter)].pass == 0) {
           // 其实能进入这个逻辑的情况就是比如word的所有字符节点在Trie就加入了一次，那么到w的时候，根本不需要ord的遍历，直接将w置空即可
           let delNode: TrieNode | null = node.nexts[ASCIndex(letter)]
+          // eslint-disable-next-line unused-imports/no-unused-vars
           delNode = null
           return
         }
