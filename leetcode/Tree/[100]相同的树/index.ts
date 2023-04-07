@@ -6,7 +6,7 @@
 
 // @lc code=start
 
-import type TreeNode from '../../Tree/TreeNode'
+import type TreeNode from '../TreeNode'
 
 
 export default isSameTree
