@@ -31,7 +31,7 @@ function _spiralOrder(
   left: number,
   right: number,
   result: number[]
-) {
+): void {
   const firstRow = top
   const firstCol = left
   const lastRow = down
@@ -71,3 +71,5 @@ function _spiralOrder(
 // 思路：考虑矩阵宏观代码调度，不要陷入局部坐标变换怎么跑的。
 
 // @lc code=end
+
+export default spiralOrder

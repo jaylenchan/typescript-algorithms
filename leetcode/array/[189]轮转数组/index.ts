@@ -10,7 +10,10 @@
  */
 function rotate(nums: number[], k: number): void {
   for (let i = 0; i < k; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     nums.unshift(nums.pop()!)
   }
 }
 // @lc code=end
+
+export default rotate

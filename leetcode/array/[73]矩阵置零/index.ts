@@ -66,3 +66,5 @@ function _setZeroes(matrix: number[][], curRow: number, curCol: number): void {
   }
 }
 // @lc code=end
+
+export default setZeroes

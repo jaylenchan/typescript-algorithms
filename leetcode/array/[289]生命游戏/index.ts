@@ -75,3 +75,5 @@ function inArea(board: number[][], row: number, col: number): boolean {
  * 2. 通过help辅助矩阵直接修改board对应细胞状态
  */
 // @lc code=end
+
+export default gameOfLife

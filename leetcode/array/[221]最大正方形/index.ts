@@ -60,3 +60,5 @@ function inArea(matrix: string[][], row: number, col: number): boolean {
  * 最后我们返回最长边的平方就是正方形面积。
  */
 // @lc code=end
+
+export default maximalSquare

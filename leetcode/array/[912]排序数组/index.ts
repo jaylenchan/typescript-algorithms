@@ -59,3 +59,5 @@ function swap(nums: number[], i: number, j: number): void {
  * 思路：三路随机快排
  */
 // @lc code=end
+
+export default sortArray

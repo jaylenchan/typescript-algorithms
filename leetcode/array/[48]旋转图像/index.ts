@@ -29,7 +29,7 @@ function _rotate(
   left: number,
   down: number,
   right: number
-) {
+): void {
   const groupCount = right - left
 
   for (let i = 0; i < groupCount; i++) {
@@ -48,3 +48,5 @@ function _rotate(
 
 // 思路：一圈一圈地看，每次都处理最外层一圈，然后不断缩小圈圈
 // @lc code=end
+
+export default rotate

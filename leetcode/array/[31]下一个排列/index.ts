@@ -55,3 +55,5 @@ function nextPermutation(nums: number[]): void {
  */
 
 // @lc code=end
+
+export default nextPermutation
