@@ -14,14 +14,12 @@
         "-r",
         "${workspaceFolder}/node_modules/tsconfig-paths/register"
       ],
-      "args": [
-        "${relativeFile}"
-      ],
+      "args": ["${relativeFile}"],
       "cwd": "${workspaceFolder}",
       "env": {
         "NODE_ENV": "development",
         "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
-      },
+      }
     }
   ]
 }

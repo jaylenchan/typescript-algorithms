@@ -3,7 +3,7 @@
  *
  * [47] 全排列 II
  */
-export { permuteUnique };
+export { permuteUnique }
 // @lc code=start
 function generatePermutaion(
   nums: number[],
@@ -13,34 +13,34 @@ function generatePermutaion(
   result: number[][]
 ): void {
   if (selectedNum == nums.length) {
-    result.push([...path]);
-    return;
+    result.push([...path])
+    return
   }
 
   for (let i = 0; i < nums.length; i++) {
-    if (selectedSet.has(i)) continue;
+    if (selectedSet.has(i)) continue
 
-    path.push(nums[i]);
-    selectedSet.add(i);
+    path.push(nums[i])
+    selectedSet.add(i)
 
-    generatePermutaion(nums, selectedNum + 1, selectedSet, path, result);
+    generatePermutaion(nums, selectedNum + 1, selectedSet, path, result)
 
-    path.pop();
-    selectedSet.delete(i);
+    path.pop()
+    selectedSet.delete(i)
 
-    while (nums[i + 1] == nums[i]) i++;
+    while (nums[i + 1] == nums[i]) i++
   }
 }
 
 function permuteUnique(nums: number[]): number[][] {
-  const path: number[] = [];
-  const result: number[][] = [];
-  const set = new Set<number>();
+  const path: number[] = []
+  const result: number[][] = []
+  const set = new Set<number>()
 
-  nums.sort((a, b) => a - b);
-  generatePermutaion(nums, 0, set, path, result);
+  nums.sort((a, b) => a - b)
+  generatePermutaion(nums, 0, set, path, result)
 
-  return result;
+  return result
 }
 // @lc code=end
 

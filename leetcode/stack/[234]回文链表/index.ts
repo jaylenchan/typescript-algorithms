@@ -18,23 +18,23 @@
  */
 
 function isPalindrome(head: ListNode | null): boolean {
-  if (head == null) return false;
-  const stack = [];
-  let cur = head;
+  if (head == null) return false
+  const stack = []
+  let cur = head
 
   while (cur != null) {
-    stack.push(cur);
-    cur = cur.next;
+    stack.push(cur)
+    cur = cur.next
   }
 
   while (head != null) {
-    const node = stack.pop();
+    const node = stack.pop()
     if (node.val != head.val) {
-      return false;
+      return false
     }
-    head = head.next;
+    head = head.next
   }
 
-  return true;
+  return true
 }
 // @lc code=end

@@ -3,8 +3,10 @@
  *
  * [101] 对称二叉树
  */
-import TreeNode from '../TreeNode';
-export default isSymmetric;
+import type TreeNode from '../TreeNode'
+
+
+export default isSymmetric
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -21,21 +23,21 @@ export default isSymmetric;
  */
 
 function isSymmetric(root: TreeNode | null): boolean {
-  if (root == null) return true;
-  if (root.left == null && root.right == null) return true;
+  if (root == null) return true
+  if (root.left == null && root.right == null) return true
 
-  return traverse(root, root);
+  return traverse(root, root)
 }
 
 function traverse(t1: TreeNode | null, t2: TreeNode | null): boolean {
-  if (t1 == null && t2 == null) return true;
-  if (t1 == null || t2 == null) return false;
-  if (t1.val != t2.val) return false;
+  if (t1 == null && t2 == null) return true
+  if (t1 == null || t2 == null) return false
+  if (t1.val != t2.val) return false
 
   return (
     t1.val == t2.val &&
     traverse(t1.left, t2.right) &&
     traverse(t1.right, t2.left)
-  );
+  )
 }
 // @lc code=end

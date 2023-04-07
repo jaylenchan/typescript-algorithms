@@ -3,36 +3,36 @@
  *
  * [739] 每日温度
  */
-export default dailyTemperatures;
+export default dailyTemperatures
 // @lc code=start
 function dailyTemperatures(temperatures: number[]): number[] {
-  if (temperatures.length == 0) return [];
+  if (temperatures.length == 0) return []
 
   // 单调递减栈
-  const stack: number[] = [];
-  const temSize = temperatures.length;
-  let ans: number[] = [];
+  const stack: number[] = []
+  const temSize = temperatures.length
+  const ans: number[] = []
 
   // 枚举每一天的温度
   for (let i = 0; i < temSize; i++) {
     if (stack.length == 0) {
-      stack.push(i);
+      stack.push(i)
     } else {
       while (temperatures[i] > temperatures[stack[stack.length - 1]]) {
-        const target = stack.pop()!;
-        ans[target] = i - target;
+        const target = stack.pop()!
+        ans[target] = i - target
       }
 
-      stack.push(i);
+      stack.push(i)
     }
   }
 
   while (stack.length > 0) {
-    const target = stack.pop()!;
-    ans[target] = 0;
+    const target = stack.pop()!
+    ans[target] = 0
   }
 
-  return ans;
+  return ans
 }
 
 /**

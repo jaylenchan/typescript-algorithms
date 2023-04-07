@@ -1,7 +1,7 @@
 export function swap(arr: number[], i: number, j: number) {
-  const temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
+  const temp = arr[i]
+  arr[i] = arr[j]
+  arr[j] = temp
 }
 
 /**
@@ -10,7 +10,11 @@ export function swap(arr: number[], i: number, j: number) {
  * - 例子：`ASCIndex('b') = 1` 因为`b`在`a`后1位（`a`是0）
  */
 export function ASCIndex(letter: string): number {
-  if (letter.charCodeAt(0) - 'a'.charCodeAt(0) < 0 || letter.charCodeAt(0) - 'a'.charCodeAt(0) > 25) return 0
+  if (
+    letter.charCodeAt(0) - 'a'.charCodeAt(0) < 0 ||
+    letter.charCodeAt(0) - 'a'.charCodeAt(0) > 25
+  )
+    return 0
 
   return letter.charCodeAt(0) - 'a'.charCodeAt(0)
 }

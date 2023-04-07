@@ -3,7 +3,7 @@
  *
  * [341] 扁平化嵌套列表迭代器
  */
-export { NestedIterator };
+export { NestedIterator }
 // @lc code=start
 /**
  * // This is the interface that allows for creating nested lists.
@@ -45,34 +45,36 @@ export { NestedIterator };
  */
 
 class NestedIterator {
-  private queue: number[];
+
+  private queue: number[]
 
   constructor(nestedList: NestedInteger[]) {
-    this.queue = this.flatten(nestedList);
+    this.queue = this.flatten(nestedList)
   }
 
   // 扁平化嵌套数组，返回扁平化后的数组
   private flatten(list: NestedInteger[]): number[] {
-    let level: number[] = [];
+    let level: number[] = []
     for (let i = 0; i < list.length; i++) {
-      const isInteger = list[i].isInteger();
+      const isInteger = list[i].isInteger()
       if (isInteger) {
-        level.push(list[i].getInteger());
+        level.push(list[i].getInteger())
       } else {
-        level = level.concat(this.flatten(list[i].getList()));
+        level = level.concat(this.flatten(list[i].getList()))
       }
     }
-    return level;
+    return level
   }
 
   hasNext(): boolean {
-    return this.queue.length > 0;
+    return this.queue.length > 0
   }
 
   next(): number {
-    if (this.queue.length == 0) return -1;
-    return this.queue.shift()!;
+    if (this.queue.length == 0) return -1
+    return this.queue.shift()!
   }
+
 }
 
 /**

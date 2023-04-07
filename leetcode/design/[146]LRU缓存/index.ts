@@ -6,133 +6,139 @@
 
 // @lc code=start
 class DNode {
-  public key: number;
-  public value: number;
-  public last: DNode | null;
-  public next: DNode | null;
+
+  public key: number
+  public value: number
+  public last: DNode | null
+  public next: DNode | null
 
   constructor(key: number, value: number, last?: DNode, next?: DNode) {
-    this.key = key;
-    this.value = value;
-    this.last = last ?? null;
-    this.next = next ?? null;
+    this.key = key
+    this.value = value
+    this.last = last ?? null
+    this.next = next ?? null
   }
+
 }
 
 class DoubleLikedList {
-  private dummyHead: DNode;
-  private dummyTail: DNode;
+
+  private dummyHead: DNode
+  private dummyTail: DNode
 
   constructor() {
-    this.dummyHead = new DNode(-1, -1);
-    this.dummyTail = new DNode(-1, -1);
+    this.dummyHead = new DNode(-1, -1)
+    this.dummyTail = new DNode(-1, -1)
 
-    this.dummyHead.next = this.dummyTail;
-    this.dummyTail.last = this.dummyHead;
+    this.dummyHead.next = this.dummyTail
+    this.dummyTail.last = this.dummyHead
   }
 
   add(node: DNode): void {
-    const oldLast = this.dummyTail.last!;
+    const oldLast = this.dummyTail.last!
 
-    node.next = this.dummyTail;
-    this.dummyTail.last = node;
+    node.next = this.dummyTail
+    this.dummyTail.last = node
 
-    node.last = oldLast;
-    oldLast.next = node;
+    node.last = oldLast
+    oldLast.next = node
   }
 
   removeFirst(): DNode {
-    const node = this.dummyHead.next!;
+    const node = this.dummyHead.next!
 
-    this.dummyHead.next = node.next;
-    node.next!.last = this.dummyHead;
+    this.dummyHead.next = node.next
+    node.next!.last = this.dummyHead
 
-    node.last = null;
-    node.next = null;
+    node.last = null
+    node.next = null
 
-    return node;
+    return node
   }
 
   remove(node: DNode): DNode {
-    const last = node.last!;
-    const next = node.next!;
+    const last = node.last!
+    const next = node.next!
 
-    last.next = next;
-    next.last = last;
+    last.next = next
+    next.last = last
 
-    node.last = null;
-    node.next = null;
+    node.last = null
+    node.next = null
 
-    return node;
+    return node
   }
 
   removeToLast(node: DNode): void {
-    this.remove(node); // 需要先将node隔离开整条链表，否则会直接把node为头节点的链表一起带起来
-    this.add(node);
+    this.remove(node) // 需要先将node隔离开整条链表，否则会直接把node为头节点的链表一起带起来
+    this.add(node)
   }
 
   toString(): string {
-    let str = '';
-    let cur = this.dummyHead;
+    let str = ''
+    let cur = this.dummyHead
 
     while (cur.next != null) {
-      str += `${cur.key}->`;
-      cur = cur.next;
+      str += `${cur.key}->`
+      cur = cur.next
     }
 
-    str += cur.key;
+    str += cur.key
 
-    return str;
+    return str
   }
+
 }
 
 class LRUCache {
-  private capacity: number;
-  private map: Map<number, DNode>;
-  private list: DoubleLikedList;
+
+  private capacity: number
+  private map: Map<number, DNode>
+  private list: DoubleLikedList
 
   constructor(capacity: number) {
-    this.capacity = capacity;
-    this.map = new Map<number, DNode>();
-    this.list = new DoubleLikedList();
+    this.capacity = capacity
+    this.map = new Map<number, DNode>()
+    this.list = new DoubleLikedList()
   }
 
   get(key: number): number {
-    if (!this.map.has(key)) return -1;
+    if (!this.map.has(key)) return -1
 
-    const node = this.map.get(key)!;
+    const node = this.map.get(key)!
 
-    this.list.removeToLast(node);
+    this.list.removeToLast(node)
 
-    return node.value;
+    return node.value
   }
 
   put(key: number, value: number): void {
     if (this.map.has(key)) {
-      return this.set(key, value);
+      return this.set(key, value)
     }
 
-    this.add(key, value);
+    this.add(key, value)
   }
 
   set(key: number, value: number): void {
-    const node = this.map.get(key)!;
+    const node = this.map.get(key)!
 
-    node.value = value;
-    this.list.removeToLast(node);
+    node.value = value
+    this.list.removeToLast(node)
   }
 
   add(key: number, value: number): void {
-    const node = new DNode(key, value);
+    const node = new DNode(key, value)
 
     if (this.capacity == this.map.size) {
-      const delNode = this.list.removeFirst();
-      this.map.delete(delNode.key);
+      const delNode = this.list.removeFirst()
+      this.map.delete(delNode.key)
     }
-    this.list.add(node);
-    this.list.removeToLast(node);
-    this.map.set(key, node);
+    this.list.add(node)
+    this.list.removeToLast(node)
+    this.map.set(key, node)
   }
+
 }
 
 /**

@@ -6,7 +6,7 @@
 
 // @lc code=start
 function romanToInt(s: string): number {
-  const numMap = new Map<string, number>();
+  const numMap = new Map<string, number>()
 
   const nums: [string, number][] = [
     ['I', 1],
@@ -21,28 +21,28 @@ function romanToInt(s: string): number {
     ['XL', 40],
     ['XC', 90],
     ['CD', 400],
-    ['CM', 900]
-  ];
+    ['CM', 900],
+  ]
 
   for (let i = 0; i < nums.length; i++) {
-    const [roman, int] = nums[i];
-    numMap.set(roman, int);
+    const [roman, int] = nums[i]
+    numMap.set(roman, int)
   }
 
-  let j = 0;
-  let res = 0;
+  let j = 0
+  let res = 0
   while (j < s.length) {
     if (j + 1 < s.length && numMap.get(s[j + 1])! > numMap.get(s[j])!) {
-      res += numMap.get(`${s[j]}${s[j + 1]}`)!;
-      j += 2;
+      res += numMap.get(`${s[j]}${s[j + 1]}`)!
+      j += 2
     } else {
-      res += numMap.get(`${s[j]}`)!;
-      j += 1;
+      res += numMap.get(`${s[j]}`)!
+      j += 1
     }
   }
 
-  return res;
+  return res
 }
 
-romanToInt('LVIII');
+romanToInt('LVIII')
 // @lc code=end

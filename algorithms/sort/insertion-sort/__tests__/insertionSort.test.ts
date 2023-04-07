@@ -1,9 +1,10 @@
-import InsertionSortTest from './InsertionSortTest';
+import InsertionSortTest from './InsertionSortTest'
+
 
 describe('Insertion Sort', () => {
   it('Insertion Sort Test', () => {
-    const test = new InsertionSortTest();
+    const test = new InsertionSortTest()
 
-    test.runTest();
-  });
-});
+    test.runTest()
+  })
+})

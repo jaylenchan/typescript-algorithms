@@ -4,8 +4,10 @@
  * [199] 二叉树的右视图
  */
 
-import TreeNode from '../TreeNode';
-export default rightSideView;
+import type TreeNode from '../TreeNode'
+
+
+export default rightSideView
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -22,29 +24,29 @@ export default rightSideView;
  */
 
 function rightSideView(root: TreeNode | null): number[] {
-  if (root == null) return [];
+  if (root == null) return []
 
-  const queue: TreeNode[] = [];
-  const result: number[] = [];
+  const queue: TreeNode[] = []
+  const result: number[] = []
 
-  queue.push(root);
+  queue.push(root)
 
   while (queue.length > 0) {
-    const size = queue.length;
+    const size = queue.length
     for (let i = 0; i < size; i++) {
-      const node = queue.shift()!;
+      const node = queue.shift()!
       if (i == size - 1) {
-        result.push(node.val);
+        result.push(node.val)
       }
       if (node.left) {
-        queue.push(node.left);
+        queue.push(node.left)
       }
       if (node.right) {
-        queue.push(node.right);
+        queue.push(node.right)
       }
     }
   }
 
-  return result;
+  return result
 }
 // @lc code=end

@@ -6,18 +6,18 @@
 
 // @lc code=start
 function isHappy(n: number): boolean {
-  const set = new Set<number>();
-  let sum = getSum(n);
+  const set = new Set<number>()
+  let sum = getSum(n)
 
   while (sum != 1) {
     if (!set.has(sum)) {
-      set.add(sum);
-      sum = getSum(sum);
+      set.add(sum)
+      sum = getSum(sum)
     } else {
-      return false;
+      return false
     }
   }
-  return true;
+  return true
 }
 
 /**
@@ -32,11 +32,11 @@ function isHappy(n: number): boolean {
  *       n = 8 / 10 = 0 退出循环
  */
 function getSum(n: number): number {
-  let sum = 0;
+  let sum = 0
   while (n > 0) {
-    sum += Math.pow(n % 10, 2);
-    n = Math.floor(n / 10);
+    sum += Math.pow(n % 10, 2)
+    n = Math.floor(n / 10)
   }
-  return sum;
+  return sum
 }
 // @lc code=end

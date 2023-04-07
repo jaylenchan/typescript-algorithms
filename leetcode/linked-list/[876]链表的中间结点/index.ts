@@ -20,17 +20,17 @@
 function middleNode(head: ListNode | null): ListNode | null {
   // 处理 0 | 1个节点的情况
   if (head == null || head.next == null) {
-    return head;
+    return head
   }
   // 处理至少2个节点的情况
-  let slow = head.next;
-  let fast = head.next;
+  let slow = head.next
+  let fast = head.next
 
   while (fast.next != null && fast.next.next != null) {
-    slow = slow.next!;
-    fast = fast.next.next;
+    slow = slow.next!
+    fast = fast.next.next
   }
 
-  return slow;
+  return slow
 }
 // @lc code=end

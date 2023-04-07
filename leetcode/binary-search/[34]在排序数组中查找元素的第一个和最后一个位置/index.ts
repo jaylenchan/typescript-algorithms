@@ -6,11 +6,11 @@
 
 // @lc code=start
 function searchRange(nums: number[], target: number): number[] {
-  const result = [-1, -1];
-  _searchStart(nums, 0, nums.length - 1, target, result);
-  _searchEnd(nums, 0, nums.length - 1, target, result);
+  const result = [-1, -1]
+  _searchStart(nums, 0, nums.length - 1, target, result)
+  _searchEnd(nums, 0, nums.length - 1, target, result)
 
-  return result;
+  return result
 }
 
 function _searchStart(
@@ -20,22 +20,22 @@ function _searchStart(
   target: number,
   result: number[]
 ): number {
-  if (left > right) return result[0];
+  if (left > right) return result[0]
 
-  let mid = left + Math.floor((right - left) >> 1);
+  const mid = left + Math.floor((right - left) >> 1)
 
   if (nums[mid] == target) {
-    result[0] = mid;
+    result[0] = mid
   }
 
   if (nums[mid] >= target) {
     //  通过nums[mid] >= target 使得能够在找到nums[mid] = target后，继续能够向左找
-    result[0] = _searchStart(nums, left, mid - 1, target, result);
+    result[0] = _searchStart(nums, left, mid - 1, target, result)
   } else {
-    result[0] = _searchStart(nums, mid + 1, right, target, result);
+    result[0] = _searchStart(nums, mid + 1, right, target, result)
   }
 
-  return result[0];
+  return result[0]
 }
 
 function _searchEnd(
@@ -45,21 +45,21 @@ function _searchEnd(
   target: number,
   result: number[]
 ): number {
-  if (left > right) return result[1];
+  if (left > right) return result[1]
 
-  let mid = left + Math.floor((right - left) >> 1);
+  const mid = left + Math.floor((right - left) >> 1)
 
   if (nums[mid] == target) {
-    result[1] = mid;
+    result[1] = mid
   }
 
   if (nums[mid] <= target) {
     //  通过nums[mid] <= target 使得能够在找到nums[mid] = target后，继续能够向右找
-    result[1] = _searchEnd(nums, mid + 1, right, target, result);
+    result[1] = _searchEnd(nums, mid + 1, right, target, result)
   } else {
-    result[1] = _searchEnd(nums, left, mid - 1, target, result);
+    result[1] = _searchEnd(nums, left, mid - 1, target, result)
   }
 
-  return result[1];
+  return result[1]
 }
 // @lc code=end

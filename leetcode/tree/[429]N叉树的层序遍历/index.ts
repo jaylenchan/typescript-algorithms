@@ -3,8 +3,10 @@
  *
  * [429] N 叉树的层序遍历
  */
-import Node from '../Node';
-export default levelOrder;
+import type Node from '../Node'
+
+
+export default levelOrder
 // @lc code=start
 /**
  * Definition for node.
@@ -19,29 +21,29 @@ export default levelOrder;
  */
 
 function levelOrder(root: Node | null): number[][] {
-  if (root == null) return [];
+  if (root == null) return []
 
-  const queue: Node[] = [];
-  const result: number[][] = [];
+  const queue: Node[] = []
+  const result: number[][] = []
 
-  queue.push(root);
+  queue.push(root)
 
   while (queue.length > 0) {
-    const curLevel: number[] = [];
-    const size = queue.length;
+    const curLevel: number[] = []
+    const size = queue.length
 
     for (let i = 0; i < size; i++) {
-      const curNode = queue.shift()!;
-      curLevel.push(curNode.val);
+      const curNode = queue.shift()!
+      curLevel.push(curNode.val)
 
-      curNode.children.forEach((child) => {
-        queue.push(child);
-      });
+      curNode.children.forEach(child => {
+        queue.push(child)
+      })
     }
 
-    result.push(curLevel);
+    result.push(curLevel)
   }
 
-  return result;
+  return result
 }
 // @lc code=end

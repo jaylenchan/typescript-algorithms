@@ -6,60 +6,62 @@
 
 // @lc code=start
 class MyCircularQueue {
-  private data: number[];
-  private capacity: number;
-  private size: number;
-  private head: number;
-  private tail: number;
+
+  private data: number[]
+  private capacity: number
+  private size: number
+  private head: number
+  private tail: number
 
   constructor(k: number) {
-    this.data = new Array(k).fill(Infinity);
-    this.capacity = k;
-    this.size = 0;
-    this.head = 0;
-    this.tail = 0;
+    this.data = new Array(k).fill(Infinity)
+    this.capacity = k
+    this.size = 0
+    this.head = 0
+    this.tail = 0
   }
 
   enQueue(value: number): boolean {
-    if (this.isFull()) return false;
+    if (this.isFull()) return false
 
-    this.data[this.tail] = value;
-    this.tail = ++this.tail == this.capacity ? 0 : this.tail;
-    this.size++;
+    this.data[this.tail] = value
+    this.tail = ++this.tail == this.capacity ? 0 : this.tail
+    this.size++
 
-    return true;
+    return true
   }
 
   deQueue(): boolean {
-    if (this.isEmpty()) return false;
+    if (this.isEmpty()) return false
 
-    this.head = ++this.head == this.capacity ? 0 : this.head;
-    this.size--;
+    this.head = ++this.head == this.capacity ? 0 : this.head
+    this.size--
 
-    return true;
+    return true
   }
 
   Front(): number {
-    if (this.isEmpty()) return -1;
+    if (this.isEmpty()) return -1
 
-    return this.data[this.head];
+    return this.data[this.head]
   }
 
   Rear(): number {
-    if (this.isEmpty()) return -1;
+    if (this.isEmpty()) return -1
 
-    const index = this.tail - 1 == -1 ? this.capacity - 1 : this.tail - 1;
+    const index = this.tail - 1 == -1 ? this.capacity - 1 : this.tail - 1
 
-    return this.data[index];
+    return this.data[index]
   }
 
   isEmpty(): boolean {
-    return this.size == 0;
+    return this.size == 0
   }
 
   isFull(): boolean {
-    return this.size == this.capacity;
+    return this.size == this.capacity
   }
+
 }
 
 /**

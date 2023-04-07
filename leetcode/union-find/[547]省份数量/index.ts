@@ -3,73 +3,75 @@
  *
  * [547] 省份数量
  */
-export { findCircleNum };
+export { findCircleNum }
 // @lc code=start
 class UnionFind {
-  private parent: number[];
-  private size: number[];
-  public sets: number;
+
+  private parent: number[]
+  private size: number[]
+  public sets: number
 
   constructor(size: number) {
-    this.parent = [];
-    this.size = [];
-    this.sets = size;
+    this.parent = []
+    this.size = []
+    this.sets = size
 
     for (let i = 0; i < size; i++) {
-      this.parent[i] = i;
-      this.size[i] = 1;
+      this.parent[i] = i
+      this.size[i] = 1
     }
   }
 
   find(i: number): number {
-    let hi = 0;
-    const help = [];
+    let hi = 0
+    const help = []
 
     while (i != this.parent[i]) {
-      help[hi++] = i;
-      i = this.parent[i];
+      help[hi++] = i
+      i = this.parent[i]
     }
 
     while (hi >= 0) {
-      this.parent[help[--hi]] = i;
+      this.parent[help[--hi]] = i
     }
 
-    return i;
+    return i
   }
 
   union(i: number, j: number): void {
-    const rootI = this.find(i);
-    const rootJ = this.find(j);
+    const rootI = this.find(i)
+    const rootJ = this.find(j)
 
     if (rootI != rootJ) {
-      const ISetSize = this.size[rootI];
-      const JSetSize = this.size[rootJ];
+      const ISetSize = this.size[rootI]
+      const JSetSize = this.size[rootJ]
 
-      const big = ISetSize > JSetSize ? rootI : rootJ;
-      const small = big == rootI ? rootJ : rootI;
+      const big = ISetSize > JSetSize ? rootI : rootJ
+      const small = big == rootI ? rootJ : rootI
 
-      this.parent[small] = big;
-      this.size[big] = ISetSize + JSetSize;
-      this.sets--;
+      this.parent[small] = big
+      this.size[big] = ISetSize + JSetSize
+      this.sets--
     }
   }
+
 }
 
 function findCircleNum(isConnected: number[][]): number {
-  if (isConnected.length == 0) return 0;
+  if (isConnected.length == 0) return 0
 
-  const size = isConnected.length;
-  const uf = new UnionFind(size);
+  const size = isConnected.length
+  const uf = new UnionFind(size)
 
   for (let i = 0; i < size; i++) {
     for (let j = i + 1; j < size; j++) {
       if (isConnected[i][j] == 1) {
-        uf.union(i, j);
+        uf.union(i, j)
       }
     }
   }
 
-  return uf.sets;
+  return uf.sets
 }
 
 /**

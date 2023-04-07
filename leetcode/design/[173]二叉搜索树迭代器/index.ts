@@ -3,7 +3,7 @@
  *
  * [173] 二叉搜索树迭代器
  */
-export { BSTIterator };
+export { BSTIterator }
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -20,30 +20,32 @@ export { BSTIterator };
  */
 
 class BSTIterator {
-  private queue: number[];
+
+  private queue: number[]
 
   constructor(root: TreeNode | null) {
-    this.queue = [];
-    this.traverse(root);
+    this.queue = []
+    this.traverse(root)
   }
 
   next(): number {
-    if (this.queue.length == 0) return -1;
+    if (this.queue.length == 0) return -1
 
-    return this.queue.shift()!;
+    return this.queue.shift()!
   }
 
   hasNext(): boolean {
-    return this.queue.length > 0;
+    return this.queue.length > 0
   }
 
   traverse(root: TreeNode | null): void {
-    if (root == null) return;
+    if (root == null) return
 
-    this.traverse(root.left);
-    this.queue.push(root.val);
-    this.traverse(root.right);
+    this.traverse(root.left)
+    this.queue.push(root.val)
+    this.traverse(root.right)
   }
+
 }
 
 /**

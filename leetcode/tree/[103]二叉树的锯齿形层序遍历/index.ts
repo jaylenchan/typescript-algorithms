@@ -4,8 +4,10 @@
  * [103] 二叉树的锯齿形层序遍历
  */
 
-import TreeNode from '../TreeNode';
-export default zigzagLevelOrder;
+import type TreeNode from '../TreeNode'
+
+
+export default zigzagLevelOrder
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -22,38 +24,38 @@ export default zigzagLevelOrder;
  */
 
 function zigzagLevelOrder(root: TreeNode | null): number[][] {
-  if (root == null) return [];
+  if (root == null) return []
 
-  const queue: TreeNode[] = [];
-  const reuslt: number[][] = [];
-  let index = 0;
+  const queue: TreeNode[] = []
+  const reuslt: number[][] = []
+  let index = 0
 
-  queue.push(root);
+  queue.push(root)
 
   while (queue.length > 0) {
-    const size = queue.length;
-    const level: number[] = [];
-    index += 1;
+    const size = queue.length
+    const level: number[] = []
+    index += 1
 
     for (let i = 0; i < size; i++) {
-      const node = queue.shift()!;
+      const node = queue.shift()!
       if (index % 2 == 0) {
-        level.unshift(node.val);
+        level.unshift(node.val)
       } else {
-        level.push(node.val);
+        level.push(node.val)
       }
 
       if (node.left) {
-        queue.push(node.left);
+        queue.push(node.left)
       }
 
       if (node.right) {
-        queue.push(node.right);
+        queue.push(node.right)
       }
     }
-    reuslt.push(level);
+    reuslt.push(level)
   }
 
-  return reuslt;
+  return reuslt
 }
 // @lc code=end

@@ -6,12 +6,12 @@
 
 // @lc code=start
 function reverseWords(s: string): string {
-  const strs = s.split(' ');
+  const strs = s.split(' ')
 
   return strs
     .reduceRight((acc, cur) => `${acc} ${cur}`)
     .trim()
-    .replace(/\s+/g, ' ');
+    .replace(/\s+/g, ' ')
 }
 // @lc code=end
 

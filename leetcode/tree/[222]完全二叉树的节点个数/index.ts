@@ -6,22 +6,24 @@
 
 // @lc code=start
 
-import TreeNode from '../TreeNode';
-export default countNodes;
+import type TreeNode from '../TreeNode'
+
+
+export default countNodes
 
 function countNodes(root: TreeNode | null): number {
-  let result = 0;
+  let result = 0
 
   function _preorderTraversal(root: TreeNode | null) {
-    if (root == null) return;
+    if (root == null) return
 
-    result += 1;
-    _preorderTraversal(root.left);
-    _preorderTraversal(root.right);
+    result += 1
+    _preorderTraversal(root.left)
+    _preorderTraversal(root.right)
   }
 
-  _preorderTraversal(root);
+  _preorderTraversal(root)
 
-  return result;
+  return result
 }
 // @lc code=end

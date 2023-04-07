@@ -6,17 +6,17 @@
 
 // @lc code=start
 function sortArray(nums: number[]): number[] {
-  sort(nums, 0, nums.length - 1);
+  sort(nums, 0, nums.length - 1)
 
-  return nums;
+  return nums
 }
 
 function sort(nums: number[], left: number, right: number): void {
-  if (left > right) return;
+  if (left > right) return
 
-  const [el, er] = partition(nums, left, right);
-  sort(nums, left, el - 1);
-  sort(nums, er + 1, right);
+  const [el, er] = partition(nums, left, right)
+  sort(nums, left, el - 1)
+  sort(nums, er + 1, right)
 }
 
 function partition(
@@ -24,35 +24,35 @@ function partition(
   left: number,
   right: number
 ): [number, number] {
-  if (left > right) return [-1, -1];
-  if (left == right) return [left, right];
+  if (left > right) return [-1, -1]
+  if (left == right) return [left, right]
 
-  const random = left + Math.floor(Math.random() * (right - left + 1));
-  swap(nums, random, right);
+  const random = left + Math.floor(Math.random() * (right - left + 1))
+  swap(nums, random, right)
 
-  let less = left - 1;
-  let more = right;
+  let less = left - 1
+  let more = right
 
-  let pivot = nums[right];
-  let index = left;
+  const pivot = nums[right]
+  let index = left
 
   while (index < more) {
     if (nums[index] < pivot) {
-      swap(nums, index++, ++less);
+      swap(nums, index++, ++less)
     } else if (nums[index] > pivot) {
-      swap(nums, index, --more);
+      swap(nums, index, --more)
     } else {
-      index++;
+      index++
     }
   }
 
-  swap(nums, more, right);
+  swap(nums, more, right)
 
-  return [less + 1, more];
+  return [less + 1, more]
 }
 
 function swap(nums: number[], i: number, j: number): void {
-  [nums[i], nums[j]] = [nums[j], nums[i]];
+  ;[nums[i], nums[j]] = [nums[j], nums[i]]
 }
 
 /**

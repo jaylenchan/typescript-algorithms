@@ -5,6 +5,7 @@ import { resolve } from 'node:path'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
+
 export default defineConfig({
   plugins: [
     tsconfigPaths({
@@ -13,7 +14,7 @@ export default defineConfig({
         resolve(__dirname, './structures'),
         resolve(__dirname, './leetcode'),
       ],
-    })
+    }),
   ],
   optimizeDeps: {
     disabled: true,

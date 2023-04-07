@@ -18,26 +18,26 @@
  */
 
 function sortList(head: ListNode | null): ListNode | null {
-  if (head == null) return null;
+  if (head == null) return null
 
-  const help: number[] = [];
+  const help: number[] = []
 
-  let cur = head;
+  let cur = head
   while (cur != null) {
-    help.push(cur.val);
-    cur = cur.next;
+    help.push(cur.val)
+    cur = cur.next
   }
 
-  help.sort((a, b) => a - b);
+  help.sort((a, b) => a - b)
 
-  cur = head;
-  let i = 0;
+  cur = head
+  let i = 0
   while (cur != null) {
-    cur.val = help[i];
-    cur = cur.next;
-    i += 1;
+    cur.val = help[i]
+    cur = cur.next
+    i += 1
   }
 
-  return head;
+  return head
 }
 // @lc code=end

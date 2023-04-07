@@ -4,7 +4,9 @@
  * [108] 将有序数组转换为二叉搜索树
  */
 
-import TreeNode from '../TreeNode';
+import TreeNode from '../TreeNode'
+
+
 export default sortedArrayToBST
 // @lc code=start
 /**
@@ -22,22 +24,25 @@ export default sortedArrayToBST
  */
 
 function sortedArrayToBST(nums: number[]): TreeNode | null {
-  let left = 0;
-  let right = nums.length - 1
+  const left = 0
+  const right = nums.length - 1
 
   return _buildBST(nums, left, right)
-};
+}
 
-function _buildBST(nums: number[], left: number, right: number): TreeNode | null {
+function _buildBST(
+  nums: number[],
+  left: number,
+  right: number
+): TreeNode | null {
   if (left > right) return null
-  let mid = left + Math.floor((right - left) >> 1)
+  const mid = left + Math.floor((right - left) >> 1)
 
-  const root = new TreeNode(nums[mid]);
+  const root = new TreeNode(nums[mid])
 
-  root.left = _buildBST(nums, left, mid - 1);
+  root.left = _buildBST(nums, left, mid - 1)
   root.right = _buildBST(nums, mid + 1, right)
 
-  return root;
+  return root
 }
 // @lc code=end
-

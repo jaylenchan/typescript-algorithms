@@ -19,22 +19,22 @@
 
 function detectCycle(head: ListNode | null): ListNode | null {
   // 总体思路：先判断是否有环 + 找第一个入环节点
-  let slow = head;
-  let fast = head;
+  let slow = head
+  let fast = head
 
   while (fast != null && fast.next != null) {
-    fast = fast.next.next;
-    slow = slow.next;
+    fast = fast.next.next
+    slow = slow.next
     if (slow == fast) {
-      fast = head;
+      fast = head
       while (slow != fast) {
-        slow = slow.next;
-        fast = fast.next;
+        slow = slow.next
+        fast = fast.next
       }
-      return slow; // 返回环的入口
+      return slow // 返回环的入口
     }
   }
 
-  return null;
+  return null
 }
 // @lc code=end

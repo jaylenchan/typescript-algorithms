@@ -6,28 +6,30 @@
 
 // @lc code=start
 class NumArray {
-  private prefixSum: number[];
+
+  private prefixSum: number[]
   constructor(nums: number[]) {
-    this.prefixSum = this.createPrefixSum(nums);
+    this.prefixSum = this.createPrefixSum(nums)
   }
 
   sumRange(left: number, right: number): number {
-    return this.prefixSum[right + 1] - this.prefixSum[left];
+    return this.prefixSum[right + 1] - this.prefixSum[left]
   }
 
   createPrefixSum(nums: number[]): number[] {
-    const prefixSum: number[] = [];
+    const prefixSum: number[] = []
 
     for (let i = 0; i <= nums.length; i++) {
       if (i == 0) {
-        prefixSum[i] = 0;
+        prefixSum[i] = 0
       } else {
-        prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
+        prefixSum[i] = prefixSum[i - 1] + nums[i - 1]
       }
     }
 
-    return prefixSum;
+    return prefixSum
   }
+
 }
 
 /**

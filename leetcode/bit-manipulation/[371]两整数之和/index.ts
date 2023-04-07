@@ -6,12 +6,12 @@
 
 // @lc code=start
 function getSum(a: number, b: number): number {
-  if (b == 0) return a;
+  if (b == 0) return a
 
-  const sum = a ^ b;
-  const carry = (a & b) << 1;
+  const sum = a ^ b
+  const carry = (a & b) << 1
 
-  return getSum(sum, carry);
+  return getSum(sum, carry)
 }
 
 /**

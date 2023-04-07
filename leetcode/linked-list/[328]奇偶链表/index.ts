@@ -3,7 +3,7 @@
  *
  * [328] 奇偶链表
  */
-export { oddEvenList };
+export { oddEvenList }
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -18,31 +18,31 @@ export { oddEvenList };
  */
 
 function oddEvenList(head: ListNode | null): ListNode | null {
-  if (head == null || head.next == null) return head;
+  if (head == null || head.next == null) return head
 
-  let odd = head;
-  let even = head.next;
-  let curEven = even;
+  let odd = head
+  const even = head.next
+  let curEven = even
 
   // 1 -> 3 2 -> 4 -> 5
   while (curEven.next && curEven.next.next) {
-    const nextOdd = curEven.next;
-    odd.next = nextOdd;
-    odd = nextOdd;
+    const nextOdd = curEven.next
+    odd.next = nextOdd
+    odd = nextOdd
 
-    const nextEven = curEven.next.next;
-    curEven.next = nextEven;
-    curEven = nextEven;
+    const nextEven = curEven.next.next
+    curEven.next = nextEven
+    curEven = nextEven
   }
   if (curEven.next) {
-    odd.next = curEven.next;
-    curEven.next = null;
-    odd = odd.next;
+    odd.next = curEven.next
+    curEven.next = null
+    odd = odd.next
   }
 
-  if (even) odd.next = even;
+  if (even) odd.next = even
 
-  return head;
+  return head
 }
 // @lc code=end
 

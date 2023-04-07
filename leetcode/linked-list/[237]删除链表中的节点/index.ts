@@ -21,8 +21,8 @@
  Do not return anything, modify it in-place instead.
  */
 function deleteNode(node: ListNode | null): void {
-  node.val = node.next.val;
-  node.next = node.next.next;
+  node.val = node.next.val
+  node.next = node.next.next
 }
 
 // 思路：把当前node的值变成下一个节点的值，然后删除下一个节点，这样就相当于删除了node

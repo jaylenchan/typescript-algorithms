@@ -4,8 +4,10 @@
  * [437] 路径总和 III
  */
 
-import TreeNode from '../TreeNode';
-export default pathSum;
+import type TreeNode from '../TreeNode'
+
+
+export default pathSum
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -22,28 +24,28 @@ export default pathSum;
  */
 
 function pathSum(root: TreeNode | null, targetSum: number): number {
-  if (root == null) return 0;
+  if (root == null) return 0
 
-  let count = 0;
-  const queue: TreeNode[] = [];
+  let count = 0
+  const queue: TreeNode[] = []
 
-  queue.push(root);
+  queue.push(root)
 
   while (queue.length > 0) {
-    const node = queue.shift()!;
+    const node = queue.shift()!
 
-    findPathFrom(node, targetSum, 0);
+    findPathFrom(node, targetSum, 0)
 
     if (node.left) {
-      queue.push(node.left);
+      queue.push(node.left)
     }
 
     if (node.right) {
-      queue.push(node.right);
+      queue.push(node.right)
     }
   }
 
-  return count;
+  return count
 
   function findPathFrom(
     node: TreeNode | null,
@@ -51,15 +53,15 @@ function pathSum(root: TreeNode | null, targetSum: number): number {
     curSum: number
   ): void {
     if (node == null) {
-      return;
+      return
     }
 
     if (curSum + node.val == targetSum) {
-      count += 1;
+      count += 1
     }
 
-    findPathFrom(node.left, targetSum, curSum + node.val);
-    findPathFrom(node.right, targetSum, curSum + node.val);
+    findPathFrom(node.left, targetSum, curSum + node.val)
+    findPathFrom(node.right, targetSum, curSum + node.val)
   }
 }
 

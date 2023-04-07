@@ -6,13 +6,13 @@
 
 // @lc code=start
 function subsets(nums: number[]): number[][] {
-  const path: number[] = [];
-  const result: number[][] = [];
-  const startIndex = 0;
+  const path: number[] = []
+  const result: number[][] = []
+  const startIndex = 0
 
-  backtracking(nums, path, result, startIndex);
+  backtracking(nums, path, result, startIndex)
 
-  return result;
+  return result
 }
 
 function backtracking(
@@ -22,15 +22,15 @@ function backtracking(
   startIndex: number
 ) {
   if (startIndex > nums.length) {
-    return;
+    return
   } else {
-    result.push([...path]);
+    result.push([...path])
   }
 
   for (let i = startIndex; i < nums.length; i++) {
-    path.push(nums[i]);
-    backtracking(nums, path, result, ++startIndex);
-    path.pop();
+    path.push(nums[i])
+    backtracking(nums, path, result, ++startIndex)
+    path.pop()
   }
 }
 // @lc code=end

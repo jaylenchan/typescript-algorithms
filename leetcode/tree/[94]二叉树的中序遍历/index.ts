@@ -6,22 +6,24 @@
 
 // @lc code=start
 
-import TreeNode from '../TreeNode';
-export default inorderTraversal;
+import type TreeNode from '../TreeNode'
+
+
+export default inorderTraversal
 
 function inorderTraversal(root: TreeNode | null): number[] {
-  const result: number[] = [];
+  const result: number[] = []
 
-  _inorderTraversal(root, result);
+  _inorderTraversal(root, result)
 
-  return result;
+  return result
 }
 
 function _inorderTraversal(root: TreeNode | null, result: number[]) {
-  if (root == null) return;
+  if (root == null) return
 
-  _inorderTraversal(root.left, result);
-  result.push(root.val);
-  _inorderTraversal(root.right, result);
+  _inorderTraversal(root.left, result)
+  result.push(root.val)
+  _inorderTraversal(root.right, result)
 }
 // @lc code=end

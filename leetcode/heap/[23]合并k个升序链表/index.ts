@@ -49,110 +49,112 @@
 // }
 
 class MinListHeap {
-  private data: ListNode[];
-  private size: number;
+
+  private data: ListNode[]
+  private size: number
 
   constructor() {
-    this.data = [];
-    this.size = 0;
+    this.data = []
+    this.size = 0
   }
 
   isEmpty(): boolean {
-    return this.size == 0;
+    return this.size == 0
   }
 
   peek(): ListNode | null {
-    const min = this.data[0];
+    const min = this.data[0]
 
-    if (!min) return null;
+    if (!min) return null
 
-    return min;
+    return min
   }
 
   insert(item: ListNode): void {
-    this.data[this.size++] = item;
-    this.swim(this.size - 1);
+    this.data[this.size++] = item
+    this.swim(this.size - 1)
   }
 
   delMin(): ListNode {
-    const min = this.data[0];
+    const min = this.data[0]
 
-    this.swap(0, this.size - 1);
-    this.data.pop();
-    this.size--;
-    this.sink(0);
+    this.swap(0, this.size - 1)
+    this.data.pop()
+    this.size--
+    this.sink(0)
 
-    return min;
+    return min
   }
 
   private swim(index: number): void {
     while (this.data[this.parent(index)].val > this.data[index].val) {
-      this.swap(index, this.parent(index));
-      index = this.parent(index);
+      this.swap(index, this.parent(index))
+      index = this.parent(index)
     }
   }
 
   private sink(index: number): void {
     while (this.left(index) < this.size) {
-      let minIndex = this.left(index);
-      const right = this.right(index);
+      let minIndex = this.left(index)
+      const right = this.right(index)
 
       if (right < this.size) {
         minIndex =
-          this.data[minIndex].val < this.data[right].val ? minIndex : right;
+          this.data[minIndex].val < this.data[right].val ? minIndex : right
       }
 
       if (this.data[minIndex].val > this.data[index].val) {
-        break;
+        break
       }
 
-      this.swap(index, minIndex);
-      index = minIndex;
+      this.swap(index, minIndex)
+      index = minIndex
     }
   }
 
   private parent(index: number): number {
-    if (index == 0) return 0;
-    return Math.floor((index - 1) / 2);
+    if (index == 0) return 0
+    return Math.floor((index - 1) / 2)
   }
 
   private left(index: number): number {
-    return 2 * index + 1;
+    return 2 * index + 1
   }
 
   private right(index: number): number {
-    return 2 * index + 2;
+    return 2 * index + 2
   }
 
   private swap(i: number, j: number): void {
-    [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
+    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
+
 }
 
 function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
-  if (lists.length == 0) return null;
+  if (lists.length == 0) return null
 
-  const heap = new MinListHeap();
+  const heap = new MinListHeap()
 
   for (const node of lists) {
     if (node) {
-      heap.insert(node);
+      heap.insert(node)
     }
   }
 
-  const dummy = new ListNode(-1);
-  let tail = dummy;
+  const dummy = new ListNode(-1)
+  let tail = dummy
 
   while (!heap.isEmpty()) {
-    const min = heap.delMin();
-    tail.next = min;
-    tail = min;
+    const min = heap.delMin()
+    tail.next = min
+    tail = min
     if (min.next) {
-      heap.insert(min.next);
+      heap.insert(min.next)
     }
   }
 
-  return dummy.next;
+  return dummy.next
 }
 
 /**

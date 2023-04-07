@@ -6,37 +6,37 @@
 
 // @lc code=start
 function subarraySum(nums: number[], k: number): number {
-  const prefixSum = createPrefixSum(nums);
-  const size = nums.length;
+  const prefixSum = createPrefixSum(nums)
+  const size = nums.length
 
-  let ans = 0;
+  let ans = 0
 
   for (let start = 0; start < size; start++) {
     for (let end = start; end < size; end++) {
-      const sum = prefixSum[end + 1] - prefixSum[start];
+      const sum = prefixSum[end + 1] - prefixSum[start]
       if (sum == k) {
-        ans += 1;
+        ans += 1
       }
     }
   }
 
-  return ans;
+  return ans
 }
 
 function createPrefixSum(nums: number[]): number[] {
-  const prefixSum: number[] = [];
+  const prefixSum: number[] = []
 
-  const size = nums.length;
+  const size = nums.length
 
   for (let i = 0; i <= size; i++) {
     if (i == 0) {
-      prefixSum[i] = 0;
+      prefixSum[i] = 0
     } else {
-      prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
+      prefixSum[i] = prefixSum[i - 1] + nums[i - 1]
     }
   }
 
-  return prefixSum;
+  return prefixSum
 }
 
 /**

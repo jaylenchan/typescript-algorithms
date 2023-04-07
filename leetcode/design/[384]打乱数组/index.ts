@@ -6,27 +6,29 @@
 
 // @lc code=start
 class Solution {
-  private nums: number[];
+
+  private nums: number[]
   constructor(nums: number[]) {
-    this.nums = nums;
+    this.nums = nums
   }
 
   reset(): number[] {
-    return this.nums;
+    return this.nums
   }
 
   shuffle(): number[] {
-    const copyNums = [];
+    const copyNums = []
     for (let i = 0; i != this.nums.length; i++) {
-      copyNums[i] = this.nums[i];
+      copyNums[i] = this.nums[i]
     }
     for (let i = 0; i != copyNums.length; i++) {
-      const size = copyNums.length;
-      const random = i + Math.floor(Math.random() * (size - i));
-      [copyNums[i], copyNums[random]] = [copyNums[random], copyNums[i]];
+      const size = copyNums.length
+      const random = i + Math.floor(Math.random() * (size - i))
+      ;[copyNums[i], copyNums[random]] = [copyNums[random], copyNums[i]]
     }
-    return copyNums;
+    return copyNums
   }
+
 }
 
 /**

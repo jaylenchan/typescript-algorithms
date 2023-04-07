@@ -3,7 +3,7 @@
  *
  * [230] 二叉搜索树中第K小的元素
  */
-export { kthSmallest };
+export { kthSmallest }
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -20,24 +20,24 @@ export { kthSmallest };
  */
 
 function kthSmallest(root: TreeNode | null, k: number): number {
-  const queue: number[] = [];
+  const queue: number[] = []
 
-  inOrderTree(root, queue);
+  inOrderTree(root, queue)
   while (k > 1) {
-    queue.shift();
-    k--;
+    queue.shift()
+    k--
   }
 
-  const target = queue.shift()!;
+  const target = queue.shift()!
 
-  return target;
+  return target
 }
 
 function inOrderTree(root: TreeNode | null, queue: number[]): void {
-  if (root == null) return;
+  if (root == null) return
 
-  inOrderTree(root.left, queue);
-  queue.push(root.val);
-  inOrderTree(root.right, queue);
+  inOrderTree(root.left, queue)
+  queue.push(root.val)
+  inOrderTree(root.right, queue)
 }
 // @lc code=end

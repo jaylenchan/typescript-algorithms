@@ -1,74 +1,79 @@
-import ITrie from './interface';
+import type ITrie from './interface'
+
 
 class TrieNode {
-  public isWord: boolean;
-  public next: Map<string, TrieNode>;
+
+  public isWord: boolean
+  public next: Map<string, TrieNode>
 
   constructor(isWord?: boolean) {
-    this.isWord = isWord ?? false;
-    this.next = new Map<string, TrieNode>();
+    this.isWord = isWord ?? false
+    this.next = new Map<string, TrieNode>()
   }
+
 }
 
 class Trie implements ITrie {
-  private root: TrieNode;
-  private size: number;
+
+  private root: TrieNode
+  private size: number
 
   constructor() {
-    this.root = new TrieNode();
-    this.size = 0;
+    this.root = new TrieNode()
+    this.size = 0
   }
 
   public getSize(): number {
-    return this.size;
+    return this.size
   }
 
   public insert(word: string): void {
-    let cur = this.root;
+    let cur = this.root
 
     for (let i = 0; i < word.length; i++) {
-      const char = word[i];
+      const char = word[i]
       if (!cur.next.get(char)) {
-        cur.next.set(char, new TrieNode());
+        cur.next.set(char, new TrieNode())
       }
-      cur = cur.next.get(char)!;
+      cur = cur.next.get(char)!
     }
 
     if (!cur.isWord) {
-      cur.isWord = true;
-      this.size += 1;
+      cur.isWord = true
+      this.size += 1
     }
   }
 
   public contains(word: string): boolean {
-    let cur = this.root;
+    let cur = this.root
 
     for (let i = 0; i < word.length; i++) {
-      const char = word[i];
+      const char = word[i]
       if (!cur.next.get(char)) {
-        return false;
+        return false
       }
-      cur = cur.next.get(char)!;
+      cur = cur.next.get(char)!
     }
 
-    return cur.isWord;
+    return cur.isWord
   }
 
   public isPrefix(prefix: string): boolean {
-    let cur = this.root;
+    let cur = this.root
 
     for (let i = 0; i < prefix.length; i++) {
-      const char = prefix[i];
+      const char = prefix[i]
 
       if (!cur.next.get(char)) {
-        return false;
+        return false
       }
 
-      cur = cur.next.get(char)!;
+      cur = cur.next.get(char)!
     }
 
-    return true;
+    return true
   }
+
 }
 
-export default Trie;
+export default Trie

@@ -3,7 +3,7 @@
  *
  * [297] 二叉树的序列化与反序列化
  */
-export { serialize, deserialize };
+export { serialize, deserialize }
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -23,59 +23,59 @@ export { serialize, deserialize };
  * Encodes a tree to a single string.
  */
 function serialize(root: TreeNode | null): string {
-  if (!root) return '';
+  if (!root) return ''
 
-  const serializeQueue: string[] = [];
-  const nodeQueue: (TreeNode | null)[] = [root];
+  const serializeQueue: string[] = []
+  const nodeQueue: (TreeNode | null)[] = [root]
 
   while (nodeQueue.length > 0) {
-    const node = nodeQueue.shift()!;
+    const node = nodeQueue.shift()!
     if (!node) {
-      serializeQueue.push('null');
-      continue;
+      serializeQueue.push('null')
+      continue
     } else {
-      serializeQueue.push(String(node.val));
+      serializeQueue.push(String(node.val))
     }
 
-    nodeQueue.push(node.left);
-    nodeQueue.push(node.right);
+    nodeQueue.push(node.left)
+    nodeQueue.push(node.right)
   }
 
-  return serializeQueue.join(',');
+  return serializeQueue.join(',')
 }
 
 /*
  * Decodes your encoded data to tree.
  */
 function deserialize(data: string): TreeNode | null {
-  if (!data) return null;
-  const serializeQueue = data.split(',');
+  if (!data) return null
+  const serializeQueue = data.split(',')
 
-  return buildTree(serializeQueue);
+  return buildTree(serializeQueue)
 }
 
 function buildTree(serializeQueue: string[]): TreeNode | null {
-  if (serializeQueue.length == 0) return null;
+  if (serializeQueue.length == 0) return null
 
-  let root = new TreeNode(+serializeQueue.shift()!);
-  const nodeQueue: TreeNode[] = [root];
+  const root = new TreeNode(+serializeQueue.shift()!)
+  const nodeQueue: TreeNode[] = [root]
 
   while (nodeQueue.length > 0) {
-    const node = nodeQueue.shift()!;
-    const left = serializeQueue.shift()!;
-    const right = serializeQueue.shift()!;
+    const node = nodeQueue.shift()!
+    const left = serializeQueue.shift()!
+    const right = serializeQueue.shift()!
 
     if (left != 'null') {
-      node.left = new TreeNode(+left);
-      nodeQueue.push(node.left);
+      node.left = new TreeNode(+left)
+      nodeQueue.push(node.left)
     }
 
     if (right != 'null') {
-      node.right = new TreeNode(+right);
-      nodeQueue.push(node.right);
+      node.right = new TreeNode(+right)
+      nodeQueue.push(node.right)
     }
   }
-  return root;
+  return root
 }
 /**
  * Your functions will be called as such:

@@ -7,92 +7,96 @@
 // @lc code=start
 /** 根据ascii码返回相对a的偏移索引 */
 function ascToIndex(ch: string): number {
-  return ch.charCodeAt(0) - 'a'.charCodeAt(0);
+  return ch.charCodeAt(0) - 'a'.charCodeAt(0)
 }
 
 class TrieNode {
-  public pass: number;
-  public end: number;
-  public nexts: TrieNode[];
+
+  public pass: number
+  public end: number
+  public nexts: TrieNode[]
 
   constructor() {
-    this.pass = 0;
-    this.end = 0;
-    this.nexts = [];
+    this.pass = 0
+    this.end = 0
+    this.nexts = []
   }
+
 }
 
 class WordDictionary {
-  private root: TrieNode;
+
+  private root: TrieNode
 
   constructor() {
-    this.root = new TrieNode();
+    this.root = new TrieNode()
   }
 
   addWord(word: string): void {
-    let node = this.root;
-    node.pass++;
+    let node = this.root
+    node.pass++
 
     for (const char of word) {
-      const index = ascToIndex(char);
+      const index = ascToIndex(char)
 
       if (!node.nexts[index]) {
-        node.nexts[index] = new TrieNode();
+        node.nexts[index] = new TrieNode()
       }
 
-      node.nexts[index].pass++;
-      node = node.nexts[index];
+      node.nexts[index].pass++
+      node = node.nexts[index]
     }
 
-    node.end++;
+    node.end++
   }
 
   search(word: string): boolean {
-    let node = this.root;
+    let node = this.root
 
     for (let i = 0; i < word.length; i++) {
-      const char = word[i];
+      const char = word[i]
 
-      if (char == '.') return this.fuzzySearch(word, i, node);
+      if (char == '.') return this.fuzzySearch(word, i, node)
 
-      const index = ascToIndex(char);
+      const index = ascToIndex(char)
 
       if (!node.nexts[index]) {
-        return false;
+        return false
       }
 
-      node = node.nexts[index];
+      node = node.nexts[index]
     }
 
-    return node.end > 0;
+    return node.end > 0
   }
 
   private fuzzySearch(word: string, cur: number, node: TrieNode): boolean {
-    if (cur == word.length) return node.end > 0;
+    if (cur == word.length) return node.end > 0
 
     // acdb -> ..ab
     // 如果当前字符不为.，跟正常的trie搜索一样
     while (word[cur] != '.') {
-      const index = ascToIndex(word[cur]);
+      const index = ascToIndex(word[cur])
 
       if (!node.nexts[index]) {
-        return false;
+        return false
       }
 
-      node = node.nexts[index];
+      node = node.nexts[index]
 
-      if (++cur == word.length) return node.end > 0;
+      if (++cur == word.length) return node.end > 0
     }
 
     // a.b.c
     // 否则此时直接遍历所有当前node的next，跟通配符.进行匹配，任意一个字符都匹配，然后进入下一轮fuzzySearch接下来的字符
     for (let i = 0; i < node.nexts.length; i++) {
       if (node.nexts[i] && this.fuzzySearch(word, cur + 1, node.nexts[i]))
-        return true;
+        return true
     }
 
-    return false;
+    return false
   }
+
 }
 
 /**

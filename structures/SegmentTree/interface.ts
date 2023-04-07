@@ -1,5 +1,5 @@
 export default interface ISegmentTree<E> {
-  get(index: number): E;
-  getSize(): number;
-  query(queryLeft: number, queryRight: number): E | null;
+  get(index: number): E
+  getSize(): number
+  query(queryLeft: number, queryRight: number): E | null
 }

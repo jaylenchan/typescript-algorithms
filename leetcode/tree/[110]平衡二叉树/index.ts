@@ -4,8 +4,10 @@
  * [110] 平衡二叉树
  */
 
-import TreeNode from '../TreeNode';
-export default isBalanced;
+import type TreeNode from '../TreeNode'
+
+
+export default isBalanced
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -22,20 +24,20 @@ export default isBalanced;
  */
 
 function isBalanced(root: TreeNode | null): boolean {
-  if (root == null) return true;
-  const leftHeight = height(root.left);
-  const rightHeight = height(root.right);
+  if (root == null) return true
+  const leftHeight = height(root.left)
+  const rightHeight = height(root.right)
 
-  if (Math.abs(leftHeight - rightHeight) > 1) return false;
+  if (Math.abs(leftHeight - rightHeight) > 1) return false
 
-  return isBalanced(root.left) && isBalanced(root.right);
+  return isBalanced(root.left) && isBalanced(root.right)
 }
 
 function height(root: TreeNode | null): number {
   if (root == null) {
-    return 0;
+    return 0
   }
 
-  return 1 + Math.max(height(root.left), height(root.right));
+  return 1 + Math.max(height(root.left), height(root.right))
 }
 // @lc code=end

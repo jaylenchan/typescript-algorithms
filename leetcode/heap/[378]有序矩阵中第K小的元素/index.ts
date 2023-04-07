@@ -6,16 +6,16 @@
 
 // @lc code=start
 function kthSmallest(matrix: number[][], k: number): number {
-  if (matrix.length == 0 || matrix[0].length == 0) return 0;
+  if (matrix.length == 0 || matrix[0].length == 0) return 0
 
-  const heap = new MaxHeap();
-  let count = 0;
+  const heap = new MaxHeap()
+  let count = 0
 
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
       if (count == k) {
         if (heap.peek() > matrix[i][j]) {
-          heap.delMax();
+          heap.delMax()
           heap.insert(matrix[i][j])
         }
       } else {
@@ -25,12 +25,12 @@ function kthSmallest(matrix: number[][], k: number): number {
     }
   }
   return heap.delMax()
-};
-
+}
 
 class MaxHeap {
-  private size: number;
-  private data: number[];
+
+  private size: number
+  private data: number[]
 
   constructor() {
     this.data = []
@@ -38,15 +38,15 @@ class MaxHeap {
   }
 
   getSize(): number {
-    return this.size;
+    return this.size
   }
 
   peek(): number {
-    return this.data[0];
+    return this.data[0]
   }
 
   insert(item: number): void {
-    this.data[this.size++] = item;
+    this.data[this.size++] = item
     this.swim(this.size - 1)
   }
 
@@ -54,43 +54,43 @@ class MaxHeap {
     const max = this.data[0]
 
     this.swap(0, this.size - 1)
-    this.data.pop();
+    this.data.pop()
     this.size--
-    this.sink(0);
+    this.sink(0)
 
-    return max;
+    return max
   }
 
   private swim(index: number): void {
     while (this.data[this.parent(index)] < this.data[index]) {
-      this.swap(index, this.parent(index));
-      index = this.parent(index);
+      this.swap(index, this.parent(index))
+      index = this.parent(index)
     }
   }
 
   private sink(index: number): void {
     while (this.left(index) < this.size) {
-      let maxIndex = this.left(index);
-      const right = this.right(index);
+      let maxIndex = this.left(index)
+      const right = this.right(index)
 
       if (right < this.size) {
-        maxIndex = this.data[maxIndex] > this.data[right] ? maxIndex : right;
+        maxIndex = this.data[maxIndex] > this.data[right] ? maxIndex : right
       }
 
-      if (this.data[maxIndex] < this.data[index]) break;
+      if (this.data[maxIndex] < this.data[index]) break
 
-      this.swap(maxIndex, index);
+      this.swap(maxIndex, index)
 
-      index = maxIndex;
+      index = maxIndex
     }
   }
 
   private parent(index: number): number {
-    return Math.floor((index - 1) / 2);
+    return Math.floor((index - 1) / 2)
   }
 
   private left(index: number): number {
-    return 2 * index + 1;
+    return 2 * index + 1
   }
 
   private right(index: number): number {
@@ -98,8 +98,9 @@ class MaxHeap {
   }
 
   private swap(i: number, j: number): void {
-    [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
+    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
+
 }
 
 /**

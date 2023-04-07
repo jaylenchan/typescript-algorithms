@@ -1,9 +1,10 @@
-import MergeSortTest from './MergeSortTest';
+import MergeSortTest from './MergeSortTest'
+
 
 describe('Merge Sort', () => {
   it('Merge Sort Test', () => {
-    const test = new MergeSortTest();
+    const test = new MergeSortTest()
 
-    test.runTest();
-  });
-});
+    test.runTest()
+  })
+})

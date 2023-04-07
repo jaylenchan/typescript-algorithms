@@ -4,8 +4,10 @@
  * [129] 求根节点到叶节点数字之和
  */
 
-import TreeNode from '../TreeNode';
-export default sumNumbers;
+import type TreeNode from '../TreeNode'
+
+
+export default sumNumbers
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -22,27 +24,27 @@ export default sumNumbers;
  */
 
 function sumNumbers(root: TreeNode | null): number {
-  if (root == null) return 0;
-  return pathSum(root, 0);
+  if (root == null) return 0
+  return pathSum(root, 0)
 }
 
 /* 返回以node为根节点的树到叶子节点的所有路径转换成数字后的总和 */
 function pathSum(node: TreeNode, preSum: number): number {
   // 终止节点就是已经到叶子节点了
   if (!node.left && !node.right) {
-    return preSum * 10 + node.val;
+    return preSum * 10 + node.val
   }
 
-  preSum = preSum * 10 + node.val;
-  let sum = 0;
+  preSum = preSum * 10 + node.val
+  let sum = 0
   if (node.left) {
-    sum += pathSum(node.left, preSum);
+    sum += pathSum(node.left, preSum)
   }
   if (node.right) {
-    sum += pathSum(node.right, preSum);
+    sum += pathSum(node.right, preSum)
   }
 
-  return sum;
+  return sum
 }
 
 /**

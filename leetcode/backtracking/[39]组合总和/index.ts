@@ -6,14 +6,14 @@
 
 // @lc code=start
 function combinationSum(candidates: number[], target: number): number[][] {
-  const path: number[] = [];
-  const result: number[][] = [];
-  const sum = 0;
-  const startIndex = 0;
+  const path: number[] = []
+  const result: number[][] = []
+  const sum = 0
+  const startIndex = 0
 
-  backtracking(candidates, target, sum, path, result, startIndex);
+  backtracking(candidates, target, sum, path, result, startIndex)
 
-  return result;
+  return result
 }
 function backtracking(
   candidates: number[],
@@ -23,16 +23,16 @@ function backtracking(
   result: number[][],
   startIndex: number
 ) {
-  if (sum > target) return;
+  if (sum > target) return
   if (sum == target) {
-    result.push([...path]);
-    return;
+    result.push([...path])
+    return
   }
 
   for (let i = startIndex; i < candidates.length; i++) {
-    path.push(candidates[i]);
-    backtracking(candidates, target, sum + candidates[i], path, result, i);
-    path.pop();
+    path.push(candidates[i])
+    backtracking(candidates, target, sum + candidates[i], path, result, i)
+    path.pop()
   }
 }
 // @lc code=end

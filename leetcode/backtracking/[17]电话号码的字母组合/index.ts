@@ -6,7 +6,7 @@
 
 // @lc code=start
 function letterCombinations(digits: string): string[] {
-  if (digits.length == 0) return [];
+  if (digits.length == 0) return []
   const lettersMap = [
     '',
     '',
@@ -17,14 +17,14 @@ function letterCombinations(digits: string): string[] {
     'mno',
     'pqrs',
     'tuv',
-    'wxyz'
-  ];
-  const result: string[] = [];
-  const path: string[] = [];
+    'wxyz',
+  ]
+  const result: string[] = []
+  const path: string[] = []
 
-  backtracking(digits, 0, result, path, lettersMap);
+  backtracking(digits, 0, result, path, lettersMap)
 
-  return result;
+  return result
 }
 
 function backtracking(
@@ -35,16 +35,16 @@ function backtracking(
   lettersMap: string[]
 ) {
   if (index == digits.length) {
-    result.push(path.join(''));
-    return;
+    result.push(path.join(''))
+    return
   }
 
-  const letters = lettersMap[+digits[index]];
+  const letters = lettersMap[+digits[index]]
   for (let i = 0; i < letters.length; i++) {
-    const letter = letters[i];
-    path.push(letter);
-    backtracking(digits, index + 1, result, path, lettersMap);
-    path.pop();
+    const letter = letters[i]
+    path.push(letter)
+    backtracking(digits, index + 1, result, path, lettersMap)
+    path.pop()
   }
 }
 // @lc code=end

@@ -3,29 +3,29 @@
  *
  * [3] 无重复字符的最长子串
  */
-export { lengthOfLongestSubstring };
+export { lengthOfLongestSubstring }
 // @lc code=start
 function lengthOfLongestSubstring(s: string): number {
-  if (!s) return 0;
+  if (!s) return 0
 
-  let len = 1;
+  let len = 1
 
-  const set = new Set<string>();
-  let L = 0;
-  let R = 0;
+  const set = new Set<string>()
+  let L = 0
+  let R = 0
 
   while (R != s.length) {
-    const ch = s[R++];
+    const ch = s[R++]
 
     while (set.has(ch)) {
-      set.delete(s[L++]);
+      set.delete(s[L++])
     }
-    set.add(ch);
-    
-    len = Math.max(len, R - L);
+    set.add(ch)
+
+    len = Math.max(len, R - L)
   }
 
-  return len;
+  return len
 }
 // @lc code=end
 

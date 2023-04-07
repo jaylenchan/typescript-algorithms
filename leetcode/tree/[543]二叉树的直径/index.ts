@@ -4,8 +4,10 @@
  * [543] 二叉树的直径
  */
 
-import TreeNode from '../TreeNode';
-export default diameterOfBinaryTree;
+import type TreeNode from '../TreeNode'
+
+
+export default diameterOfBinaryTree
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -22,29 +24,29 @@ export default diameterOfBinaryTree;
  */
 
 function diameterOfBinaryTree(root: TreeNode | null): number {
-  return process(root).maxDistance;
+  return process(root).maxDistance
 }
 
 type Info = {
-  maxDistance: number;
-  height: number;
-};
+  maxDistance: number
+  height: number
+}
 function process(root: TreeNode | null): Info {
   if (root == null)
     return {
       maxDistance: 0,
-      height: 0
-    };
+      height: 0,
+    }
 
-  const leftInfo = process(root.left);
-  const rightInfo = process(root.right);
+  const leftInfo = process(root.left)
+  const rightInfo = process(root.right)
 
   return {
     maxDistance: Math.max(
       Math.max(leftInfo.maxDistance, rightInfo.maxDistance),
       leftInfo.height + rightInfo.height
     ),
-    height: Math.max(leftInfo.height, rightInfo.height) + 1
-  };
+    height: Math.max(leftInfo.height, rightInfo.height) + 1,
+  }
 }
 // @lc code=end

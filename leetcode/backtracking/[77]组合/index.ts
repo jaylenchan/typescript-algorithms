@@ -6,12 +6,12 @@
 
 // @lc code=start
 function combine(n: number, k: number): number[][] {
-  const path: number[] = [];
-  const result: number[][] = [];
+  const path: number[] = []
+  const result: number[][] = []
 
-  backtraking(n, k, path, result, 1);
+  backtraking(n, k, path, result, 1)
 
-  return result;
+  return result
 }
 
 function backtraking(
@@ -22,14 +22,14 @@ function backtraking(
   startIndex: number
 ) {
   if (path.length == combineNum) {
-    result.push([...path]);
-    return;
+    result.push([...path])
+    return
   }
 
   for (let i = startIndex; i <= maxNum; i++) {
-    path.push(i);
-    backtraking(maxNum, combineNum, path, result, ++startIndex);
-    path.pop();
+    path.push(i)
+    backtraking(maxNum, combineNum, path, result, ++startIndex)
+    path.pop()
   }
 }
 // @lc code=end

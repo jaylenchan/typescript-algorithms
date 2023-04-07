@@ -9,18 +9,18 @@ function uniqueMorseRepresentations(words: string[]): number {
   // prettier-ignore
   const codes = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
 
-  const hashSet = new Set<string>();
+  const hashSet = new Set<string>()
 
   for (const word of words) {
-    let res = '';
+    let res = ''
     for (let i = 0; i < word.length; i++) {
-      const offset = word[i].charCodeAt(0) - 'a'.charCodeAt(0);
-      res += codes[offset];
+      const offset = word[i].charCodeAt(0) - 'a'.charCodeAt(0)
+      res += codes[offset]
     }
 
-    hashSet.add(res);
+    hashSet.add(res)
   }
 
-  return hashSet.size;
+  return hashSet.size
 }
 // @lc code=end

@@ -3,78 +3,80 @@
  *
  * [200] 岛屿数量
  */
-export { numIslands };
+export { numIslands }
 // @lc code=start
 class UnionFind {
-  private parent: number[];
-  private size: number[];
-  public sets: number;
-  public lands: Set<number>;
+
+  private parent: number[]
+  private size: number[]
+  public sets: number
+  public lands: Set<number>
 
   constructor(size: number) {
-    this.parent = [];
-    this.size = [];
-    this.sets = size;
-    this.lands = new Set<number>();
+    this.parent = []
+    this.size = []
+    this.sets = size
+    this.lands = new Set<number>()
 
     for (let i = 0; i < size; i++) {
-      this.parent[i] = i;
-      this.size[i] = 1;
+      this.parent[i] = i
+      this.size[i] = 1
     }
   }
 
   find(i: number): number {
-    let hi = 0;
-    const help: number[] = [];
+    let hi = 0
+    const help: number[] = []
 
     while (i != this.parent[i]) {
-      help[hi++] = i;
-      i = this.parent[i];
+      help[hi++] = i
+      i = this.parent[i]
     }
 
     while (hi >= 0) {
-      this.parent[help[--hi]] = i;
+      this.parent[help[--hi]] = i
     }
 
-    return i;
+    return i
   }
 
   union(i: number, j: number): void {
-    const rootI = this.find(i);
-    const rootJ = this.find(j);
+    const rootI = this.find(i)
+    const rootJ = this.find(j)
 
     if (rootI != rootJ) {
-      const ISetSize = this.size[rootI];
-      const JSetSize = this.size[rootJ];
+      const ISetSize = this.size[rootI]
+      const JSetSize = this.size[rootJ]
 
-      const big = ISetSize > JSetSize ? rootI : rootJ;
-      const small = big == rootI ? rootJ : rootI;
+      const big = ISetSize > JSetSize ? rootI : rootJ
+      const small = big == rootI ? rootJ : rootI
 
-      this.lands.add(big);
-      this.lands.delete(small);
+      this.lands.add(big)
+      this.lands.delete(small)
 
-      this.parent[small] = big;
-      this.size[big] = ISetSize + JSetSize;
-      this.sets--;
+      this.parent[small] = big
+      this.size[big] = ISetSize + JSetSize
+      this.sets--
     }
   }
+
 }
 function numIslands(grid: string[][]): number {
-  if (grid.length == 0 || grid[0].length == 0) return 0;
+  if (grid.length == 0 || grid[0].length == 0) return 0
 
-  const rows = grid.length;
-  const cols = grid[0].length;
-  const uf = new UnionFind(rows * cols);
+  const rows = grid.length
+  const cols = grid[0].length
+  const uf = new UnionFind(rows * cols)
   const positions = [
     [-1, 0],
     [0, -1],
     [1, 0],
     [0, 1],
-  ];
+  ]
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      if (grid[i][j] == '1') uf.lands.add(index(cols, i, j));
+      if (grid[i][j] == '1') uf.lands.add(index(cols, i, j))
     }
   }
 
@@ -82,26 +84,26 @@ function numIslands(grid: string[][]): number {
     for (let j = 0; j < cols; j++) {
       if (grid[i][j] == '1') {
         for (const [offsetX, offsetY] of positions) {
-          const newX = i + offsetX;
-          const newY = j + offsetY;
+          const newX = i + offsetX
+          const newY = j + offsetY
           if (inArea(rows, cols, newX, newY) && grid[newX][newY] == '1') {
-            uf.union(index(cols, i, j), index(cols, newX, newY));
+            uf.union(index(cols, i, j), index(cols, newX, newY))
           }
         }
       }
     }
   }
 
-  return uf.lands.size;
+  return uf.lands.size
 }
 
 /** 根据二维坐标返回一维索引 */
 function index(cols: number, i: number, j: number): number {
-  return i * cols + j;
+  return i * cols + j
 }
 
 function inArea(rows: number, cols: number, i: number, j: number): boolean {
-  return i >= 0 && i < rows && j >= 0 && j < cols;
+  return i >= 0 && i < rows && j >= 0 && j < cols
 }
 
 /**

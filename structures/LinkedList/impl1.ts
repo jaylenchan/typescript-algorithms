@@ -1,9 +1,11 @@
-import LinkedListNode from './LinkedListNode';
+import LinkedListNode from './LinkedListNode'
+
 
 export class LinkedList<V> {
+
   private head: LinkedListNode<V> = LinkedListNode.None
   private tail: LinkedListNode<V> = LinkedListNode.None
-  private size: number = 0
+  private size = 0
 
   // 在链表头部插入新结点
   public prepend(value: V): void {
@@ -38,7 +40,6 @@ export class LinkedList<V> {
     }
 
     this.size++
-
   }
 
   // 普遍的插入新结点
@@ -48,14 +49,14 @@ export class LinkedList<V> {
     }
 
     switch (index) {
-      case (0): {
+      case 0: {
         this.prepend(value)
-        break;
+        break
       }
 
-      case (this.size - 1): {
+      case this.size - 1: {
         this.append(value)
-        break;
+        break
       }
 
       default: {
@@ -75,14 +76,13 @@ export class LinkedList<V> {
         if (this.tail == curNode) {
           this.tail = newNode
         }
-
       }
     }
   }
 
   // 删除节点
   public delete(value: V): LinkedListNode<V> | null {
-    let curNode = this.head;
+    let curNode = this.head
 
     if (curNode.next == LinkedListNode.None) {
       const deleteNode = curNode
@@ -116,7 +116,7 @@ export class LinkedList<V> {
     if (this.head == LinkedListNode.None) {
       return null
     } else {
-      let oldHead = this.head;
+      let oldHead = this.head
       const deleteNode = oldHead
 
       this.head = oldHead.next
@@ -131,13 +131,13 @@ export class LinkedList<V> {
     if (this.tail == LinkedListNode.None) {
       return null
     } else {
-      let curNode = this.head;
+      let curNode = this.head
 
       while (curNode.next != this.tail) {
         curNode = curNode.next
       }
 
-      let oldTail = curNode.next;
+      const oldTail = curNode.next
       const deleteNode = oldTail
 
       curNode.next = LinkedListNode.None
@@ -158,7 +158,7 @@ export class LinkedList<V> {
   public toArray(): LinkedListNode<V>[] {
     const nodes: LinkedListNode<V>[] = []
 
-    let curNode = this.head;
+    let curNode = this.head
 
     while (curNode != LinkedListNode.None) {
       nodes.push(curNode)
@@ -186,11 +186,13 @@ export class LinkedList<V> {
   }
 
   public toString(): string {
-    return JSON.stringify(this.toArray().map((node) => {
-      return node.toString()
-    }))
+    return JSON.stringify(
+      this.toArray().map(node => {
+        return node.toString()
+      })
+    )
   }
-}
 
+}
 
 export default LinkedList

@@ -1,16 +1,16 @@
 export default class SlidingWindow {
+
   private array: number[]
-  private left: number;
-  private right: number;
+  private left: number
+  private right: number
   // 存储array当中可能当最大值的元素的索引
-  private maxQueue: number[];
+  private maxQueue: number[]
   private window: number[]
 
-
   constructor(array: number[]) {
-    this.array = array;
-    this.left = 0;
-    this.right = -1;
+    this.array = array
+    this.left = 0
+    this.right = -1
     this.maxQueue = []
     this.window = []
   }
@@ -21,7 +21,7 @@ export default class SlidingWindow {
       throw new Error('can not found current maximum in sliding window.')
     }
 
-    return this.array[this.maxQueue[0]];
+    return this.array[this.maxQueue[0]]
   }
 
   /** 移动滑动窗口右边界 */
@@ -40,13 +40,11 @@ export default class SlidingWindow {
       this.left++
       this._updateWindow()
     }
-
   }
-
 
   /** 获取当前窗口大小 */
   public getCurWindowSize(): number {
-    if (this.left > this.right) return 0;
+    if (this.left > this.right) return 0
 
     return this.right - this.left + 1
   }
@@ -63,13 +61,12 @@ export default class SlidingWindow {
 
   /** 更新当前窗口 */
   private _updateWindow(): void {
-    this.window = [];
+    this.window = []
 
     for (let i = this.left; i <= this.right; i++) {
-      this.window.push(this.array[i]);
+      this.window.push(this.array[i])
     }
   }
-
 
   /** 更新双端队列 */
   private _updateMaxDeque(index: number, isRightPtrMove: boolean): void {
@@ -78,11 +75,14 @@ export default class SlidingWindow {
     if (isRightPtrMove) {
       if (maxQueue.length == 0) {
         maxQueue.push(index)
-        return;
+        return
       }
 
-      while (maxQueue.length > 0 && this.array[maxQueue[maxQueue.length - 1]] < this.array[index]) {
-        maxQueue.pop();
+      while (
+        maxQueue.length > 0 &&
+        this.array[maxQueue[maxQueue.length - 1]] < this.array[index]
+      ) {
+        maxQueue.pop()
       }
 
       maxQueue.push(index)
@@ -93,4 +93,5 @@ export default class SlidingWindow {
       }
     }
   }
+
 }

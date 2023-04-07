@@ -6,31 +6,33 @@
 
 // @lc code=start
 
-import TreeNode from '../TreeNode';
-export default isValidBST;
+import type TreeNode from '../TreeNode'
+
+
+export default isValidBST
 
 function isValidBST(root: TreeNode | null): boolean {
-  const temp: number[] = [];
+  const temp: number[] = []
 
-  if (root == null) return true;
-  _inorderTraversal(root, temp);
+  if (root == null) return true
+  _inorderTraversal(root, temp)
 
-  if (temp.length == 1) return true;
+  if (temp.length == 1) return true
   for (let i = 1; i < temp.length; i++) {
-    let prev = temp[i - 1];
-    let cur = temp[i];
+    const prev = temp[i - 1]
+    const cur = temp[i]
 
-    if (cur <= prev) return false;
+    if (cur <= prev) return false
   }
 
-  return true;
+  return true
 }
 
 function _inorderTraversal(root: TreeNode | null, temp: number[]) {
-  if (root == null) return;
+  if (root == null) return
 
-  _inorderTraversal(root.left, temp);
-  temp.push(root.val);
-  _inorderTraversal(root.right, temp);
+  _inorderTraversal(root.left, temp)
+  temp.push(root.val)
+  _inorderTraversal(root.right, temp)
 }
 // @lc code=end

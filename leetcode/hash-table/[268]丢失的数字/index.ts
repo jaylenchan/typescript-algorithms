@@ -6,16 +6,16 @@
 
 // @lc code=start
 function missingNumber(nums: number[]): number {
-  const set = new Set<number>(nums);
-  let num = -1;
+  const set = new Set<number>(nums)
+  let num = -1
 
   for (let i = 0; i <= nums.length; i++) {
     if (!set.has(i)) {
-      num = i;
-      break;
+      num = i
+      break
     }
   }
 
-  return num;
+  return num
 }
 // @lc code=end

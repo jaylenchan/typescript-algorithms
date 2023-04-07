@@ -1,4 +1,4 @@
-import Graph, { GNode, Edge } from './impl';
+import Graph, { GNode, Edge } from './impl'
 
 /**
  * 创建图
@@ -10,9 +10,10 @@ import Graph, { GNode, Edge } from './impl';
  */
 
 export default class MatrixGraph extends Graph {
+
   createGraph(matrix: number[][]) {
     if (matrix.length == 0 || matrix[0].length == 0) {
-      return;
+      return
     }
 
     for (const [weight, from, to] of matrix) {
@@ -23,14 +24,14 @@ export default class MatrixGraph extends Graph {
         this.nodes.set(to, new GNode(to))
       }
 
-      const fromNode = this.nodes.get(from)!;
-      const toNode = this.nodes.get(to)!;
-      const newEdge = new Edge(weight, fromNode, toNode);
+      const fromNode = this.nodes.get(from)!
+      const toNode = this.nodes.get(to)!
+      const newEdge = new Edge(weight, fromNode, toNode)
 
-      fromNode.nexts.push(toNode);
-      fromNode.out += 1;
-      toNode.in += 1;
-      fromNode.edges.push(newEdge);
+      fromNode.nexts.push(toNode)
+      fromNode.out += 1
+      toNode.in += 1
+      fromNode.edges.push(newEdge)
       this.edges.add(newEdge)
     }
   }

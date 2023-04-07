@@ -5,22 +5,24 @@
  */
 
 // @lc code=start
-import TreeNode from '../TreeNode';
-export default preorderTraversal;
+import type TreeNode from '../TreeNode'
+
+
+export default preorderTraversal
 
 function preorderTraversal(root: TreeNode | null): number[] {
-  const result: number[] = [];
+  const result: number[] = []
 
-  _preorderTraversal(root, result);
+  _preorderTraversal(root, result)
 
-  return result;
+  return result
 }
 
 function _preorderTraversal(root: TreeNode | null, result: number[]) {
-  if (root == null) return;
+  if (root == null) return
 
-  result.push(root.val);
-  _preorderTraversal(root.left, result);
-  _preorderTraversal(root.right, result);
+  result.push(root.val)
+  _preorderTraversal(root.left, result)
+  _preorderTraversal(root.right, result)
 }
 // @lc code=end

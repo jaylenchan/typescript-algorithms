@@ -3,7 +3,7 @@
  *
  * [82] 删除排序链表中的重复元素 II
  */
-export { deleteDuplicates };
+export { deleteDuplicates }
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -18,33 +18,33 @@ export { deleteDuplicates };
  */
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-  if (head == null || head.next == null) return head;
+  if (head == null || head.next == null) return head
 
   // 能走到这里，说明至少两个点
-  const dummyHead = new ListNode(-1);
-  dummyHead.next = head;
+  const dummyHead = new ListNode(-1)
+  dummyHead.next = head
 
-  let prev = dummyHead;
-  let cur = head;
-  let duplicate = Infinity;
+  let prev = dummyHead
+  let cur = head
+  let duplicate = Infinity
 
   while (true) {
-    if (cur == null) break;
+    if (cur == null) break
     if (cur.next && cur.next.val == cur.val) {
-      duplicate = cur.val;
-      cur = cur.next;
+      duplicate = cur.val
+      cur = cur.next
     } else {
       if (cur && duplicate == cur.val) {
-        cur = cur.next;
-        prev.next = cur;
+        cur = cur.next
+        prev.next = cur
       } else {
-        prev = cur;
-        cur = cur.next;
+        prev = cur
+        cur = cur.next
       }
     }
   }
 
-  return dummyHead.next;
+  return dummyHead.next
 }
 // @lc code=end
 

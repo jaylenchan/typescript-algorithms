@@ -4,8 +4,10 @@
  * [105] 从前序与中序遍历序列构造二叉树
  */
 
-import TreeNode from '../TreeNode';
-export default buildTree;
+import TreeNode from '../TreeNode'
+
+
+export default buildTree
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -27,18 +29,18 @@ function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
     inorder.length == 0 ||
     preorder.length != inorder.length
   ) {
-    return null;
+    return null
   }
 
-  const preLeft = 0;
-  const preRight = preorder.length - 1;
-  const inLeft = 0;
-  const inRight = inorder.length - 1;
+  const preLeft = 0
+  const preRight = preorder.length - 1
+  const inLeft = 0
+  const inRight = inorder.length - 1
 
-  const inorderMap = new Map<number, number>();
+  const inorderMap = new Map<number, number>()
 
   for (let i = 0; i <= inRight; i++) {
-    inorderMap.set(inorder[i], i);
+    inorderMap.set(inorder[i], i)
   }
 
   return _buildTree(
@@ -49,7 +51,7 @@ function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
     inLeft,
     inRight,
     inorderMap
-  );
+  )
 }
 
 function _buildTree(
@@ -61,34 +63,34 @@ function _buildTree(
   inRight: number,
   inorderMap: Map<number, number>
 ): TreeNode | null {
-  if (inLeft > inRight) return null;
+  if (inLeft > inRight) return null
 
   // 1. 从前序遍历数组中取出数组preLeft位置的值rootVal
-  const rootVal = preorder[preLeft];
-  const root = new TreeNode(rootVal);
+  const rootVal = preorder[preLeft]
+  const root = new TreeNode(rootVal)
 
   // 2. 到中序遍历数组中寻找rootVal所在的位置rootInOrderIndex
-  const rootInOrderIndex = inorderMap.get(rootVal)!;
+  const rootInOrderIndex = inorderMap.get(rootVal)!
   // 3. 因此以位置rootInOrderIndex为中心，
   //    往左就是rootVal的左子树，往右就是rootVal的右子树。
   //    我们更新左右子树应该拿到的inorder数组的范围
 
   // 左子树的中序遍历数组：
-  const leftChildInLeft = inLeft;
-  const leftChildInRight = rootInOrderIndex - 1;
+  const leftChildInLeft = inLeft
+  const leftChildInRight = rootInOrderIndex - 1
   // 右子树的中序遍历数组:
-  const rightChildInLeft = rootInOrderIndex + 1;
-  const rightChildInRight = inRight;
+  const rightChildInLeft = rootInOrderIndex + 1
+  const rightChildInRight = inRight
 
   // 4. 根据中序遍历数组中的分割操作，我们可以接着算出左子树的节点个数，右子树的节点个数
-  const leftChildSize = leftChildInRight - leftChildInLeft + 1;
+  const leftChildSize = leftChildInRight - leftChildInLeft + 1
 
   // 5. 根据计算出来的左子树和右子树的节点个数，我们可以回到preorder前序遍历数组中，找到左右子树在原数组中的范围
-  const leftChildPreLeft = preLeft + 1;
-  const leftChildPreRight = leftChildSize + leftChildPreLeft - 1;
+  const leftChildPreLeft = preLeft + 1
+  const leftChildPreRight = leftChildSize + leftChildPreLeft - 1
 
-  const rightChildPreLeft = leftChildPreRight + 1;
-  const rightChildPreRight = preRight;
+  const rightChildPreLeft = leftChildPreRight + 1
+  const rightChildPreRight = preRight
 
   // 6. 递归创建左右子树
   root.left = _buildTree(
@@ -99,7 +101,7 @@ function _buildTree(
     leftChildInLeft,
     leftChildInRight,
     inorderMap
-  );
+  )
 
   root.right = _buildTree(
     preorder,
@@ -109,8 +111,8 @@ function _buildTree(
     rightChildInLeft,
     rightChildInRight,
     inorderMap
-  );
+  )
 
-  return root;
+  return root
 }
 // @lc code=end

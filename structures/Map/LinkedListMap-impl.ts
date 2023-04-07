@@ -1,108 +1,113 @@
-import IMap from './interface';
+import type IMap from './interface'
+
 
 class LNode<K, V> {
-  public key: K | null;
-  public value: V | null;
-  public next: LNode<K, V> | null;
+
+  public key: K | null
+  public value: V | null
+  public next: LNode<K, V> | null
 
   constructor(
     key: K | null = null,
     value: V | null = null,
     next: LNode<K, V> | null = null
   ) {
-    this.key = key;
-    this.value = value;
-    this.next = next;
+    this.key = key
+    this.value = value
+    this.next = next
   }
 
   public toString(): string {
-    return this.key!.toString() + ' : ' + this.value!.toString();
+    return this.key!.toString() + ' : ' + this.value!.toString()
   }
+
 }
 
 class LinkedListMap<K, V> implements IMap<K, V> {
-  private dummyNode: LNode<K, V>;
-  private size: number;
+
+  private dummyNode: LNode<K, V>
+  private size: number
 
   constructor() {
-    this.dummyNode = new LNode<K, V>();
-    this.size = 0;
+    this.dummyNode = new LNode<K, V>()
+    this.size = 0
   }
 
   private _getNode(key: K): LNode<K, V> | null {
-    let cur = this.dummyNode.next;
+    let cur = this.dummyNode.next
 
     while (cur != null) {
       if (cur.key == key) {
-        return cur;
+        return cur
       }
 
-      cur = cur.next;
+      cur = cur.next
     }
 
-    return null;
+    return null
   }
 
   // 增
   public add(key: K, value: V): void {
-    const node = this._getNode(key);
+    const node = this._getNode(key)
 
     if (node == null) {
-      this.dummyNode.next = new LNode(key, value, this.dummyNode.next);
-      this.size += 1;
+      this.dummyNode.next = new LNode(key, value, this.dummyNode.next)
+      this.size += 1
     } else {
-      node.value = value;
+      node.value = value
     }
   }
 
   public remove(key: K): V | null {
-    let prev = this.dummyNode;
+    let prev = this.dummyNode
 
     while (prev.next != null) {
       if (prev.next.key == key) {
-        break;
+        break
       }
-      prev = prev.next;
+      prev = prev.next
     }
 
     if (prev.next != null) {
-      const removeNode = prev.next;
-      prev.next = removeNode.next;
-      removeNode.next = null;
+      const removeNode = prev.next
+      prev.next = removeNode.next
+      removeNode.next = null
 
-      return removeNode.value;
+      return removeNode.value
     }
 
-    return null;
+    return null
   }
 
   public contains(key: K): boolean {
-    return this._getNode(key) != null;
+    return this._getNode(key) != null
   }
 
   public get(key: K): V | null {
-    const node = this._getNode(key);
+    const node = this._getNode(key)
 
-    return node == null ? null : node.value;
+    return node == null ? null : node.value
   }
 
   public set(key: K, newValue: V): void {
-    const node = this._getNode(key);
+    const node = this._getNode(key)
 
     if (node == null) {
-      throw new Error(`${key} doesn't exist!`);
+      throw new Error(`${key} doesn't exist!`)
     } else {
-      node.value = newValue;
+      node.value = newValue
     }
   }
 
   public getSize(): number {
-    return this.size;
+    return this.size
   }
 
   public isEmpty(): boolean {
-    return this.size == 0;
+    return this.size == 0
   }
+
 }
 
-export default LinkedListMap;
+export default LinkedListMap

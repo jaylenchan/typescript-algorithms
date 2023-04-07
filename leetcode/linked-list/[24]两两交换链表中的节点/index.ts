@@ -3,7 +3,7 @@
  *
  * [24] 两两交换链表中的节点
  */
-export { swapPairs };
+export { swapPairs }
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -23,15 +23,15 @@ function reverseList(
   num: number
 ): [ListNode, ListNode, ListNode | null] {
   if (num == 1 || node.next == null) {
-    return [node, node, node.next];
+    return [node, node, node.next]
   }
 
-  let [head, tail, oldNext] = reverseList(node.next, num - 1);
-  tail.next = node;
-  node.next = null;
-  tail = node;
+  let [head, tail, oldNext] = reverseList(node.next, num - 1)
+  tail.next = node
+  node.next = null
+  tail = node
 
-  return [head, tail, oldNext];
+  return [head, tail, oldNext]
 }
 
 // 两两交换链表的节点，并返回交换后链表的头节点
@@ -39,25 +39,25 @@ function _swapPairs(node: ListNode): ListNode {
   // 1 2 3 4
   // 2 1  head: 2 tail: 1
   // 4 ,3
-  let [head, tail, oldNext] = reverseList(node, 2);
+  let [head, tail, oldNext] = reverseList(node, 2)
 
   while (oldNext) {
-    const [nextHead, nextTail, nextOldNext] = reverseList(oldNext, 2);
-    tail.next = nextHead;
-    oldNext = nextOldNext;
-    tail = nextTail;
+    const [nextHead, nextTail, nextOldNext] = reverseList(oldNext, 2)
+    tail.next = nextHead
+    oldNext = nextOldNext
+    tail = nextTail
   }
 
-  return head;
+  return head
 }
 
 function swapPairs(head: ListNode | null): ListNode | null {
   // #特判：节点个数小于2，直接返回
-  if (head == null || head.next == null) return head;
+  if (head == null || head.next == null) return head
 
-  head = _swapPairs(head);
+  head = _swapPairs(head)
 
-  return head;
+  return head
 }
 // @lc code=end
 /**

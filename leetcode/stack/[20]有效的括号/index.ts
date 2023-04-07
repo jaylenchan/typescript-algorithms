@@ -6,41 +6,41 @@
 
 // @lc code=start
 
-type LeftChar = '(' | '[' | '{';
-type RightChar = ')' | ']' | '}';
+type LeftChar = '(' | '[' | '{'
+type RightChar = ')' | ']' | '}'
 
 function isValid(s: string): boolean {
-  if (!s || s.length < 2) return false;
-  const stack: string[] = [];
-  let i = 0;
+  if (!s || s.length < 2) return false
+  const stack: string[] = []
+  let i = 0
 
-  const parenthesisSet = new Set<string>();
-  parenthesisSet.add('(');
-  parenthesisSet.add('[');
-  parenthesisSet.add('{');
+  const parenthesisSet = new Set<string>()
+  parenthesisSet.add('(')
+  parenthesisSet.add('[')
+  parenthesisSet.add('{')
 
-  const parenthesisMap = new Map<string, string>();
-  parenthesisMap.set(')', '(');
-  parenthesisMap.set(']', '[');
-  parenthesisMap.set('}', '{');
+  const parenthesisMap = new Map<string, string>()
+  parenthesisMap.set(')', '(')
+  parenthesisMap.set(']', '[')
+  parenthesisMap.set('}', '{')
 
   while (i < s.length) {
     if (parenthesisSet.has(s[i])) {
-      stack.push(s[i]);
+      stack.push(s[i])
     } else {
-      const rightChar = s[i];
-      const leftChar = parenthesisMap.get(rightChar);
-      if (!leftChar) return false;
-      if (leftChar != stack.pop()) return false;
-      if (!parenthesisSet.has(leftChar)) return false;
+      const rightChar = s[i]
+      const leftChar = parenthesisMap.get(rightChar)
+      if (!leftChar) return false
+      if (leftChar != stack.pop()) return false
+      if (!parenthesisSet.has(leftChar)) return false
     }
 
-    i += 1;
+    i += 1
   }
 
-  if (stack.length > 0) return false;
+  if (stack.length > 0) return false
 
-  return true;
+  return true
 }
 
 // @lc code=end

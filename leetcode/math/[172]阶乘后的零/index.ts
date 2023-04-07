@@ -6,13 +6,13 @@
 
 // @lc code=start
 function trailingZeroes(n: number): number {
-  let count = 0;
+  let count = 0
   while (n / 5 != 0) {
-    count += Math.floor(n / 5);
-    n /= 5;
+    count += Math.floor(n / 5)
+    n /= 5
   }
 
-  return count;
+  return count
 }
 
 // 思路：不断计算每次n除以5的个数，然后缩小n重复进行这个过程，直到没法继续为止

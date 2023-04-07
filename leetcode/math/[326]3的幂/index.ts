@@ -6,16 +6,16 @@
 
 // @lc code=start
 function isPowerOfThree(n: number): boolean {
-  if (n == 1) return true;
-  let base = 3;
+  if (n == 1) return true
+  let base = 3
 
   while (true) {
     if (base < n) {
-      base *= 3;
+      base *= 3
     } else if (base == n) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   }
 }

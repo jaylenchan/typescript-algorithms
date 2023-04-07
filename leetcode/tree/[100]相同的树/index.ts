@@ -6,20 +6,22 @@
 
 // @lc code=start
 
-import TreeNode from '../TreeNode';
-export default isSameTree;
+import type TreeNode from '../TreeNode'
+
+
+export default isSameTree
 
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
   if (p == null && q == null) {
-    return true;
+    return true
   }
   if (p == null || q == null) {
-    return false;
+    return false
   }
   if (p.val == q.val) {
-    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
   } else {
-    return false;
+    return false
   }
 }
 // @lc code=end

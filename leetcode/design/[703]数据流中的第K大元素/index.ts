@@ -6,106 +6,108 @@
 
 // @lc code=start
 class KthLargest {
-  private data: number[];
-  private size: number;
-  private capacity: number;
+
+  private data: number[]
+  private size: number
+  private capacity: number
 
   constructor(k: number, nums: number[]) {
-    this.data = [];
-    this.size = 0;
-    this.capacity = k;
+    this.data = []
+    this.size = 0
+    this.capacity = k
 
-    this.init(nums);
+    this.init(nums)
   }
 
   add(val: number): number {
     if (this.size != this.capacity) {
       while (this.size != this.capacity) {
-        this.insert(val);
+        this.insert(val)
       }
     } else {
       if (val > this.peek()) {
-        this.delMin();
-        this.insert(val);
+        this.delMin()
+        this.insert(val)
       }
     }
-    return this.peek();
+    return this.peek()
   }
 
   private init(nums: number[]): void {
     for (let i = 0; i < nums.length; i++) {
       if (this.size != this.capacity) {
-        this.insert(nums[i]);
+        this.insert(nums[i])
       } else {
         if (nums[i] > this.peek()) {
-          this.delMin();
-          this.insert(nums[i]);
+          this.delMin()
+          this.insert(nums[i])
         }
       }
     }
   }
 
   private peek(): number {
-    return this.data[0];
+    return this.data[0]
   }
 
   private insert(val: number): void {
-    this.data[this.size++] = val;
-    this.swim(this.size - 1);
+    this.data[this.size++] = val
+    this.swim(this.size - 1)
   }
 
   private delMin(): number {
-    const min = this.data[0];
+    const min = this.data[0]
 
-    this.swap(0, this.size - 1);
-    this.size--;
-    this.sink(0);
+    this.swap(0, this.size - 1)
+    this.size--
+    this.sink(0)
 
-    return min;
+    return min
   }
 
   private sink(index: number): void {
     while (this.left(index) < this.size) {
-      let min = this.left(index);
+      let min = this.left(index)
       if (this.right(index) < this.size) {
         min =
           this.data[min] < this.data[this.right(index)]
             ? min
-            : this.right(index);
+            : this.right(index)
       }
 
-      if (this.data[min] > this.data[index]) break;
+      if (this.data[min] > this.data[index]) break
 
-      this.swap(min, index);
+      this.swap(min, index)
 
-      index = min;
+      index = min
     }
   }
 
   private swim(index: number): void {
     while (this.data[index] < this.data[this.parent(index)]) {
-      this.swap(index, this.parent(index));
-      index = this.parent(index);
+      this.swap(index, this.parent(index))
+      index = this.parent(index)
     }
   }
 
   private parent(index: number): number {
-    if (index == 0) return 0;
+    if (index == 0) return 0
 
-    return Math.floor((index - 1) / 2);
+    return Math.floor((index - 1) / 2)
   }
 
   private left(index: number): number {
-    return 2 * index + 1;
+    return 2 * index + 1
   }
 
   private right(index: number): number {
-    return 2 * index + 2;
+    return 2 * index + 2
   }
 
   private swap(i: number, j: number): void {
-    [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
+    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
+
 }
 
 /**

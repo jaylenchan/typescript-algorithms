@@ -6,18 +6,18 @@
 
 // @lc code=start
 function runningSum(nums: number[]): number[] {
-  const prefixSum: number[] = [];
+  const prefixSum: number[] = []
 
   for (let i = 0; i <= nums.length; i++) {
     if (i == 0) {
-      prefixSum[i] = 0;
+      prefixSum[i] = 0
     } else {
-      prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
+      prefixSum[i] = prefixSum[i - 1] + nums[i - 1]
     }
   }
 
-  prefixSum.shift();
+  prefixSum.shift()
 
-  return prefixSum;
+  return prefixSum
 }
 // @lc code=end

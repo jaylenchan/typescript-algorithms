@@ -6,7 +6,7 @@
 
 // @lc code=start
 function searchMatrix(matrix: number[][], target: number): boolean {
-  if (matrix.length == 0 || matrix[0].length == 0) return false;
+  if (matrix.length == 0 || matrix[0].length == 0) return false
 
   return _searchMatrix(
     matrix,
@@ -15,7 +15,7 @@ function searchMatrix(matrix: number[][], target: number): boolean {
     0,
     matrix.length - 1,
     matrix[0].length - 1
-  );
+  )
 }
 
 function _searchMatrix(
@@ -27,15 +27,15 @@ function _searchMatrix(
   col2: number
 ): boolean {
   if (row1 == row2) {
-    return _searchArr(matrix[row1], target, 0, matrix[0].length - 1);
+    return _searchArr(matrix[row1], target, 0, matrix[0].length - 1)
   }
 
   if (matrix[row1][col2] == target) {
-    return true;
+    return true
   } else if (matrix[row1][col2] > target) {
-    return _searchMatrix(matrix, target, row1, col1, row2, col2 - 1);
+    return _searchMatrix(matrix, target, row1, col1, row2, col2 - 1)
   } else {
-    return _searchMatrix(matrix, target, row1 + 1, col1, row2, col2);
+    return _searchMatrix(matrix, target, row1 + 1, col1, row2, col2)
   }
 }
 
@@ -45,15 +45,15 @@ function _searchArr(
   left: number,
   right: number
 ): boolean {
-  if (left >= right) return arr[right] == target;
-  const mid = left + Math.floor((right - left) >> 1);
+  if (left >= right) return arr[right] == target
+  const mid = left + Math.floor((right - left) >> 1)
 
   if (arr[mid] == target) {
-    return true;
+    return true
   } else if (arr[mid] > target) {
-    return _searchArr(arr, target, left, mid - 1);
+    return _searchArr(arr, target, left, mid - 1)
   } else {
-    return _searchArr(arr, target, mid + 1, right);
+    return _searchArr(arr, target, mid + 1, right)
   }
 }
 
@@ -65,4 +65,3 @@ function _searchArr(
  * 4. 当我们搜索的矩阵如果退化成了一维的时候，我们改用二分搜索，搜索一维数组
  */
 // @lc code=end
-

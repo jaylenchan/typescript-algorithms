@@ -4,7 +4,9 @@
  * [114] 二叉树展开为链表
  */
 
-import TreeNode from '../TreeNode';
+import type TreeNode from '../TreeNode'
+
+
 export default // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -24,31 +26,31 @@ export default // @lc code=start
  Do not return anything, modify root in-place instead.
  */
 function flatten(root: TreeNode | null): void {
-  _flatten(root);
+  _flatten(root)
 }
 
 // 将一棵二叉树按前序遍历的方式展开成一条链表，并返回链表的头部
 function _flatten(root: TreeNode | null): void {
-  if (root == null) return;
+  if (root == null) return
 
-  const rightChild = root.right;
-  const leftChild = root.left;
+  const rightChild = root.right
+  const leftChild = root.left
 
-  root.left = null;
-  root.right = leftChild;
+  root.left = null
+  root.right = leftChild
 
-  _flatten(leftChild);
-  _flatten(rightChild);
+  _flatten(leftChild)
+  _flatten(rightChild)
 
   if (root.right) {
-    let cur = leftChild!;
+    let cur = leftChild!
     while (cur.right != null) {
-      cur = cur.right;
+      cur = cur.right
     }
 
-    cur.right = rightChild;
+    cur.right = rightChild
   } else {
-    root.right = rightChild;
+    root.right = rightChild
   }
 }
 

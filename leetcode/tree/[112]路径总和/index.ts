@@ -4,8 +4,10 @@
  * [112] 路径总和
  */
 
-import TreeNode from '../TreeNode';
-export default hasPathSum;
+import type TreeNode from '../TreeNode'
+
+
+export default hasPathSum
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -23,16 +25,16 @@ export default hasPathSum;
 
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
   if (root == null) {
-    return false;
+    return false
   }
   if (root.val == targetSum) {
-    if (root.left == null && root.right == null) return true;
+    if (root.left == null && root.right == null) return true
   }
 
   return (
     hasPathSum(root.left, targetSum - root.val) ||
     hasPathSum(root.right, targetSum - root.val)
-  );
+  )
 }
 
 // @lc code=end

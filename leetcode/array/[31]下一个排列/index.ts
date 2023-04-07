@@ -9,40 +9,40 @@
  Do not return anything, modify nums in-place instead.
  */
 function nextPermutation(nums: number[]): void {
-  if (nums.length == 0 || nums.length == 1) return;
+  if (nums.length == 0 || nums.length == 1) return
 
-  let end = nums.length - 1;
-  let [small, j] = [-1, -1];
+  const end = nums.length - 1
+  let [small, j] = [-1, -1]
 
   for (let index = end; index >= 0; index--) {
     if (nums[index - 1] < nums[index]) {
-      small = index - 1;
-      j = index;
-      break;
+      small = index - 1
+      j = index
+      break
     }
   }
 
-  let big = end;
+  let big = end
   while (big >= j) {
     if (nums[big] > nums[small]) {
-      break;
+      break
     }
-    big -= 1;
+    big -= 1
   }
 
-  [nums[small], nums[big]] = [nums[big], nums[small]];
+  ;[nums[small], nums[big]] = [nums[big], nums[small]]
 
   while (j <= end) {
-    let min = j;
+    let min = j
     for (let i = j + 1; i <= end; i++) {
       if (nums[i] < nums[min]) {
-        min = i;
+        min = i
       }
     }
 
-    [nums[min], nums[j]] = [nums[j], nums[min]];
+    ;[nums[min], nums[j]] = [nums[j], nums[min]]
 
-    j += 1;
+    j += 1
   }
 }
 

@@ -6,98 +6,100 @@
 
 // @lc code=start
 class AMinHeap {
-  private size: number;
-  private data: number[];
+
+  private size: number
+  private data: number[]
 
   constructor() {
-    this.data = [];
-    this.size = 0;
+    this.data = []
+    this.size = 0
   }
 
   getSize(): number {
-    return this.size;
+    return this.size
   }
 
   peek(): number {
-    return this.data[0];
+    return this.data[0]
   }
 
   insert(item: number): void {
-    this.data[this.size++] = item;
-    this.swim(this.size - 1);
+    this.data[this.size++] = item
+    this.swim(this.size - 1)
   }
 
   delMin(): number {
-    const max = this.data[0];
+    const max = this.data[0]
 
-    this.swap(0, this.size - 1);
-    this.data.pop();
-    this.size--;
-    this.sink(0);
+    this.swap(0, this.size - 1)
+    this.data.pop()
+    this.size--
+    this.sink(0)
 
-    return max;
+    return max
   }
 
   private swim(index: number): void {
     while (this.data[this.parent(index)] > this.data[index]) {
-      this.swap(index, this.parent(index));
-      index = this.parent(index);
+      this.swap(index, this.parent(index))
+      index = this.parent(index)
     }
   }
 
   private sink(index: number): void {
     while (this.left(index) < this.size) {
-      let minIndex = this.left(index);
-      const right = this.right(index);
+      let minIndex = this.left(index)
+      const right = this.right(index)
 
       if (right < this.size) {
-        minIndex = this.data[minIndex] < this.data[right] ? minIndex : right;
+        minIndex = this.data[minIndex] < this.data[right] ? minIndex : right
       }
 
-      if (this.data[minIndex] > this.data[index]) break;
+      if (this.data[minIndex] > this.data[index]) break
 
-      this.swap(minIndex, index);
+      this.swap(minIndex, index)
 
-      index = minIndex;
+      index = minIndex
     }
   }
 
   private parent(index: number): number {
-    return Math.floor((index - 1) / 2);
+    return Math.floor((index - 1) / 2)
   }
 
   private left(index: number): number {
-    return 2 * index + 1;
+    return 2 * index + 1
   }
 
   private right(index: number): number {
-    return 2 * index + 2;
+    return 2 * index + 2
   }
 
   private swap(i: number, j: number): void {
-    [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
+    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
+
 }
 
 function findKthLargest(nums: number[], k: number): number {
-  if (nums.length == 0) return -1;
+  if (nums.length == 0) return -1
 
-  const heap = new AMinHeap();
-  let count = 0;
+  const heap = new AMinHeap()
+  let count = 0
 
   for (let i = 0; i < nums.length; i++) {
     if (count == k) {
       if (heap.peek() < nums[i]) {
-        heap.delMin();
-        heap.insert(nums[i]);
+        heap.delMin()
+        heap.insert(nums[i])
       }
     } else {
-      heap.insert(nums[i]);
-      count++;
+      heap.insert(nums[i])
+      count++
     }
   }
 
-  return heap.delMin();
+  return heap.delMin()
 }
 
 /**

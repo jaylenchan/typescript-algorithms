@@ -6,19 +6,19 @@
 
 // @lc code=start
 function titleToNumber(columnTitle: string): number {
-  return _titleToNumber(columnTitle, columnTitle.length - 1, 0);
+  return _titleToNumber(columnTitle, columnTitle.length - 1, 0)
 }
 
 function _titleToNumber(title: string, y: number, index: number): number {
-  if (y == 0) return ASCIndex(title[index]);
-  
-  const curSum = Math.pow(26, y) * ASCIndex(title[index]);
+  if (y == 0) return ASCIndex(title[index])
 
-  return curSum + _titleToNumber(title.slice(index + 1), --y, index);
+  const curSum = Math.pow(26, y) * ASCIndex(title[index])
+
+  return curSum + _titleToNumber(title.slice(index + 1), --y, index)
 }
 
 function ASCIndex(letter: string): number {
-  return letter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
+  return letter.charCodeAt(0) - 'A'.charCodeAt(0) + 1
 }
 
 /**

@@ -1,41 +1,45 @@
-import IStack from './interface';
-import LinkedList from '../linkedList/impl';
+import LinkedList from '../linkedList/impl'
+
+import type IStack from './interface'
+
 
 class LinkedListStack<E> implements IStack<E> {
-  private list: LinkedList<E>;
+
+  private list: LinkedList<E>
 
   constructor() {
-    this.list = new LinkedList<E>();
+    this.list = new LinkedList<E>()
   }
 
   public getSize(): number {
-    return this.list.getSize();
+    return this.list.getSize()
   }
 
   public isEmpty(): boolean {
-    return this.list.isEmpty();
+    return this.list.isEmpty()
   }
 
   public push(e: E): void {
-    this.list.addFrist(e);
+    this.list.addFrist(e)
   }
 
   public pop(): E {
-    return this.list.removeFirst();
+    return this.list.removeFirst()
   }
 
   public peek(): E {
-    return this.list.getFirst();
+    return this.list.getFirst()
   }
 
   public toString() {
-    let res = '';
+    let res = ''
 
-    res += 'Stack: top ';
-    res += this.list.toString();
+    res += 'Stack: top '
+    res += this.list.toString()
 
-    return res;
+    return res
   }
+
 }
 
-export default LinkedListStack;
+export default LinkedListStack

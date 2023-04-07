@@ -1,37 +1,38 @@
-import QuickSortTest from './QuickSortTest';
-import QuickSortV1Test from './QuickSortV1Test';
-import QuickSortV2Test from './QuickSortV2Test';
-import QuickSortV3Test from './QuickSortV3Test';
-import QuickSortV4Test from './QuickSortV4Test';
+import QuickSortTest from './QuickSortTest'
+import QuickSortV1Test from './QuickSortV1Test'
+import QuickSortV2Test from './QuickSortV2Test'
+import QuickSortV3Test from './QuickSortV3Test'
+import QuickSortV4Test from './QuickSortV4Test'
+
 
 describe('Quick Sort', () => {
   it('Quick Sort Test', () => {
-    const test = new QuickSortTest();
+    const test = new QuickSortTest()
 
-    test.runTest();
-  });
+    test.runTest()
+  })
 
   it('Quick Sort V1 Test [基础快排]', () => {
-    const test = new QuickSortV1Test();
+    const test = new QuickSortV1Test()
 
-    test.runTest();
-  });
+    test.runTest()
+  })
 
   it('Quick Sort V2 Test [随机快排]', () => {
-    const test = new QuickSortV2Test();
+    const test = new QuickSortV2Test()
 
-    test.runTest();
-  });
+    test.runTest()
+  })
 
   it('Quick Sort V3 Test [二路快排]', () => {
-    const test = new QuickSortV3Test();
+    const test = new QuickSortV3Test()
 
-    test.runTest();
-  });
+    test.runTest()
+  })
 
   it('Quick Sort V4 Test [三路快排]', () => {
-    const test = new QuickSortV4Test();
+    const test = new QuickSortV4Test()
 
-    test.runTest();
-  });
-});
+    test.runTest()
+  })
+})

@@ -18,17 +18,17 @@
  */
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-  let cur = head;
+  let cur = head
   while (cur != null && cur.next != null) {
     if (cur.val == cur.next.val) {
-      let delNode = cur.next;
-      cur.next = delNode.next;
-      delNode = null;
+      let delNode = cur.next
+      cur.next = delNode.next
+      delNode = null
     } else {
-      cur = cur.next;
+      cur = cur.next
     }
   }
 
-  return head;
+  return head
 }
 // @lc code=end

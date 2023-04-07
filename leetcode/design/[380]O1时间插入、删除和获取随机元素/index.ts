@@ -6,51 +6,53 @@
 
 // @lc code=start
 class RandomizedSet {
-  private data: number[];
-  private idxMap: Map<number, number>;
-  private size: number;
+
+  private data: number[]
+  private idxMap: Map<number, number>
+  private size: number
 
   constructor() {
-    this.data = [];
-    this.idxMap = new Map<number, number>();
-    this.size = 0;
+    this.data = []
+    this.idxMap = new Map<number, number>()
+    this.size = 0
   }
 
   insert(val: number): boolean {
-    if (this.contains(val)) return false;
+    if (this.contains(val)) return false
 
-    this.data[this.size] = val;
-    this.idxMap.set(val, this.size++);
+    this.data[this.size] = val
+    this.idxMap.set(val, this.size++)
 
-    return true;
+    return true
   }
 
   remove(val: number): boolean {
-    if (!this.contains(val)) return false;
+    if (!this.contains(val)) return false
 
-    const index = this.idxMap.get(val)!;
+    const index = this.idxMap.get(val)!
 
-    this.swap(index, this.size - 1);
-    this.idxMap.set(this.data[index], index);
-    this.idxMap.delete(val);
-    this.size--;
+    this.swap(index, this.size - 1)
+    this.idxMap.set(this.data[index], index)
+    this.idxMap.delete(val)
+    this.size--
 
-    return true;
+    return true
   }
 
   getRandom(): number {
-    const random = Math.floor(Math.random() * this.size);
+    const random = Math.floor(Math.random() * this.size)
 
-    return this.data[random];
+    return this.data[random]
   }
 
   private contains(val: number): boolean {
-    return this.idxMap.has(val);
+    return this.idxMap.has(val)
   }
 
   private swap(i: number, j: number): void {
-    [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
+    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
+
 }
 
 /**

@@ -20,45 +20,45 @@
  */
 
 function copyRandomList(head: Node | null): Node | null {
-  const oldRandomMap = new Map<Node, Node>();
-  const oldNewMap = new Map<Node, Node>();
-  const newOldMap = new Map<Node, Node>();
+  const oldRandomMap = new Map<Node, Node>()
+  const oldNewMap = new Map<Node, Node>()
+  const newOldMap = new Map<Node, Node>()
 
-  const dummy = new Node(-1);
+  const dummy = new Node(-1)
 
-  let cur = head;
-  let tail = dummy;
+  let cur = head
+  let tail = dummy
 
   while (cur != null) {
-    const copyNode = new Node(cur.val);
-    tail.next = copyNode;
-    tail = copyNode;
+    const copyNode = new Node(cur.val)
+    tail.next = copyNode
+    tail = copyNode
 
-    oldRandomMap.set(cur, cur.random);
-    oldNewMap.set(cur, copyNode);
-    newOldMap.set(copyNode, cur);
-    cur = cur.next;
+    oldRandomMap.set(cur, cur.random)
+    oldNewMap.set(cur, copyNode)
+    newOldMap.set(copyNode, cur)
+    cur = cur.next
   }
 
-  cur = dummy.next;
+  cur = dummy.next
 
   // 先找到当前新节点曾经对应的旧节点：new -> old
   // 先找旧的节点的随机节点 ： old -> old-random
   // 再找这个旧随机节点对应的copy节点是谁 oldrandom -> copyRandom(copyNode)
   // 然后让新的当前节点指向新的随机copy节点 new
-  cur = dummy.next;
+  cur = dummy.next
 
   while (cur != null) {
-    const old = newOldMap.get(cur)!;
-    const oldRandom = oldRandomMap.get(old);
-    const newRandom = oldNewMap.get(oldRandom)!;
+    const old = newOldMap.get(cur)!
+    const oldRandom = oldRandomMap.get(old)
+    const newRandom = oldNewMap.get(oldRandom)!
 
-    cur.random = newRandom;
+    cur.random = newRandom
 
-    cur = cur.next;
+    cur = cur.next
   }
 
-  return dummy.next;
+  return dummy.next
 }
 
 /**

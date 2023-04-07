@@ -1,20 +1,20 @@
 function makeHelpStr(s: string): string {
-  let helpstr = '#';
+  let helpstr = '#'
   for (let i = 0; i < s.length; i++) {
-    helpstr += `${s[i]}#`;
+    helpstr += `${s[i]}#`
   }
-  return helpstr;
+  return helpstr
 }
 
 function manacher(s: string): number {
-  if (s == null || s.length == 0) return 0;
+  if (s == null || s.length == 0) return 0
 
-  const helpStr: string = makeHelpStr(s);
-  const pArr: number[] = [];
+  const helpStr: string = makeHelpStr(s)
+  const pArr: number[] = []
 
-  let C = -1;
-  let R = -1;
-  let max = -Infinity;
+  let C = -1
+  let R = -1
+  let max = -Infinity
 
   // 枚举从0到helpStr.length-1当做i， 以i为回文中心的回文串的所有情况
   for (let i = 0; i < helpStr.length; i++) {
@@ -28,32 +28,32 @@ function manacher(s: string): number {
      * 小分类3: i'为中心的回文串的左边界直接跟L重叠，那么此时R-i = pArr[i']，代码一样命中这种情况
      * 因此以下代码能够直接命中三种小分类情况，综合就是能够直接命中R > i的所有可能情况
      */
-    pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1;
+    pArr[i] = R > i ? Math.min(pArr[2 * C - i], R - i) : 1
 
     // 从回文半径至少能够到达的区域往后一一枚举，以i为中心的回文串，从刚刚算出来的至少有那么长的区域，再继续往两边尝试扩展
     while (i + pArr[i] < helpStr.length && i - pArr[i] > -1) {
-      const curLeft = i - pArr[i];
-      const curRight = i + pArr[i];
+      const curLeft = i - pArr[i]
+      const curRight = i + pArr[i]
 
       // 如果扩展成功，回文半径+1
       if (helpStr[curLeft] == helpStr[curRight]) {
-        pArr[i]++;
+        pArr[i]++
       } else {
         // 否则直接break整个逻辑
-        break;
+        break
       }
     }
 
     // 做完以上操作后，当以i+回文半径已经大于R了，此时说明回文最有边界扩大了，R应该更新,C应该顺带更R一起更新
     if (i + pArr[i] > R) {
-      R = i + pArr[i];
-      C = i;
+      R = i + pArr[i]
+      C = i
     }
 
-    max = Math.max(max, pArr[i]);
+    max = Math.max(max, pArr[i])
   }
 
-  return max - 1;
+  return max - 1
 }
 
-export default manacher;
+export default manacher

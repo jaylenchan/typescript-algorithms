@@ -18,22 +18,24 @@
  *     }
  * }
  */
-import TreeNode from '../TreeNode';
-export default postorderTraversal;
+import type TreeNode from '../TreeNode'
+
+
+export default postorderTraversal
 
 function postorderTraversal(root: TreeNode | null): number[] {
-  const result: number[] = [];
+  const result: number[] = []
 
-  _postorderTraversal(root, result);
+  _postorderTraversal(root, result)
 
-  return result;
+  return result
 }
 
 function _postorderTraversal(root: TreeNode | null, result: number[]) {
-  if (root == null) return;
+  if (root == null) return
 
-  _postorderTraversal(root.left, result);
-  _postorderTraversal(root.right, result);
-  result.push(root.val);
+  _postorderTraversal(root.left, result)
+  _postorderTraversal(root.right, result)
+  result.push(root.val)
 }
 // @lc code=end

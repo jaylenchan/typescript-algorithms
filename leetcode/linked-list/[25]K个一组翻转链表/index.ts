@@ -18,29 +18,29 @@
  */
 
 function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
-  if (!head || !head.next) return head;
+  if (!head || !head.next) return head
 
-  let cur = head.next.next;
-  let total = 2;
+  let cur = head.next.next
+  let total = 2
 
   while (cur) {
-    total++;
-    cur = cur.next;
+    total++
+    cur = cur.next
   }
 
-  let [curHead, curTail, nextReverseNode] = reverseK(head, k);
-  let times = (total - (total % k)) / k - 1;
+  let [curHead, curTail, nextReverseNode] = reverseK(head, k)
+  let times = (total - (total % k)) / k - 1
 
   while (nextReverseNode && times != 0) {
-    const [nextHead, nextTail, o1] = reverseK(nextReverseNode, k);
-    curTail.next = nextHead;
-    curTail = nextTail;
-    nextReverseNode = o1;
-    times--;
+    const [nextHead, nextTail, o1] = reverseK(nextReverseNode, k)
+    curTail.next = nextHead
+    curTail = nextTail
+    nextReverseNode = o1
+    times--
   }
-  curTail.next = nextReverseNode;
+  curTail.next = nextReverseNode
 
-  return curHead;
+  return curHead
 }
 
 function reverseK(
@@ -48,15 +48,15 @@ function reverseK(
   k: number
 ): [ListNode, ListNode, ListNode | null] {
   if (k == 1) {
-    return [node, node, node.next];
+    return [node, node, node.next]
   }
 
-  let [head, tail, oldNext] = reverseK(node.next, --k);
-  tail.next = node;
-  node.next = null;
-  tail = node;
+  let [head, tail, oldNext] = reverseK(node.next, --k)
+  tail.next = node
+  node.next = null
+  tail = node
 
-  return [head, tail, oldNext];
+  return [head, tail, oldNext]
 }
 // @lc code=end
 

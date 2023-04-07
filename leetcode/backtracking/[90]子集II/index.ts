@@ -11,28 +11,28 @@ function getSubset(
   path: number[],
   result: number[][]
 ): void {
-  if (path.length == nums.length) return;
+  if (path.length == nums.length) return
 
   for (let i = start; i < nums.length; i++) {
-    path.push(nums[i]);
-    result.push([...path]);
+    path.push(nums[i])
+    result.push([...path])
 
-    getSubset(nums, i + 1, path, result);
+    getSubset(nums, i + 1, path, result)
 
-    path.pop();
+    path.pop()
 
-    while (nums[i + 1] == nums[i]) i++;
+    while (nums[i + 1] == nums[i]) i++
   }
 }
 
 function subsetsWithDup(nums: number[]): number[][] {
-  const result: number[][] = [[]];
-  const path: number[] = [];
+  const result: number[][] = [[]]
+  const path: number[] = []
 
-  nums.sort((a, b) => a - b);
-  getSubset(nums, 0, path, result);
+  nums.sort((a, b) => a - b)
+  getSubset(nums, 0, path, result)
 
-  return result;
+  return result
 }
 // @lc code=end
 

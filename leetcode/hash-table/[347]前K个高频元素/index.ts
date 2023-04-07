@@ -6,28 +6,28 @@
 
 // @lc code=start
 function topKFrequent(nums: number[], k: number): number[] {
-  const numMap = new Map<number, number>();
+  const numMap = new Map<number, number>()
 
   for (let i = 0; i < nums.length; i++) {
     if (!numMap.has(nums[i])) {
-      numMap.set(nums[i], 0);
+      numMap.set(nums[i], 0)
     }
 
-    numMap.set(nums[i], numMap.get(nums[i])! + 1);
+    numMap.set(nums[i], numMap.get(nums[i])! + 1)
   }
 
-  const result: number[] = [];
+  const result: number[] = []
 
   for (let i = 0; i < k; i++) {
-    result[i] = nums[i];
+    result[i] = nums[i]
     for (const option of numMap) {
-      const [num, count] = option;
+      const [num, count] = option
 
-      result[i] = numMap.get(result[i])! > count ? result[i] : num;
+      result[i] = numMap.get(result[i])! > count ? result[i] : num
     }
-    numMap.delete(result[i]);
+    numMap.delete(result[i])
   }
 
-  return result;
+  return result
 }
 // @lc code=end

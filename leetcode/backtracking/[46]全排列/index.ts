@@ -6,23 +6,23 @@
 
 // @lc code=start
 function permute(nums: number[]): number[][] {
-  const result: number[][] = [];
-  const path: number[] = [];
-  backtracking(nums, path, result);
+  const result: number[][] = []
+  const path: number[] = []
+  backtracking(nums, path, result)
 
-  return result;
+  return result
 }
 
 function backtracking(nums: number[], path: number[], result: number[][]) {
   if (path.length == nums.length) {
-    result.push([...path]);
+    result.push([...path])
   } else {
     for (let i = 0; i < nums.length; i++) {
-      const num = nums[i];
-      if (path.includes(num)) continue;
-      path.push(num);
-      backtracking(nums, path, result);
-      path.pop();
+      const num = nums[i]
+      if (path.includes(num)) continue
+      path.push(num)
+      backtracking(nums, path, result)
+      path.pop()
     }
   }
 }

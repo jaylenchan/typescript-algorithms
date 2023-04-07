@@ -6,12 +6,13 @@
 
 // @lc code=start
 class KMinHeap {
-  private data: number[];
-  private size: number;
+
+  private data: number[]
+  private size: number
 
   constructor(public map: Map<number, number>) {
-    this.data = [];
-    this.size = 0;
+    this.data = []
+    this.size = 0
   }
 
   isEmpty(): boolean {
@@ -19,23 +20,23 @@ class KMinHeap {
   }
 
   peek(): number {
-    return this.map.get(this.data[0])!;
+    return this.map.get(this.data[0])!
   }
 
   insert(item: number): void {
-    this.data[this.size++] = item;
-    this.swim(this.size - 1);
+    this.data[this.size++] = item
+    this.swim(this.size - 1)
   }
 
   delMin(): number {
-    const max = this.data[0];
+    const max = this.data[0]
 
-    this.swap(0, this.size - 1);
-    this.data.pop();
-    this.size--;
-    this.sink(0);
+    this.swap(0, this.size - 1)
+    this.data.pop()
+    this.size--
+    this.sink(0)
 
-    return max;
+    return max
   }
 
   private swim(index: number): void {
@@ -43,83 +44,83 @@ class KMinHeap {
       this.map.get(this.data[index])! <
       this.map.get(this.data[this.parent(index)])!
     ) {
-      this.swap(index, this.parent(index));
-      index = this.parent(index);
+      this.swap(index, this.parent(index))
+      index = this.parent(index)
     }
   }
 
   private sink(index: number): void {
     while (this.left(index) < this.size) {
-      let minIndex = this.left(index);
-      const right = this.right(index);
+      let minIndex = this.left(index)
+      const right = this.right(index)
 
       if (right < this.size) {
         minIndex =
           this.map.get(this.data[minIndex])! < this.map.get(this.data[right])!
             ? minIndex
-            : right;
+            : right
       }
 
       if (this.map.get(this.data[index])! < this.map.get(this.data[minIndex])!)
-        break;
+        break
 
-      this.swap(index, minIndex);
-      index = minIndex;
+      this.swap(index, minIndex)
+      index = minIndex
     }
   }
 
   private parent(index: number): number {
-    if (index == 0) return 0;
+    if (index == 0) return 0
 
-    return Math.floor((index - 1) / 2);
+    return Math.floor((index - 1) / 2)
   }
 
   private left(index: number): number {
-    return 2 * index + 1;
+    return 2 * index + 1
   }
 
   private right(index: number): number {
-    return 2 * index + 2;
+    return 2 * index + 2
   }
 
   private swap(i: number, j: number): void {
-    [this.data[i], this.data[j]] = [this.data[j], this.data[i]];
+    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
   }
+
 }
 
 function topKFrequent(nums: number[], k: number): number[] {
-  if (nums.length == 0) return [];
+  if (nums.length == 0) return []
 
-  const numMap = new Map<number, number>();
+  const numMap = new Map<number, number>()
 
   for (let i = 0; i < nums.length; i++) {
     if (!numMap.has(nums[i])) {
-      numMap.set(nums[i], 1);
+      numMap.set(nums[i], 1)
     } else {
-      numMap.set(nums[i], numMap.get(nums[i])! + 1);
+      numMap.set(nums[i], numMap.get(nums[i])! + 1)
     }
   }
 
+  const heap = new KMinHeap(numMap)
 
-  const heap = new KMinHeap(numMap);
-
-  let n = 0;
+  let n = 0
   for (const [num, count] of numMap) {
     if (n == k) {
-      if(count > heap.peek()) {
+      if (count > heap.peek()) {
         heap.delMin()
         heap.insert(num)
       }
     } else {
-      heap.insert(num);
-      n++;
+      heap.insert(num)
+      n++
     }
   }
 
-  const ans = [];
+  const ans = []
 
-  while(!heap.isEmpty()) {
-    ans.push(heap.delMin());
+  while (!heap.isEmpty()) {
+    ans.push(heap.delMin())
   }
 
   return ans

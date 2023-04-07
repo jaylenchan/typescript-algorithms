@@ -4,7 +4,7 @@
  * [86] 分隔链表
  */
 
-import ListNode from '../../../others/[快慢指针]寻找链表中点或者上中点的前一个节点 ';
+import ListNode from '../../../others/[快慢指针]寻找链表中点或者上中点的前一个节点 '
 
 // @lc code=start
 /**
@@ -20,33 +20,33 @@ import ListNode from '../../../others/[快慢指针]寻找链表中点或者上�
  */
 
 function partition(head: ListNode | null, x: number): ListNode | null {
-  if (head == null) return null;
+  if (head == null) return null
 
-  const less = [];
-  const more = [];
+  const less = []
+  const more = []
   while (head != null) {
     if (head.val < x) {
-      less.push(head);
+      less.push(head)
     } else {
-      more.push(head);
+      more.push(head)
     }
-    head = head.next;
+    head = head.next
   }
 
-  const dummyHead = new ListNode(-1);
-  let cur = dummyHead;
+  const dummyHead = new ListNode(-1)
+  let cur = dummyHead
   for (let i = 0; i < less.length; i++) {
-    less[i].next = null;
-    cur.next = less[i];
-    cur = cur.next;
+    less[i].next = null
+    cur.next = less[i]
+    cur = cur.next
   }
 
   for (let j = 0; j < more.length; j++) {
-    more[j].next = null;
-    cur.next = more[j];
-    cur = cur.next;
+    more[j].next = null
+    cur.next = more[j]
+    cur = cur.next
   }
 
-  return dummyHead.next;
+  return dummyHead.next
 }
 // @lc code=end
