@@ -3,56 +3,56 @@ import type IArray from './interface'
 
 class JArray<E> implements IArray<E> {
 
-  private data: E[]
-  private size: number
+  private _data: E[]
+  private _size: number
 
   constructor(capacity?: number) {
-    this.data = new Array(capacity || 10).fill(new Object() as E)
-    this.size = 0
+    this._data = new Array(capacity || 10).fill(new Object() as E)
+    this._size = 0
   }
 
   public swap(i: number, j: number): void {
-    if (i < 0 || j < 0 || i >= this.size || j > this.size) {
+    if (i < 0 || j < 0 || i >= this._size || j > this._size) {
       throw new Error('Index is illegal.')
     }
-    const temp = this.data[i]
-    this.data[i] = this.data[j]
-    this.data[j] = temp
+    const temp = this._data[i]
+    this._data[i] = this._data[j]
+    this._data[j] = temp
   }
 
   public getSize(): number {
-    return this.size
+    return this._size
   }
 
   public getCapacity(): number {
-    return this.data.length
+    return this._data.length
   }
 
   public isEmpty(): boolean {
-    return this.size === 0
+    return this._size === 0
   }
 
   // 增
   public add(index: number, e: E): void {
-    if (index < 0 || index > this.size) {
-      throw new Error('Add failed. Require index >= 0 and index <= size. ')
+    if (index < 0 || index > this._size) {
+      throw new Error('Add failed. Require index >= 0 and index <= _size. ')
     }
 
-    if (this.size === this.data.length) {
+    if (this._size === this._data.length) {
       // throw new Error('AddLast failed. Array is full. ');
-      this.resize(2 * this.data.length)
+      this._resize(2 * this._data.length)
     }
 
-    for (let i = this.size - 1; i >= index; i--) {
-      this.data[i + 1] = this.data[i]
+    for (let i = this._size - 1; i >= index; i--) {
+      this._data[i + 1] = this._data[i]
     }
-    this.data[index] = e
-    this.size += 1
+    this._data[index] = e
+    this._size += 1
   }
 
   // 增
   public addLast(e: E): void {
-    this.add(this.size, e)
+    this.add(this._size, e)
   }
 
   // 增
@@ -62,8 +62,8 @@ class JArray<E> implements IArray<E> {
 
   // 查
   public contains(e: E): boolean {
-    for (let i = 0; i < this.size; i++) {
-      if (this.data[i] == e) {
+    for (let i = 0; i < this._size; i++) {
+      if (this._data[i] == e) {
         return true
       }
     }
@@ -72,8 +72,8 @@ class JArray<E> implements IArray<E> {
 
   // 查
   public find(e: E): number {
-    for (let i = 0; i < this.size; i++) {
-      if (this.data[i] == e) {
+    for (let i = 0; i < this._size; i++) {
+      if (this._data[i] == e) {
         return i
       }
     }
@@ -82,10 +82,10 @@ class JArray<E> implements IArray<E> {
 
   // 查
   public get(index: number): E {
-    if (index < 0 || index >= this.size) {
+    if (index < 0 || index >= this._size) {
       throw new Error('Get failed. Index is illegal.')
     }
-    return this.data[index]
+    return this._data[index]
   }
 
   // 查
@@ -95,33 +95,33 @@ class JArray<E> implements IArray<E> {
 
   // 查
   public getLast(): E {
-    return this.get(this.size - 1)
+    return this.get(this._size - 1)
   }
 
   // 改
   public set(index: number, e: E): void {
-    if (index < 0 || index >= this.size) {
+    if (index < 0 || index >= this._size) {
       throw new Error('Set failed. Index is illegal.')
     }
-    this.data[index] = e
+    this._data[index] = e
   }
 
   // 删
   public remove(index: number): E {
-    if (index < 0 || index >= this.size) {
+    if (index < 0 || index >= this._size) {
       throw new Error('Get failed. Index is illegal.')
     }
-    const result = this.data[index]
+    const result = this._data[index]
 
-    for (let i = index + 1; i < this.size; i++) {
-      this.data[i - 1] = this.data[i]
+    for (let i = index + 1; i < this._size; i++) {
+      this._data[i - 1] = this._data[i]
     }
-    this.size -= 1
+    this._size -= 1
 
-    // this.data.length  == 1 的时候，数组只有一个元素，用除法得到就是0
+    // this._data.length  == 1 的时候，数组只有一个元素，用除法得到就是0
     // 所以修改容量这里如果直接resize(0)会出bug，解决方式就是加个判断，如果只有1个容量，不需要修改容量变小
-    if (this.size == this.data.length / 4 && this.data.length / 2 != 0) {
-      this.resize(this.data.length / 2)
+    if (this._size == this._data.length / 4 && this._data.length / 2 != 0) {
+      this._resize(this._data.length / 2)
     }
 
     return result
@@ -134,7 +134,7 @@ class JArray<E> implements IArray<E> {
 
   // 删
   public removeLast(): E {
-    return this.remove(this.size - 1)
+    return this.remove(this._size - 1)
   }
 
   // 删
@@ -146,12 +146,12 @@ class JArray<E> implements IArray<E> {
   }
 
   // 修改容量
-  private resize(newCapacity: number) {
+  private _resize(newCapacity: number): void {
     const newData = new Array(newCapacity).fill(new Object() as E)
-    for (let i = 0; i < this.size; i++) {
-      newData[i] = this.data[i]
+    for (let i = 0; i < this._size; i++) {
+      newData[i] = this._data[i]
     }
-    this.data = newData
+    this._data = newData
   }
 
 }
