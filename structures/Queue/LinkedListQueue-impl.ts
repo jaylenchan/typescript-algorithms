@@ -3,8 +3,8 @@ import type IQueue from './interface'
 
 class LNode<E> {
 
-  value: E
-  next: LNode<E> | null
+  public value: E
+  public next: LNode<E> | null
 
   constructor(value: E, next?: LNode<E> | null) {
     this.value = value
@@ -15,50 +15,52 @@ class LNode<E> {
 
 class LinkedListQueue<E> implements IQueue<E> {
 
-  private size: number
-  private head: LNode<E> | null // 指向头结点
-  private tail: LNode<E> | null // 指向尾结点
+  private _size: number
+  private _head: LNode<E> | null // 指向头结点
+  private _tail: LNode<E> | null // 指向尾结点
 
   constructor() {
-    this.size = 0
-    this.head = null
-    this.tail = null
+    this._size = 0
+    this._head = null
+    this._tail = null
   }
 
   public getSize(): number {
-    return this.size
+    return this._size
   }
 
   public isEmpty(): boolean {
-    return this.size == 0
+    return this._size == 0
   }
 
   // 入队：从链表的尾部入队
   public enqueue(e: E): void {
-    if (this.tail == null) {
+    if (this._tail == null) {
       // 空链表
-      this.tail = new LNode(e)
-      this.head = this.tail
+      this._tail = new LNode(e)
+      this._head = this._tail
     } else {
       // 非空链表
       const newTail = new LNode(e)
-      this.tail.next = newTail
-      this.tail = newTail
+      this._tail.next = newTail
+      this._tail = newTail
     }
 
-    this.size += 1
+    this._size += 1
   }
 
   public dequeue(): E {
     if (this.isEmpty()) {
       throw new Error('Cannot dequeue from an empty queue.')
     }
-    const target = this.head!
-    this.head = this.head!.next
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const target = this._head!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this._head = this._head!.next
     target.next = null
 
-    if (this.head == null) {
-      this.tail = this.head
+    if (this._head == null) {
+      this._tail = this._head
     }
 
     return target.value
@@ -69,19 +71,20 @@ class LinkedListQueue<E> implements IQueue<E> {
       throw new Error('Cannot getFront from an empty queue.')
     }
 
-    return this.head!.value
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this._head!.value
   }
 
-  public toString() {
+  public toString(): string {
     let res = 'Queue: front  '
-    let cur = this.head
+    let cur = this._head
 
     while (cur != null) {
       res += `${cur.value}->`
       cur = cur.next
     }
 
-    res += 'NULL tail'
+    res += 'NULL _tail'
 
     return res
   }

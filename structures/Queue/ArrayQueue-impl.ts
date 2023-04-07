@@ -1,18 +1,18 @@
-import Array from '../array/impl'
+import Array from '../Array/impl'
 
 import type IQueue from './interface'
 
 
 class ArrayQueue<E> implements IQueue<E> {
 
-  private array: Array<E>
+  private _array: Array<E>
 
   constructor(capacity?: number) {
-    this.array = new Array<E>(capacity)
+    this._array = new Array<E>(capacity)
   }
 
   public getSize(): number {
-    return this.array.getSize()
+    return this._array.getSize()
   }
 
   public isFull(): boolean {
@@ -20,23 +20,23 @@ class ArrayQueue<E> implements IQueue<E> {
   }
 
   public isEmpty(): boolean {
-    return this.array.isEmpty()
+    return this._array.isEmpty()
   }
 
   public enqueue(e: E): void {
-    this.array.addLast(e)
+    this._array.addLast(e)
   }
 
   public dequeue(): E {
-    return this.array.removeFirst()
+    return this._array.removeFirst()
   }
 
   public getFront(): E {
-    return this.array.getFirst()
+    return this._array.getFirst()
   }
 
   public getCapacity(): number {
-    return this.array.getCapacity()
+    return this._array.getCapacity()
   }
 
 }

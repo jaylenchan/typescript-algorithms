@@ -3,44 +3,46 @@ import type ISegmentTree from './interface'
 
 export default class SegmentTree<E> implements ISegmentTree<E> {
 
-  private tree: E[]
-  private data: E[]
-  private merger: (leftChild: E, rightChild: E) => any
+  private _tree: E[]
+  private _data: E[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _merger: (leftChild: E, rightChild: E) => any
 
-  constructor(arr: E[], merger: (leftChild: E, rightChild: E) => any) {
-    this.tree = new Array(4 * arr.length).fill(null as E)
-    this.data = new Array(arr.length).fill(null as E)
-    this.merger = merger
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(arr: E[], _merger: (leftChild: E, rightChild: E) => any) {
+    this._tree = new Array(4 * arr.length).fill(null as E)
+    this._data = new Array(arr.length).fill(null as E)
+    this._merger = _merger
 
     for (let i = 0; i < arr.length; i++) {
-      this.data[i] = arr[i]
+      this._data[i] = arr[i]
     }
 
-    this._buildSegmentTree(0, 0, this.data.length - 1)
+    this._buildSegmentTree(0, 0, this._data.length - 1)
   }
 
   public get(index: number): E {
-    if (index < 0 || index >= this.data.length) {
+    if (index < 0 || index >= this._data.length) {
       throw new Error('Index is illegal.')
     }
-    return this.data[index]
+    return this._data[index]
   }
 
   public getSize(): number {
-    return this.data.length
+    return this._data.length
   }
 
   public toString(): string {
     let res = '['
 
-    for (let i = 0; i < this.tree.length; i++) {
-      if (this.tree[i] != null) {
-        res += this.tree[i]
+    for (let i = 0; i < this._tree.length; i++) {
+      if (this._tree[i] != null) {
+        res += this._tree[i]
       } else {
         res += 'null'
       }
 
-      if (i != this.tree.length - 1) {
+      if (i != this._tree.length - 1) {
         res += ', '
       }
     }
@@ -54,13 +56,13 @@ export default class SegmentTree<E> implements ISegmentTree<E> {
     if (
       queryLeft < 0 ||
       queryRight < 0 ||
-      queryLeft >= this.data.length ||
-      queryRight >= this.data.length
+      queryLeft >= this._data.length ||
+      queryRight >= this._data.length
     ) {
       throw new Error('Index is illegal.')
     }
 
-    return this._query(0, 0, this.data.length - 1, queryLeft, queryRight)
+    return this._query(0, 0, this._data.length - 1, queryLeft, queryRight)
   }
 
   private _query(
@@ -70,9 +72,9 @@ export default class SegmentTree<E> implements ISegmentTree<E> {
     queryLeft: number,
     queryRight: number
   ): E {
-    if (left > right) throw new Error('data is empty.')
+    if (left > right) throw new Error('_data is empty.')
     if (left == queryLeft && right == queryRight) {
-      return this.tree[treeIndex]
+      return this._tree[treeIndex]
     }
 
     const leftChildIndex = this._leftChild(treeIndex)
@@ -93,7 +95,7 @@ export default class SegmentTree<E> implements ISegmentTree<E> {
         queryRight
       )
 
-      return this.merger(leftResult, rightResult)
+      return this._merger(leftResult, rightResult)
     }
   }
 
@@ -105,7 +107,7 @@ export default class SegmentTree<E> implements ISegmentTree<E> {
     if (left > right) return // 空数组不进行线段树创建
     if (left == right) {
       // base case：如果左右区间相等，创建节点
-      this.tree[treeIndex] = this.data[left]
+      this._tree[treeIndex] = this._data[left]
       return
     }
 
@@ -118,9 +120,9 @@ export default class SegmentTree<E> implements ISegmentTree<E> {
 
     // 非base case，该节点需要依赖左右节点创建好之后，再来做节点创建的决策
     // 因此需要递归创建左右子树先
-    this.tree[treeIndex] = this.merger(
-      this.tree[leftChildIndex],
-      this.tree[rightChildIndex]
+    this._tree[treeIndex] = this._merger(
+      this._tree[leftChildIndex],
+      this._tree[rightChildIndex]
     )
   }
 

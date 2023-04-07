@@ -1,34 +1,34 @@
-import MaxHeap from '../heap/MaxHeap-impl'
+import MaxHeap from '../Heap/MaxHeap-impl'
 
 import type IQueue from './interface'
 
 
 class PriorityQueue<E> implements IQueue<E> {
 
-  private maxHeap: MaxHeap<E>
+  private _maxHeap: MaxHeap<E>
 
   constructor() {
-    this.maxHeap = new MaxHeap<E>()
+    this._maxHeap = new MaxHeap<E>()
   }
 
   public getSize(): number {
-    return this.maxHeap.size()
+    return this._maxHeap.size()
   }
 
   public isEmpty(): boolean {
-    return this.maxHeap.isEmpty()
+    return this._maxHeap.isEmpty()
   }
 
   public enqueue(e: E): void {
-    this.maxHeap.add(e)
+    this._maxHeap.add(e)
   }
 
   public dequeue(): E {
-    return this.maxHeap.extractMax()
+    return this._maxHeap.extractMax()
   }
 
   public getFront(): E {
-    return this.maxHeap.findMax()
+    return this._maxHeap.findMax()
   }
 
 }

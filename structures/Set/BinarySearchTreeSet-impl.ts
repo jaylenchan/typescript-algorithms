@@ -1,34 +1,34 @@
-import BinarySearchTree from '../binarySearchTree/impl'
+import BinarySearchTree from '../BinarySearchTree/impl'
 
 import type ISet from './interface'
 
 
 class BinarySearchTreeSet<E> implements ISet<E> {
 
-  private bst: BinarySearchTree<E>
+  private _bst: BinarySearchTree<E>
 
   constructor() {
-    this.bst = new BinarySearchTree<E>()
+    this._bst = new BinarySearchTree<E>()
   }
 
   public add(e: E): void {
-    this.bst.add(e)
+    this._bst.add(e)
   }
 
   public remove(e: E): void {
-    this.bst.remove(e)
+    this._bst.remove(e)
   }
 
   public contains(e: E): boolean {
-    return this.bst.contains(e)
+    return this._bst.contains(e)
   }
 
   public getSize(): number {
-    return this.bst.getSize()
+    return this._bst.getSize()
   }
 
   public isEmpty(): boolean {
-    return this.bst.isEmpty()
+    return this._bst.isEmpty()
   }
 
 }
