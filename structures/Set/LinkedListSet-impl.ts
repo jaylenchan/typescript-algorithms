@@ -1,36 +1,36 @@
-import LinkedList from '../linkedList/impl'
+import LinkedList from '../LinkedList/impl'
 
 import type ISet from './interface'
 
 
 class LinkedListSet<E> implements ISet<E> {
 
-  private list: LinkedList<E>
+  private _list: LinkedList<E>
 
   constructor() {
-    this.list = new LinkedList<E>()
+    this._list = new LinkedList<E>()
   }
 
   public add(e: E): void {
-    if (!this.list.contains(e)) {
-      this.list.addFrist(e)
+    if (!this._list.contains(e)) {
+      this._list.addFrist(e)
     }
   }
 
   public remove(e: E): void {
-    this.list.removeElement(e)
+    this._list.removeElement(e)
   }
 
   public contains(e: E): boolean {
-    return this.list.contains(e)
+    return this._list.contains(e)
   }
 
   public getSize(): number {
-    return this.list.getSize()
+    return this._list.getSize()
   }
 
   public isEmpty(): boolean {
-    return this.list.isEmpty()
+    return this._list.isEmpty()
   }
 
 }

@@ -1,5 +1,8 @@
 {
   "name": "@ts-alg/leetcode",
   "version": "1.0.0",
-  "main": "index.js"
+  "main": "index.js",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
 }

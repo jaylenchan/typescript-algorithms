@@ -3,16 +3,16 @@ import LinkedListNode from './LinkedListNode'
 
 export class LinkedList<V> {
 
-  private head: LinkedListNode<V> = LinkedListNode.None
-  private tail: LinkedListNode<V> = LinkedListNode.None
-  private size = 0
+  private _head: LinkedListNode<V> = LinkedListNode.None
+  private _tail: LinkedListNode<V> = LinkedListNode.None
+  private _size = 0
 
   // 在链表头部插入新结点
   public prepend(value: V): void {
     const newNode = new LinkedListNode(value)
 
-    newNode.next = this.head
-    this.size++
+    newNode.next = this._head
+    this._size++
   }
 
   // 在链表尾部插入新结点
@@ -26,26 +26,26 @@ export class LinkedList<V> {
      * 总结：tail跟head在两种情况始终相同：链表结点个数为0，链表结点个数为1的情况。tail为none表示链表为空
      */
 
-    if (this.tail == LinkedListNode.None) {
+    if (this._tail == LinkedListNode.None) {
       // 处理链表为空的情况
-      this.head = newNode
-      this.tail = newNode
-      this.tail.next = LinkedListNode.None
+      this._head = newNode
+      this._tail = newNode
+      this._tail.next = LinkedListNode.None
     } else {
       // 处理链表不为空的情况
-      const oldTail = this.tail
+      const oldTail = this._tail
 
       oldTail.next = newNode
       newNode.next = LinkedListNode.None
     }
 
-    this.size++
+    this._size++
   }
 
   // 普遍的插入新结点
   public insert(value: V, index: number): void {
-    if (index < 0 || index > this.size) {
-      index = index < 0 ? 0 : this.size
+    if (index < 0 || index > this._size) {
+      index = index < 0 ? 0 : this._size
     }
 
     switch (index) {
@@ -54,7 +54,7 @@ export class LinkedList<V> {
         break
       }
 
-      case this.size - 1: {
+      case this._size - 1: {
         this.append(value)
         break
       }
@@ -62,7 +62,7 @@ export class LinkedList<V> {
       default: {
         // 除了在插进0号位，和插进结尾位，剩下的插入位置都可以通过找到它之前的位置，基于index之前的位置去做标准进行插入
         let cur = 0
-        let curNode = this.head
+        let curNode = this._head
 
         while (cur != index - 1) {
           cur++
@@ -73,8 +73,8 @@ export class LinkedList<V> {
 
         curNode.next = newNode
 
-        if (this.tail == curNode) {
-          this.tail = newNode
+        if (this._tail == curNode) {
+          this._tail = newNode
         }
       }
     }
@@ -82,13 +82,13 @@ export class LinkedList<V> {
 
   // 删除节点
   public delete(value: V): LinkedListNode<V> | null {
-    let curNode = this.head
+    let curNode = this._head
 
     if (curNode.next == LinkedListNode.None) {
       const deleteNode = curNode
 
       curNode = LinkedListNode.None
-      this.tail = this.head
+      this._tail = this._head
 
       return deleteNode
     } else {
@@ -113,13 +113,13 @@ export class LinkedList<V> {
 
   // 删除头结点
   public deleteHead(): LinkedListNode<V> | null {
-    if (this.head == LinkedListNode.None) {
+    if (this._head == LinkedListNode.None) {
       return null
     } else {
-      let oldHead = this.head
+      let oldHead = this._head
       const deleteNode = oldHead
 
-      this.head = oldHead.next
+      this._head = oldHead.next
       oldHead = LinkedListNode.None
 
       return deleteNode
@@ -128,12 +128,12 @@ export class LinkedList<V> {
 
   // 删除尾结点
   public deleteTail(): LinkedListNode<V> | null {
-    if (this.tail == LinkedListNode.None) {
+    if (this._tail == LinkedListNode.None) {
       return null
     } else {
-      let curNode = this.head
+      let curNode = this._head
 
-      while (curNode.next != this.tail) {
+      while (curNode.next != this._tail) {
         curNode = curNode.next
       }
 
@@ -158,7 +158,7 @@ export class LinkedList<V> {
   public toArray(): LinkedListNode<V>[] {
     const nodes: LinkedListNode<V>[] = []
 
-    let curNode = this.head
+    let curNode = this._head
 
     while (curNode != LinkedListNode.None) {
       nodes.push(curNode)
@@ -171,7 +171,7 @@ export class LinkedList<V> {
 
   public reverse(): void {
     let prevNode = LinkedListNode.None
-    let curNode = this.head
+    let curNode = this._head
     let nextNode = LinkedListNode.None
 
     while (curNode) {
@@ -181,8 +181,8 @@ export class LinkedList<V> {
       curNode = nextNode
     }
 
-    this.head = prevNode
-    this.tail = this.head
+    this._head = prevNode
+    this._tail = this._head
   }
 
   public toString(): string {

@@ -12,6 +12,5 @@ describe('LinkedList', () => {
     list.removeFirst()
     list.removeLast()
     list.remove(1)
-    console.log(list.toString())
   })
 })

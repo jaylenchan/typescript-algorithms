@@ -1,41 +1,41 @@
-import LinkedList from '../linkedList/impl'
+import LinkedList from '../LinkedList/impl'
 
 import type IStack from './interface'
 
 
 class LinkedListStack<E> implements IStack<E> {
 
-  private list: LinkedList<E>
+  private _list: LinkedList<E>
 
   constructor() {
-    this.list = new LinkedList<E>()
+    this._list = new LinkedList<E>()
   }
 
   public getSize(): number {
-    return this.list.getSize()
+    return this._list.getSize()
   }
 
   public isEmpty(): boolean {
-    return this.list.isEmpty()
+    return this._list.isEmpty()
   }
 
   public push(e: E): void {
-    this.list.addFrist(e)
+    this._list.addFrist(e)
   }
 
   public pop(): E {
-    return this.list.removeFirst()
+    return this._list.removeFirst()
   }
 
   public peek(): E {
-    return this.list.getFirst()
+    return this._list.getFirst()
   }
 
-  public toString() {
+  public toString(): string {
     let res = ''
 
     res += 'Stack: top '
-    res += this.list.toString()
+    res += this._list.toString()
 
     return res
   }

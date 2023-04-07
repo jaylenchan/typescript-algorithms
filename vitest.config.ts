@@ -24,7 +24,7 @@ export default defineConfig({
     environmentMatchGlobs: [
       ['./algorithms/**/__tests__/*.test.ts', 'node'],
       ['./structures/**/__tests__/*.test.ts', 'node'],
-      ['leetcode/**/__tests__/*.test.ts', 'node'],
+      ['./leetcode/**/__tests__/*.test.ts', 'node'],
     ],
   },
 })

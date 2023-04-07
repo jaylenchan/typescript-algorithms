@@ -4,5 +4,8 @@
   "main": "index.js",
   "dependencies": {
     "@ts-alg/structures": "workspace:^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
   }
 }

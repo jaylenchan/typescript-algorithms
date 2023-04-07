@@ -1,6 +1,7 @@
 class LinkedListNode<V> {
 
-  static readonly None = new LinkedListNode<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public static readonly None = new LinkedListNode<any>(null)
 
   public value: V
   public next: LinkedListNode<V>
