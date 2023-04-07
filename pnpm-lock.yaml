@@ -55,7 +55,10 @@ importers:
 
   leetcode:
     specifiers:
+      '@ts-alg/structures': workspace:^1.0.0
       typescript: ^4.9.4
+    dependencies:
+      '@ts-alg/structures': link:../structures
     devDependencies:
       typescript: registry.npmmirror.com/typescript/4.9.5
 

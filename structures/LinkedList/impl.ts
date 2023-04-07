@@ -1,7 +1,7 @@
 import type ILinkedList from './interface'
 
-
-class LNode<E> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+class LNode<E = any> {
 
   public value: E
   public next: LNode<E> | null
@@ -13,7 +13,8 @@ class LNode<E> {
 
 }
 
-class LinkedList<E> implements ILinkedList<E> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+class LinkedList<E = any> implements ILinkedList<E> {
 
   private _dummyHead: LNode<E>
   private _size: number
