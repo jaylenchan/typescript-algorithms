@@ -1,6 +1,6 @@
 import UnionFindV2 from './v2-impl'
 
-import type IUnionFind from './Interface'
+import type IUnionFind from '../interface'
 
 /** 基于v2-impl的并查集优化：通过rank的优化 */
 export default class UnionFind

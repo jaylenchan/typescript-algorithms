@@ -49,6 +49,7 @@ export default class UnionFind {
       throw new Error('p or q is not in nodes map.')
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.find(this.nodes.get(p)!) == this.find(this.nodes.get(q)!)
   }
 
@@ -59,13 +60,17 @@ export default class UnionFind {
       return
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const rootP = this.find(this.nodes.get(p)!)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const rootQ = this.find(this.nodes.get(q)!)
 
     // 如果pRoot就是qRoot啥事不做，因为在一个集合，只有不是一个才说明不是一个集合需要合并
     if (rootP != rootQ) {
       // 2.查看代表点X所在的集合有几个节点；再查看代表点Y所在的集合有几个节点。
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const pSetSize = this.sizeMap.get(rootP)!
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const qSetSize = this.sizeMap.get(rootQ)!
 
       const bigger = pSetSize >= qSetSize ? rootP : rootQ
@@ -86,11 +91,13 @@ export default class UnionFind {
     while (cur != this.parents.get(cur)) {
       //路径压缩优化 操作1：记录沿途的节点
       path.push(cur)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       cur = this.parents.get(cur)!
     }
 
     //路径压缩优化 操作2：将cur找代表点沿途经过的节点的父节点全部指向代表点
     while (path.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.parents.set(path.pop()!, cur)
     }
 

@@ -1,4 +1,4 @@
-import type IUnionFind from '../Interface'
+import type IUnionFind from '../interface'
 
 // Quick Find
 export default class UnionFind implements IUnionFind<number> {

@@ -1,39 +1,39 @@
-import type IUnionFind from '../Interface'
+import type IUnionFind from '../interface'
 
 // 终极版本：v2  + v6 impl
 export default class UnionFind implements IUnionFind<number> {
 
-  // 连通分量个数
-  private size: number
   public parent: number[] // parent[i]表示第i位置的元素指向了哪个位置的元素（parent数组实际上可以看做是一个map，它是一个元素到父亲的映射，数组索引就是key，数组的值就是value）
+  // 连通分量个数
+  private _size: number
 
-  constructor(size: number) {
-    this.size = size
-    this.parent = new Array(size)
+  constructor(_size: number) {
+    this._size = _size
+    this.parent = new Array(_size)
 
     for (let i = 0; i < this.parent.length; i++) {
       this.parent[i] = i
     }
   }
 
-  public getCount(): number {
-    return this.size
+  public isConnected(p: number, q: number): boolean {
+    return this.find(p) == this.find(q)
   }
 
-  public connected(p: number, q: number): boolean {
-    return this.find(p) == this.find(q)
+  public getCount(): number {
+    return this._size
   }
 
   // 有了v6的路径压缩终极优化，v3的通过size的优化就没啥必要了
   public union(p: number, q: number): void {
-    if (this.connected(p, q)) return
+    if (this.isConnected(p, q)) return
 
     const rootP = this.find(p) // p所在集合的代表元素rootP
     const rootQ = this.find(q) // q所在集合的代表元素rootQ
 
     this.parent[rootP] = rootQ // 让p所在集合的代表元素rootP的父亲指向q所在集合的代表元素rootQ
     // 两个连通分量合并成一个连通分量
-    this.size--
+    this._size--
   }
 
   /** 路径压缩终极优化 find过程: v6-impl */
@@ -50,6 +50,7 @@ export default class UnionFind implements IUnionFind<number> {
     }
 
     while (path.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.parent[path.pop()!] = p
     }
 

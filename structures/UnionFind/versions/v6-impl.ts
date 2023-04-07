@@ -1,6 +1,6 @@
 import UnionFindV5 from './v5-impl'
 
-import type IUnionFind from './Interface'
+import type IUnionFind from '../interface'
 
 // Quick Union optimize  基于路径压缩的优化
 export default class UnionFind
@@ -22,6 +22,7 @@ export default class UnionFind
     }
 
     while (path.length > 0) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.parent[path.pop()!] = p
     }
 

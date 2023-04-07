@@ -1,6 +1,6 @@
 import UnionFindV4 from './v4-impl'
 
-import type IUnionFind from '../Interface'
+import type IUnionFind from '../interface'
 
 // Quick Union optimize  基于路径压缩的优化
 export default class UnionFind
