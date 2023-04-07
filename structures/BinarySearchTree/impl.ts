@@ -43,6 +43,7 @@ class BinarySearchTree<E> implements IBinarySearchTree<E> {
       throw new Error('BinarySearchTree is empty!')
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this._minimum(this._root!).e
   }
 
