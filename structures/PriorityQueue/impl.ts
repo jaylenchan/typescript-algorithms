@@ -1,81 +1,81 @@
 class PriorityQueue {
 
-  private data: number[]
-  private size: number
+  private _data: number[]
+  private _size: number
 
   constructor() {
-    this.data = []
-    this.size = 0
+    this._data = []
+    this._size = 0
   }
 
-  isEmpty(): boolean {
-    return this.size == 0
+  public isEmpty(): boolean {
+    return this._size == 0
   }
 
-  getSize(): number {
-    return this.size
+  public getSize(): number {
+    return this._size
   }
 
-  insert(item: number) {
-    this.data[this.size++] = item
-    this.swim(this.size - 1)
+  public insert(item: number): void {
+    this._data[this._size++] = item
+    this._swim(this._size - 1)
   }
 
-  delMax(): number {
-    const max = this.data[0]
+  public delMax(): number {
+    const max = this._data[0]
 
-    this.swap(0, this.size - 1)
-    this.data.pop()
-    this.size--
-    this.sink(0)
+    this._swap(0, this._size - 1)
+    this._data.pop()
+    this._size--
+    this._sink(0)
 
     return max
   }
 
-  private getParentIndex(index: number): number {
+  private _getParentIndex(index: number): number {
     if (index == 0) return 0
     return Math.floor((index - 1) / 2)
   }
 
-  private getRightIndex(index: number): number {
+  private _getRightIndex(index: number): number {
     return 2 * index + 1
   }
 
-  private getLeftIndex(index: number): number {
+  private _getLeftIndex(index: number): number {
     return 2 * index + 2
   }
 
-  private swim(index: number): void {
-    while (this.less(index, this.getParentIndex(index))) {
-      this.swap(index, this.getParentIndex(index))
-      index = this.getParentIndex(index)
+  private _swim(index: number): void {
+    while (this._less(index, this._getParentIndex(index))) {
+      this._swap(index, this._getParentIndex(index))
+      index = this._getParentIndex(index)
     }
   }
 
-  private sink(index: number): void {
-    while (this.getLeftIndex(index) < this.size) {
-      let maxChildIndex = this.getLeftIndex(index)
-      const rightIndex = this.getRightIndex(index)
-      if (rightIndex < this.size) {
+  private _sink(index: number): void {
+    while (this._getLeftIndex(index) < this._size) {
+      let maxChildIndex = this._getLeftIndex(index)
+      const rightIndex = this._getRightIndex(index)
+      if (rightIndex < this._size) {
         maxChildIndex =
-          this.data[maxChildIndex] > this.data[rightIndex]
+          this._data[maxChildIndex] > this._data[rightIndex]
             ? maxChildIndex
             : rightIndex
       }
 
-      if (this.data[index] > this.data[maxChildIndex]) break
+      if (this._data[index] > this._data[maxChildIndex]) break
 
-      this.swap(maxChildIndex, index)
+      this._swap(maxChildIndex, index)
       index = maxChildIndex
     }
   }
 
-  private less(i: number, j: number): boolean {
-    return this.data[i] < this.data[j]
+  private _less(i: number, j: number): boolean {
+    return this._data[i] < this._data[j]
   }
 
-  private swap(i: number, j: number): void {
-    ;[this.data[j], this.data[i]] = [this.data[i], this.data[j]]
+  private _swap(i: number, j: number): void {
+    ;[this._data[j], this._data[i]] = [this._data[i], this._data[j]]
   }
 
 }
