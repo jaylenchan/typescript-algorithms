@@ -12,21 +12,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowUnreachableCode": false,
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "algorithms/*": [
-        "src/algorithms/*"
-      ],
-      "data-structure/*": [
-        "src/data-structure/*"
-      ],
-      "helper/*": [
-        "src/helper/*"
-      ],
-      "leetcode/*": [
-        "src/leetcode/*"
-      ]
-    }
+    "skipLibCheck": true
   }
 }
