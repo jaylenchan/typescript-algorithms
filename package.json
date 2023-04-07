@@ -4,6 +4,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "*",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -11,21 +13,26 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
-    "husky": "^8.0.0",
     "prettier": "^2.8.4",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.9.4",
     "vite-tsconfig-paths": "^4.0.8",
-    "vitest": "^0.29.8"
+    "vitest": "^0.29.8",
+    "lint-staged": "^13.1.0",
+    "simple-git-hooks": "^2.8.1"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "simple-git-hooks",
     "format": "prettier \"./**/*.{html,vue,ts,tsx,json,md}\" --check",
     "format:fix": "pnpm run format --write",
     "lint": "eslint . --ext .ts,.json",
     "lint:fix": "pnpm run lint --fix"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged",
+    "commit-msg": "npx commitlint --edit"
   },
   "lint-staged": {
     "**/*.{js,jsx,tsx,ts,less,md,json}": [
