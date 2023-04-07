@@ -18,6 +18,7 @@ class LNode<K, V> {
   }
 
   public toString(): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.key!.toString() + ' : ' + this.value!.toString()
   }
 
@@ -25,26 +26,12 @@ class LNode<K, V> {
 
 class LinkedListMap<K, V> implements IMap<K, V> {
 
-  private dummyNode: LNode<K, V>
-  private size: number
+  private _dummyNode: LNode<K, V>
+  private _size: number
 
   constructor() {
-    this.dummyNode = new LNode<K, V>()
-    this.size = 0
-  }
-
-  private _getNode(key: K): LNode<K, V> | null {
-    let cur = this.dummyNode.next
-
-    while (cur != null) {
-      if (cur.key == key) {
-        return cur
-      }
-
-      cur = cur.next
-    }
-
-    return null
+    this._dummyNode = new LNode<K, V>()
+    this._size = 0
   }
 
   // 增
@@ -52,15 +39,15 @@ class LinkedListMap<K, V> implements IMap<K, V> {
     const node = this._getNode(key)
 
     if (node == null) {
-      this.dummyNode.next = new LNode(key, value, this.dummyNode.next)
-      this.size += 1
+      this._dummyNode.next = new LNode(key, value, this._dummyNode.next)
+      this._size += 1
     } else {
       node.value = value
     }
   }
 
   public remove(key: K): V | null {
-    let prev = this.dummyNode
+    let prev = this._dummyNode
 
     while (prev.next != null) {
       if (prev.next.key == key) {
@@ -101,11 +88,25 @@ class LinkedListMap<K, V> implements IMap<K, V> {
   }
 
   public getSize(): number {
-    return this.size
+    return this._size
   }
 
   public isEmpty(): boolean {
-    return this.size == 0
+    return this._size == 0
+  }
+
+  private _getNode(key: K): LNode<K, V> | null {
+    let cur = this._dummyNode.next
+
+    while (cur != null) {
+      if (cur.key == key) {
+        return cur
+      }
+
+      cur = cur.next
+    }
+
+    return null
   }
 
 }
