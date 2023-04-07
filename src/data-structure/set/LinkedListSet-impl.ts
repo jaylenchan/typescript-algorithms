@@ -1,5 +1,5 @@
 import ISet from './interface';
-import LinkedList from '../linked-list/impl';
+import LinkedList from '../linkedList/impl';
 
 class LinkedListSet<E> implements ISet<E> {
   private list: LinkedList<E>;

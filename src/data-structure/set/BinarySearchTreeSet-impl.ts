@@ -1,5 +1,5 @@
 import ISet from './interface';
-import BinarySearchTree from '../binary-search-tree/impl';
+import BinarySearchTree from '../binarySearchTree/impl';
 
 class BinarySearchTreeSet<E> implements ISet<E> {
   private bst: BinarySearchTree<E>;

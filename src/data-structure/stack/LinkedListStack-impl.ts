@@ -1,5 +1,5 @@
 import IStack from './interface';
-import LinkedList from '../linked-list/impl';
+import LinkedList from '../linkedList/impl';
 
 class LinkedListStack<E> implements IStack<E> {
   private list: LinkedList<E>;
