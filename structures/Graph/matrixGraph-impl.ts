@@ -11,7 +11,7 @@ import Graph, { GNode, Edge } from './impl'
 
 export default class MatrixGraph extends Graph {
 
-  createGraph(matrix: number[][]) {
+  public createGraph(matrix: number[][]): void {
     if (matrix.length == 0 || matrix[0].length == 0) {
       return
     }
@@ -24,7 +24,9 @@ export default class MatrixGraph extends Graph {
         this.nodes.set(to, new GNode(to))
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const fromNode = this.nodes.get(from)!
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const toNode = this.nodes.get(to)!
       const newEdge = new Edge(weight, fromNode, toNode)
 
