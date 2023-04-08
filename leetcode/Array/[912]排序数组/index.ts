@@ -34,15 +34,15 @@ function partition(
   let more = right
 
   const pivot = nums[right]
-  let index = left
+  let cur = left
 
-  while (index < more) {
-    if (nums[index] < pivot) {
-      swap(nums, index++, ++less)
-    } else if (nums[index] > pivot) {
-      swap(nums, index, --more)
+  while (cur < more) {
+    if (nums[cur] < pivot) {
+      swap(nums, cur++, ++less)
+    } else if (nums[cur] > pivot) {
+      swap(nums, cur, --more)
     } else {
-      index++
+      cur++
     }
   }
 
@@ -55,9 +55,10 @@ function swap(nums: number[], i: number, j: number): void {
   ;[nums[i], nums[j]] = [nums[j], nums[i]]
 }
 
-/**
- * 思路：三路随机快排
- */
 // @lc code=end
 
 export default sortArray
+
+/**
+ * 思路：三路随机快排
+ */

@@ -35,10 +35,13 @@ function maxSideLen(
 
   // 因为已经知道了上一次处理的以(row1,col1)为右下角围成的区域确定是正方形，我们只需要判断扩大的区域即可，
   // 不需要重新再从出发点重新一个个判断是否是'1'
+
+  // 判断新增的列col1,遍历col1这列上新增的格子（即遍历col1列的每一行）
   for (let i = row; i <= row1; i++) {
     if (matrix[i][col1] != '1') return 0
   }
 
+  // 判断新增的行，遍历row1这行上新增的格子（即遍历row1行的每一列）
   for (let j = col; j <= col1; j++) {
     if (matrix[row1][j] != '1') return 0
   }
@@ -50,6 +53,10 @@ function inArea(matrix: string[][], row: number, col: number): boolean {
   return row >= 0 && row < matrix.length && col >= 0 && col < matrix[0].length
 }
 
+// @lc code=end
+
+export default maximalSquare
+
 /**
  * 思路： 暴力递归处理
  * 我们遍历整个矩阵，以每个遍历到的坐标(row,col)作为出发点，围成一个从(row,col)到(row1,col1)为右下角的正方形。
@@ -59,6 +66,3 @@ function inArea(matrix: string[][], row: number, col: number): boolean {
  * 的正方形的最大边长，再在遍历过程中不断更新这条边，最终的max就是最大边长。加入说整个过程始终没法形成边，则max一直都是初始0。
  * 最后我们返回最长边的平方就是正方形面积。
  */
-// @lc code=end
-
-export default maximalSquare

@@ -15,11 +15,7 @@ function rotate(matrix: number[][]): void {
   let right = matrix[0].length - 1
 
   while (left < right) {
-    _rotate(matrix, top, left, down, right)
-    top += 1
-    left += 1
-    down -= 1
-    right -= 1
+    _rotate(matrix, top++, left++, down--, right--)
   }
 }
 
@@ -46,7 +42,11 @@ function _rotate(
   }
 }
 
-// 思路：一圈一圈地看，每次都处理最外层一圈，然后不断缩小圈圈
 // @lc code=end
 
 export default rotate
+
+/**
+ * 思路：一圈一圈地看，每次都处理最外层一圈，然后不断缩小圈圈
+ * 替换的时候，4个方位的角的替换时序是，逆时针方向替换，先替换掉左上，再替换左下，再替换右下，再替换右上。
+ */

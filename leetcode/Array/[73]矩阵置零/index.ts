@@ -45,24 +45,25 @@ function _setZeroes(matrix: number[][], curRow: number, curCol: number): void {
   const flag = Math.pow(2, 31)
 
   matrix[curRow][curCol] = flag
+
   while (left >= 0 && matrix[curRow][left] != 0) {
     matrix[curRow][left] = flag
-    left -= 1
+    left--
   }
 
   while (right <= lastCol && matrix[curRow][right] != 0) {
     matrix[curRow][right] = flag
-    right += 1
+    right++
   }
 
   while (top >= 0 && matrix[top][curCol] != 0) {
     matrix[top][curCol] = flag
-    top -= 1
+    top--
   }
 
   while (down <= lastRow && matrix[down][curCol] != 0) {
     matrix[down][curCol] = flag
-    down += 1
+    down++
   }
 }
 // @lc code=end

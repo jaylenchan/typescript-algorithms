@@ -13,6 +13,7 @@
  */
 function gameOfLife(board: number[][]): void {
   if (board.length == 0 || board[0].length == 0) return
+
   const rows = board.length
   const cols = board[0].length
   const help: boolean[][] = new Array(rows)
@@ -68,12 +69,12 @@ function isAlive(board: number[][], x: number, y: number): boolean {
 function inArea(board: number[][], row: number, col: number): boolean {
   return row >= 0 && row < board.length && col >= 0 && col < board[0].length
 }
+// @lc code=end
+
+export default gameOfLife
 
 /**
  * 思路：help辅助矩阵 + 直接判断八方位邻居状态
  * 1. 利用辅助矩阵help记录每个位置的细胞接下来的状态
  * 2. 通过help辅助矩阵直接修改board对应细胞状态
  */
-// @lc code=end
-
-export default gameOfLife

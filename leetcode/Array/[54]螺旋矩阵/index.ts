@@ -14,11 +14,7 @@ function spiralOrder(matrix: number[][]): number[] {
   let lastCol = matrix[0].length - 1
 
   while (firstRow <= lastRow && firstCol <= lastCol) {
-    _spiralOrder(matrix, firstRow, lastRow, firstCol, lastCol, result)
-    firstRow += 1
-    firstCol += 1
-    lastRow -= 1
-    lastCol -= 1
+    _spiralOrder(matrix, firstRow++, lastRow--, firstCol++, lastCol--, result)
   }
 
   return result
@@ -48,28 +44,30 @@ function _spiralOrder(
   } else {
     while (left < lastCol) {
       result.push(matrix[firstRow][left])
-      left += 1
+      left++
     }
 
     while (top < lastRow) {
       result.push(matrix[top][lastCol])
-      top += 1
+      top++
     }
 
     while (right > firstCol) {
       result.push(matrix[lastRow][right])
-      right -= 1
+      right--
     }
 
     while (down > firstRow) {
       result.push(matrix[down][firstCol])
-      down -= 1
+      down--
     }
   }
 }
 
-// 思路：考虑矩阵宏观代码调度，不要陷入局部坐标变换怎么跑的。
-
 // @lc code=end
 
 export default spiralOrder
+
+/**
+ * 思路：考虑矩阵宏观代码调度，不要陷入局部坐标变换怎么跑的。
+ */
