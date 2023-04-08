@@ -1,6 +1,6 @@
-export default interface IBinarySearchTree<E> {
+interface IBinarySearchTree<E> {
   /** 获取一棵二叉搜索树的结点总数 */
-  getSize(): number
+  get size(): number
   isEmpty(): boolean
   add(e: E): void
   contains(e: E): boolean
@@ -9,3 +9,5 @@ export default interface IBinarySearchTree<E> {
   inOrder(): void
   postOrder(): void
 }
+
+export default IBinarySearchTree

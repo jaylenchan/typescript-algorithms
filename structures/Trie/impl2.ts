@@ -1,4 +1,4 @@
-import { ASCIndex } from '../../helper/util'
+import { ASCIndex } from '../../shared/util'
 
 import type ITrie from './interface'
 

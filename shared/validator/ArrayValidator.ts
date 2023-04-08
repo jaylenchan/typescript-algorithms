@@ -1,16 +1,16 @@
-type ComparatorConfig = {
+type ValidatorConfig = {
   testTime?: number
   maxSize?: number
   maxValue?: number
 }
 
-export default class ArrayComparator {
+class ArrayValidator {
 
   public testTime: number
   public maxSize: number
   public maxValue: number
 
-  constructor(config?: ComparatorConfig) {
+  constructor(config?: ValidatorConfig) {
     this.testTime = config?.testTime ?? 50000
     this.maxSize = config?.maxSize ?? 100
     this.maxValue = config?.maxValue ?? 100
@@ -97,3 +97,5 @@ export default class ArrayComparator {
   }
 
 }
+
+export default ArrayValidator

@@ -4,5 +4,8 @@
   "main": "index.ts",
   "devDependencies": {
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@ts-alg/shared": "workspace:^1.0.0"
   }
 }

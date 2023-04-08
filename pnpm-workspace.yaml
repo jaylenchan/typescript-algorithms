@@ -2,3 +2,4 @@ packages:
   - 'algorithms'
   - 'structures'
   - 'leetcode'
+  - 'shared'
