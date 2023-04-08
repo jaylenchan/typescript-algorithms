@@ -9,13 +9,13 @@ class DNode {
 
   public key: number
   public value: number
-  public last: DNode | null
+  public prev: DNode | null
   public next: DNode | null
 
-  constructor(key: number, value: number, last?: DNode, next?: DNode) {
+  constructor(key: number, value: number, prev?: DNode, next?: DNode) {
     this.key = key
     this.value = value
-    this.last = last ?? null
+    this.prev = prev ?? null
     this.next = next ?? null
   }
 
@@ -31,17 +31,17 @@ class DoubleLikedList {
     this._dummyTail = new DNode(-1, -1)
 
     this._dummyHead.next = this._dummyTail
-    this._dummyTail.last = this._dummyHead
+    this._dummyTail.prev = this._dummyHead
   }
 
   public add(node: DNode): void {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const oldLast = this._dummyTail.last!
+    const oldLast = this._dummyTail.prev!
 
     node.next = this._dummyTail
-    this._dummyTail.last = node
+    this._dummyTail.prev = node
 
-    node.last = oldLast
+    node.prev = oldLast
     oldLast.next = node
   }
 
@@ -51,9 +51,9 @@ class DoubleLikedList {
 
     this._dummyHead.next = node.next
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    node.next!.last = this._dummyHead
+    node.next!.prev = this._dummyHead
 
-    node.last = null
+    node.prev = null
     node.next = null
 
     return node
@@ -61,14 +61,14 @@ class DoubleLikedList {
 
   public remove(node: DNode): DNode {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const last = node.last!
+    const prev = node.prev!
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const next = node.next!
 
-    last.next = next
-    next.last = last
+    prev.next = next
+    next.prev = prev
 
-    node.last = null
+    node.prev = null
     node.next = null
 
     return node
@@ -141,9 +141,10 @@ class LRUCache {
       const delNode = this._list.removeFirst()
       this._map.delete(delNode.key)
     }
+
+    this._map.set(key, node)
     this._list.add(node)
     this._list.removeToLast(node)
-    this._map.set(key, node)
   }
 
 }
