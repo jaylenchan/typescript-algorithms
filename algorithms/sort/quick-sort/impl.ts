@@ -7,13 +7,13 @@ export default class QuickSort {
   private static _sort(nums: number[], left: number, right: number): void {
     if (left > right) return
 
-    const [el, er] = this.partition(nums, left, right)
+    const [el, er] = this._partition(nums, left, right)
 
     this._sort(nums, left, el - 1)
     this._sort(nums, er + 1, right)
   }
 
-  private static partition(
+  private static _partition(
     nums: number[],
     left: number,
     right: number
@@ -23,7 +23,7 @@ export default class QuickSort {
 
     /** ----------随机获取random与right交换---------- */
     const random = left + Math.floor(Math.random() * (right - left + 1)) // [left, right] 的随机索引
-    this.swap(nums, random, right)
+    this._swap(nums, random, right)
     /** ----------随机获取random与right交换---------- */
 
     let less = left - 1
@@ -34,20 +34,20 @@ export default class QuickSort {
 
     while (index < more) {
       if (nums[index] < pivot) {
-        this.swap(nums, index++, ++less)
+        this._swap(nums, index++, ++less)
       } else if (nums[index] > pivot) {
-        this.swap(nums, index, --more)
+        this._swap(nums, index, --more)
       } else {
         index++
       }
     }
 
-    this.swap(nums, more, right)
+    this._swap(nums, more, right)
 
     return [less + 1, more]
   }
 
-  private static swap(nums: number[], i: number, j: number): void {
+  private static _swap(nums: number[], i: number, j: number): void {
     ;[nums[i], nums[j]] = [nums[j], nums[i]]
   }
 

@@ -19,6 +19,7 @@ function dailyTemperatures(temperatures: number[]): number[] {
       stack.push(i)
     } else {
       while (temperatures[i] > temperatures[stack[stack.length - 1]]) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const target = stack.pop()!
         ans[target] = i - target
       }
@@ -28,6 +29,7 @@ function dailyTemperatures(temperatures: number[]): number[] {
   }
 
   while (stack.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const target = stack.pop()!
     ans[target] = 0
   }

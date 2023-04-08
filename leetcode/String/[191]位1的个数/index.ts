@@ -15,3 +15,5 @@ function hammingWeight(n: number): number {
   return result
 }
 // @lc code=end
+
+export default hammingWeight

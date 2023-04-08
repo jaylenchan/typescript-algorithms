@@ -50,83 +50,83 @@
 
 class MinListHeap {
 
-  private data: ListNode[]
-  private size: number
+  private _data: ListNode[]
+  private _size: number
 
   constructor() {
-    this.data = []
-    this.size = 0
+    this._data = []
+    this._size = 0
   }
 
-  isEmpty(): boolean {
-    return this.size == 0
+  public isEmpty(): boolean {
+    return this._size == 0
   }
 
-  peek(): ListNode | null {
-    const min = this.data[0]
+  public peek(): ListNode | null {
+    const min = this._data[0]
 
     if (!min) return null
 
     return min
   }
 
-  insert(item: ListNode): void {
-    this.data[this.size++] = item
-    this.swim(this.size - 1)
+  public insert(item: ListNode): void {
+    this._data[this._size++] = item
+    this._swim(this._size - 1)
   }
 
-  delMin(): ListNode {
-    const min = this.data[0]
+  public delMin(): ListNode {
+    const min = this._data[0]
 
-    this.swap(0, this.size - 1)
-    this.data.pop()
-    this.size--
-    this.sink(0)
+    this._swap(0, this._size - 1)
+    this._data.pop()
+    this._size--
+    this._sink(0)
 
     return min
   }
 
-  private swim(index: number): void {
-    while (this.data[this.parent(index)].val > this.data[index].val) {
-      this.swap(index, this.parent(index))
-      index = this.parent(index)
+  private _swim(index: number): void {
+    while (this._data[this._parent(index)].val > this._data[index].val) {
+      this._swap(index, this._parent(index))
+      index = this._parent(index)
     }
   }
 
-  private sink(index: number): void {
-    while (this.left(index) < this.size) {
-      let minIndex = this.left(index)
-      const right = this.right(index)
+  private _sink(index: number): void {
+    while (this._left(index) < this._size) {
+      let minIndex = this._left(index)
+      const _right = this._right(index)
 
-      if (right < this.size) {
+      if (_right < this._size) {
         minIndex =
-          this.data[minIndex].val < this.data[right].val ? minIndex : right
+          this._data[minIndex].val < this._data[_right].val ? minIndex : _right
       }
 
-      if (this.data[minIndex].val > this.data[index].val) {
+      if (this._data[minIndex].val > this._data[index].val) {
         break
       }
 
-      this.swap(index, minIndex)
+      this._swap(index, minIndex)
       index = minIndex
     }
   }
 
-  private parent(index: number): number {
+  private _parent(index: number): number {
     if (index == 0) return 0
     return Math.floor((index - 1) / 2)
   }
 
-  private left(index: number): number {
+  private _left(index: number): number {
     return 2 * index + 1
   }
 
-  private right(index: number): number {
+  private _right(index: number): number {
     return 2 * index + 2
   }
 
-  private swap(i: number, j: number): void {
-    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
+  private _swap(i: number, j: number): void {
+    ;[this._data[i], this._data[j]] = [this._data[j], this._data[i]]
   }
 
 }
@@ -156,6 +156,9 @@ function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
 
   return dummy.next
 }
+// @lc code=end
+
+export default mergeKLists
 
 /**
  * 思路
@@ -165,4 +168,3 @@ function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
  * 4. 当节点加入新链表后，我们判断链表的下一个节点是否为空节点，如果不为空节点，我们就加入小根堆进行排序操作
  * 5. 重复以上的过程，直到小根堆为空，整个链表组装完毕，返回
  */
-// @lc code=end

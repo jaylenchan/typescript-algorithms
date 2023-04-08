@@ -46,7 +46,7 @@ class Graph {
     this.createGraph(matrix)
   }
 
-  createGraph(nums: number[][]) {
+  public createGraph(nums: number[][]): void {
     for (const [to, from] of nums) {
       if (!this.nodes.has(from)) {
         this.nodes.set(from, new GNode(from))
@@ -56,16 +56,20 @@ class Graph {
         this.nodes.set(to, new GNode(to))
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const fromNode = this.nodes.get(from)!
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const toNode = this.nodes.get(to)!
       const newEdge = new Edge(0, fromNode, toNode)
 
       fromNode.out++
       toNode.in++
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       fromNode.edges.add(newEdge)
       this.edges.add(newEdge)
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       fromNode.nexts.add(toNode)
     }
   }
@@ -86,9 +90,11 @@ function topologicalSort(graph: Graph): number[] {
 
   const ans: number[] = []
   while (zeroInQueue.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const gNode = zeroInQueue.shift()!
     ans.push(gNode.value)
     for (const node of gNode.nexts) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       let count = inMap.get(node)!
       inMap.set(node, --count)
 
@@ -119,6 +125,9 @@ function findOrder(numCourses: number, prerequisites: number[][]): number[] {
   }
   return orders
 }
+// @lc code=end
+
+export default findOrder
 
 /**
  * 思路：图 + 拓扑排序
@@ -131,4 +140,3 @@ function findOrder(numCourses: number, prerequisites: number[][]): number[] {
  * 7. 返回orders数组，这就是课程顺序
  * 8. 特判：如果没有依赖课程，直接遍历numCourses，返回课程数组即可（代码中第一段的特判）
  */
-// @lc code=end

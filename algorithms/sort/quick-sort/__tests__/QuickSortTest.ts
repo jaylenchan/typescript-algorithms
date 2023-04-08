@@ -12,7 +12,7 @@ export default class QuickSortTest extends ArrayComparator {
     arr.sort((a, b) => a - b)
   }
 
-  public runTest() {
+  public runTest(): void {
     //开始测试
     for (let i = 0; i < this.testTime; i++) {
       const [sample1, sample2] = this.generateRandomSample()

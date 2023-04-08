@@ -7,50 +7,51 @@
 // @lc code=start
 class RandomizedSet {
 
-  private data: number[]
-  private idxMap: Map<number, number>
-  private size: number
+  private _data: number[]
+  private _idxMap: Map<number, number>
+  private _size: number
 
   constructor() {
-    this.data = []
-    this.idxMap = new Map<number, number>()
-    this.size = 0
+    this._data = []
+    this._idxMap = new Map<number, number>()
+    this._size = 0
   }
 
-  insert(val: number): boolean {
-    if (this.contains(val)) return false
+  public insert(val: number): boolean {
+    if (this._contains(val)) return false
 
-    this.data[this.size] = val
-    this.idxMap.set(val, this.size++)
+    this._data[this._size] = val
+    this._idxMap.set(val, this._size++)
 
     return true
   }
 
-  remove(val: number): boolean {
-    if (!this.contains(val)) return false
+  public remove(val: number): boolean {
+    if (!this._contains(val)) return false
 
-    const index = this.idxMap.get(val)!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const index = this._idxMap.get(val)!
 
-    this.swap(index, this.size - 1)
-    this.idxMap.set(this.data[index], index)
-    this.idxMap.delete(val)
-    this.size--
+    this._swap(index, this._size - 1)
+    this._idxMap.set(this._data[index], index)
+    this._idxMap.delete(val)
+    this._size--
 
     return true
   }
 
-  getRandom(): number {
-    const random = Math.floor(Math.random() * this.size)
+  public getRandom(): number {
+    const random = Math.floor(Math.random() * this._size)
 
-    return this.data[random]
+    return this._data[random]
   }
 
-  private contains(val: number): boolean {
-    return this.idxMap.has(val)
+  private _contains(val: number): boolean {
+    return this._idxMap.has(val)
   }
 
-  private swap(i: number, j: number): void {
-    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
+  private _swap(i: number, j: number): void {
+    ;[this._data[i], this._data[j]] = [this._data[j], this._data[i]]
   }
 
 }
@@ -62,6 +63,10 @@ class RandomizedSet {
  * var param_2 = obj.remove(val)
  * var param_3 = obj.getRandom()
  */
+
+// @lc code=end
+
+export default RandomizedSet
 
 /**
  * 思路：题目重点要求规则是：满足每个函数的 平均 时间复杂度为 O(1)
@@ -76,4 +81,3 @@ class RandomizedSet {
  * 原来的size-1（然而现在应该是替代成为了新的index）。同时我们还要记得在idxMap删除掉要删除的val，不然就有两个val对应同一个index了。
  * 本质上，我们这里的删除操作就是size--，从0-size范围缩小，我们就认为删除了某些数。
  */
-// @lc code=end

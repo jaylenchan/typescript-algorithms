@@ -17,12 +17,12 @@ export default class ArrayComparator {
   }
 
   // 按照功能实现一个方法A
-  public test(..._args: unknown[]) {
+  public test(..._args: unknown[]): void {
     throw new Error('需要按照功能实现一个方法test！')
   }
 
   // 按照功能实现一个方法B（但是B方法容易实现并且复杂度没那么好）
-  public comparator(..._args: unknown[]) {
+  public comparator(..._args: unknown[]): void {
     throw new Error(
       '需要按照功能实现一个方法comparator！（但是comparator方法容易实现并且复杂度没那么好）'
     )
@@ -34,7 +34,7 @@ export default class ArrayComparator {
   // 如果两个相同的样本集合有一个测试样本通过两个实现同样功能的方法AB处理后，数组的元素不同
   // 就停止测试，说明有方法实现的有问题！打印出来两个数组
   // 当样本量足够大且比对依然正确的时候，可以判定方法A已经实现正确
-  public runTest(..._args: unknown[]) {
+  public runTest(..._args: unknown[]): void {
     throw new Error('runTest方法需要被实现.')
   }
 
@@ -92,7 +92,7 @@ export default class ArrayComparator {
       return
     }
     for (let i = 0; i < arr1.length; i++) {
-      console.log(`i: ${arr1[i]} | ${arr2[i]}`)
+      // console.log(`i: ${arr1[i]} | ${arr2[i]}`)
     }
   }
 

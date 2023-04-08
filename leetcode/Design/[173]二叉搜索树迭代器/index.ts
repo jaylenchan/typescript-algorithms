@@ -21,28 +21,29 @@ export { BSTIterator }
 
 class BSTIterator {
 
-  private queue: number[]
+  private _queue: number[]
 
   constructor(root: TreeNode | null) {
-    this.queue = []
+    this._queue = []
     this.traverse(root)
   }
 
-  next(): number {
-    if (this.queue.length == 0) return -1
+  public next(): number {
+    if (this._queue.length == 0) return -1
 
-    return this.queue.shift()!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this._queue.shift()!
   }
 
-  hasNext(): boolean {
-    return this.queue.length > 0
+  public hasNext(): boolean {
+    return this._queue.length > 0
   }
 
-  traverse(root: TreeNode | null): void {
+  public traverse(root: TreeNode | null): void {
     if (root == null) return
 
     this.traverse(root.left)
-    this.queue.push(root.val)
+    this._queue.push(root.val)
     this.traverse(root.right)
   }
 

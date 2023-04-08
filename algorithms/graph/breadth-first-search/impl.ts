@@ -13,6 +13,7 @@ function breadthFirstSearch(node: GNode): number[] {
   visited.add(node)
 
   while (queue.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const curNode = queue.shift()!
     // 广度优先处理节点：从队列中弹出就处理当前节点
     ans.push(curNode.value)

@@ -3,7 +3,7 @@
  *
  * [200] 岛屿数量
  */
-export { numIslands }
+
 // @lc code=start
 class UnionFind {
 
@@ -61,6 +61,7 @@ class UnionFind {
   }
 
 }
+
 function numIslands(grid: string[][]): number {
   if (grid.length == 0 || grid[0].length == 0) return 0
 
@@ -105,6 +106,9 @@ function index(cols: number, i: number, j: number): number {
 function inArea(rows: number, cols: number, i: number, j: number): boolean {
   return i >= 0 && i < rows && j >= 0 && j < cols
 }
+// @lc code=end
+
+export default numIslands
 
 /**
  * 思路：并查集建立
@@ -120,4 +124,3 @@ function inArea(rows: number, cols: number, i: number, j: number): boolean {
  * - 由于set具有去重性质，所以不需要管big是否重复加入，但是small已经没有成为岛屿的可能，如果在set中有就会被删除
  * - 重复这些操作，最后lands的大小一定是岛屿的数量
  */
-// @lc code=end

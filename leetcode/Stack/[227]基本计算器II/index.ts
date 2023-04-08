@@ -32,12 +32,16 @@ function calculate(s: string): number {
 }
 
 function compute(deque: string[]): number {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   if (deque.length == 1) return +deque.shift()!
 
   let ans = 0
   while (deque.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const num1 = +deque.shift()!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const op = deque.shift()!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const num2 = +deque.shift()!
 
     switch (op) {
@@ -62,7 +66,9 @@ function compute(deque: string[]): number {
 
 function checkHighOp(deque: string[], cur: number): number {
   if (isHighOp(deque[deque.length - 1])) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const highOp = deque.pop()!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const lastNum = +deque.pop()!
 
     switch (highOp) {

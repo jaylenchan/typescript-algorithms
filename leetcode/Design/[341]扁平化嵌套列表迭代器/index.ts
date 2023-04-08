@@ -46,33 +46,34 @@ export { NestedIterator }
 
 class NestedIterator {
 
-  private queue: number[]
+  private _queue: number[]
 
   constructor(nestedList: NestedInteger[]) {
-    this.queue = this.flatten(nestedList)
+    this._queue = this._flatten(nestedList)
+  }
+
+  public hasNext(): boolean {
+    return this._queue.length > 0
+  }
+
+  public next(): number {
+    if (this._queue.length == 0) return -1
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this._queue.shift()!
   }
 
   // 扁平化嵌套数组，返回扁平化后的数组
-  private flatten(list: NestedInteger[]): number[] {
+  private _flatten(list: NestedInteger[]): number[] {
     let level: number[] = []
     for (let i = 0; i < list.length; i++) {
       const isInteger = list[i].isInteger()
       if (isInteger) {
         level.push(list[i].getInteger())
       } else {
-        level = level.concat(this.flatten(list[i].getList()))
+        level = level.concat(this._flatten(list[i].getList()))
       }
     }
     return level
-  }
-
-  hasNext(): boolean {
-    return this.queue.length > 0
-  }
-
-  next(): number {
-    if (this.queue.length == 0) return -1
-    return this.queue.shift()!
   }
 
 }

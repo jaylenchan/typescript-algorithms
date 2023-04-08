@@ -30,13 +30,13 @@ class TrieNode {
 }
 class Trie {
 
-  private root: TrieNode
+  private _root: TrieNode
   constructor() {
-    this.root = new TrieNode()
+    this._root = new TrieNode()
   }
 
-  insert(word: string): void {
-    let node = this.root
+  public insert(word: string): void {
+    let node = this._root
     node.pass += 1
 
     for (const letter of word) {
@@ -54,8 +54,8 @@ class Trie {
     node.end += 1
   }
 
-  search(word: string): boolean {
-    let node = this.root
+  public search(word: string): boolean {
+    let node = this._root
 
     for (const letter of word) {
       const index = ASCIndex(letter)
@@ -68,8 +68,8 @@ class Trie {
     return node.end > 0
   }
 
-  startsWith(prefix: string): boolean {
-    let node = this.root
+  public startsWith(prefix: string): boolean {
+    let node = this._root
 
     for (const letter of prefix) {
       const index = ASCIndex(letter)

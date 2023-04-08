@@ -5,6 +5,82 @@
  */
 
 // @lc code=start
+class MaxHeap {
+
+  private _size: number
+  private _data: number[]
+
+  constructor() {
+    this._data = []
+    this._size = 0
+  }
+
+  public getSize(): number {
+    return this._size
+  }
+
+  public peek(): number {
+    return this._data[0]
+  }
+
+  public insert(item: number): void {
+    this._data[this._size++] = item
+    this._swim(this._size - 1)
+  }
+
+  public delMax(): number {
+    const max = this._data[0]
+
+    this._swap(0, this._size - 1)
+    this._data.pop()
+    this._size--
+    this._sink(0)
+
+    return max
+  }
+
+  private _swim(index: number): void {
+    while (this._data[this._parent(index)] < this._data[index]) {
+      this._swap(index, this._parent(index))
+      index = this._parent(index)
+    }
+  }
+
+  private _sink(index: number): void {
+    while (this._left(index) < this._size) {
+      let maxIndex = this._left(index)
+      const _right = this._right(index)
+
+      if (_right < this._size) {
+        maxIndex = this._data[maxIndex] > this._data[_right] ? maxIndex : _right
+      }
+
+      if (this._data[maxIndex] < this._data[index]) break
+
+      this._swap(maxIndex, index)
+
+      index = maxIndex
+    }
+  }
+
+  private _parent(index: number): number {
+    return Math.floor((index - 1) / 2)
+  }
+
+  private _left(index: number): number {
+    return 2 * index + 1
+  }
+
+  private _right(index: number): number {
+    return 2 * index + 2
+  }
+
+  private _swap(i: number, j: number): void {
+    ;[this._data[i], this._data[j]] = [this._data[j], this._data[i]]
+  }
+
+}
+
 function kthSmallest(matrix: number[][], k: number): number {
   if (matrix.length == 0 || matrix[0].length == 0) return 0
 
@@ -27,86 +103,12 @@ function kthSmallest(matrix: number[][], k: number): number {
   return heap.delMax()
 }
 
-class MaxHeap {
+// @lc code=end
 
-  private size: number
-  private data: number[]
-
-  constructor() {
-    this.data = []
-    this.size = 0
-  }
-
-  getSize(): number {
-    return this.size
-  }
-
-  peek(): number {
-    return this.data[0]
-  }
-
-  insert(item: number): void {
-    this.data[this.size++] = item
-    this.swim(this.size - 1)
-  }
-
-  delMax(): number {
-    const max = this.data[0]
-
-    this.swap(0, this.size - 1)
-    this.data.pop()
-    this.size--
-    this.sink(0)
-
-    return max
-  }
-
-  private swim(index: number): void {
-    while (this.data[this.parent(index)] < this.data[index]) {
-      this.swap(index, this.parent(index))
-      index = this.parent(index)
-    }
-  }
-
-  private sink(index: number): void {
-    while (this.left(index) < this.size) {
-      let maxIndex = this.left(index)
-      const right = this.right(index)
-
-      if (right < this.size) {
-        maxIndex = this.data[maxIndex] > this.data[right] ? maxIndex : right
-      }
-
-      if (this.data[maxIndex] < this.data[index]) break
-
-      this.swap(maxIndex, index)
-
-      index = maxIndex
-    }
-  }
-
-  private parent(index: number): number {
-    return Math.floor((index - 1) / 2)
-  }
-
-  private left(index: number): number {
-    return 2 * index + 1
-  }
-
-  private right(index: number): number {
-    return 2 * index + 2
-  }
-
-  private swap(i: number, j: number): void {
-    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
-  }
-
-}
+export default kthSmallest
 
 /**
  * 思路：循环整个矩阵 + 建立大根堆
-   1. 遍历整个矩阵,每次遍历到一个数就加入建立堆
-   2. 建立大根堆，最多建立k个元素，堆顶的元素就是要求的第k小元素
+ * 1. 遍历整个矩阵,每次遍历到一个数就加入建立堆
+ * 2. 建立大根堆，最多建立k个元素，堆顶的元素就是要求的第k小元素
  */
-
-// @lc code=end

@@ -3,7 +3,6 @@
  *
  * [297] 二叉树的序列化与反序列化
  */
-export { serialize, deserialize }
 // @lc code=start
 /**
  * Definition for a binary tree node.
@@ -29,6 +28,7 @@ function serialize(root: TreeNode | null): string {
   const nodeQueue: (TreeNode | null)[] = [root]
 
   while (nodeQueue.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const node = nodeQueue.shift()!
     if (!node) {
       serializeQueue.push('null')
@@ -57,12 +57,16 @@ function deserialize(data: string): TreeNode | null {
 function buildTree(serializeQueue: string[]): TreeNode | null {
   if (serializeQueue.length == 0) return null
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const root = new TreeNode(+serializeQueue.shift()!)
   const nodeQueue: TreeNode[] = [root]
 
   while (nodeQueue.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const node = nodeQueue.shift()!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const left = serializeQueue.shift()!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const right = serializeQueue.shift()!
 
     if (left != 'null') {
@@ -82,6 +86,8 @@ function buildTree(serializeQueue: string[]): TreeNode | null {
  * deserialize(serialize(root));
  */
 // @lc code=end
+
+export { serialize, deserialize }
 
 /**
  * #思路#

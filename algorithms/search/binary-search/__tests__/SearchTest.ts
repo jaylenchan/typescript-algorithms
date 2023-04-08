@@ -21,7 +21,7 @@ export default class SearchTest extends ArrayComparator {
     return result
   }
 
-  public runTest() {
+  public runTest(): void {
     //开始测试
     for (let i = 0; i < this.testTime; i++) {
       const [sample1, sample2] = this.generateRandomSample()

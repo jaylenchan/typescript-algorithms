@@ -31,8 +31,11 @@ function largestNumber(nums: number[]): string {
   return ans ? ans : '0'
 }
 
+// @lc code=end
+
+export default largestNumber
+
 /**
  * 思路：自定义比较规则
  * 规则是 Number(字符串b + 字符串a) - Number(字符串a + 字符串b)
  */
-// @lc code=end

@@ -7,105 +7,105 @@
 // @lc code=start
 class KthLargest {
 
-  private data: number[]
-  private size: number
-  private capacity: number
+  private _data: number[]
+  private _size: number
+  private _capacity: number
 
   constructor(k: number, nums: number[]) {
-    this.data = []
-    this.size = 0
-    this.capacity = k
+    this._data = []
+    this._size = 0
+    this._capacity = k
 
-    this.init(nums)
+    this._init(nums)
   }
 
-  add(val: number): number {
-    if (this.size != this.capacity) {
-      while (this.size != this.capacity) {
-        this.insert(val)
+  public add(val: number): number {
+    if (this._size != this._capacity) {
+      while (this._size != this._capacity) {
+        this._insert(val)
       }
     } else {
-      if (val > this.peek()) {
-        this.delMin()
-        this.insert(val)
+      if (val > this._peek()) {
+        this._delMin()
+        this._insert(val)
       }
     }
-    return this.peek()
+    return this._peek()
   }
 
-  private init(nums: number[]): void {
+  private _init(nums: number[]): void {
     for (let i = 0; i < nums.length; i++) {
-      if (this.size != this.capacity) {
-        this.insert(nums[i])
+      if (this._size != this._capacity) {
+        this._insert(nums[i])
       } else {
-        if (nums[i] > this.peek()) {
-          this.delMin()
-          this.insert(nums[i])
+        if (nums[i] > this._peek()) {
+          this._delMin()
+          this._insert(nums[i])
         }
       }
     }
   }
 
-  private peek(): number {
-    return this.data[0]
+  private _peek(): number {
+    return this._data[0]
   }
 
-  private insert(val: number): void {
-    this.data[this.size++] = val
-    this.swim(this.size - 1)
+  private _insert(val: number): void {
+    this._data[this._size++] = val
+    this._swim(this._size - 1)
   }
 
-  private delMin(): number {
-    const min = this.data[0]
+  private _delMin(): number {
+    const min = this._data[0]
 
-    this.swap(0, this.size - 1)
-    this.size--
-    this.sink(0)
+    this._swap(0, this._size - 1)
+    this._size--
+    this._sink(0)
 
     return min
   }
 
-  private sink(index: number): void {
-    while (this.left(index) < this.size) {
-      let min = this.left(index)
-      if (this.right(index) < this.size) {
+  private _sink(index: number): void {
+    while (this._left(index) < this._size) {
+      let min = this._left(index)
+      if (this._right(index) < this._size) {
         min =
-          this.data[min] < this.data[this.right(index)]
+          this._data[min] < this._data[this._right(index)]
             ? min
-            : this.right(index)
+            : this._right(index)
       }
 
-      if (this.data[min] > this.data[index]) break
+      if (this._data[min] > this._data[index]) break
 
-      this.swap(min, index)
+      this._swap(min, index)
 
       index = min
     }
   }
 
-  private swim(index: number): void {
-    while (this.data[index] < this.data[this.parent(index)]) {
-      this.swap(index, this.parent(index))
-      index = this.parent(index)
+  private _swim(index: number): void {
+    while (this._data[index] < this._data[this._parent(index)]) {
+      this._swap(index, this._parent(index))
+      index = this._parent(index)
     }
   }
 
-  private parent(index: number): number {
+  private _parent(index: number): number {
     if (index == 0) return 0
 
     return Math.floor((index - 1) / 2)
   }
 
-  private left(index: number): number {
+  private _left(index: number): number {
     return 2 * index + 1
   }
 
-  private right(index: number): number {
+  private _right(index: number): number {
     return 2 * index + 2
   }
 
-  private swap(i: number, j: number): void {
-    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
+  private _swap(i: number, j: number): void {
+    ;[this._data[i], this._data[j]] = [this._data[j], this._data[i]]
   }
 
 }
@@ -123,6 +123,8 @@ class KthLargest {
  */
 // @lc code=end
 
+export default KthLargest
+
 /**
  * #思路#
  * 题目要求实现求数据流中的第K大元素，首先我们进行模式分析，求topK相关的问题，我们立马想到了堆。由于本题要求的是第K大，
@@ -135,7 +137,7 @@ class KthLargest {
  *   - 当堆的元素达到k的时候，nums还有数没加入，我们判断nums[i] > 堆顶元素，我们删除堆顶元素，再加入nums[i]
  * 3. 经过以上我们初始化了堆，但是有一种情况就是，很可能一开始nums的元素个数就小于k，压根不够堆存放元素容量k。
  *    所以我们在进行add的时候，首先判断一下size 跟 capacity的关系，
- *    - 情况1：size < capacity : 也就是说堆元素个数，没达到我们设置的容量k那么大，此时就没法进行k大比较。我们需要先加入元素，达到k那么多个元素时，才进行堆顶元素返回第k大元素。
- *    - 情况2：size == capacity: 直接判断当前val是否比堆顶元素大，是的话删除堆顶，加入元素，然后返回新的堆顶元素
- *    - 无情况3： size > capacity只在初始化一次性给到nums多个元素才有可能，我们已经在初始化处理这种情况了！
+ *    - 情况1：size < _capacity : 也就是说堆元素个数，没达到我们设置的容量k那么大，此时就没法进行k大比较。我们需要先加入元素，达到k那么多个元素时，才进行堆顶元素返回第k大元素。
+ *    - 情况2：size == _capacity: 直接判断当前val是否比堆顶元素大，是的话删除堆顶，加入元素，然后返回新的堆顶元素
+ *    - 无情况3： _size > capacity只在初始化一次性给到nums多个元素才有可能，我们已经在初始化处理这种情况了！
  */

@@ -38,3 +38,5 @@ function isPalindrome(head: ListNode | null): boolean {
   return true
 }
 // @lc code=end
+
+export default isPalindrome

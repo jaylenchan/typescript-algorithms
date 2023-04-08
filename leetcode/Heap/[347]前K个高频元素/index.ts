@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /*
  * @lc app=leetcode.cn id=347 lang=typescript
  *
@@ -7,84 +8,88 @@
 // @lc code=start
 class KMinHeap {
 
-  private data: number[]
-  private size: number
+  private _data: number[]
+  private _size: number
 
   constructor(public map: Map<number, number>) {
-    this.data = []
-    this.size = 0
+    this._data = []
+    this._size = 0
   }
 
-  isEmpty(): boolean {
-    return this.size == 0
+  public isEmpty(): boolean {
+    return this._size == 0
   }
 
-  peek(): number {
-    return this.map.get(this.data[0])!
+  public peek(): number {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.map.get(this._data[0])!
   }
 
-  insert(item: number): void {
-    this.data[this.size++] = item
-    this.swim(this.size - 1)
+  public insert(item: number): void {
+    this._data[this._size++] = item
+    this._swim(this._size - 1)
   }
 
-  delMin(): number {
-    const max = this.data[0]
+  public delMin(): number {
+    const max = this._data[0]
 
-    this.swap(0, this.size - 1)
-    this.data.pop()
-    this.size--
-    this.sink(0)
+    this._swap(0, this._size - 1)
+    this._data.pop()
+    this._size--
+    this._sink(0)
 
     return max
   }
 
-  private swim(index: number): void {
+  private _swim(index: number): void {
     while (
-      this.map.get(this.data[index])! <
-      this.map.get(this.data[this.parent(index)])!
+      this.map.get(this._data[index])! <
+      this.map.get(this._data[this._parent(index)])!
     ) {
-      this.swap(index, this.parent(index))
-      index = this.parent(index)
+      this._swap(index, this._parent(index))
+      index = this._parent(index)
     }
   }
 
-  private sink(index: number): void {
-    while (this.left(index) < this.size) {
-      let minIndex = this.left(index)
-      const right = this.right(index)
+  private _sink(index: number): void {
+    while (this._left(index) < this._size) {
+      let minIndex = this._left(index)
+      const _right = this._right(index)
 
-      if (right < this.size) {
+      if (_right < this._size) {
         minIndex =
-          this.map.get(this.data[minIndex])! < this.map.get(this.data[right])!
+          this.map.get(this._data[minIndex])! <
+          this.map.get(this._data[_right])!
             ? minIndex
-            : right
+            : _right
       }
 
-      if (this.map.get(this.data[index])! < this.map.get(this.data[minIndex])!)
+      if (
+        this.map.get(this._data[index])! < this.map.get(this._data[minIndex])!
+      )
         break
 
-      this.swap(index, minIndex)
+      this._swap(index, minIndex)
       index = minIndex
     }
   }
 
-  private parent(index: number): number {
+  private _parent(index: number): number {
     if (index == 0) return 0
 
     return Math.floor((index - 1) / 2)
   }
 
-  private left(index: number): number {
+  private _left(index: number): number {
     return 2 * index + 1
   }
 
-  private right(index: number): number {
+  private _right(index: number): number {
     return 2 * index + 2
   }
 
-  private swap(i: number, j: number): void {
-    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
+  private _swap(i: number, j: number): void {
+    ;[this._data[i], this._data[j]] = [this._data[j], this._data[i]]
   }
 
 }
@@ -98,6 +103,7 @@ function topKFrequent(nums: number[], k: number): number[] {
     if (!numMap.has(nums[i])) {
       numMap.set(nums[i], 1)
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       numMap.set(nums[i], numMap.get(nums[i])! + 1)
     }
   }
@@ -125,6 +131,9 @@ function topKFrequent(nums: number[], k: number): number[] {
 
   return ans
 }
+// @lc code=end
+
+export default topKFrequent
 
 /**
  * 思路：
@@ -135,4 +144,3 @@ function topKFrequent(nums: number[], k: number): number[] {
  * 3. 不断循环整个操作，直到map遍历完成，由于我们每次都会把最低频的数从小根堆去除，总共就map size个数，从头遍历一遍后，剩下的k个数就是次数最频繁的数
  * 4. 从小根堆中收集结果，返回结果
  */
-// @lc code=end

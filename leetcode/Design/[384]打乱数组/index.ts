@@ -7,19 +7,19 @@
 // @lc code=start
 class Solution {
 
-  private nums: number[]
-  constructor(nums: number[]) {
-    this.nums = nums
+  private _nums: number[]
+  constructor(_nums: number[]) {
+    this._nums = _nums
   }
 
-  reset(): number[] {
-    return this.nums
+  public reset(): number[] {
+    return this._nums
   }
 
-  shuffle(): number[] {
+  public shuffle(): number[] {
     const copyNums = []
-    for (let i = 0; i != this.nums.length; i++) {
-      copyNums[i] = this.nums[i]
+    for (let i = 0; i != this._nums.length; i++) {
+      copyNums[i] = this._nums[i]
     }
     for (let i = 0; i != copyNums.length; i++) {
       const size = copyNums.length
@@ -33,12 +33,13 @@ class Solution {
 
 /**
  * Your Solution object will be instantiated and called as such:
- * var obj = new Solution(nums)
+ * var obj = new Solution(_nums)
  * var param_1 = obj.reset()
  * var param_2 = obj.shuffle()
  */
 // @lc code=end
 
+export default Solution
 /**
  * #思路#
  * 随机算法：遍历数组，来到i，则从i到size - 1 - i 这个区间随机抽一个数，跟i位置交换

@@ -1,19 +1,6 @@
 export default class QuickSortV4 {
 
-  public static sort(arr: number[]): void {
-    QuickSortV4._quickSort(arr, 0, arr.length - 1)
-  }
-
-  private static _quickSort(arr: number[], left: number, right: number): void {
-    if (left >= right) return
-
-    const [newRight, newLeft] = QuickSortV4._partition(arr, left, right)
-    QuickSortV4._quickSort(arr, left, newRight)
-    QuickSortV4._quickSort(arr, newLeft, right)
-  }
-
-  //
-  public static _partition(
+  public static partition(
     arr: number[],
     left: number,
     right: number
@@ -43,6 +30,18 @@ export default class QuickSortV4 {
     QuickSortV4._swap(arr, left, less)
 
     return [less - 1, more]
+  }
+
+  public static sort(arr: number[]): void {
+    QuickSortV4._quickSort(arr, 0, arr.length - 1)
+  }
+
+  private static _quickSort(arr: number[], left: number, right: number): void {
+    if (left >= right) return
+
+    const [newRight, newLeft] = QuickSortV4.partition(arr, left, right)
+    QuickSortV4._quickSort(arr, left, newRight)
+    QuickSortV4._quickSort(arr, newLeft, right)
   }
 
   private static _swap(arr: number[], i: number, j: number): void {

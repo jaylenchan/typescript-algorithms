@@ -36,3 +36,5 @@ function getArea(grid: number[][], i: number, j: number): number {
   return 0
 }
 // @lc code=end
+
+export default maxAreaOfIsland

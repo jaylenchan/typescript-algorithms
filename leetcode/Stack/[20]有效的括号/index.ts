@@ -5,10 +5,6 @@
  */
 
 // @lc code=start
-
-type LeftChar = '(' | '[' | '{'
-type RightChar = ')' | ']' | '}'
-
 function isValid(s: string): boolean {
   if (!s || s.length < 2) return false
   const stack: string[] = []
@@ -44,3 +40,5 @@ function isValid(s: string): boolean {
 }
 
 // @lc code=end
+
+export default isValid

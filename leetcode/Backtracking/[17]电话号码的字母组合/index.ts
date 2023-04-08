@@ -6,7 +6,10 @@
 
 // @lc code=start
 function letterCombinations(digits: string): string[] {
-  if (digits.length == 0) return []
+  if (digits.length == 0) {
+    return []
+  }
+
   const lettersMap = [
     '',
     '',
@@ -40,8 +43,10 @@ function backtracking(
   }
 
   const letters = lettersMap[+digits[index]]
+
   for (let i = 0; i < letters.length; i++) {
     const letter = letters[i]
+
     path.push(letter)
     backtracking(digits, index + 1, result, path, lettersMap)
     path.pop()

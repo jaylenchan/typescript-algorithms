@@ -26,14 +26,14 @@ class TrieNode {
 
 class WordDictionary {
 
-  private root: TrieNode
+  private _root: TrieNode
 
   constructor() {
-    this.root = new TrieNode()
+    this._root = new TrieNode()
   }
 
-  addWord(word: string): void {
-    let node = this.root
+  public addWord(word: string): void {
+    let node = this._root
     node.pass++
 
     for (const char of word) {
@@ -50,13 +50,13 @@ class WordDictionary {
     node.end++
   }
 
-  search(word: string): boolean {
-    let node = this.root
+  public search(word: string): boolean {
+    let node = this._root
 
     for (let i = 0; i < word.length; i++) {
       const char = word[i]
 
-      if (char == '.') return this.fuzzySearch(word, i, node)
+      if (char == '.') return this._fuzzySearch(word, i, node)
 
       const index = ascToIndex(char)
 
@@ -70,7 +70,7 @@ class WordDictionary {
     return node.end > 0
   }
 
-  private fuzzySearch(word: string, cur: number, node: TrieNode): boolean {
+  private _fuzzySearch(word: string, cur: number, node: TrieNode): boolean {
     if (cur == word.length) return node.end > 0
 
     // acdb -> ..ab
@@ -90,7 +90,7 @@ class WordDictionary {
     // a.b.c
     // 否则此时直接遍历所有当前node的next，跟通配符.进行匹配，任意一个字符都匹配，然后进入下一轮fuzzySearch接下来的字符
     for (let i = 0; i < node.nexts.length; i++) {
-      if (node.nexts[i] && this.fuzzySearch(word, cur + 1, node.nexts[i]))
+      if (node.nexts[i] && this._fuzzySearch(word, cur + 1, node.nexts[i]))
         return true
     }
 
@@ -106,6 +106,8 @@ class WordDictionary {
  * var param_2 = obj.search(word)
  */
 // @lc code=end
+
+export default WordDictionary
 
 /**
  * #思路#
@@ -125,6 +127,6 @@ class WordDictionary {
  *             没路的情况。然后再加上继续判断后边字符的模糊搜索的情况，最终两者结合才是模糊搜索的正确结果。
  *             因为模糊搜索是回溯的实现，当然也有递归的base case，base case就是当我们往下搜的时候，发现cur已经是来到了跟word的大小一样大的时候，我们停止
  *             搜索，返回此时node.end > 0的情况。接着递归才会一层层往回走传递给上层最终结果。
- * 5. 在进行for遍历模糊搜索，我们不能直接return node.nexts[i] && this.fuzzySearch(word, cur + 1, node.nexts[i])，而是应该先判断node.nexts[i] && this.fuzzySearch(word, cur + 1, node.nexts[i])
+ * 5. 在进行for遍历模糊搜索，我们不能直接return node.nexts[i] && this._fuzzySearch(word, cur + 1, node.nexts[i])，而是应该先判断node.nexts[i] && this._fuzzySearch(word, cur + 1, node.nexts[i])
  *    然后只要有一个搜索的分支存在正确答案，直接返回即可，我们并不需要等到所有分支搜索完成才返回是否能找到word。（本质上就是回溯那一套，多叉树的遍历）
  */

@@ -23,32 +23,35 @@ class DNode {
 
 class DoubleLikedList {
 
-  private dummyHead: DNode
-  private dummyTail: DNode
+  private _dummyHead: DNode
+  private _dummyTail: DNode
 
   constructor() {
-    this.dummyHead = new DNode(-1, -1)
-    this.dummyTail = new DNode(-1, -1)
+    this._dummyHead = new DNode(-1, -1)
+    this._dummyTail = new DNode(-1, -1)
 
-    this.dummyHead.next = this.dummyTail
-    this.dummyTail.last = this.dummyHead
+    this._dummyHead.next = this._dummyTail
+    this._dummyTail.last = this._dummyHead
   }
 
-  add(node: DNode): void {
-    const oldLast = this.dummyTail.last!
+  public add(node: DNode): void {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const oldLast = this._dummyTail.last!
 
-    node.next = this.dummyTail
-    this.dummyTail.last = node
+    node.next = this._dummyTail
+    this._dummyTail.last = node
 
     node.last = oldLast
     oldLast.next = node
   }
 
-  removeFirst(): DNode {
-    const node = this.dummyHead.next!
+  public removeFirst(): DNode {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const node = this._dummyHead.next!
 
-    this.dummyHead.next = node.next
-    node.next!.last = this.dummyHead
+    this._dummyHead.next = node.next
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    node.next!.last = this._dummyHead
 
     node.last = null
     node.next = null
@@ -56,8 +59,10 @@ class DoubleLikedList {
     return node
   }
 
-  remove(node: DNode): DNode {
+  public remove(node: DNode): DNode {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const last = node.last!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const next = node.next!
 
     last.next = next
@@ -69,14 +74,14 @@ class DoubleLikedList {
     return node
   }
 
-  removeToLast(node: DNode): void {
+  public removeToLast(node: DNode): void {
     this.remove(node) // 需要先将node隔离开整条链表，否则会直接把node为头节点的链表一起带起来
     this.add(node)
   }
 
-  toString(): string {
+  public toString(): string {
     let str = ''
-    let cur = this.dummyHead
+    let cur = this._dummyHead
 
     while (cur.next != null) {
       str += `${cur.key}->`
@@ -92,61 +97,66 @@ class DoubleLikedList {
 
 class LRUCache {
 
-  private capacity: number
-  private map: Map<number, DNode>
-  private list: DoubleLikedList
+  private _capacity: number
+  private _map: Map<number, DNode>
+  private _list: DoubleLikedList
 
-  constructor(capacity: number) {
-    this.capacity = capacity
-    this.map = new Map<number, DNode>()
-    this.list = new DoubleLikedList()
+  constructor(_capacity: number) {
+    this._capacity = _capacity
+    this._map = new Map<number, DNode>()
+    this._list = new DoubleLikedList()
   }
 
-  get(key: number): number {
-    if (!this.map.has(key)) return -1
+  public get(key: number): number {
+    if (!this._map.has(key)) return -1
 
-    const node = this.map.get(key)!
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const node = this._map.get(key)!
 
-    this.list.removeToLast(node)
+    this._list.removeToLast(node)
 
     return node.value
   }
 
-  put(key: number, value: number): void {
-    if (this.map.has(key)) {
+  public put(key: number, value: number): void {
+    if (this._map.has(key)) {
       return this.set(key, value)
     }
 
     this.add(key, value)
   }
 
-  set(key: number, value: number): void {
-    const node = this.map.get(key)!
+  public set(key: number, value: number): void {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const node = this._map.get(key)!
 
     node.value = value
-    this.list.removeToLast(node)
+    this._list.removeToLast(node)
   }
 
-  add(key: number, value: number): void {
+  public add(key: number, value: number): void {
     const node = new DNode(key, value)
 
-    if (this.capacity == this.map.size) {
-      const delNode = this.list.removeFirst()
-      this.map.delete(delNode.key)
+    if (this._capacity == this._map.size) {
+      const delNode = this._list.removeFirst()
+      this._map.delete(delNode.key)
     }
-    this.list.add(node)
-    this.list.removeToLast(node)
-    this.map.set(key, node)
+    this._list.add(node)
+    this._list.removeToLast(node)
+    this._map.set(key, node)
   }
 
 }
 
 /**
  * Your LRUCache object will be instantiated and called as such:
- * var obj = new LRUCache(capacity)
+ * var obj = new LRUCache(_capacity)
  * var param_1 = obj.get(key)
  * obj.put(key,value)
  */
+// @lc code=end
+
+export default LRUCache
 
 /**
  * 思路：
@@ -179,4 +189,3 @@ class LRUCache {
  *   - 方便元素快速删除（时间复杂度O(1)）
  * 8.为了方便链表操作，我们最好定义dummy节点，对于双向链表就定义两个dummy，一个用于头部操作dummyHead，一个用于尾部操作dummyTail
  */
-// @lc code=end

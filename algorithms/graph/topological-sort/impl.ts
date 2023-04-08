@@ -1,5 +1,5 @@
-import type { GNode } from 'data-structure/graph/impl';
-import type Graph from 'data-structure/graph/impl'
+import type { GNode } from '@ts-alg/structures/Graph/impl'
+import type Graph from '@ts-alg/structures/Graph/impl'
 
 /**
  * 拓扑排序
@@ -27,12 +27,14 @@ function topologicalSort(graph: Graph): GNode[] {
   const ans: GNode[] = []
 
   while (zeroInQueue.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const delNode = zeroInQueue.shift()!
     ans.push(delNode)
 
     // 枚举删除的当前节点的所有直接邻居
     for (const nextNode of delNode.nexts) {
       // 让所有直接邻居的入度-1（原因是该节点删除后，指向邻居的边逻辑上就消失了）
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const inNum = inMap.get(nextNode)! - 1
       inMap.set(nextNode, inNum)
       // 如果删除后inNum入度也变成0了，那么让邻居也进入zeroInQueue队列中

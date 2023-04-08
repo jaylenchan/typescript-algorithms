@@ -7,72 +7,72 @@
 // @lc code=start
 class MinHeap {
 
-  private data: number[]
   public size: number
+  private _data: number[]
 
   constructor() {
-    this.data = []
+    this._data = []
     this.size = 0
   }
 
-  add(num: number): void {
-    this.data[this.size++] = num
-    this.swim(this.size - 1)
+  public add(num: number): void {
+    this._data[this.size++] = num
+    this._swim(this.size - 1)
   }
 
-  delMin(): number {
-    const min = this.data[0]
+  public delMin(): number {
+    const min = this._data[0]
 
-    this.swap(0, this.size - 1)
-    this.data.pop()
+    this._swap(0, this.size - 1)
+    this._data.pop()
     this.size--
-    this.sink(0)
+    this._sink(0)
 
     return min
   }
 
-  private parent(index: number): number {
+  private _parent(index: number): number {
     if (index == 0) return 0
 
     return Math.floor((index - 1) / 2)
   }
 
-  private left(index: number): number {
+  private _left(index: number): number {
     return 2 * index + 1
   }
 
-  private right(index: number): number {
+  private _right(index: number): number {
     return 2 * index + 2
   }
 
-  private swim(index: number): void {
-    while (this.data[index] < this.data[this.parent(index)]) {
-      this.swap(index, this.parent(index))
+  private _swim(index: number): void {
+    while (this._data[index] < this._data[this._parent(index)]) {
+      this._swap(index, this._parent(index))
 
-      index = this.parent(index)
+      index = this._parent(index)
     }
   }
 
-  private sink(index: number): void {
-    while (this.left(index) < this.size) {
-      let min = this.left(index)
+  private _sink(index: number): void {
+    while (this._left(index) < this.size) {
+      let min = this._left(index)
 
-      if (this.right(index) < this.size) {
+      if (this._right(index) < this.size) {
         min =
-          this.data[min] > this.data[this.right(index)]
-            ? this.right(index)
+          this._data[min] > this._data[this._right(index)]
+            ? this._right(index)
             : min
       }
 
-      if (this.data[min] > this.data[index]) break
+      if (this._data[min] > this._data[index]) break
 
-      this.swap(min, index)
+      this._swap(min, index)
       index = min
     }
   }
 
-  private swap(i: number, j: number) {
-    ;[this.data[i], this.data[j]] = [this.data[j], this.data[i]]
+  private _swap(i: number, j: number): void {
+    ;[this._data[i], this._data[j]] = [this._data[j], this._data[i]]
   }
 
 }
@@ -93,3 +93,5 @@ function sortArray(nums: number[]): number[] {
   return nums
 }
 // @lc code=end
+
+export default sortArray

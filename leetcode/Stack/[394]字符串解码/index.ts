@@ -25,7 +25,9 @@ function decodeString(s: string): string {
       letters += c
     } else {
       // c == ']'
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const curTimes = timeStack.pop()!
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const preLetters = preLettersStack.pop()!
 
       letters = preLetters + letters.repeat(curTimes)
@@ -41,7 +43,7 @@ function isNumber(c: string): boolean {
 
 function isLetter(c: string): boolean {
   // prettier-ignore
-  const set =new Set<string>(['a','b','c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'])
+  const set = new Set<string>(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'])
 
   return set.has(c)
 }
@@ -52,3 +54,5 @@ function isLetter(c: string): boolean {
  * 利用双栈，一个栈用来存储重复倍数，一个栈用来存储用来重复的字母子串
  */
 // @lc code=end
+
+export default decodeString

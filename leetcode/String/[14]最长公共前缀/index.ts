@@ -23,3 +23,5 @@ function longestCommonPrefix(strs: string[]): string {
   return result
 }
 // @lc code=end
+
+export default longestCommonPrefix

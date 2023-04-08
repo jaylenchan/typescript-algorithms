@@ -1,4 +1,4 @@
-import type { GNode } from 'data-structure/graph/impl'
+import type { GNode } from '@ts-alg/structures/Graph/impl'
 
 
 function depthFirstSearch(node: GNode): number[] {
@@ -14,6 +14,7 @@ function depthFirstSearch(node: GNode): number[] {
   ans.push(node.value)
 
   while (stack.length > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const curNode = stack.pop()!
     // 枚举当前弹出节点的直接邻居
     for (const nextNode of curNode.nexts) {
@@ -23,7 +24,7 @@ function depthFirstSearch(node: GNode): number[] {
         visited.add(nextNode)
         // 深度优先处理节点时机：当节点进栈后就处理节点
         ans.push(curNode.value)
-        console.log('cur path is :', ans.join('->'))
+
         break // 每次只做一次入栈操作，还有多的这次先不做，之后再做
       }
     }

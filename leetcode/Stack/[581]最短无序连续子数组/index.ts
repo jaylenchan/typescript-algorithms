@@ -15,6 +15,7 @@ function findUnsortedSubarray(nums: number[]): number {
   let left = size
   for (let i = 0; i < size; i++) {
     while (stack.length > 0 && nums[stack[stack.length - 1]] > nums[i]) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       left = Math.min(left, stack.pop()!)
     }
 
@@ -26,6 +27,7 @@ function findUnsortedSubarray(nums: number[]): number {
   stack = []
   for (let i = size - 1; i >= 0; i--) {
     while (stack.length > 0 && nums[stack[stack.length - 1]] < nums[i]) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       right = Math.max(right, stack.pop()!)
     }
     stack.push(i)
@@ -34,3 +36,5 @@ function findUnsortedSubarray(nums: number[]): number {
   return left < right ? right - left + 1 : 0
 }
 // @lc code=end
+
+export default findUnsortedSubarray

@@ -61,7 +61,7 @@ class Graph {
   }
 
   /** 接收一个图的其他表示结构，转换成自己熟悉的这种图结构 */
-  public createGraph(prerequisites: number[][]) {
+  public createGraph(prerequisites: number[][]): void {
     for (const [to, from] of prerequisites) {
       if (!this.nodes.has(from)) {
         this.nodes.set(from, new GNode(from))
@@ -71,7 +71,9 @@ class Graph {
         this.nodes.set(to, new GNode(to))
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const fromNode = this.nodes.get(from)!
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const toNode = this.nodes.get(to)!
 
       const newEdge = new Edge(0, fromNode, toNode)
@@ -107,11 +109,13 @@ function topologicalSort(graph: Graph): number[] {
   // 枚举所有入度为0的节点
   while (zeroInQueue.length > 0) {
     // 删除节点
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const node = zeroInQueue.shift()!
     ans.push(node.value)
     // 枚举节点的邻居
     for (const nextNode of node.nexts) {
       // 所有邻居入度减去1
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const inDegree = inMap.get(nextNode)! - 1
       inMap.set(nextNode, inDegree)
 
@@ -139,3 +143,5 @@ function canFinish(_numCourses: number, prerequisites: number[][]): boolean {
  * 无环入度是会消减成0的才对
  */
 // @lc code=end
+
+export default canFinish
