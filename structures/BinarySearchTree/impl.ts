@@ -33,7 +33,7 @@ class BinarySearchTree<T>
     if (this.contains(element)) {
       return false
     } else {
-      this.root = this._add(this.root, element)
+      this.root = this._insert(this.root, element)
       this._nodeCount++
 
       return true
@@ -88,14 +88,14 @@ class BinarySearchTree<T>
   /**
    * 向二分搜索树中插入节点并返回插入新节点后的二分搜索树的根
    */
-  private _add(node: TreeNode<T>, element: T): TreeNode<T> {
+  private _insert(node: TreeNode<T>, element: T): TreeNode<T> {
     if (node.value == null) {
       node = new TreeNode(element)
     } else {
       if (this.aLessThanb(element, node.value)) {
-        node.left = this._add(node.left, element)
+        node.left = this._insert(node.left, element)
       } else {
-        node.right = this._add(node.right, element)
+        node.right = this._insert(node.right, element)
       }
     }
 

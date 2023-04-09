@@ -43,10 +43,12 @@ describe('BinarySearchTree', () => {
     expect(bst.toString()).toBe('5,10,20')
 
     const removed1 = bst.remove(5)
+
     expect(bst.toString()).toBe('10,20')
     expect(removed1).toBe(true)
 
     const removed2 = bst.remove(20)
+
     expect(bst.toString()).toBe('10')
     expect(removed2).toBe(true)
   })
