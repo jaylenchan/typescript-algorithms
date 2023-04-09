@@ -1,8 +1,9 @@
-import ArrayComparator from '../../../../helper/ArrayComparator-impl'
+import { ArrayValidator } from '@ts-alg/shared'
+
 import SelectionSort from '../impl'
 
 
-export default class SelectionSortTest extends ArrayComparator {
+export default class SelectionSortTest extends ArrayValidator {
 
   public test(arr: number[]): void {
     SelectionSort.sort(arr)

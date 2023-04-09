@@ -1,8 +1,9 @@
-import ArrayComparator from '../../../../helper/ArrayComparator-impl'
+import { ArrayValidator } from '@ts-alg/shared'
+
 import InsertionSort from '../impl'
 
 
-export default class InsertionSortTest extends ArrayComparator {
+export default class InsertionSortTest extends ArrayValidator {
 
   public test(arr: number[]): void {
     InsertionSort.sort(arr)

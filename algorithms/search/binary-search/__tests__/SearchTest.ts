@@ -1,8 +1,9 @@
-import ArrayComparator from '../../../../helper/ArrayComparator-impl'
+import { ArrayValidator } from '@ts-alg/shared'
+
 import BinarySearch from '../impl'
 
 
-export default class SearchTest extends ArrayComparator {
+export default class SearchTest extends ArrayValidator {
 
   public test(arr: number[], target: number): number {
     return BinarySearch.search(arr, target)

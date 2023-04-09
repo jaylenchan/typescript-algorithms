@@ -1,8 +1,9 @@
-import ArrayComparator from '../../../../helper/ArrayComparator-impl'
+import { ArrayValidator } from '@ts-alg/shared'
+
 import QuickSortV3 from '../versions/v3-impl'
 
 
-export default class QuickSortV1Test extends ArrayComparator {
+export default class QuickSortV1Test extends ArrayValidator {
 
   public test(arr: number[]): void {
     QuickSortV3.sort(arr)

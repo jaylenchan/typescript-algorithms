@@ -12,7 +12,7 @@ class BinarySearchTreeSet<E> implements ISet<E> {
   }
 
   public add(e: E): void {
-    this._bst.add(e)
+    this._bst.insert(e)
   }
 
   public remove(e: E): void {
@@ -24,7 +24,7 @@ class BinarySearchTreeSet<E> implements ISet<E> {
   }
 
   public getSize(): number {
-    return this._bst.getSize()
+    return this._bst.size
   }
 
   public isEmpty(): boolean {

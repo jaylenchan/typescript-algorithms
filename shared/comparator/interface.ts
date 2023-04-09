@@ -1,9 +1,9 @@
-interface IComparator<V> {
-  equal(a: V, b: V): boolean
-  lessThan(a: V, b: V): boolean
-  greaterThan(a: V, b: V): boolean
-  lessThanOrEqual(a: V, b: V): boolean
-  greaterThanOrEqual(a: V, b: V): boolean
+interface IComparable<T> {
+  aEqualTob(a: T, b: T): boolean
+  aLessThanb(a: T, b: T): boolean
+  aGreaterThanb(a: T, b: T): boolean
+  aLessThanOrEqualTob(a: T, b: T): boolean
+  aGreaterThanOrEqualTob(a: T, b: T): boolean
 }
 
-export default IComparator
+export default IComparable

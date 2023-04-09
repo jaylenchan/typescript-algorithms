@@ -1,37 +1,37 @@
-import type IComparator from './interface'
+import type IComparable from './interface'
 
 
-type Compare<V> = (a: V, b: V) => number
+export type Comparator<T> = (a: T, b: T) => number
 
-class Comparator<V> implements IComparator<V> {
+class Comparable<T> implements IComparable<T> {
 
-  private _compare: Compare<V>
+  private _compare: Comparator<T>
 
-  constructor(compare?: Compare<V>) {
-    this._compare = compare ?? this._defaultCompare
+  constructor(comparator?: Comparator<T>) {
+    this._compare = comparator ?? this._defaultCompare
   }
 
-  public equal(a: V, b: V): boolean {
+  public aEqualTob(a: T, b: T): boolean {
     return this._compare(a, b) == 0
   }
 
-  public lessThan(a: V, b: V): boolean {
+  public aLessThanb(a: T, b: T): boolean {
     return this._compare(a, b) == -1
   }
 
-  public greaterThan(a: V, b: V): boolean {
+  public aGreaterThanb(a: T, b: T): boolean {
     return this._compare(a, b) == 1
   }
 
-  public lessThanOrEqual(a: V, b: V): boolean {
-    return this.lessThan(a, b) || this.equal(a, b)
+  public aLessThanOrEqualTob(a: T, b: T): boolean {
+    return this.aLessThanb(a, b) || this.aEqualTob(a, b)
   }
 
-  public greaterThanOrEqual(a: V, b: V): boolean {
-    return this.greaterThan(a, b) || this.equal(a, b)
+  public aGreaterThanOrEqualTob(a: T, b: T): boolean {
+    return this.aGreaterThanb(a, b) || this.aEqualTob(a, b)
   }
 
-  private _defaultCompare(a: V, b: V): number {
+  private _defaultCompare(a: T, b: T): number {
     if (a == b) {
       return 0
     } else if (a < b) {
@@ -43,4 +43,4 @@ class Comparator<V> implements IComparator<V> {
 
 }
 
-export default Comparator
+export default Comparable

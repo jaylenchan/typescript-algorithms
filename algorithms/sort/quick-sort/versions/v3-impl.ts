@@ -32,7 +32,7 @@ export default class QuickSortV3 {
   private static _quickSort(arr: number[], left: number, right: number): void {
     if (left >= right) return
 
-    const pivot = QuickSortV3._partition(arr, left, right)
+    const pivot = QuickSortV3.partition(arr, left, right)
     QuickSortV3._quickSort(arr, left, pivot - 1)
     QuickSortV3._quickSort(arr, pivot + 1, right)
   }

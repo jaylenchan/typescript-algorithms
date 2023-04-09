@@ -1,4 +1,5 @@
 export * from './util'
-export { default as ArrayCalibrator } from './validator/ArrayValidator'
-export { default as Comparator } from './comparator/impl'
-export { default as IComparator } from './comparator/interface'
+export { default as ArrayValidator } from './validator/ArrayValidator'
+export { default as Comparable } from './comparator/impl'
+export { default as IComparable } from './comparator/interface'
+export type { Comparator } from './comparator/impl'

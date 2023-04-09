@@ -46,11 +46,13 @@ importers:
 
   algorithms:
     specifiers:
+      '@ts-alg/shared': workspace:^1.0.0
       '@ts-alg/structures': workspace:^1.0.0
       typescript: ^4.9.4
     dependencies:
       '@ts-alg/structures': link:../structures
     devDependencies:
+      '@ts-alg/shared': link:../shared
       typescript: registry.npmmirror.com/typescript/4.9.5
 
   leetcode:
@@ -62,12 +64,20 @@ importers:
     devDependencies:
       typescript: registry.npmmirror.com/typescript/4.9.5
 
+  shared:
+    specifiers:
+      typescript: ^4.9.4
+    devDependencies:
+      typescript: registry.npmmirror.com/typescript/4.9.5
+
   structures:
     specifiers:
       '@ts-alg/shared': workspace:^1.0.0
+      ts-mixer: ^6.0.3
       typescript: ^4.9.4
     dependencies:
       '@ts-alg/shared': link:../shared
+      ts-mixer: registry.npmmirror.com/ts-mixer/6.0.3
     devDependencies:
       typescript: registry.npmmirror.com/typescript/4.9.5
 
@@ -4234,6 +4244,12 @@ packages:
     version: 3.0.1
     engines: {node: '>=8'}
     dev: true
+
+  registry.npmmirror.com/ts-mixer/6.0.3:
+    resolution: {integrity: sha512-k43M7uCG1AkTyxgnmI5MPwKoUvS/bRvLvUb7+Pgpdlmok8AoqmUaZxUUw8zKM5B1lqZrt41GjYgnvAi0fppqgQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ts-mixer/-/ts-mixer-6.0.3.tgz}
+    name: ts-mixer
+    version: 6.0.3
+    dev: false
 
   registry.npmmirror.com/ts-node/10.9.1_o6avl3oodj6mwqsx3rm2wfkgv4:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ts-node/-/ts-node-10.9.1.tgz}

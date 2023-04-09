@@ -1,225 +1,169 @@
+import { Comparable } from '@ts-alg/shared'
+
 import TreeNode from './TreeNode'
 
 import type IBinarySearchTree from './interface'
+import type { Comparator } from '@ts-alg/shared'
 
 
-class BinarySearchTree<V> implements IBinarySearchTree<V> {
+class BinarySearchTree<T>
+  extends Comparable<T>
+  implements IBinarySearchTree<T>
+{
 
-  private _root: TreeNode<V>
-  private _size: number
+  public root: TreeNode<T>
+  private _nodeCount: number
 
-  constructor() {
-    this._root = TreeNode.None()
-    this._size = 0
+  constructor(comparator?: Comparator<T>) {
+    super(comparator)
+
+    this._nodeCount = 0
+    this.root = TreeNode.None
   }
 
   public get size(): number {
-    return this._size
+    return this._nodeCount
   }
 
   public isEmpty(): boolean {
-    return this._size == 0
+    return this.size == 0
   }
 
-  public add(e: V): void {
-    this._root = this._add(this._root, e)
+  public insert(element: T): boolean {
+    if (this.contains(element)) {
+      return false
+    } else {
+      this.root = this._add(this.root, element)
+      this._nodeCount++
+
+      return true
+    }
+  }
+
+  public remove(element: T): boolean {
+    if (this.contains(element)) {
+      this.root = this._remove(this.root, element)
+      this._nodeCount--
+
+      return true
+    }
+
+    return false
   }
 
   // 寻找二分搜索树当中的最小元素
-  public minimum(): V {
-    if (this._size == 0) {
+  public findMin(): T {
+    if (this._nodeCount == 0) {
       throw new Error('BinarySearchTree is empty!')
     }
 
-    return this._minimum(this._root).value
+    return this._findMin(this.root).value
   }
 
   // 寻找二分搜索树当中的最大元素
-  public maxmum(): V {
-    if (this._size == 0) {
+  public findMax(): T {
+    if (this._nodeCount == 0) {
       throw new Error('BinarySearchTree is empty!')
     }
 
-    return this._maxmum(this._root).value
+    return this._findMax(this.root).value
   }
 
-  // 从二分搜索树当中删除最小的节点，并返回最小值
-  // 删除掉以root为根的二分搜索树当中的最小节点
-  public removeMin(): V {
-    if (this._root == null) throw new Error('BinarySearchTree is empty!')
-
-    const result = this.minimum()
-    this._root = this._removeMin(this._root)
-
-    return result
+  public contains(element: T): boolean {
+    return this._contains(this.root, element)
   }
 
-  public removeMax(): V {
-    if (this._root.value == null) throw new Error('BinarySearchTree is empty!')
+  public traverseInorder(): T[] {
+    const tranverse: T[] = []
 
-    const result = this.maxmum()
-    this._removeMax(this._root)
+    this._traverseInorder(this.root, tranverse)
 
-    return result
+    return tranverse
   }
 
-  public remove(e: V): void {
-    this._root = this._remove(this._root, e)
+  public toString(): string {
+    return this.traverseInorder().toString()
   }
 
-  // 二分搜索树中是否包含e
-  public contains(e: V): boolean {
-    return this._contains(this._root, e)
-  }
-
-  public preOrder(): void {
-    this._preOrder(this._root)
-  }
-
-  public inOrder(): void {
-    this._inOrder(this._root)
-  }
-
-  public postOrder(): void {
-    this._postOrder(this._root)
-  }
-
-  private _maxmum(_root: TreeNode<V>): TreeNode<V> {
-    if (_root.right == null) return _root
-
-    return this._maxmum(_root.right)
-  }
-
-  private _minimum(_root: TreeNode<V>): TreeNode<V> {
-    if (_root.left == null) return _root
-
-    return this._minimum(_root.left)
-  }
-
-  // 返回插入新节点后二分搜索树的根
-  private _add(_root: TreeNode<V>, e: V): TreeNode<V> {
-    if (_root.value == null) {
-      _root = new TreeNode(e)
-      this._size += 1
-
-      return _root
-    }
-
-    if (e < _root.value) {
-      _root.left = this._add(_root.left, e)
-    } else if (e > _root.value) {
-      _root.right = this._add(_root.right, e)
-    }
-
-    return _root
-  }
-
-  // 删除最小值有两种场景
-  // 场景1：删除的元素是整个树中的叶子节点 - 直接删除即可
-  // 场景2：删除的元素不是整个树中的叶子节点 - 将该元素的右子树保留，删除该元素，然后让保留的右子树直接替代这个元素成为父亲元素的左子树
-  private _removeMin(_root: TreeNode<V>): TreeNode<V> {
-    if (_root.left == null) {
-      this._size -= 1
-      const rightNode = _root.right
-      _root.right = TreeNode.None()
-      return rightNode
+  /**
+   * 向二分搜索树中插入节点并返回插入新节点后的二分搜索树的根
+   */
+  private _add(node: TreeNode<T>, element: T): TreeNode<T> {
+    if (node.value == null) {
+      node = new TreeNode(element)
     } else {
-      _root.left = this._removeMin(_root.left)
-      return _root
+      if (this.aLessThanb(element, node.value)) {
+        node.left = this._add(node.left, element)
+      } else {
+        node.right = this._add(node.right, element)
+      }
     }
-  }
 
-  private _removeMax(_root: TreeNode<V>): TreeNode<V> {
-    if (_root.right == null) {
-      this._size -= 1
-      const leftNode = _root.left
-      _root.left = TreeNode.None()
-      return leftNode
-    } else {
-      _root.right = this._removeMax(_root.right)
-      return _root
-    }
+    return node
   }
 
   // 删除以node为根的二分搜索树中指为e的节点
   // 返回删除节点后新的二分搜索树的根
-  private _remove(_root: TreeNode<V>, e: V): TreeNode<V> {
-    if (_root.value == null) {
-      return TreeNode.None()
-    } else {
-      if (e < _root.value) {
-        _root.left = this._remove(_root.left, e)
-
-        return _root
-      } else if (e > _root.value) {
-        _root.right = this._remove(_root.right, e)
-
-        return _root
+  private _remove(node: TreeNode<T>, element: T): TreeNode<T> {
+    if (node.value != null) {
+      if (this.aLessThanb(element, node.value)) {
+        node.left = this._remove(node.left, element)
+      } else if (this.aGreaterThanb(element, node.value)) {
+        node.right = this._remove(node.right, element)
       } else {
-        // e == _root.e
+        // this.aEqualTob(element, node.value)删除的结点是当前子树的root
+        if (node.left.value == null) {
+          return node.right
+        } else if (node.right.value == null) {
+          return node.left
+        } else {
+          /**
+           * 删除的结点是当前子树的root，
+           * 但是左右子树均不为空。此时应该找到整棵树中第一个比这个结点值大的那个结点，让它成为新树的根，维持二分搜索树的布局
+           * 因此，其实就是找到右子树的最小值作为新的根，左子树依旧是原来树的左子树
+           */
+          const successor = this._findMin(node.right)
 
-        if (_root.left.value == null) {
-          const rightNode = _root.right
-          _root.right = TreeNode.None()
-          this._size -= 1
-          return rightNode
+          node.value = successor.value
+          node.right = this._remove(node.right, successor.value)
         }
-        if (_root.right.value == null) {
-          const leftNode = _root.left
-          _root.left = TreeNode.None()
-          this._size -= 1
-          return leftNode
-        }
-
-        // 待删除的节点左右子树均不为空
-        const successor = this._minimum(_root.right)
-        successor.right = this._removeMin(_root.right)
-        successor.left = _root.left
-
-        _root.left = TreeNode.None()
-        _root.right = TreeNode.None()
-
-        return successor
       }
     }
+
+    return node
+  }
+
+  private _findMin(node: TreeNode<T>): TreeNode<T> {
+    if (node.left.value == null) return node
+
+    return this._findMin(node.left)
+  }
+
+  private _findMax(node: TreeNode<T>): TreeNode<T> {
+    if (node.right.value == null) return node
+
+    return this._findMax(node.right)
   }
 
   // 查看以root为根的二分搜索树是否包含元素e
-  private _contains(_root: TreeNode<V>, e: V): boolean {
-    if (_root.value == null) return false
+  private _contains(node: TreeNode<T>, element: T): boolean {
+    if (node.value == null) return false
 
-    if (e == _root.value) {
+    if (this.aEqualTob(element, node.value)) {
       return true
-    } else if (e < _root.value) {
-      return this._contains(_root.left, e)
+    } else if (this.aLessThanb(element, node.value)) {
+      return this._contains(node.left, element)
     } else {
-      return this._contains(_root.right, e)
+      return this._contains(node.right, element)
     }
   }
 
-  // 以root为根的二分搜索树进行前序遍历
-  // 找到比待删除节点大的最小节点，其实就是待删除节点右子树上的最小节点
-  // 用这个节点顶替待删除节点的位置
-  private _preOrder(_root: TreeNode<V>): void {
-    if (_root.value == null) return
-
-    this._preOrder(_root.left)
-    this._preOrder(_root.right)
-  }
-
-  private _inOrder(_root: TreeNode<V>): void {
-    if (_root.value == null) return
-
-    this._inOrder(_root.left)
-
-    this._inOrder(_root.right)
-  }
-
-  private _postOrder(_root: TreeNode<V>): void {
-    if (_root.value == null) return
-
-    this._postOrder(_root.left)
-    this._postOrder(_root.right)
+  private _traverseInorder(node: TreeNode<T>, tranverse: T[]): void {
+    if (node.value != null) {
+      this._traverseInorder(node.left, tranverse)
+      tranverse.push(node.value)
+      this._traverseInorder(node.right, tranverse)
+    }
   }
 
 }

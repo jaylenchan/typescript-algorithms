@@ -1,17 +1,17 @@
-class TreeNode<V> {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+class TreeNode<T> {
 
-  public value: V
-  public left: TreeNode<V>
-  public right: TreeNode<V>
+  public static None = new TreeNode<any>(null)
 
-  constructor(value: V, left?: TreeNode<V>, right?: TreeNode<V>) {
+  public value: T
+  public left: TreeNode<T>
+  public right: TreeNode<T>
+
+  constructor(value: T, left?: TreeNode<T>, right?: TreeNode<T>) {
     this.value = value
-    this.left = left ?? TreeNode.None()
-    this.right = right ?? TreeNode.None()
+    this.left = left ?? TreeNode.None
+    this.right = right ?? TreeNode.None
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public static None = (): TreeNode<any> => new TreeNode<any>(null)
 
 }
 
